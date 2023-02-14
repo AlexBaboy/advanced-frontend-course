@@ -1,5 +1,4 @@
-import React, {Suspense, useContext, useState} from 'react';
-import {Routes, Route, Link} from 'react-router-dom'
+import React, {Suspense} from 'react';
 import './styles/index.scss'
 import {useTheme} from "app/providers/ThemeProvider";
 import {classNames} from "shared/lib/classNames/classNames";
@@ -15,13 +14,13 @@ const App = () => {
         <div className={classNames('app',
                                 {hovered: true, selectable: false},
                             [theme, 'class-test'])}>
-
-            <Navbar />
-            <div className={'content-page'}>
-                <Sidebar />
-                <AppRouter />
-            </div>
-
+            <Suspense fallback={''}>
+                <Navbar />
+                <div className={'content-page'}>
+                    <Sidebar />
+                    <AppRouter />
+                </div>
+            </Suspense>
         </div>
     );
 };
