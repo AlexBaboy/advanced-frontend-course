@@ -16,10 +16,6 @@ export const Navbar = ({className}: NavbarProps) => {
                 [className]
             )}>
 
-            <div>
-                <ThemeSwitcher />
-            </div>
-
             <div className={cls.links}>
                 <AppLink
                     theme={AppLinkTheme.SECONDARY}

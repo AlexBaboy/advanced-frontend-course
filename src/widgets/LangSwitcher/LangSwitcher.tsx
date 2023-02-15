@@ -28,7 +28,6 @@ export const LangSwitcher = ({className}: LangSwitcherProps) => {
                     [className]
                 )}>
                 {t("Язык")}
-                {t("Тест")}
             </Button>
     );
 };
