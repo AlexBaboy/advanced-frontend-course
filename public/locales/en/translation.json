@@ -6,5 +6,7 @@
   "Язык": "English",
   "Тест": "Test",
   "Страница не найдена": "Page not found",
-  "Загрузка": "Loading"
+  "Загрузка": "Loading",
+  "Произошла непредвиденная ошибка": "An unexpected error has occurred",
+  "Обновить страницу": "Reload page"
 }
