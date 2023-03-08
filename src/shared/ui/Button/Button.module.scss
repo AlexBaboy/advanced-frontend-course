@@ -11,6 +11,13 @@
   outline: none;
 }
 
+.outline {
+  padding: 1rem;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  background: none;
+}
+
 .reload {
   color: red;
 }
