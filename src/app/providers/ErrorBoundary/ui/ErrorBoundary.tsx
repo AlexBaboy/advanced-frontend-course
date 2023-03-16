@@ -31,9 +31,9 @@ class ErrorBoundary extends
         if (this.state.hasError) {
             // Можно отрендерить запасной UI произвольного вида
             return (
-                    <Suspense fallback={''}>
-                        <ErrorPage />
-                    </Suspense>
+                <Suspense fallback={''}>
+                    <ErrorPage />
+                </Suspense>
             )
         }
 
