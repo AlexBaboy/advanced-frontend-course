@@ -4,7 +4,6 @@ import {ComponentMeta, ComponentStory} from '@storybook/react';
 import {AppLink, AppLinkTheme} from './AppLink';
 import {ThemeDecorator} from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import {Theme} from "app/providers/ThemeProvider";
-import {ThemeButton} from "shared/ui/Button/Button";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
