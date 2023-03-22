@@ -28,6 +28,7 @@ export const Button: FC<ButtonProps> = (props) => {
     children,
     theme = ButtonTheme.CLEAR,
       square,
+      size = ButtonSize.M,
     ...otherProps
   } = props
 
@@ -39,7 +40,7 @@ export const Button: FC<ButtonProps> = (props) => {
   return (
       <button
             type={'button'}
-            className={classNames(cls.Button, mods, [className, cls[theme]])}
+            className={classNames(cls.Button, mods, [className, cls[theme], cls[size]])}
             {...otherProps}
         >
           {children}
