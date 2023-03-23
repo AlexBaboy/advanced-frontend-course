@@ -15,6 +15,34 @@
   gap: 2rem;
 }
 
+.collapseBtn {
+  position: absolute;
+  right: -32px;
+  bottom: 32px;
+}
+
+.items {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  margin: 10px;
+  opacity: 1;
+}
+
+.icon {
+  fill: var(--inverted-primary-color);
+}
+
+
 .collapsed {
   width: var(--sidebar-width-collapsed);
 
@@ -25,10 +53,11 @@
   .lang {
     margin-left: 0;
   }
-}
 
-.collapseBtn {
-  position: absolute;
-  right: -32px;
-  bottom: 32px;
+  .link {
+    opacity: 0;
+    transition: .2s;
+    width: 0;
+    pointer-events: none;
+  }
 }
