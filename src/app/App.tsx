@@ -23,7 +23,9 @@ const App = () => {
               <Modal
                   isOpen={isOpen}
                   onClose={() => setIsOpen(false)}
-              />
+              >
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium, assumenda commodi consequatur debitis deleniti deserunt dignissimos dolor dolore ea eum expedita fuga illum ipsam labore molestias necessitatibus nihil nostrum nulla officia quos rem sit sunt temporibus veritatis. Blanditiis consequuntur culpa explicabo minus nam non odio officia optio quidem repellendus.
+              </Modal>
 
               <div className={'content-page'}>
                   <Sidebar />
