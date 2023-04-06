@@ -2,6 +2,7 @@ import {classNames} from "shared/lib/classNames/classNames";
 import cls from './Modal.module.scss'
 import React, {ReactNode, useEffect, useRef, useState} from "react";
 import {Portal} from "shared/ui/Portal/Portal";
+import {useTheme} from "app/providers/ThemeProvider";
 
 interface ModalProps {
     className?: string
@@ -23,6 +24,7 @@ export const Modal = (props: ModalProps) => {
 
     const [isClosing, setIsClosing] = useState(false)
     const timeRef = useRef<ReturnType<typeof setTimeout>>()
+    const {theme} = useTheme()
 
     const closeHandler = () => {
         if (onClose) {
@@ -40,7 +42,8 @@ export const Modal = (props: ModalProps) => {
 
     const mods: Record<string, boolean | undefined> = {
         [cls.opened]: isOpen,
-        [cls.isClosing]: isClosing
+        [cls.isClosing]: isClosing,
+        [cls[theme]]: true,
     }
 
     useEffect(() => {
