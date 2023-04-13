@@ -24,7 +24,6 @@ export const Modal = (props: ModalProps) => {
 
     const [isClosing, setIsClosing] = useState(false)
     const timeRef = useRef<ReturnType<typeof setTimeout>>()
-    const {theme} = useTheme()
 
     const closeHandler = () => {
         if (onClose) {
@@ -53,9 +52,7 @@ export const Modal = (props: ModalProps) => {
             }
         }
 
-        if (isOpen) {
-            window.addEventListener('keydown', onKeyDownHandler)
-        }
+        isOpen && window.addEventListener('keydown', onKeyDownHandler)
         return () => {
             clearTimeout(timeRef.current)
             window.removeEventListener('keydown', onKeyDownHandler)
@@ -67,7 +64,7 @@ export const Modal = (props: ModalProps) => {
             <div className={classNames(
                 cls.Modal,
                 mods,
-                [className, theme]
+                [className]
             )}>
 
                 <div className={cls.overlay}
