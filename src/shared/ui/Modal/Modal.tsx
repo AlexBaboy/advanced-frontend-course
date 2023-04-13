@@ -43,7 +43,6 @@ export const Modal = (props: ModalProps) => {
     const mods: Record<string, boolean | undefined> = {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing,
-        [cls[theme]]: true,
     }
 
     useEffect(() => {
@@ -68,7 +67,7 @@ export const Modal = (props: ModalProps) => {
             <div className={classNames(
                 cls.Modal,
                 mods,
-                [className]
+                [className, theme]
             )}>
 
                 <div className={cls.overlay}
