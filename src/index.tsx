@@ -5,11 +5,10 @@ import {ThemeProvider} from "app/providers/ThemeProvider";
 import 'shared/config/i18n/i18n'
 import {ErrorBoundary} from "app/providers/ErrorBoundary";
 import './app/styles/index.scss'
-import {Provider} from "react-redux";
-import {store} from "app/providers/StoreProvider/config/store";
+import {StoreProvider} from "app/providers/StoreProvider";
 
 render(
-    <Provider store={store}>
+    <StoreProvider>
         <BrowserRouter>
             <ErrorBoundary>
                 <ThemeProvider>
@@ -17,7 +16,6 @@ render(
                 </ThemeProvider>
             </ErrorBoundary>
         </BrowserRouter>
-    </Provider>
-        ,
+    </StoreProvider>,
     document.getElementById('root')
 )
