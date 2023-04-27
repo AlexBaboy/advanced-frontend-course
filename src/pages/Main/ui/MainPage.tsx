@@ -17,11 +17,6 @@ const MainPage = () => {
             {t('Главная')}
             <div>
                 <BugButton />
-                <Input
-                    onChange={onChange}
-                    value={value}
-                    placeholder={'Введите текст'}
-                />
             </div>
         </div>
     );
