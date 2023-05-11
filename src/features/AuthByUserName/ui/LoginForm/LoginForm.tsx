@@ -7,6 +7,7 @@ import {memo, useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {loginActions} from "../../model/slice/loginSlice";
 import {getLoginState} from "../../model/selectors/getLoginState/getLoginState";
+import {LoginSchema} from "features/AuthByUserName";
 
 interface LoginFormProps {
     className?: string
@@ -17,17 +18,21 @@ export const LoginForm = memo(({className}: LoginFormProps) => {
     const {t} = useTranslation()
     const dispatch = useDispatch()
     const {
-        username,
-        password
-    } = useSelector(getLoginState)
+        username = '',
+        password = ''
+    } = useSelector(getLoginState) as LoginSchema
 
-    const onChangeUserName = useCallback((value: string) => {
+    const onChangeUserName = (value: string) => {
         dispatch(loginActions.setUserName(value))
-    },[])
+    }
 
-    const onChangePassword = useCallback((value: string) => {
+    const onChangePassword = (value: string) => {
         dispatch(loginActions.setPassword(value))
-    },[])
+    }
+
+    const onLoginClick = () => {
+
+    }
 
     return (
         <div className={classNames(
@@ -53,6 +58,7 @@ export const LoginForm = memo(({className}: LoginFormProps) => {
             <Button
                 theme={ButtonTheme.OUTLINE}
                 className={cls.loginBtn}
+                onClick={onLoginClick}
             >
                 {t('Войти')}
             </Button>
