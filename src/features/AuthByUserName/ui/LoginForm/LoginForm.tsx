@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {loginActions} from "../../model/slice/loginSlice";
 import {getLoginState} from "../../model/selectors/getLoginState/getLoginState";
 import {LoginSchema} from "features/AuthByUserName";
+import {loginByUsername} from "../../model/services/loginByUsername/loginByUsername";
 
 interface LoginFormProps {
     className?: string
@@ -31,7 +32,10 @@ export const LoginForm = memo(({className}: LoginFormProps) => {
     }
 
     const onLoginClick = () => {
-
+        dispatch(loginByUsername({
+            username,
+            password
+        }))
     }
 
     return (
