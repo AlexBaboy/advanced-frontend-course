@@ -3,12 +3,13 @@ import cls from './LoginForm.module.scss'
 import {useTranslation} from "react-i18next";
 import {Button, ButtonTheme} from "shared/ui/Button/Button";
 import Input from "shared/ui/Input/Input";
-import {memo, useCallback} from "react";
+import {memo} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {loginActions} from "../../model/slice/loginSlice";
 import {getLoginState} from "../../model/selectors/getLoginState/getLoginState";
 import {LoginSchema} from "features/AuthByUserName";
 import {loginByUsername} from "../../model/services/loginByUsername/loginByUsername";
+import {AnyAction, AsyncThunk, AsyncThunkAction} from "@reduxjs/toolkit";
 
 interface LoginFormProps {
     className?: string
@@ -35,15 +36,15 @@ export const LoginForm = memo(({className}: LoginFormProps) => {
         dispatch(loginByUsername({
             username,
             password
-        }))
+        }) as unknown as AnyAction)
     }
 
     return (
         <div className={classNames(
-                    cls.LoginForm,
-                    {},
-                [className]
-            )}>
+            cls.LoginForm,
+            {},
+            [className]
+        )}>
             <Input
                 placeholder={t('Введите логин')}
                 type="text"
