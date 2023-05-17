@@ -14,8 +14,19 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps>
         try {
             const response = await axios.post<User>(
                 'http://localhost:8000/login',
-                authData
+                authData,
             )
+
+            /*const response = await axios({
+                method: 'post',
+                url: `http://localhost:8000/login`,
+                withCredentials: false,
+                data: authData
+                /!*params: {
+                    /!*access_token: SECRET_TOKEN,*!/
+                    authData
+                },*!/
+            });*/
 
             if (!response.data) {
                 throw new Error('no data!')
