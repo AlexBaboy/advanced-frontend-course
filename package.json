@@ -20,7 +20,7 @@
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook",
     "prepare": "husky install",
-    "json-server:run": "json-server --watch db.json"
+    "json-server:run": "json-server --watch ./json-server/db.json -p 8000"
   },
   "keywords": [],
   "author": "",
