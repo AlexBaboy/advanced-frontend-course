@@ -21,7 +21,9 @@ export const LoginForm = memo(({className}: LoginFormProps) => {
     const dispatch = useDispatch()
     const {
         username = '',
-        password = ''
+        password = '',
+        error,
+        isLoading
     } = useSelector(getLoginState) as LoginSchema
 
     const onChangeUserName = (value: string) => {
@@ -45,6 +47,9 @@ export const LoginForm = memo(({className}: LoginFormProps) => {
             {},
             [className]
         )}>
+            {error && (
+                <div>{error}</div>
+            )}
             <Input
                 placeholder={t('Введите логин')}
                 type="text"
@@ -64,6 +69,7 @@ export const LoginForm = memo(({className}: LoginFormProps) => {
                 theme={ButtonTheme.OUTLINE}
                 className={cls.loginBtn}
                 onClick={onLoginClick}
+                disabled={isLoading}
             >
                 {t('Войти')}
             </Button>
