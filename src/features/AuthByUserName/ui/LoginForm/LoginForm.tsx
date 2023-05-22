@@ -10,6 +10,7 @@ import {getLoginState} from "../../model/selectors/getLoginState/getLoginState";
 import {LoginSchema} from "features/AuthByUserName";
 import {loginByUsername} from "../../model/services/loginByUsername/loginByUsername";
 import {AnyAction, AsyncThunk, AsyncThunkAction} from "@reduxjs/toolkit";
+import {TextTheme, Text} from "shared/ui/Text/Text";
 
 interface LoginFormProps {
     className?: string
@@ -47,8 +48,12 @@ export const LoginForm = memo(({className}: LoginFormProps) => {
             {},
             [className]
         )}>
+            <Text title={t('Форма авторизации')} />
             {error && (
-                <div>{error}</div>
+                <Text
+                    text={error}
+                    theme={TextTheme.ERROR}
+                />
             )}
             <Input
                 placeholder={t('Введите логин')}
