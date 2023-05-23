@@ -1,4 +1,4 @@
-import React, {Suspense, useEffect, useState} from 'react'
+import React, {Suspense, useEffect} from 'react'
 
 import { useTheme } from 'app/providers/ThemeProvider'
 import { classNames } from 'shared/lib/classNames/classNames'
@@ -13,7 +13,7 @@ const App = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(userActions.initAuthData)
+        dispatch(userActions.initAuthData())
     }, [])
 
   return (
