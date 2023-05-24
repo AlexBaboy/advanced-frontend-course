@@ -1,6 +1,6 @@
 export type LoginSchema = {
     username?: string
     password?: string
-    isLoading: boolean
+    isLoading?: boolean
     error?: string
 }
