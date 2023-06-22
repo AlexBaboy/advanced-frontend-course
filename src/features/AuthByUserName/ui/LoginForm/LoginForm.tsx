@@ -14,10 +14,14 @@ import {getLoginUsername} from "../../model/selectors/getLoginUsername/getLoginU
 import {getLoginIsLoading} from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
 import {getLoginError} from "../../model/selectors/getLoginError/getLoginError";
 import {getLoginPassword} from "../../model/selectors/getLoginPassword/getLoginPassword";
-import {DynamicModuleLoader} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 
 export interface LoginFormProps {
     className?: string
+}
+
+const initialReducers: ReducersList = {
+    loginForm: loginReducer,
 }
 
 const LoginForm = memo(({className}: LoginFormProps) => {
@@ -47,8 +51,8 @@ const LoginForm = memo(({className}: LoginFormProps) => {
 
     return (
         <DynamicModuleLoader
-            name={'loginForm'}
-            reducer={loginReducer}>
+            removeAfterUnmount={true}
+            reducers={initialReducers}>
             <div className={classNames(
                 cls.LoginForm,
                 {},
