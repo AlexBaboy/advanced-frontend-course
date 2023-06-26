@@ -20,7 +20,10 @@ export default {
   // An array of directory names to be searched recursively up from the requiring module's location
   moduleDirectories: [
     "node_modules",
-    "src"
+  ],
+
+  modulePaths: [
+    '<rootDir>src'
   ],
 
   // An array of file extensions your modules use
@@ -55,7 +58,7 @@ export default {
   moduleNameMapper: {
     "\\.(css|less|scss|sss|styl)$": 'identity-obj-proxy',
     "\\.svg" : path.resolve(__dirname, 'jestEmptyComponent.tsx'),
-    "axios": "axios/dist/node/axios.cjs"
+    '^axios$': require.resolve('axios'),
   },
 
 
