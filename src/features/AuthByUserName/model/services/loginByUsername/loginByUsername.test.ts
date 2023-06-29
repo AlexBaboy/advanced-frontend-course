@@ -17,7 +17,7 @@ describe('loginByUsername test' , () => {
         getState = jest.fn()
     })
 
-    test('', async () => {
+    test('success login', async () => {
 
         const userValue = {
             id: '1',
@@ -41,10 +41,26 @@ describe('loginByUsername test' , () => {
                     .setAuthData(userValue)
             )
 
-        expect(mockedAxios.post)
-            .toHaveBeenCalled()
+        expect(mockedAxios.post).toHaveBeenCalledTimes(3)
+        expect(result.meta.requestStatus).toBe('fulfilled')
+        expect(result.payload).toEqual(userValue)
+    })
 
-        expect(result.meta.requestStatus)
-            .toBe('fulfilled')
+    test('error login', async () => {
+
+        mockedAxios.post.mockReturnValue(Promise.resolve({
+            status: 403
+        }))
+
+        const action = loginByUsername({
+            username: '123', password: '123'
+        })
+        const result = await action(
+            dispatch, getState, undefined
+        )
+
+        expect(mockedAxios.post).toHaveBeenCalledTimes(2)
+
+        expect(result.meta.requestStatus).toBe('rejected')
     })
 })
