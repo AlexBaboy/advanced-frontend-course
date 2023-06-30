@@ -3,8 +3,8 @@ import cls from './LoginForm.module.scss'
 import {useTranslation} from "react-i18next";
 import {Button, ButtonTheme} from "shared/ui/Button/Button";
 import Input from "shared/ui/Input/Input";
-import {memo, useEffect} from "react";
-import {useDispatch, useSelector, useStore} from "react-redux";
+import {memo, } from "react";
+import {useDispatch, useSelector, } from "react-redux";
 import {loginActions, loginReducer} from "../../model/slice/loginSlice";
 
 import {loginByUsername} from "../../model/services/loginByUsername/loginByUsername";
