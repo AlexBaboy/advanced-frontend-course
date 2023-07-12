@@ -5,7 +5,7 @@ import {LangSwitcher} from 'widgets/Sidebar'
 import {Button, ButtonSize, ButtonTheme} from "shared/ui/Button/Button";
 import {useTranslation} from "react-i18next";
 import cls from './Sidebar.module.scss'
-import {SideBarItemsList} from "./model/items";
+import {SideBarItemsList} from "../../model/items";
 import {SidebarItem} from "../SidebarItem/SidebarItem";
 
 interface SidebarProps {
@@ -41,6 +41,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
                 <SidebarItem
                     item={item}
                     collapsed={collapsed}
+                    key={item.path}
                 />
               ))}
           </div>

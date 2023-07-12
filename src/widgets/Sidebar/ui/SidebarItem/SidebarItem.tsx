@@ -5,26 +5,26 @@ import {AppLink, AppLinkTheme} from "shared/ui/AppLink/AppLink";
 import {RoutePath} from "shared/config/routeConfig/routeConfig";
 import MainIcon from "shared/assets/icons/home.svg";
 import React from "react";
-import {SidebarItemType} from "../Sidebar/model/items";
+import {SidebarItemType} from "../../model/items";
 
 interface SidebarItemProps {
-    item?: SidebarItemType
+    item: SidebarItemType
     collapsed?: boolean
 }
 
-export const SidebarItem = ({}: SidebarItemProps) => {
+export const SidebarItem = ({item, collapsed}: SidebarItemProps) => {
 
     const {t} = useTranslation()
 
     return (
         <AppLink
             theme={AppLinkTheme.SECONDARY}
-            to={RoutePath.main}
-            className={cls.item}
+            to={item.path}
+            className={classNames(cls.item, { [cls.collapsed]: collapsed })}
         >
-            <MainIcon className={cls.icon} />
+            <item.Icon className={cls.icon} />
             <span className={cls.link}>
-                          {t('Главная')}
+                          {t(item.text)}
                       </span>
         </AppLink>
     );

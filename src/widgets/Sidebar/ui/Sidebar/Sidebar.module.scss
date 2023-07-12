@@ -1,8 +1,8 @@
 .Sidebar {
-  position: relative;
   height: calc(100vh - var(--navbar-height));
   width: var(--sidebar-width);
   background: var(--inverted-bg-color);
+  position: relative;
   transition: width 0.3s;
 }
 
@@ -12,7 +12,10 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  gap: 2rem;
+}
+
+.lang {
+  margin-left: 20px;
 }
 
 .collapseBtn {
@@ -22,42 +25,21 @@
 }
 
 .items {
-  margin: 20px;
+  margin-top: 20px;
+  margin-left: 30px;
   display: flex;
   flex-direction: column;
 }
-
-.item {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.link {
-  margin: 10px;
-  opacity: 1;
-}
-
-.icon {
-  fill: var(--inverted-primary-color);
-}
-
 
 .collapsed {
   width: var(--sidebar-width-collapsed);
 
   .switchers {
     flex-direction: column;
+    align-items: center;
   }
 
   .lang {
     margin-left: 0;
-  }
-
-  .link {
-    opacity: 0;
-    transition: .2s;
-    width: 0;
-    pointer-events: none;
   }
 }
