@@ -6,7 +6,7 @@ import {StoreDecorator} from "shared/config/storybook/StoreDecorator/StoreDecora
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-    title: 'pages/MainPage',
+    title: 'pages/ProfilePage',
     component: ProfilePage,
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
