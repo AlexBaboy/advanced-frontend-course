@@ -2,7 +2,7 @@ import {classNames} from "shared/lib/classNames/classNames";
 import cls from './LoginForm.module.scss'
 import {useTranslation} from "react-i18next";
 import {Button, ButtonTheme} from "shared/ui/Button/Button";
-import Input from "shared/ui/Input/Input";
+import {Input} from "shared/ui/Input/Input";
 import {memo, } from "react";
 import {useSelector} from "react-redux";
 import {loginActions, loginReducer} from "../../model/slice/loginSlice";
