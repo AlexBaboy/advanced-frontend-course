@@ -12,6 +12,7 @@
     // для абсолютного импорта
     "baseUrl": ".",
     "strictNullChecks": true,
+    "strict": true,
     "paths": {
       "*": ["./src/*"]
     }
