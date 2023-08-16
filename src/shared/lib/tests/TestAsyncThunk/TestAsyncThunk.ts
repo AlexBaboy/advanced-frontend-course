@@ -8,6 +8,10 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
     getState: () => StateSchema
     actionCreator: ActionCreatorType<Return, Arg, RejectedValue>
 
+    api:
+
+    navigate: jest.MockedFn<any>
+
     constructor(actionCreator: ActionCreatorType<Return, Arg, RejectedValue>) {
         this.actionCreator = actionCreator
         this.dispatch = jest.fn()
