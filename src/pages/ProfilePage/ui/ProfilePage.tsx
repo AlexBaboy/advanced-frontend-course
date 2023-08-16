@@ -20,7 +20,6 @@ const ProfilePage = ({className}: ProfilePageProps) => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        // @ts-ignore
         dispatch(fetchProfileData())
     }, [])
 

@@ -1,8 +1,7 @@
-import {configureStore, DeepPartial, ReducersMapObject} from '@reduxjs/toolkit'
+import {CombinedState, configureStore, DeepPartial, Reducer, ReducersMapObject} from '@reduxjs/toolkit'
 import {StateSchema} from "./StateSchema";
 import {userReducer} from "entities/User";
 import {createReducerManager} from "./reducerManager";
-import {useDispatch} from "react-redux";
 import {$api} from "shared/api/api";
 import {Pathname} from "history";
 import {NavigateOptions} from "react-router";
@@ -12,15 +11,18 @@ export const createReduxStore = (
     asyncReducers?: ReducersMapObject<StateSchema>,
     navigate?: (to: Pathname, options?: NavigateOptions) => void
 ) => {
+
+
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
-        user: userReducer,
+        // @ts-ignore
+        user: userReducer
     }
 
     const reducerManager = createReducerManager(rootReducers)
 
     const store = configureStore({
-        reducer: reducerManager.reduce,
+        reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
         devTools: __IS_DEV__,
         preloadedState: initialState,
         middleware: getDefaultMiddleware => getDefaultMiddleware({
