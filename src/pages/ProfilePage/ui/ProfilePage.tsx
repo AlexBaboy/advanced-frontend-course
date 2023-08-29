@@ -4,15 +4,14 @@ import {useTranslation} from "react-i18next";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import {
     fetchProfileData,
-    getProfileData,
-    getProfileError,
-    getProfileIsLoading,
+    Profile,
     ProfileCard,
     profileReducer
 } from "entities/Profile";
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {useEffect} from "react";
-import {useSelector} from "react-redux";
+import {Loader} from "shared/ui/Loader/Loader";
+import ProfilePageHeader from "./ProfilePageHeader/ProfilePageHeader";
 
 
 const reducers: ReducersList = {
@@ -21,20 +20,39 @@ const reducers: ReducersList = {
 
 interface ProfilePageProps {
     className?: string
+    data?: Profile
+    error?: string
+    isLoading?: boolean
 }
 
-const ProfilePage = ({className}: ProfilePageProps) => {
+const ProfilePage = (props: ProfilePageProps) => {
 
     const {t} = useTranslation()
-    const dispatch = useAppDispatch()
 
-    const data = useSelector(getProfileData)
-    const isLoading = useSelector(getProfileIsLoading)
-    const error = useSelector(getProfileError)
+    const {
+        className,
+        data,
+        isLoading,
+        error
+    } = props
+
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         dispatch(fetchProfileData())
     }, [])
+
+    if (isLoading) {
+        return (
+            <div className={classNames(
+                cls.ProfilePage,
+                {},
+                [className]
+            )}>
+                <Loader />
+            </div>
+        )
+    }
 
     return (
         <DynamicModuleLoader
@@ -44,8 +62,9 @@ const ProfilePage = ({className}: ProfilePageProps) => {
             <div className={classNames(
                         cls.ProfilePage,
                         {},
-                    [className]
+                    [className, cls.loading]
                 )}>
+                <ProfilePageHeader />
                 <ProfileCard
                     data={data}
                     isLoading={isLoading}
