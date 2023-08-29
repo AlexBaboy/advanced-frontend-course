@@ -3,7 +3,7 @@ import cls from './ProfilePage.module.scss'
 import {useTranslation} from "react-i18next";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import {
-    fetchProfileData,
+    fetchProfileData, getProfileReadOnly,
     Profile,
     ProfileCard,
     profileReducer
@@ -13,6 +13,7 @@ import {useEffect} from "react";
 import {Loader} from "shared/ui/Loader/Loader";
 import {Text} from "shared/ui/Text/Text";
 import {Button, ButtonTheme} from "shared/ui/Button/Button";
+import {useSelector} from "react-redux";
 
 
 const reducers: ReducersList = {
@@ -36,6 +37,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
 
     const dispatch = useAppDispatch()
 
+    const readonly = useSelector(getProfileReadOnly)
 
     return (
         <div className={classNames(
@@ -44,12 +46,23 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
             [className]
         )}>
             <Text title={t('Профиль')} />
-            <Button
-                theme={ButtonTheme.OUTLINE}
-                className={cls.editBtn}
-            >
-                {t('Редактировать')}
-            </Button>
+
+            {!readonly ? (
+                <Button
+                    theme={ButtonTheme.OUTLINE}
+                    className={cls.editBtn}
+                >
+                    {t('Редактировать')}
+                </Button>
+            ) : (
+                <Button
+                    theme={ButtonTheme.OUTLINE}
+                    className={cls.editBtn}
+                >
+                    {t('Отменить')}
+                </Button>
+            )}
+
         </div>
     );
 };
