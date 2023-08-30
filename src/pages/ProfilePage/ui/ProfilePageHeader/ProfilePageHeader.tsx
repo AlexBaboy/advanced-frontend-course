@@ -1,35 +1,24 @@
 import {classNames} from "shared/lib/classNames/classNames";
-import cls from './ProfilePage.module.scss'
+import cls from './ProfilePageHeader.module.scss'
 import {useTranslation} from "react-i18next";
-import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import {
-    fetchProfileData, getProfileReadOnly,
-    Profile,
-    ProfileCard,
-    profileReducer
+    getProfileReadOnly,
+    profileActions,
 } from "entities/Profile";
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import {useEffect} from "react";
-import {Loader} from "shared/ui/Loader/Loader";
 import {Text} from "shared/ui/Text/Text";
 import {Button, ButtonTheme} from "shared/ui/Button/Button";
 import {useSelector} from "react-redux";
+import {memo} from "react";
 
-
-const reducers: ReducersList = {
-    profile: profileReducer
-}
 
 interface ProfilePageHeaderProps {
     className?: string
-    data?: Profile
-    error?: string
-    isLoading?: boolean
 }
 
 export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
 
-    const {t} = useTranslation()
+    const {t} = useTranslation('profile')
 
     const {
         className,
@@ -39,6 +28,14 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
 
     const readonly = useSelector(getProfileReadOnly)
 
+    const onEdit = () => {
+        dispatch(profileActions.setReadOnly(false))
+    }
+
+    const onCancelEdit = () => {
+        dispatch(profileActions.setReadOnly(true))
+    }
+
     return (
         <div className={classNames(
             cls.ProfilePageHeader,
@@ -47,10 +44,11 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
         )}>
             <Text title={t('Профиль')} />
 
-            {!readonly ? (
+            {readonly ? (
                 <Button
                     theme={ButtonTheme.OUTLINE}
                     className={cls.editBtn}
+                    onClick={onEdit}
                 >
                     {t('Редактировать')}
                 </Button>
@@ -58,6 +56,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
                 <Button
                     theme={ButtonTheme.OUTLINE}
                     className={cls.editBtn}
+                    onClick={onCancelEdit}
                 >
                     {t('Отменить')}
                 </Button>
@@ -67,4 +66,4 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     );
 };
 
-export default ProfilePageHeader
+export default memo(ProfilePageHeader)
