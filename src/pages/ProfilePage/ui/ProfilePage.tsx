@@ -3,8 +3,8 @@ import cls from './ProfilePage.module.scss'
 import {useTranslation} from "react-i18next";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import {
-    fetchProfileData, getProfileError, getProfileIsLoading, getProfileReadOnly,
-    Profile, profileActions,
+    fetchProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadOnly,
+    profileActions,
     ProfileCard,
     profileReducer
 } from "entities/Profile";
@@ -74,6 +74,7 @@ const ProfilePage = ({className}: ProfilePageProps) => {
                     error={error}
                     onChangeFirstName={onChangeFirstName}
                     onChangeLastName={onChangeLastName}
+                    readonly={readonly}
                 />
             </div>
         </DynamicModuleLoader>

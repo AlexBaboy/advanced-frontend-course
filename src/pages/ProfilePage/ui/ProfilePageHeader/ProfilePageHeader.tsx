@@ -33,7 +33,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     }
 
     const onCancelEdit = () => {
-        dispatch(profileActions.setReadOnly(true))
+        dispatch(profileActions.cancelEdit())
     }
 
     return (
@@ -53,13 +53,24 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
                     {t('Редактировать')}
                 </Button>
             ) : (
-                <Button
-                    theme={ButtonTheme.OUTLINE}
-                    className={cls.editBtn}
-                    onClick={onCancelEdit}
-                >
-                    {t('Отменить')}
-                </Button>
+                <>
+                    <Button
+                        theme={ButtonTheme.OUTLINE}
+                        className={cls.editBtn}
+                        onClick={onCancelEdit}
+                    >
+                        {t('Отменить')}
+                    </Button>
+
+                    <Button
+                        theme={ButtonTheme.OUTLINE}
+                        className={cls.editBtn}
+                        onClick={onCancelEdit}
+                    >
+                        {t('Сохранить')}
+                    </Button>
+                </>
+
             )}
 
         </div>
