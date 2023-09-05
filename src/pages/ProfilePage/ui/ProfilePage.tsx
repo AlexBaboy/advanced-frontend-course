@@ -53,6 +53,14 @@ const ProfilePage = ({className}: ProfilePageProps) => {
         dispatch(profileActions.updateProfile({age: Number(value || 0)}))
     }, [])
 
+    const onChangeUsername = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({username: value || ''}))
+    }, [])
+
+    const onChangeAvatar = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({avatar: value || ''}))
+    }, [])
+
     if (isLoading) {
         return (
             <div className={classNames(
@@ -80,11 +88,13 @@ const ProfilePage = ({className}: ProfilePageProps) => {
                     data={formData}
                     isLoading={isLoading}
                     error={error}
+                    readonly={readonly}
                     onChangeFirstName={onChangeFirstName}
                     onChangeLastName={onChangeLastName}
                     onChangeCity={onChangeCity}
                     onChangeAge={onChangeAge}
-                    readonly={readonly}
+                    onChangeUsername={onChangeUsername}
+                    onChangeAvatar={onChangeAvatar}
                 />
             </div>
         </DynamicModuleLoader>

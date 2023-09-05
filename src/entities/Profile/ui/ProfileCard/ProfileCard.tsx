@@ -1,4 +1,4 @@
-import {classNames} from "shared/lib/classNames/classNames";
+import {classNames, Mods} from "shared/lib/classNames/classNames";
 import cls from './ProfileCard.module.scss'
 import {useTranslation} from "react-i18next";
 import {Text, TextAlign, TextTheme} from "shared/ui/Text/Text";
@@ -6,6 +6,7 @@ import {Input} from "shared/ui/Input/Input";
 import {Profile} from "../../model/types/profile";
 import {Loader} from "shared/ui/Loader/Loader";
 import {memo} from "react";
+import {Avatar} from "shared/ui/Avatar/Avatar";
 
 interface ProfileCardProps {
     className?: string
@@ -13,10 +14,12 @@ interface ProfileCardProps {
     isLoading?: boolean
     error?: string
     readonly?: boolean
-    onChangeFirstName: (value?: string) => void
-    onChangeLastName: (value?: string) => void
-    onChangeAge: (value?: string) => void
-    onChangeCity: (value?: string) => void,
+    onChangeFirstName?: (value?: string) => void
+    onChangeLastName?: (value?: string) => void
+    onChangeAge?: (value?: string) => void
+    onChangeCity?: (value?: string) => void,
+    onChangeAvatar?: (value?: string) => void,
+    onChangeUsername?: (value?: string) => void,
 }
 
 export const ProfileCard = memo((props: ProfileCardProps) => {
@@ -30,7 +33,9 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
         onChangeFirstName,
         onChangeLastName,
         onChangeCity,
-        onChangeAge
+        onChangeAge,
+        onChangeAvatar,
+        onChangeUsername
     } = props
 
     const {t} = useTranslation('profile')
@@ -64,13 +69,22 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
         )
     }
 
+    const mods: Mods = {
+        [cls.editing]: !readonly
+    }
+
     return (
         <div className={classNames(
             cls.ProfileCard,
-            {},
+            mods,
             [className]
         )}>
             <div className={cls.data}>
+                {data?.avatar && (
+                    <div className={cls.avatarWrapper}>
+                        <Avatar src={data?.avatar}  alt='avatar'/>
+                    </div>
+                )}
                 <Input
                     value={data?.first}
                     placeholder={t('Имя')}
@@ -97,6 +111,20 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                     placeholder={t('Город')}
                     className={cls.input}
                     onChange={onChangeCity}
+                    readOnly={readonly}
+                />
+                <Input
+                    value={data?.username}
+                    placeholder={t('Имя пользователя')}
+                    className={cls.input}
+                    onChange={onChangeUsername}
+                    readOnly={readonly}
+                />
+                <Input
+                    value={data?.avatar}
+                    placeholder={t('Аватар')}
+                    className={cls.input}
+                    onChange={onChangeAvatar}
                     readOnly={readonly}
                 />
             </div>
