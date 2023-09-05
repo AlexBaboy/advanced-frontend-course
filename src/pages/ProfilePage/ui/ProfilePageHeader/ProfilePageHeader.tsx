@@ -3,7 +3,7 @@ import cls from './ProfilePageHeader.module.scss'
 import {useTranslation} from "react-i18next";
 import {
     getProfileReadOnly,
-    profileActions,
+    profileActions, updateProfileData,
 } from "entities/Profile";
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {Text} from "shared/ui/Text/Text";
@@ -37,7 +37,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     }
 
     const onSave = () => {
-        dispatch(profileActions.cancelEdit())
+        dispatch(updateProfileData())
     }
 
     return (

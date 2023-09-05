@@ -45,6 +45,14 @@ const ProfilePage = ({className}: ProfilePageProps) => {
         dispatch(profileActions.updateProfile({lastname: value || ''}))
     }, [])
 
+    const onChangeCity = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({city: value || ''}))
+    }, [])
+
+    const onChangeAge = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({age: Number(value || 0)}))
+    }, [])
+
     if (isLoading) {
         return (
             <div className={classNames(
@@ -74,6 +82,8 @@ const ProfilePage = ({className}: ProfilePageProps) => {
                     error={error}
                     onChangeFirstName={onChangeFirstName}
                     onChangeLastName={onChangeLastName}
+                    onChangeCity={onChangeCity}
+                    onChangeAge={onChangeAge}
                     readonly={readonly}
                 />
             </div>
