@@ -13,6 +13,8 @@ import {useCallback, useEffect} from "react";
 import {Loader} from "shared/ui/Loader/Loader";
 import ProfilePageHeader from "./ProfilePageHeader/ProfilePageHeader";
 import {useSelector} from "react-redux";
+import {Currency} from "entities/Currency";
+import {Country} from "entities/Country";
 
 const reducers: ReducersList = {
     profile: profileReducer
@@ -61,6 +63,14 @@ const ProfilePage = ({className}: ProfilePageProps) => {
         dispatch(profileActions.updateProfile({avatar: value || ''}))
     }, [])
 
+    const onChangeCurrency = useCallback((currency: Currency) => {
+        dispatch(profileActions.updateProfile({currency}))
+    }, [])
+
+    const onChangeCountry = useCallback((country: Country) => {
+        dispatch(profileActions.updateProfile({country}))
+    }, [])
+
     if (isLoading) {
         return (
             <div className={classNames(
@@ -95,6 +105,8 @@ const ProfilePage = ({className}: ProfilePageProps) => {
                     onChangeAge={onChangeAge}
                     onChangeUsername={onChangeUsername}
                     onChangeAvatar={onChangeAvatar}
+                    onChangeCurrency={onChangeCurrency}
+                    onChangeCountry={onChangeCountry}
                 />
             </div>
         </DynamicModuleLoader>

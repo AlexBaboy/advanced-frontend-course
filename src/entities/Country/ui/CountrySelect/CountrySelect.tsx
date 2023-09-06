@@ -1,24 +1,24 @@
 import {classNames, Mods} from "shared/lib/classNames/classNames";
-import cls from './CurrencySelect.module.scss'
+import cls from './CountrySelect.module.scss'
 import {useTranslation} from "react-i18next";
 import {memo, useCallback} from "react";
 import {Select} from "shared/ui/Select/Select";
-import {Currency} from "../../model/types/currency";
+import {Country} from "../../model/types/country";
 
-interface CurrencySelectProps {
+interface CountrySelectProps {
     className?: string
-    value?: Currency
-    onChange?: (value: Currency) => void
+    value?: Country
+    onChange?: (value: Country) => void
     readOnly?: boolean
 }
 
 const  options= [
-        {value: Currency.RUB, content: Currency.RUB},
-        {value: Currency.EUR, content: Currency.EUR},
-        {value: Currency.USD, content: Currency.USD},
+        {value: Country.Russia, content: Country.Russia},
+        {value: Country.Belarus, content: Country.Belarus},
+        {value: Country.Kazakhstan, content: Country.Kazakhstan},
     ]
 
-export const CurrencySelect = memo((props: CurrencySelectProps) => {
+export const CountrySelect = memo((props: CountrySelectProps) => {
 
     const {
         className,
@@ -32,7 +32,7 @@ export const CurrencySelect = memo((props: CurrencySelectProps) => {
     const mods: Mods = {}
 
     const onChangeHandler = useCallback((value: string) => {
-        onChange?.(value as Currency)
+        onChange?.(value as Country)
     },[onChange])
 
     return (
@@ -40,7 +40,7 @@ export const CurrencySelect = memo((props: CurrencySelectProps) => {
             className={classNames(
             cls.CurrencySelect,
             mods,[className])}
-            label={t('Укажите валюту')}
+            label={t('Укажите страну')}
             options={options}
             value={value}
             onChange={onChangeHandler}

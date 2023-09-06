@@ -7,9 +7,10 @@ import {Profile} from "../../model/types/profile";
 import {Loader} from "shared/ui/Loader/Loader";
 import {memo} from "react";
 import {Avatar} from "shared/ui/Avatar/Avatar";
-import {Select} from "shared/ui/Select/Select";
+import {Currency} from "entities/Currency";
+import {CurrencySelect} from "entities/Currency";
 
-import {Currency} from "shared/const/currency";
+import {Country, CountrySelect} from "entities/Country";
 
 interface ProfileCardProps {
     className?: string
@@ -23,6 +24,8 @@ interface ProfileCardProps {
     onChangeCity?: (value?: string) => void,
     onChangeAvatar?: (value?: string) => void,
     onChangeUsername?: (value?: string) => void,
+    onChangeCurrency?: (currency: Currency) => void,
+    onChangeCountry?: (currency: Country) => void,
 }
 
 export const ProfileCard = memo((props: ProfileCardProps) => {
@@ -38,7 +41,9 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
         onChangeCity,
         onChangeAge,
         onChangeAvatar,
-        onChangeUsername
+        onChangeUsername,
+        onChangeCurrency,
+        onChangeCountry
     } = props
 
     const {t} = useTranslation('profile')
@@ -130,7 +135,18 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                     onChange={onChangeAvatar}
                     readOnly={readonly}
                 />
-
+                <CurrencySelect
+                    value={data?.currency}
+                    onChange={onChangeCurrency}
+                    readOnly={readonly}
+                    className={cls.input}
+                />
+                <CountrySelect
+                    value={data?.country}
+                    onChange={onChangeCountry}
+                    readOnly={readonly}
+                    className={cls.input}
+                />
             </div>
         </div>
     );
