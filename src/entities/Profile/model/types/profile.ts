@@ -1,4 +1,5 @@
-import {Country, Currency} from "shared/const/common";
+import {Country} from "shared/const/common";
+import {Currency} from "shared/const/currency";
 
 export type Profile = {
     first?: string,

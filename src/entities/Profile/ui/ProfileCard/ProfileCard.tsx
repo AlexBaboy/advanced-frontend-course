@@ -7,6 +7,9 @@ import {Profile} from "../../model/types/profile";
 import {Loader} from "shared/ui/Loader/Loader";
 import {memo} from "react";
 import {Avatar} from "shared/ui/Avatar/Avatar";
+import {Select} from "shared/ui/Select/Select";
+
+import {Currency} from "shared/const/currency";
 
 interface ProfileCardProps {
     className?: string
@@ -127,6 +130,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                     onChange={onChangeAvatar}
                     readOnly={readonly}
                 />
+
             </div>
         </div>
     );
