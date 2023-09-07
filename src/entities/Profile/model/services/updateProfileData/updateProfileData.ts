@@ -1,11 +1,12 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import i18n from "i18next";
 import {ThunkConfig} from "app/providers/StoreProvider";
-import {Profile} from "../../types/profile";
+import {Profile, ValidateProfileError} from "../../types/profile";
 import {getProfileForm} from "../../selectors/getProfileForm/getProfileForm";
+import {validateProfileData} from "../validateProfileData/validateProfileData";
 
 export const updateProfileData = createAsyncThunk<Profile, void,
-    ThunkConfig<string>>
+    ThunkConfig<ValidateProfileError[]>>
 (
     'profile/updateProfileData',
     async (_, thunkAPI, ) => {
@@ -14,14 +15,19 @@ export const updateProfileData = createAsyncThunk<Profile, void,
 
         const formData = getProfileForm(getState())
 
+        const errors = validateProfileData(formData)
+
+        if(errors.length) {
+            return rejectWithValue(errors)
+        }
+
         try {
 
             const response = await extra.api.put<Profile>('/profile', formData)
             return response.data
         } catch (e) {
             console.error(e)
-            return rejectWithValue(
-                i18n.t('Некорректный логин или пароль')
+            return rejectWithValue([ValidateProfileError.SERVER_ERROR]
             )
         }
     }

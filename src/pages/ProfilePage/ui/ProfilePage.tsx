@@ -3,7 +3,12 @@ import cls from './ProfilePage.module.scss'
 import {useTranslation} from "react-i18next";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import {
-    fetchProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadOnly,
+    fetchProfileData,
+    getProfileError,
+    getProfileForm,
+    getProfileIsLoading,
+    getProfileReadOnly,
+    getProfileValidateErrors,
     profileActions,
     ProfileCard,
     profileReducer
@@ -15,6 +20,7 @@ import ProfilePageHeader from "./ProfilePageHeader/ProfilePageHeader";
 import {useSelector} from "react-redux";
 import {Currency} from "entities/Currency";
 import {Country} from "entities/Country";
+import {Text, TextTheme} from "shared/ui/Text/Text";
 
 const reducers: ReducersList = {
     profile: profileReducer
@@ -34,6 +40,7 @@ const ProfilePage = ({className}: ProfilePageProps) => {
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadOnly);
+    const validateErrors = useSelector(getProfileValidateErrors);
 
     useEffect(() => {
         dispatch(fetchProfileData())
@@ -94,6 +101,11 @@ const ProfilePage = ({className}: ProfilePageProps) => {
                     [className, cls.loading]
                 )}>
                 <ProfilePageHeader />
+
+                {validateErrors?.length && validateErrors.map((err: string | undefined) => (
+                    <Text theme={TextTheme.ERROR} text={err} />
+                ))}
+
                 <ProfileCard
                     data={formData}
                     isLoading={isLoading}
