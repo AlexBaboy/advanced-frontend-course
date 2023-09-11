@@ -11,7 +11,7 @@ import {
     getProfileValidateErrors,
     profileActions,
     ProfileCard,
-    profileReducer
+    profileReducer, ValidateProfileError
 } from "entities/Profile";
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {useCallback, useEffect} from "react";
@@ -32,7 +32,7 @@ interface ProfilePageProps {
 
 const ProfilePage = ({className}: ProfilePageProps) => {
 
-    const {t} = useTranslation()
+    const {t} = useTranslation('profile')
 
     const dispatch = useAppDispatch()
 
@@ -41,6 +41,14 @@ const ProfilePage = ({className}: ProfilePageProps) => {
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadOnly);
     const validateErrors = useSelector(getProfileValidateErrors);
+
+    const validateErrorTranslates = {
+        [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
+        [ValidateProfileError.INCORRECT_COUNTRY]: t('Укажите страну'),
+        [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
+        [ValidateProfileError.INCORRECT_USER_DATA]: t('Имя и фамилия обязательны'),
+        [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
+    }
 
     useEffect(() => {
         dispatch(fetchProfileData())
@@ -90,6 +98,7 @@ const ProfilePage = ({className}: ProfilePageProps) => {
         )
     }
 
+    // @ts-ignore
     return (
         <DynamicModuleLoader
             reducers={reducers}
@@ -102,8 +111,12 @@ const ProfilePage = ({className}: ProfilePageProps) => {
                 )}>
                 <ProfilePageHeader />
 
-                {validateErrors?.length && validateErrors.map((err: string | undefined) => (
-                    <Text theme={TextTheme.ERROR} text={err} />
+                {validateErrors?.length && validateErrors.map((err) => (
+                    <Text
+                        key={err}
+                        theme={TextTheme.ERROR}
+                        text={validateErrorTranslates[err]}
+                    />
                 ))}
 
                 <ProfileCard
