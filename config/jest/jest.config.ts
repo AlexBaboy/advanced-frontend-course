@@ -16,7 +16,8 @@ export default {
 
   globals: {
     __IS_DEV__: true,
-    __API__: ''
+    __API__: '',
+    __PROJECT__: 'jest'
   },
 
   // Automatically clear mock calls, instances and results before every test
@@ -64,6 +65,7 @@ export default {
     "\\.(css|less|scss|sss|styl)$": 'identity-obj-proxy',
     "\\.svg" : path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     '^axios$': require.resolve('axios'),
+    "~src/(.*)": "<rootDir>/src/$1"
   },
 
 

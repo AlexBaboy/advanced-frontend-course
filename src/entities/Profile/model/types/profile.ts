@@ -15,9 +15,9 @@ export type Profile = {
 export type ProfileSchema = {
     data?: Profile
     form?: Profile
-    isLoading: boolean
+    isLoading?: boolean
     error?: string
-    readonly: boolean
+    readonly?: boolean
     validateErrors?: ValidateProfileError[]
 }
 
