@@ -29,7 +29,7 @@ export default {
   ],
 
   modulePaths: [
-    '<rootDir>src'
+    '<rootDir>/src'
   ],
 
   // An array of file extensions your modules use
