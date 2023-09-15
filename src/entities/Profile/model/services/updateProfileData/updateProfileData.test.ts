@@ -48,8 +48,6 @@ describe('updateProfileData test' , () => {
                 form: {...profileData, lastname: ''}
             }
         })
-        //thunk.api.put.mockReturnValue(Promise.resolve({status: 403}))
-
         const result = await thunk.callThunk()
 
         expect(result.meta.requestStatus).toBe('rejected')
