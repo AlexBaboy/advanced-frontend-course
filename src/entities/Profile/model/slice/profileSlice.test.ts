@@ -46,7 +46,25 @@ describe('profileSlice test', () => {
             state as ProfileSchema,
             updateProfileData.pending
         )).toEqual({
-            form: {username: 'testname'}
+            isLoading: true,
+            validateErrors: undefined
+        })
+    })
+
+    test('test update profile service fulfilled', () => {
+        const state: DeepPartial<ProfileSchema> = {
+            isLoading: true,
+        }
+        expect(profileReducer(
+            state as ProfileSchema,
+            updateProfileData.fulfilled(profileData, '')
+        )).toEqual({
+            isLoading: false,
+            validateErrors: undefined,
+            readonly: true,
+            validateError: undefined,
+            form: profileData,
+            data: profileData
         })
     })
 })
