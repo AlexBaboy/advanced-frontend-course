@@ -30,6 +30,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         dispatch(userActions.logout())
     }
 
+    console.log('33 authData', authData)
+
     if (authData) {
         return (
             <div className={classNames(cls.Navbar, {}, [className])}>

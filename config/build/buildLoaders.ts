@@ -7,17 +7,18 @@ export function buildLoaders(options : BuildOptions): webpack.RuleSetRule[] {
 
     const {isDev} = options
 
-    const typescriptLoader = {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/,
-            }
-
+    const babelLoader = buildBabelLoader(options)
     const cssLoader = buildCssLoaders(isDev)
 
     const svgLoader = {
         test: /\.svg$/,
         use: ['@svgr/webpack']
+    }
+
+    const typescriptLoader = {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
     }
 
     const fileLoader = {
@@ -29,13 +30,11 @@ export function buildLoaders(options : BuildOptions): webpack.RuleSetRule[] {
         ],
     }
 
-    const babelLoader = buildBabelLoader(options)
-
     return [
+        fileLoader,
+        svgLoader,
         babelLoader,
         typescriptLoader,
         cssLoader,
-        svgLoader,
-        fileLoader
     ]
 }

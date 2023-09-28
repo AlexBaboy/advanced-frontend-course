@@ -4,6 +4,6 @@ export type User = {
 }
 
 export type UserSchema = {
-    authData?: User
+    authData?: User,
     _inited?: boolean
 }

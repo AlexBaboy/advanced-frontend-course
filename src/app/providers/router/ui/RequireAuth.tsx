@@ -7,6 +7,8 @@ export function RequireAuth({children}: {children: JSX.Element}) {
     let auth = useSelector(getUserAuthData)
     let location = useLocation()
 
+    console.log('10 auth', auth)
+
     if (!auth) {
         return (
             <Navigate to={RoutePath.main} state={{ from: location }} replace />

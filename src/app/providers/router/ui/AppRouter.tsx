@@ -1,7 +1,5 @@
 import React, {Suspense} from 'react';
 import {Route, Routes} from "react-router-dom";
-import {AboutPage} from "pages/About";
-import {MainPage} from "pages/Main";
 import {AppRoutesProps, routeConfig} from "shared/config/routeConfig/routeConfig";
 import {PageLoader} from "widgets/PageLoader/PageLoader";
 import {RequireAuth} from "app/providers/router/ui/RequireAuth";

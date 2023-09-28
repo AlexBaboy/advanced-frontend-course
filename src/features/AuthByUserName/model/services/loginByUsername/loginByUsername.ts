@@ -19,29 +19,18 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps,
 
         try {
 
-            const response = await extra.api.post<User>(
-                '/login',
-                authData,
-            )
+            const response = await extra.api.post<User>('/login', authData )
 
             if (!response.data) {
                 throw new Error('no data!')
             }
 
-            localStorage.setItem(
-                USER_LOCALSTORAGE_KEY,
-                JSON.stringify(response.data)
-            )
-            dispatch(
-                userActions.setAuthData(response.data)
-            )
-
+            localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data))
+            dispatch(userActions.setAuthData(response.data))
             return response.data
         } catch (e) {
             console.error(e)
-            return rejectWithValue(
-                i18n.t('Некорректный логин или пароль')
-            )
+            return rejectWithValue('error')
         }
     }
 )
