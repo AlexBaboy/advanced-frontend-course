@@ -6,13 +6,19 @@ import 'shared/config/i18n/i18n'
 import {ErrorBoundary} from "app/providers/ErrorBoundary";
 import './app/styles/index.scss'
 import {StoreProvider} from "app/providers/StoreProvider";
+import {DevSupport} from "@react-buddy/ide-toolbox";
+import {ComponentPreviews, useInitial} from "dev";
 
 render(
     <StoreProvider>
         <BrowserRouter>
             <ErrorBoundary>
                 <ThemeProvider>
-                    <App/>
+                    <DevSupport ComponentPreviews={ComponentPreviews}
+                                useInitialHook={useInitial}
+                    >
+                        <App/>
+                    </DevSupport>
                 </ThemeProvider>
             </ErrorBoundary>
         </BrowserRouter>
