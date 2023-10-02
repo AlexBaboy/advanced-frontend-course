@@ -5,6 +5,7 @@ import {ProfileSchema} from "entities/Profile";
 import {AxiosInstance} from "axios";
 import {Pathname} from "history";
 import {NavigateOptions} from "react-router";
+import {ArticleDetailsSchema} from "entities/Article";
 
 export type StateSchema = {
     user?: UserSchema
@@ -12,6 +13,7 @@ export type StateSchema = {
     // Асинхронные редьюсеры !!!
     loginForm?: LoginSchema
     profile?: ProfileSchema
+    articleDetails?: ArticleDetailsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
