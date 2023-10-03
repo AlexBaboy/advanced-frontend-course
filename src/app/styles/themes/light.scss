@@ -1,9 +1,13 @@
 .app_light_theme {
   --bg-color: #e8e8f1;
-  --inverted-bg-color: #060683;;
+  --inverted-bg-color: #060683;
 
   --primary-color: #0a0adc;
   --secondary-color: #1010b4;
   --inverted-primary-color: #08d308;
   --inverted-secondary-color: #0cc40c;
+
+  /* skeleton */
+  --skeleton-color: #ffffff;
+  --skeleton-shadow: rgba(0 0 0 / 20%);
 }

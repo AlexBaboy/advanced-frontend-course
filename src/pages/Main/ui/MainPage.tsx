@@ -3,15 +3,11 @@ import {useTranslation} from "react-i18next";
 import {BugButton} from "app/providers/ErrorBoundary";
 
 const MainPage = () => {
-
-    const {t} = useTranslation('main')
+    const { t } = useTranslation();
 
     return (
         <div>
-            {t('Главная')}
-            <div>
-                <BugButton />
-            </div>
+            {t('Главная страница')}
         </div>
     );
 };
