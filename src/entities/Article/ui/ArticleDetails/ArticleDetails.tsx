@@ -12,8 +12,12 @@ import {
     getArticleDetailsError,
     getArticleDetailsIsLoading
 } from "../../model/selectors/articleDetails";
-import {Text, TextAlign} from "shared/ui/Text/Text";
+import {Text, TextAlign, TextSize} from "shared/ui/Text/Text";
 import {Skeleton} from "shared/ui/Skeleton/Skeleton";
+import {Avatar} from "shared/ui/Avatar/Avatar";
+import EyeIcon from 'shared/assets/icons/eye.svg';
+import CalendarIcon from 'shared/assets/icons/calendar.svg';
+import {Icon} from "shared/ui/Icon/Icon";
 
 interface ArticleDetailsProps {
     className?: string
@@ -32,8 +36,8 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     const dispatch = useAppDispatch()
 
     const article = useSelector(getArticleDetailsData)
-    //const isLoading = useSelector(getArticleDetailsIsLoading)
-    const isLoading = true
+    const isLoading = useSelector(getArticleDetailsIsLoading)
+    //const isLoading = true
     const error = useSelector(getArticleDetailsError)
 
     useEffect(() => {
@@ -60,7 +64,31 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
             />
         )
     } else {
-        content = <div>ArticleDetails</div>
+        content = (
+            <>
+                <div className={cls.avatarWrapper}>
+                    <Avatar
+                        size={200}
+                        src={article?.img}
+                        className={cls.avatar}
+                    />
+                </div>
+                <Text
+                    className={cls.title}
+                    title={article?.title}
+                    text={article?.subtitle}
+                    size={TextSize.L}
+                />
+                <div className={cls.articleInfo}>
+                    <Icon className={cls.icon} Svg={EyeIcon} />
+                    <Text text={article?.views?.toString()} />
+                </div>
+                <div className={cls.articleInfo}>
+                    <Icon className={cls.icon} Svg={CalendarIcon} />
+                    <Text text={article?.createdAt} />
+                </div>
+            </>
+        )
     }
 
     return (
