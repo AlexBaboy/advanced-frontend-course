@@ -1,7 +1,7 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from './ArticleDetails.module.scss'
 import {useTranslation} from "react-i18next";
-import {memo, useCallback, useEffect} from "react";
+import {memo, useEffect} from "react";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import {articleDetailsReducer} from "../../model/slice/articleDetailsSlice";
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
@@ -32,6 +32,19 @@ const reducers: ReducersList = {
     articleDetails: articleDetailsReducer
 }
 
+const renderBlock = (block: ArticleBlock) => {
+    switch (block.type) {
+        case ArticleBlockType.CODE:
+            return <ArticleCodeBlockComponent className={cls.block} block={block} />
+        case ArticleBlockType.IMAGE:
+            return <ArticleImageBlockComponent className={cls.block} block={block} />
+        case ArticleBlockType.TEXT:
+            return <ArticleTextBlockComponent className={cls.block} block={block} />
+        default:
+            return null
+    }
+}
+
 export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
     const {className, id} = props
@@ -43,22 +56,13 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     const isLoading = useSelector(getArticleDetailsIsLoading)
     const error = useSelector(getArticleDetailsError)
 
+    console.log('46 article', article)
+
     useEffect(() => {
         dispatch(fetchArticleById(id))
     }, [id])
 
-    const renderBlock = (block: ArticleBlock) => {
-        switch (block.type) {
-            case ArticleBlockType.CODE:
-                return <ArticleCodeBlockComponent />
-            case ArticleBlockType.IMAGE:
-                return <ArticleImageBlockComponent />
-            case ArticleBlockType.TEXT:
-                return <ArticleTextBlockComponent />
-            default:
-                return null
-        }
-    }
+
 
     let content
 
