@@ -1,7 +1,7 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {ThemeDecorator} from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import {Theme} from "app/providers/ThemeProvider";
 import {ArticleDetailsPage} from "pages/ArticleDetailsPage";
+import {StoreDecorator} from "shared/config/storybook/StoreDecorator/StoreDecorator";
+import {article} from "shared/mocks/articleDetail";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -19,7 +19,6 @@ const Template: ComponentStory<typeof ArticleDetailsPage> = () => <ArticleDetail
 export const Light = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Light.args = {};
-
-export const Dark = Template.bind({});
-Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
+Light.decorators = [StoreDecorator({
+    articleDetails: {data: article, isLoading: false}
+})]
