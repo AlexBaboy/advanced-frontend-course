@@ -5,6 +5,7 @@ import {memo } from "react";
 import {CommentItem} from "entities/Comment";
 import {Avatar} from "shared/ui/Avatar/Avatar";
 import {Text} from "shared/ui/Text/Text";
+import {Skeleton} from "shared/ui/Skeleton/Skeleton";
 
 interface CommentCardProps {
     className?: string
@@ -23,6 +24,22 @@ export const CommentCard = memo((props: CommentCardProps) => {
     const {t} = useTranslation()
 
     const mods: Mods = {}
+
+    if (isLoading) {
+        return (
+            <div
+                className={classNames(
+                    cls.CommentCard,
+                    mods,[className])}
+            >
+                <div className={cls.header}>
+                    <Skeleton width={30} height={30} border={'50%'} />
+                    <Skeleton width={100} height={16} className={cls.username} />
+                </div>
+                <Skeleton width={'100%'} height={50} className={cls.text} />
+            </div>
+        )
+    }
 
     return (
         <div

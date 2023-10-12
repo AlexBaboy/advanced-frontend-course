@@ -33,7 +33,11 @@ export const CommentList = memo((props: CommentListProps) => {
             {comments?.length
                 ? (
                     comments.map(comment => (
-                        <CommentCard comment={comment} className={cls.comment} />
+                        <CommentCard
+                            comment={comment}
+                            className={cls.comment}
+                            isLoading={isLoading}
+                        />
                     )))
                 :
                     <Text text={t('Комментарии отсутствуют')} />

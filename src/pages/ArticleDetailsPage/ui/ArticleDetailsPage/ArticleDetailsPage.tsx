@@ -37,7 +37,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPage) => {
         )}>
             <ArticleDetails id={id} />
             <Text title={t('Комментарии')} className={cls.commentTitle} />
-            <CommentList comments={[
+            <CommentList isLoading={true} comments={[
                 {
                     id: '1',
                     text: 'comment 1',
