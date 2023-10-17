@@ -14,7 +14,7 @@ const ArticlesPage = (props: ArticlesPage) => {
 
     return (
         <div className={classNames(
-            cls.NotFoundPage,
+            cls.ArticlesPage,
             {},
             [className]
         )}>

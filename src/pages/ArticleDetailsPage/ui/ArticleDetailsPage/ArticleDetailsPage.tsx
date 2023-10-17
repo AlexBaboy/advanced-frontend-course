@@ -1,14 +1,14 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from './ArticleDetailsPage.module.scss'
 import {useTranslation} from "react-i18next";
-import {memo} from "react";
+import {memo, useCallback} from "react";
 import {ArticleDetails} from "entities/Article";
 import {useParams} from "react-router-dom";
 import {Text} from "shared/ui/Text/Text";
 import {CommentList} from "entities/Comment";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import {articleDetailsCommentReducer, getArticleComments} from "../../model/slices/ArticleDetailsCommentSlice";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {
     getArticleCommentsIsError,
     getArticleCommentsIsLoading
@@ -29,19 +29,16 @@ const reducers: ReducersList = {
 
 const ArticleDetailsPage = (props: ArticleDetailsPage) => {
 
-    const {className} = props
-    const {t} = useTranslation('comment')
-    const {id} = useParams<{id: string}>()
-    const dispatch = useAppDispatch()
+    const { className } = props;
+    const { t } = useTranslation('article-details');
+    const { id } = useParams<{ id: string }>();
+    const dispatch = useAppDispatch();
+    const comments = useSelector(getArticleComments.selectAll);
+    const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
 
-    const comments = useSelector(getArticleComments.selectAll)
-    const commentsIsLoading = useSelector(getArticleCommentsIsLoading)
-    const commentsError = useSelector(getArticleCommentsIsError)
-
-    console.log('35 comments', comments)
     useInitialEffect(() => {
-        dispatch(fetchCommentsByArticleId(id))
-    })
+        id && dispatch(fetchCommentsByArticleId(id));
+    });
 
     if (!id) {
         return (
