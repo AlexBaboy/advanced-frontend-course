@@ -55,15 +55,17 @@ const ArticleDetailsPage = (props: ArticleDetailsPage) => {
     }
 
     return (
-        <div className={classNames(
-            cls.ArticleDetailsPage,
-            {},
-            [className]
-        )}>
-            <ArticleDetails id={id} />
-            <Text title={t('Комментарии')} className={cls.commentTitle} />
-            <CommentList isLoading={commentsIsLoading} comments={comments} />
-        </div>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+            <div className={classNames(
+                cls.ArticleDetailsPage,
+                {},
+                [className]
+            )}>
+                <ArticleDetails id={id} />
+                <Text title={t('Комментарии')} className={cls.commentTitle} />
+                <CommentList isLoading={commentsIsLoading} comments={comments} />
+            </div>
+        </DynamicModuleLoader>
     );
 };
 

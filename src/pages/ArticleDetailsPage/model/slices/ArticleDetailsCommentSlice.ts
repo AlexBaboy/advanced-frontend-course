@@ -38,6 +38,7 @@ const articleDetailsCommentSlice = createSlice({
                 (state, action: PayloadAction<CommentItem[]>) => {
                     state.isLoading = false
                     commentsAdapter.setAll(state, action.payload)
+                    console.log('extra reducer state', state)
                 })
             .addCase(fetchCommentsByArticleId.rejected, (state, action) => {
                 state.isLoading = false
