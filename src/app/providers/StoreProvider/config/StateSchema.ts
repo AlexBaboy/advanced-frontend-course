@@ -7,6 +7,7 @@ import {Pathname} from "history";
 import {NavigateOptions} from "react-router";
 import {ArticleDetailsSchema} from "entities/Article";
 import {ArticleDetailsCommentSchema} from "pages/ArticleDetailsPage";
+import {AddCommentFormSchema} from "features/addCommentForm";
 
 export type StateSchema = {
     user?: UserSchema
@@ -16,6 +17,7 @@ export type StateSchema = {
     profile?: ProfileSchema
     articleDetails?: ArticleDetailsSchema
     articleDetailsComments?: ArticleDetailsCommentSchema
+    addCommentForm?: AddCommentFormSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
