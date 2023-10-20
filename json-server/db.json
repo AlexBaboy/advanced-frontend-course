@@ -150,6 +150,12 @@
       "userId": "2",
       "text": "asdasdasd",
       "id": "MVvGQoZ"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "тестовый комментарий 1",
+      "id": "gM_5yIb"
     }
   ],
   "users": [

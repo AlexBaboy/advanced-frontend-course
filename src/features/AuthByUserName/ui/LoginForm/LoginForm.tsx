@@ -50,7 +50,6 @@ const LoginForm = memo(({className, onSuccess}: LoginFormProps) => {
             password
         }) as unknown as AnyAction)
 
-        console.log('53 result.meta', result.meta)
         if (result?.meta?.requestStatus === 'fulfilled') {
             onSuccess()
         }
