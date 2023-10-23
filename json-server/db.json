@@ -156,6 +156,12 @@
       "userId": "1",
       "text": "тестовый комментарий 1",
       "id": "gM_5yIb"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "тест 23,10,2023",
+      "id": "gysqKTF"
     }
   ],
   "users": [
