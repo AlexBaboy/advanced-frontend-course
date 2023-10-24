@@ -3,26 +3,24 @@ import cls from './AddCommentForm.module.scss'
 import {useTranslation} from "react-i18next";
 import {memo, useCallback,} from "react";
 import {addCommentFormActions, addCommentFormReducer} from "../../model/slice/addCommentFormSlice";
-
-import {Text} from "shared/ui/Text/Text";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {Input} from "shared/ui/Input/Input";
 import {Button, ButtonTheme} from "shared/ui/Button/Button";
 import {useSelector} from "react-redux";
 import {getAddCommentFormError, getAddCommentFormText} from "../../model/selectors/addCommentFormSelectors";
-import {sendComment} from "features/addCommentForm/model/services/sendComment/sendComment";
 
 export interface AddCommentFormProps {
     className?: string
-    onSuccess: () => void
+    onSendComment: (text: string) => void
+
 }
 
 const initialReducers: ReducersList = {
     addCommentForm: addCommentFormReducer,
 }
 
-const AddCommentForm = memo(({className, onSuccess}: AddCommentFormProps) => {
+const AddCommentForm = memo(({className, onSendComment}: AddCommentFormProps) => {
 
     const {t} = useTranslation()
     const dispatch = useAppDispatch()
@@ -34,10 +32,10 @@ const AddCommentForm = memo(({className, onSuccess}: AddCommentFormProps) => {
         dispatch(addCommentFormActions.setText(value))
     }, [])
 
-    const onSendComment = useCallback(async () => {
-        dispatch(sendComment())
-        await dispatch(addCommentFormActions.setText(''))
-    }, [])
+    const onSendHandler = useCallback(() => {
+        onSendComment(text || '')
+        onCommentTextChange('')
+    },[onSendComment, text])
 
     return (
         <DynamicModuleLoader
@@ -55,7 +53,7 @@ const AddCommentForm = memo(({className, onSuccess}: AddCommentFormProps) => {
                 />
                 <Button
                     theme={ButtonTheme.OUTLINE}
-                    onClick={onSendComment}
+                    onClick={onSendHandler}
                 >
                     {t('Отправить')}
                 </Button>

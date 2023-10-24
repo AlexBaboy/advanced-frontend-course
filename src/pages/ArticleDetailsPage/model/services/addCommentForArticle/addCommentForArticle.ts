@@ -2,18 +2,16 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 import {getUserAuthData} from "entities/User";
 import {ThunkConfig} from "app/providers/StoreProvider";
 import {CommentItem} from "entities/Comment";
-import {getAddCommentFormText} from "../../selectors/addCommentFormSelectors";
 import {getArticleDetailsData} from "entities/Article/model/selectors/articleDetails";
 
-export const sendComment = createAsyncThunk<CommentItem, void,
+export const addCommentForArticle = createAsyncThunk<CommentItem, string,
     ThunkConfig<string>>
 (
-    'addCommentForm/sendComment',
-    async (authData, thunkAPI) => {
+    'articleDetails/addCommentForArticle',
+    async (text, thunkAPI) => {
 
         const {extra, dispatch, rejectWithValue, getState} = thunkAPI
         const userData = getUserAuthData(getState())
-        const text = getAddCommentFormText(getState())
         const article = getArticleDetailsData(getState())
 
         if (!userData || !text || !article) {
