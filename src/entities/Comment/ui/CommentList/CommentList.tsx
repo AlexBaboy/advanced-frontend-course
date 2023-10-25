@@ -22,13 +22,23 @@ export const CommentList = memo((props: CommentListProps) => {
 
     const {t} = useTranslation()
 
-    const mods: Mods = {}
+    if (isLoading) {
+        return (
+            <div
+                className={classNames(
+                    cls.CommentList,
+                    {},[className])}
+            >
+                <CommentCard isLoading />
+            </div>
+        )
+    }
 
     return (
         <div
             className={classNames(
                 cls.CommentList,
-                mods,[className])}
+                {},[className])}
         >
             {comments?.length
                 ? (

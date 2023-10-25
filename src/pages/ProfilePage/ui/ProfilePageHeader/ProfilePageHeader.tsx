@@ -64,7 +64,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
                             {t('Редактировать')}
                         </Button>
                     ) : (
-                        <>
+                        <div className={cls.btnEditWrapper}>
                             <Button
                                 theme={ButtonTheme.OUTLINE_RED}
                                 className={cls.editBtn}
@@ -80,7 +80,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
                             >
                                 {t('Сохранить')}
                             </Button>
-                        </>
+                        </div>
                     )}
                 </div>
             )}
