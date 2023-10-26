@@ -44,3 +44,8 @@ export type Article = {
     type: ArticleType[],
     blocks: ArticleBlock[]
 }
+
+export enum ArticleView {
+    BIG = 'BIG',
+    SMALL = 'SMALL'
+}
