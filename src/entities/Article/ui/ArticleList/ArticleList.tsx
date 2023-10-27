@@ -24,7 +24,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
     const renderArticle = (article: Article) => {
         return (
-            <ArticleListItem article={articles[0]}/>
+            <ArticleListItem article={articles[0]} className={cls.card} />
         )
     }
 

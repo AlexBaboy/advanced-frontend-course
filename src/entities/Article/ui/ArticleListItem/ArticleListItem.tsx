@@ -6,6 +6,7 @@ import {Article, ArticleView} from "entities/Article";
 import {Text} from "shared/ui/Text/Text";
 import {Icon} from "shared/ui/Icon/Icon";
 import EyeIcon from 'shared/assets/icons/eye.svg'
+import {Card} from "shared/ui/Card/Card";
 
 interface ArticleListItemProps {
     className?: string
@@ -40,7 +41,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             {},
             [className, cls[view]]
         )}>
-            <div className={cls.card}>
+            <Card className={cls.card}>
                 <div className={cls.imageWrapper}>
                     <img src={article.img} alt={article.title} className={cls.img} />
                     <Text text={article.createdAt} className={cls.date} />
@@ -51,7 +52,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     <Icon Svg={EyeIcon} />
                 </div>
                 <Text text={article.title} className={cls.title} />
-            </div>
+            </Card>
         </div>
     );
 });
