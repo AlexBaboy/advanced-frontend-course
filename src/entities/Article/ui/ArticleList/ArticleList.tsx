@@ -24,7 +24,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
     const renderArticle = (article: Article) => {
         return (
-            <ArticleListItem article={articles[0]} className={cls.card} />
+            <ArticleListItem article={article} className={cls.card} />
         )
     }
 
@@ -32,7 +32,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
             <div className={classNames(
                 cls.ArticleList,
                 {},
-                [className]
+                [className, cls[view]]
             )}>
                 {articles.length
                     ? articles.map(renderArticle)

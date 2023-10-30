@@ -42,7 +42,12 @@ export type Article = {
     views: number,
     createdAt: string,
     type: ArticleType[],
-    blocks: ArticleBlock[]
+    blocks: ArticleBlock[],
+    user?: {
+        id: string,
+        username: string,
+        avatar: string
+    }
 }
 
 export enum ArticleView {

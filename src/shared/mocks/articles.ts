@@ -9,6 +9,11 @@ export const articlesMocked = [
         "type": [
             "IT"
         ],
+        "user": {
+            "id": "1",
+            "username": "Alex Baboy",
+            "avatar": "https://cloudnetworks.ru/wp-content/uploads/Haker.png"
+        },
         "blocks": [
             {
                 "id": "1",

@@ -7,6 +7,7 @@ import {Text} from "shared/ui/Text/Text";
 import {Icon} from "shared/ui/Icon/Icon";
 import EyeIcon from 'shared/assets/icons/eye.svg'
 import {Card} from "shared/ui/Card/Card";
+import {Avatar} from "shared/ui/Avatar/Avatar";
 
 interface ArticleListItemProps {
     className?: string
@@ -30,7 +31,13 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                 {},
                 [className, cls[view]]
             )}>
-                {article.title}
+                <Card className={cls.card}>
+                    <div className={cls.header}>
+                        <Avatar size={30} src={article?.user?.avatar} />
+                        <Text text={article.user?.username} className={cls.username} />
+                        <Text text={article.createdAt} className={cls.date} />
+                    </div>
+                </Card>
             </div>
         )
     }
@@ -47,8 +54,8 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     <Text text={article.createdAt} className={cls.date} />
                 </div>
                 <div className={cls.infoWrapper}>
-                    <Text text={article.type.join(', ')} className={cls.types} />
-                    <Text text={article?.views.toString() || '0'} className={cls.views} />
+                    <Text text={article.type?.join(', ')} className={cls.types} />
+                    <Text text={article?.views?.toString() || '0'} className={cls.views} />
                     <Icon Svg={EyeIcon} />
                 </div>
                 <Text text={article.title} className={cls.title} />
