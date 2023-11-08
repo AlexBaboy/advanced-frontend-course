@@ -9,6 +9,7 @@ import EyeIcon from 'shared/assets/icons/eye.svg'
 import {Card} from "shared/ui/Card/Card";
 import {Avatar} from "shared/ui/Avatar/Avatar";
 import {Button, ButtonTheme} from "shared/ui/Button/Button";
+import {ArticleBlockType, ArticleTextBlock} from "entities/Article/model/types/article";
 
 interface ArticleListItemProps {
     className?: string
@@ -34,6 +35,9 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     )
 
     if (view === ArticleView.BIG) {
+
+        const texBlock = article.blocks.find(block => block.type === ArticleBlockType.TEXT) as ArticleTextBlock
+
         return (
             <div className={classNames(
                 cls.ArticleListItem,
@@ -51,8 +55,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     <img src={article.img} alt={article.title} className={cls.img} />
                     <div className={cls.footer}>
                         <Button theme={ButtonTheme.OUTLINE}>
-                            {/*{t('Читать далее...')}*/}
-                            <span>read more</span>
+                            {t('Читать далее...')}
                         </Button>
                         {views}
                     </div>
