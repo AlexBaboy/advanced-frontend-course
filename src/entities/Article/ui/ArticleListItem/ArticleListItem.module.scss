@@ -40,6 +40,14 @@
     .footer {
       display: flex;
       align-items: center;
+      margin-top: 16px;
+    }
+
+    .textBlock {
+      max-height: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 16px 0;
     }
   }
 

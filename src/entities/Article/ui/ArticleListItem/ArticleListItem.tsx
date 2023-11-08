@@ -10,6 +10,7 @@ import {Card} from "shared/ui/Card/Card";
 import {Avatar} from "shared/ui/Avatar/Avatar";
 import {Button, ButtonTheme} from "shared/ui/Button/Button";
 import {ArticleBlockType, ArticleTextBlock} from "entities/Article/model/types/article";
+import {ArticleTextBlockComponent} from "entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent";
 
 interface ArticleListItemProps {
     className?: string
@@ -53,9 +54,15 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     <Text text={article.title} className={cls.title} />
                     {types}
                     <img src={article.img} alt={article.title} className={cls.img} />
+                    {texBlock && (
+                        <ArticleTextBlockComponent
+                            block={texBlock}
+                            className={cls.textBlock}
+                        />
+                    )}
                     <div className={cls.footer}>
                         <Button theme={ButtonTheme.OUTLINE}>
-                            {t('Читать далее...')}
+                            {t('Читать далее')}
                         </Button>
                         {views}
                     </div>
