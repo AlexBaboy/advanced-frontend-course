@@ -1,7 +1,7 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from './ArticleListItem.module.scss'
 import {useTranslation} from "react-i18next";
-import {memo} from "react";
+import {memo, useCallback} from "react";
 import {Article, ArticleView} from "entities/Article";
 import {Text} from "shared/ui/Text/Text";
 import {Icon} from "shared/ui/Icon/Icon";
@@ -11,6 +11,8 @@ import {Avatar} from "shared/ui/Avatar/Avatar";
 import {Button, ButtonTheme} from "shared/ui/Button/Button";
 import {ArticleBlockType, ArticleTextBlock} from "entities/Article/model/types/article";
 import {ArticleTextBlockComponent} from "entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent";
+import {useNavigate} from "react-router-dom";
+import {RoutePath} from "shared/config/routeConfig/routeConfig";
 
 interface ArticleListItemProps {
     className?: string
@@ -26,6 +28,11 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         view = ArticleView.SMALL} = props
 
     const {t} = useTranslation()
+    const navigate = useNavigate()
+
+    const onOpenArticle = useCallback(() => {
+        navigate(RoutePath.article_details + article.id)
+    }, [article?.id])
 
     const types = <Text text={article.type?.join(', ')} className={cls.types} />
     const views = (
@@ -61,7 +68,9 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                         />
                     )}
                     <div className={cls.footer}>
-                        <Button theme={ButtonTheme.OUTLINE}>
+                        <Button
+                            onClick={onOpenArticle}
+                            theme={ButtonTheme.OUTLINE}>
                             {t('Читать далее')}
                         </Button>
                         {views}
@@ -77,7 +86,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             {},
             [className, cls[view]]
         )}>
-            <Card className={cls.card}>
+            <Card className={cls.card} onClick={onOpenArticle}>
                 <div className={cls.imageWrapper}>
                     <img src={article.img} alt={article.title} className={cls.img} />
                     <Text text={article.createdAt} className={cls.date} />

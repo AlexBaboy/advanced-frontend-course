@@ -33,6 +33,7 @@ const ArticlesPage = (props: ArticlesPage) => {
                 //articlesMocked as Article[]
             }
                 view={ArticleView.BIG}
+                isLoading
             />
         </div>
     );

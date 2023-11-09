@@ -4,12 +4,25 @@ import {useTranslation} from "react-i18next";
 import {memo} from "react";
 import {Article, ArticleView} from "entities/Article";
 import {ArticleListItem} from "../../ui/ArticleListItem/ArticleListItem";
+import {ArticleListItemSkeleton} from "entities/Article/ui/ArticleListItem/ArticleListItemSkeleton";
 
 interface ArticleListProps {
     className?: string
     articles: Article[]
     isLoading?: boolean
     view?: ArticleView
+}
+
+const getSkeletons = (view: ArticleView) => {
+    return new Array(view === ArticleView.SMALL ? 9 : 3)
+        .fill(0)
+        .map((item, index) => (
+            <ArticleListItemSkeleton
+                key={index}
+                view={view}
+                className={cls.card}
+            />
+        ))
 }
 
 export const ArticleList = memo((props: ArticleListProps) => {
@@ -21,6 +34,18 @@ export const ArticleList = memo((props: ArticleListProps) => {
         view = ArticleView.BIG} = props
 
     const {t} = useTranslation()
+
+    if (isLoading) {
+        return (
+            <div className={classNames(
+                cls.ArticleList,
+                {},
+                [className, cls[view]]
+            )}>
+                {getSkeletons(view)}
+            </div>
+        )
+    }
 
     const renderArticle = (article: Article) => {
         return (
