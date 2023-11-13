@@ -307,6 +307,18 @@
       "userId": "1",
       "text": "python!!!",
       "id": "p5rMadd"
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "python comment 1",
+      "id": "XIGITdx"
+    },
+    {
+      "articleId": "3",
+      "userId": "1",
+      "text": "kotlin comment 1",
+      "id": "kwTr8gr"
     }
   ],
   "users": [
