@@ -20,7 +20,7 @@ const viewTypes = [
         icon:  GridIcon
     },
     {
-        view: ArticleView.SMALL,
+        view: ArticleView.BIG,
         icon: ListIcon
     }
 ]
@@ -32,9 +32,8 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
     const {t} = useTranslation()
 
     const onClickHandler = (newView: ArticleView) => {
-        onViewClick && onViewClick(newView)
+        onViewClick?.(newView)
     }
-
 
     return (
         <div className={classNames(
@@ -47,9 +46,12 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
                     theme={ButtonTheme.CLEAR}
                     key={index}
                     // @ts-ignore
-                    onClick={onClickHandler(viewType.view)}
+                    onClick={() => onClickHandler(viewType.view)}
                 >
-                    <Icon Svg={viewType.icon} />
+                    <Icon
+                        Svg={viewType.icon}
+                        className={classNames('', {[cls.notSelected]: viewType.view !== view})}
+                    />
                 </Button>
             ))}
         </div>
