@@ -4,5 +4,11 @@ import {Article, ArticleView} from "entities/Article";
 export type ArticlesPageSchema = EntityState<Article> & {
     isLoading?: boolean,
     error?: string,
-    view: ArticleView
+
+    view: ArticleView,
+
+    // pagination
+    page: number,
+    limit?: number,
+    hasMore: boolean
 }
