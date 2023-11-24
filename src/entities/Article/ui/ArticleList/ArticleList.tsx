@@ -35,8 +35,6 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
     const {t} = useTranslation()
 
-
-
     const renderArticle = (article: Article) => {
         return (
             <ArticleListItem
@@ -54,7 +52,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
                 {},
                 [className, cls[view]]
             )}>
-                {articles.length
+                {articles.length > 0
                     ? articles.map(renderArticle)
                     : null
                 }

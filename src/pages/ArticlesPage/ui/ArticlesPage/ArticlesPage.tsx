@@ -36,11 +36,13 @@ const ArticlesPage = (props: ArticlesPage) => {
     const page = useSelector(getArticlesPageNum)
     const hasMore = useSelector(getArticlesPageHasMore)
 
-    const onLoadNexPart = useCallback(() => {
+    const onLoadNexPart = useCallback(async () => {
         if (hasMore && !isLoading) {
-            dispatch(articlesPageActions.setPage(page + 1))
-            dispatch(fetchArticlesList({
-                page: page + 1
+            console.log('41 page', page)
+            const nextPage = page + 1
+            await dispatch(articlesPageActions.setPage(nextPage))
+            await dispatch(fetchArticlesList({
+                page: nextPage
             }))
         }
     }, [hasMore, isLoading, page])
