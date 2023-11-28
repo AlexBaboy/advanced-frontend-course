@@ -37,14 +37,7 @@ const ArticlesPage = (props: ArticlesPage) => {
     const hasMore = useSelector(getArticlesPageHasMore)
 
     const onLoadNexPart = useCallback(async () => {
-        if (hasMore && !isLoading) {
-            console.log('41 page', page)
-            const nextPage = page + 1
-            await dispatch(articlesPageActions.setPage(nextPage))
-            await dispatch(fetchArticlesList({
-                page: nextPage
-            }))
-        }
+
     }, [hasMore, isLoading, page])
 
     useInitialEffect(() => {
