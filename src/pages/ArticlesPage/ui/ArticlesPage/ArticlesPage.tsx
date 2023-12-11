@@ -10,11 +10,14 @@ import {useInitialEffect} from "shared/lib/hooks/useInitialEffect/useInitialEffe
 import {fetchArticlesList} from "../../model/services/fetchArticlesList/fetchArticlesList";
 import {useSelector} from "react-redux";
 import {
-    getArticlesPageError, getArticlesPageHasMore,
-    getArticlesPageIsLoading, getArticlesPageNum,
+    getArticlesPageError,
+    getArticlesPageHasMore,
+    getArticlesPageIsLoading,
+    getArticlesPageNum,
     getArticlesPageView
 } from "../../model/selectors/articlesPageSelectors";
 import {Page} from "shared/ui/Page/Page";
+import {fetchNextArticlesPage} from "pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage";
 
 interface ArticlesPage {
     className?: string
@@ -31,14 +34,11 @@ const ArticlesPage = (props: ArticlesPage) => {
     const dispatch = useAppDispatch()
     const articles = useSelector(getArticles.selectAll)
     const isLoading = useSelector(getArticlesPageIsLoading)
-    const error = useSelector(getArticlesPageError)
     const view = useSelector(getArticlesPageView)
-    const page = useSelector(getArticlesPageNum)
-    const hasMore = useSelector(getArticlesPageHasMore)
 
     const onLoadNexPart = useCallback(async () => {
-
-    }, [hasMore, isLoading, page])
+        dispatch(fetchNextArticlesPage())
+    }, [])
 
     useInitialEffect(() => {
         dispatch(articlesPageActions.initState())

@@ -27,27 +27,5 @@ export const fetchNextArticlesPage = createAsyncThunk<void, void,
                 page: nextPage
             }))
         }
-
-        /*try {
-
-            const response = await extra.api.get<Article[]>(`/articles`, {
-                params: {
-                    _expand: 'user',
-                    _limit: limit,
-                    _page: page
-                }
-            })
-
-            if (!response?.data) {
-                throw new Error()
-            }
-
-            return response.data
-        } catch (e) {
-            console.error(e)
-            return rejectWithValue(
-                i18n.t('Некорректный логин или пароль')
-            )
-        }*/
     }
 )
