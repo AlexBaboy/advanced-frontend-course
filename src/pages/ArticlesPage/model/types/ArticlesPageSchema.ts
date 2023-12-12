@@ -5,7 +5,7 @@ export type ArticlesPageSchema = EntityState<Article> & {
     isLoading?: boolean,
     error?: string,
 
-    view: ArticleView,
+    view?: ArticleView,
 
     // pagination
     page: number,

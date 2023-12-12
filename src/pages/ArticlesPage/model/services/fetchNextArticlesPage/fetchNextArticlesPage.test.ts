@@ -1,33 +1,46 @@
 import axios from "axios";
-import {fetchProfileData} from "./fetchProfileData";
 import {TestAsyncThunk} from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
-import {profileData} from "shared/mocks/profileData";
-import {fetchNextArticlesPage} from "./fetchNextArticlesPage/fetchNextArticlesPage";
+import {fetchNextArticlesPage} from "./fetchNextArticlesPage";
+import {fetchArticlesList} from "../fetchArticlesList/fetchArticlesList";
 
-jest.mock('axios')
-
-const mockedAxios = jest.mocked(axios, true)
-describe('fetchProfileData test' , () => {
+jest.mock('../fetchArticlesList/fetchArticlesList')
+describe('fetchNextArticlesPage test' , () => {
 
     test('success', async () => {
 
-        const thunk = new TestAsyncThunk(fetchNextArticlesPage)
-        thunk.api.get.mockReturnValue(Promise.resolve({
-            data: profileData
-        }))
+        const thunk = new TestAsyncThunk(fetchNextArticlesPage, {
+            articlesPage: {
+                page: 2,
+                ids: [],
+                entities: {},
+                limit: 5,
+                isLoading: false,
+                hasMore: true
+            }
+        })
 
-        const result = await thunk.callThunk('1')
+        await thunk.callThunk()
 
-        expect(thunk.api.get).toHaveBeenCalled()
-        expect(result.meta.requestStatus).toBe('fulfilled')
-        expect(result.payload).toEqual(profileData)
+        expect(thunk.dispatch).toBeCalledTimes(4)
+        expect(fetchArticlesList).toHaveBeenCalledWith({page: 3})
     })
 
-    test('error', async () => {
+    test('fetchArticlesList', async () => {
 
-        const thunk = new TestAsyncThunk(fetchProfileData)
-        thunk.api.get.mockReturnValue(Promise.resolve({status: 403}))
-        const result = await thunk.callThunk('1')
-        expect(result.meta.requestStatus).toBe('rejected')
+        const thunk = new TestAsyncThunk(fetchNextArticlesPage, {
+            articlesPage: {
+                page: 2,
+                ids: [],
+                entities: {},
+                limit: 5,
+                isLoading: false,
+                hasMore: false
+            }
+        })
+
+        await thunk.callThunk()
+
+        expect(thunk.dispatch).toBeCalledTimes(2)
+        expect(fetchArticlesList).not.toHaveBeenCalled()
     })
 })

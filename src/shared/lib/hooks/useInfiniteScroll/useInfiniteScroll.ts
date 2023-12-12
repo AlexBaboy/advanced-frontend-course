@@ -31,7 +31,7 @@ export const useInfiniteScroll = ({
         }
 
         return () => {
-            observer && observer.unobserve(triggerRef.current)
+            observer && triggerRef && observer.unobserve(triggerRef.current)
         }
     }, [callback, wrapperRef, triggerRef])
 }
