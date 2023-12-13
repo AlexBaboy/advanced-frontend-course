@@ -9,7 +9,6 @@ import {NavigateOptions} from "react-router";
 export const createReduxStore = (
     initialState?: StateSchema,
     asyncReducers?: ReducersMapObject<StateSchema>,
-    navigate?: (to: Pathname, options?: NavigateOptions) => void
 ) => {
 
 
@@ -29,7 +28,6 @@ export const createReduxStore = (
             thunk: {
                 extraArgument: {
                     api: $api,
-                    navigate
                 }
             }
         })
