@@ -9,9 +9,11 @@ import {ArticleDetailsSchema} from "entities/Article";
 import {ArticleDetailsCommentSchema} from "pages/ArticleDetailsPage";
 import {AddCommentFormSchema} from "features/addCommentForm";
 import {ArticlesPageSchema} from "pages/ArticlesPage";
+import {UISchema} from "features/ui";
 
 export type StateSchema = {
     user?: UserSchema
+    ui: UISchema
 
     // Асинхронные редьюсеры !!!
     loginForm?: LoginSchema
