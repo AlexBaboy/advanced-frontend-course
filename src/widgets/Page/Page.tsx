@@ -1,6 +1,6 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from './Page.module.scss'
-import React, {memo, MutableRefObject, ReactNode, useRef} from "react";
+import React, {memo, MutableRefObject, ReactNode, useRef, UIEvent} from "react";
 import {useInfiniteScroll} from "shared/lib/hooks/useInfiniteScroll/useInfiniteScroll";
 
 interface PageProps {
@@ -26,13 +26,19 @@ export const Page = memo((props: PageProps) => {
         callback: onScrollEnd
     })
 
+    const onScroll = (e: UIEvent) => {
+        console.log('scroll', e.currentTarget.scrollTop)
+    }
+
     return (
         <section
             ref={wrapperRef}
             className={classNames(
             cls.Page,
             {},
-            [className])}>
+            [className])}
+            onScroll={onScroll}
+        >
             {children}
             <div ref={triggerRef} />
         </section>

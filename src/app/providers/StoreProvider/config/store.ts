@@ -5,6 +5,7 @@ import {createReducerManager} from "./reducerManager";
 import {$api} from "shared/api/api";
 import {Pathname} from "history";
 import {NavigateOptions} from "react-router";
+import {uiReducer} from "features/ui";
 
 export const createReduxStore = (
     initialState?: StateSchema,
@@ -15,7 +16,8 @@ export const createReduxStore = (
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         // @ts-ignore
-        user: userReducer
+        user: userReducer,
+        ui: uiReducer
     }
 
     const reducerManager = createReducerManager(rootReducers)

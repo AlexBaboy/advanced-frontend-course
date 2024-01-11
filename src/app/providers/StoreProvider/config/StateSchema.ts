@@ -3,8 +3,6 @@ import {LoginSchema} from "features/AuthByUserName";
 import {AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject} from "@reduxjs/toolkit";
 import {ProfileSchema} from "entities/Profile";
 import {AxiosInstance} from "axios";
-import {Pathname} from "history";
-import {NavigateOptions} from "react-router";
 import {ArticleDetailsSchema} from "entities/Article";
 import {ArticleDetailsCommentSchema} from "pages/ArticleDetailsPage";
 import {AddCommentFormSchema} from "features/addCommentForm";
