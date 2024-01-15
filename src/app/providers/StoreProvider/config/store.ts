@@ -1,10 +1,8 @@
-import {CombinedState, configureStore, DeepPartial, Reducer, ReducersMapObject} from '@reduxjs/toolkit'
+import {CombinedState, configureStore, Reducer, ReducersMapObject} from '@reduxjs/toolkit'
 import {StateSchema} from "./StateSchema";
 import {userReducer} from "entities/User";
 import {createReducerManager} from "./reducerManager";
 import {$api} from "shared/api/api";
-import {Pathname} from "history";
-import {NavigateOptions} from "react-router";
 import {uiReducer} from "features/ui";
 
 export const createReduxStore = (
