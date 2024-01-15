@@ -28,7 +28,7 @@ export const Page = memo((props: PageProps) => {
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>
     const dispatch = useAppDispatch()
     const {pathname} = useLocation()
-    const scrollPositions = useSelector((state: StateSchema) => getUiScrollByPath(state, pathname))
+    const scrollPosition = useSelector((state: StateSchema) => getUiScrollByPath(state, pathname))
 
     useInfiniteScroll({
         wrapperRef,
@@ -37,8 +37,13 @@ export const Page = memo((props: PageProps) => {
     })
 
     useInitialEffect(() => {
-        console.log('39 scrollPositions', scrollPositions)
-        wrapperRef.current.scrollTop = scrollPositions
+        console.log('39 scrollPositions', scrollPosition)
+        console.log('39 wrapperRef.current', wrapperRef.current)
+        /* не работает !!! */
+        setTimeout(() => {
+            wrapperRef.current.scrollTop = scrollPosition
+            console.log('44 wrapperRef.current.scrollTop', wrapperRef.current.scrollTop)
+        })
     })
 
     const onScroll = useThrottle((e: UIEvent) => {
