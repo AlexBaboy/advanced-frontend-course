@@ -1,5 +1,6 @@
 import {EntityState} from "@reduxjs/toolkit";
 import {Article, ArticleView} from "entities/Article";
+import {SortOrder} from "shared/types";
 
 export type ArticlesPageSchema = EntityState<Article> & {
     isLoading?: boolean,
@@ -12,6 +13,6 @@ export type ArticlesPageSchema = EntityState<Article> & {
 
     // filters
     view?: ArticleView,
-    order: 'asc' | 'desc',
+    order?: SortOrder,
     _inited?: boolean
 }
