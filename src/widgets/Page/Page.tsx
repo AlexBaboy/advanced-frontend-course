@@ -1,6 +1,6 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from './Page.module.scss'
-import React, {memo, MutableRefObject, ReactNode, useRef, UIEvent} from "react";
+import React, {memo, MutableRefObject, ReactNode, useRef, UIEvent, useEffect} from "react";
 import {useInfiniteScroll} from "shared/lib/hooks/useInfiniteScroll/useInfiniteScroll";
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {getUiScrollByPath, uiActions} from "features/ui";
@@ -31,19 +31,16 @@ export const Page = memo((props: PageProps) => {
     const scrollPosition = useSelector((state: StateSchema) => getUiScrollByPath(state, pathname))
 
     useInfiniteScroll({
-        wrapperRef,
+        callback: onScrollEnd,
         triggerRef,
-        callback: onScrollEnd
+        wrapperRef,
     })
 
-    useInitialEffect(() => {
+   useInitialEffect(() => {
         console.log('39 scrollPositions', scrollPosition)
         console.log('39 wrapperRef.current', wrapperRef.current)
-        /* не работает !!! */
-        setTimeout(() => {
-            wrapperRef.current.scrollTop = scrollPosition
-            console.log('44 wrapperRef.current.scrollTop', wrapperRef.current.scrollTop)
-        })
+        // восстановление скролла не работает !!!
+        wrapperRef.current.scrollTop = scrollPosition
     })
 
     const onScroll = useThrottle((e: UIEvent) => {
@@ -65,7 +62,12 @@ export const Page = memo((props: PageProps) => {
             onScroll={onScroll}
         >
             {children}
-            <div ref={triggerRef} />
+            {onScrollEnd && (
+                <div
+                    ref={triggerRef}
+                    className={cls.trigger}
+                />
+            )}
         </section>
     );
 });

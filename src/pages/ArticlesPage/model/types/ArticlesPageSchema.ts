@@ -5,12 +5,13 @@ export type ArticlesPageSchema = EntityState<Article> & {
     isLoading?: boolean,
     error?: string,
 
-    view?: ArticleView,
-
     // pagination
     page: number,
     limit?: number,
     hasMore: boolean,
 
+    // filters
+    view?: ArticleView,
+    order: 'asc' | 'desc',
     _inited?: boolean
 }
