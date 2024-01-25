@@ -9,6 +9,8 @@ import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {useSelector} from "react-redux";
 import {getArticlesPageView} from "pages/ArticlesPage/model/selectors/articlesPageSelectors";
 import {Select} from "shared/ui/Select/Select";
+import {Card} from "shared/ui/Card/Card";
+import {Input} from "shared/ui/Input/Input";
 
 interface ArticlesPageFilterProps {
     className?: string
@@ -44,6 +46,9 @@ const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
                         onViewClick={onChangeView}
                     />
                 </div>
+                <Card className={cls.search}>
+                    <Input placeholder={t('Поиск')} />
+                </Card>
 
             </div>
         </DynamicModuleLoader>
