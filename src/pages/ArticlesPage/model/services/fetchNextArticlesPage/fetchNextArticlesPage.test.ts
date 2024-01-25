@@ -2,6 +2,7 @@ import axios from "axios";
 import {TestAsyncThunk} from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 import {fetchNextArticlesPage} from "./fetchNextArticlesPage";
 import {fetchArticlesList} from "../fetchArticlesList/fetchArticlesList";
+import {ArticleSortField} from "entities/Article/model/types/article";
 
 jest.mock('../fetchArticlesList/fetchArticlesList')
 describe('fetchNextArticlesPage test' , () => {
@@ -15,7 +16,10 @@ describe('fetchNextArticlesPage test' , () => {
                 entities: {},
                 limit: 5,
                 isLoading: false,
-                hasMore: true
+                hasMore: true,
+                search: '',
+                order: 'asc',
+                sort: ArticleSortField.CREATED
             }
         })
 
@@ -34,7 +38,10 @@ describe('fetchNextArticlesPage test' , () => {
                 entities: {},
                 limit: 5,
                 isLoading: false,
-                hasMore: false
+                hasMore: false,
+                search: '',
+                order: 'asc',
+                sort: ArticleSortField.CREATED
             }
         })
 

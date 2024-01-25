@@ -12,6 +12,7 @@ import {getArticlesPageIsLoading, getArticlesPageView} from "../../model/selecto
 import {Page} from "widgets/Page/Page";
 import {fetchNextArticlesPage} from "../../model/services/fetchNextArticlesPage/fetchNextArticlesPage";
 import {initArticlesPage} from "../../model/services/initArticlesPage/initArticlesPage";
+import ArticlesPageFilter from "pages/ArticlesPage/ui/ArticlesPageFilter/ArticlesPageFilter";
 
 interface ArticlesPage {
     className?: string
@@ -51,11 +52,7 @@ const ArticlesPage = (props: ArticlesPage) => {
                 {},
                 [className]
             )}>
-                <ArticleViewSelector
-                    view={view}
-                    // @ts-ignore
-                    onViewClick={onChangeView}
-                />
+                <ArticlesPageFilter />
                 <ArticleList
                     articles={articles}
                     view={view}
