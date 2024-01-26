@@ -11,6 +11,7 @@ import {getArticlesPageView} from "pages/ArticlesPage/model/selectors/articlesPa
 import {Select} from "shared/ui/Select/Select";
 import {Card} from "shared/ui/Card/Card";
 import {Input} from "shared/ui/Input/Input";
+import ArticlesSortSelector from "entities/Article/ui/ArticleSortSelector/ArticleSortSelector";
 
 interface ArticlesPageFilterProps {
     className?: string
@@ -39,10 +40,9 @@ const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
                 [className]
             )}>
                 <div className={cls.sortWrapper}>
-                    <Select label={t('Сортировать по')} />
+                    <ArticlesSortSelector />
                     <ArticleViewSelector
                         view={view}
-                        // @ts-ignore
                         onViewClick={onChangeView}
                     />
                 </div>
