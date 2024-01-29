@@ -1,5 +1,5 @@
 import {classNames} from "shared/lib/classNames/classNames";
-import cls from './ArticlesPageFilers.module.scss'
+import cls from './ArticlesSortSelector.module.scss'
 import {useTranslation} from "react-i18next";
 import {memo, useMemo} from "react";
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
@@ -15,9 +15,16 @@ interface ArticlesSortSelectorProps {
     onChangeSort: (newSort: ArticleSortField) => void
 }
 
-const ArticlesSortSelector = (props: ArticlesSortSelectorProps) => {
+export const ArticleSortSelector = memo((props: ArticlesSortSelectorProps) => {
 
-    const {className} = props
+    const {
+        className,
+        sort,
+        order,
+        onChangeOrder,
+        onChangeSort,
+    } = props
+
     const {t} = useTranslation()
     const dispatch = useAppDispatch()
 
@@ -51,16 +58,24 @@ const ArticlesSortSelector = (props: ArticlesSortSelectorProps) => {
 
     return (
         <div className={classNames(
-            cls.ArticlesPageFilers,
+            cls.ArticleSortSelector,
             {},
             [className]
         )}>
             <div className={cls.sortWrapper}>
-                <Select options={sortFieldOptions} label={t('Сортировать по')} />
-                <Select options={orderOptions} label={t('по')} />
+                <Select
+                    options={sortFieldOptions}
+                    label={t('Сортировать по')}
+                    value={sort}
+                    onChange={onChangeSort}
+                />
+                <Select
+                    options={orderOptions}
+                    label={t('по')}
+                    value={order}
+                    onChange={onChangeOrder}
+                />
             </div>
         </div>
     );
-};
-
-export default memo(ArticlesSortSelector)
+});

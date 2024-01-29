@@ -1,7 +1,7 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from './ArticleViewSelector.module.scss'
 import {useTranslation} from "react-i18next";
-import {memo, useCallback} from "react";
+import {memo} from "react";
 import {ArticleView} from "../../model/types/article";
 import ListIcon from 'shared/assets/icons/list.svg'
 import GridIcon from 'shared/assets/icons/grid.svg'
