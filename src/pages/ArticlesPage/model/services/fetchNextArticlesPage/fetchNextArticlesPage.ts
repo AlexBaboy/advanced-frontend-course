@@ -20,12 +20,9 @@ export const fetchNextArticlesPage = createAsyncThunk<void, void,
         const isLoading = getArticlesPageIsLoading(getState())
 
         if (hasMore && !isLoading) {
-            console.log('41 page', page)
             const nextPage = page + 1
             await dispatch(articlesPageActions.setPage(nextPage))
-            await dispatch(fetchArticlesList({
-                page: nextPage
-            }))
+            await dispatch(fetchArticlesList({}))
         }
     }
 )

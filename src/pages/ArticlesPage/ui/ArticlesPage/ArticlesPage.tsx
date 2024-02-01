@@ -13,6 +13,7 @@ import {Page} from "widgets/Page/Page";
 import {fetchNextArticlesPage} from "../../model/services/fetchNextArticlesPage/fetchNextArticlesPage";
 import {initArticlesPage} from "../../model/services/initArticlesPage/initArticlesPage";
 import ArticlesPageFilter from "pages/ArticlesPage/ui/ArticlesPageFilter/ArticlesPageFilter";
+import {useSearchParams} from 'react-router-dom'
 
 interface ArticlesPage {
     className?: string
@@ -30,13 +31,14 @@ const ArticlesPage = (props: ArticlesPage) => {
     const articles = useSelector(getArticles.selectAll)
     const isLoading = useSelector(getArticlesPageIsLoading)
     const view = useSelector(getArticlesPageView)
+    const [searchParams] = useSearchParams()
 
     const onLoadNexPart = useCallback(async () => {
         dispatch(fetchNextArticlesPage())
     }, [])
 
     useInitialEffect(() => {
-        dispatch(initArticlesPage())
+        dispatch(initArticlesPage(searchParams))
     })
 
     const onChangeView = useCallback((view: ArticleView) => {

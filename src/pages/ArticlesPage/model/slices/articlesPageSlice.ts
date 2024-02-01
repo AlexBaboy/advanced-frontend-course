@@ -66,13 +66,24 @@ const articlesPageSlice = createSlice({
             .addCase(fetchArticlesList.pending, (state, action) => {
                 state.error = ''
                 state.isLoading = true
+
+                if (action.meta.arg.replace) {
+                    articlesAdapter.removeAll(state)
+                }
+
             })
             .addCase(
                 fetchArticlesList.fulfilled,
-                (state, action: PayloadAction<Article[]>) => {
+                (state, action) => {
                     state.isLoading = false
-                    articlesAdapter.addMany(state, action.payload)
                     state.hasMore = action.payload.length > 0
+
+                    if (action.meta.arg.replace) {
+                        articlesAdapter.setAll(state, action.payload)
+                    } else {
+                        articlesAdapter.addMany(state, action.payload)
+                    }
+
                 })
             .addCase(fetchArticlesList.rejected, (state, action) => {
                 state.isLoading = false
