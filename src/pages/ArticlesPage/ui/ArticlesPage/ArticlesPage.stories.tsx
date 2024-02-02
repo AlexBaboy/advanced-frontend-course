@@ -5,7 +5,7 @@ import {ArticlesPage} from "pages/ArticlesPage";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-    title: 'pages/ArticlesPage',
+    title: 'pages/Articles/ArticlesPage',
     component: ArticlesPage,
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {

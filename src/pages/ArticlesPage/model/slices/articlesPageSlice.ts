@@ -76,7 +76,8 @@ const articlesPageSlice = createSlice({
                 fetchArticlesList.fulfilled,
                 (state, action) => {
                     state.isLoading = false
-                    state.hasMore = action.payload.length > 0
+                    // @ts-ignore
+                    state.hasMore = action.payload.length >= state.limit
 
                     if (action.meta.arg.replace) {
                         articlesAdapter.setAll(state, action.payload)
