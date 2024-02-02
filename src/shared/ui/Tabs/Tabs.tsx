@@ -1,9 +1,9 @@
-import React, {memo, ReactNode} from 'react';
+import React, {memo, ReactNode, useCallback} from 'react';
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from './Tabs.module.scss'
-import {Card} from "shared/ui/Card/Card";
+import {Card, CardTheme} from "shared/ui/Card/Card";
 
-interface TabItem {
+export interface TabItem {
     value: string
     content: ReactNode
 }
@@ -24,10 +24,20 @@ export const Tabs = memo((props: TabsProps) => {
         value
     } = props
 
+    const clickHandle = (tab: TabItem) => {
+        console.log('tab clicked !!!')
+        onTabClick(tab)
+    }
+
     return (
         <div className={classNames(cls.Tabs, {}, [className])}>
             {tabs.map(tab => (
-                <Card className={cls.tab} key={tab.value}>
+                <Card
+                    className={cls.tab}
+                    key={tab.value}
+                    theme={tab.value === value ? CardTheme.NORMAL : CardTheme.OUTLINED}
+                    onClick={() => clickHandle(tab)}
+                >
                     {tab.content}
                 </Card>
             ))}

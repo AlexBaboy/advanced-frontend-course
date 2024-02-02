@@ -1,7 +1,7 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from './ArticlesPageFilers.module.scss'
 import {useTranslation} from "react-i18next";
-import {memo, useCallback, useEffect} from "react";
+import {memo, useCallback, useEffect, useMemo} from "react";
 import {ArticleSortField, ArticleSortSelector, ArticleView, ArticleViewSelector} from "entities/Article";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import {articlesPageActions, articlesPageReducer} from "../../model/slices/articlesPageSlice";
@@ -17,6 +17,8 @@ import {Input} from "shared/ui/Input/Input";
 import {SortOrder} from "shared/types";
 import {fetchArticlesList} from "pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList";
 import {useDebounce} from "shared/lib/hooks/useDebounce/useDebounce";
+import {TabItem, Tabs} from "shared/ui/Tabs/Tabs";
+import {ArticleType} from "entities/Article/model/types/article";
 
 interface ArticlesPageFilterProps {
     className?: string
@@ -37,11 +39,7 @@ const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
     const search = useSelector(getArticlesPageSearch);
     //const type = useSelector(getArticlesPageType);
 
-    console.log('40 sort')
     useEffect(() => {
-        console.log(`42 sort`, sort)
-        console.log(`42 order`, order)
-        console.log(`42 search`, search)
     }, [sort, order, search])
 
     const fetchData = useCallback(() => {
@@ -57,16 +55,12 @@ const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
     },[])
 
     const onChangeOrder = useCallback((newOrder: SortOrder) => {
-
-        console.log('54 newOrder', newOrder)
-
         dispatch(articlesPageActions.setOrder(newOrder))
         dispatch(articlesPageActions.setPage(1))
         fetchData()
     },[])
 
     const onChangeSort = useCallback((newSort: ArticleSortField) => {
-        console.log('54 newSort', newSort)
         dispatch(articlesPageActions.setSort(newSort))
         dispatch(articlesPageActions.setPage(1))
         fetchData()
@@ -77,6 +71,31 @@ const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
         dispatch(articlesPageActions.setPage(1))
         debouncedFetchData()
     },[])
+
+    const onChangeType = useCallback((tab: TabItem) => {
+        dispatch(articlesPageActions.setType(tab.value as ArticleType))
+        dispatch(articlesPageActions.setPage(1))
+        debouncedFetchData()
+    },[])
+
+    const typeTabs = useMemo<TabItem[]>(() => [
+        {
+            value: ArticleType.ALL,
+            content: t('Все')
+        },
+        {
+            value: ArticleType.IT,
+            content: t('Айти')
+        },
+        {
+            value: ArticleType.SCIENCE,
+            content: t('Наука')
+        },
+        {
+            value: ArticleType.ECONOMICS,
+            content: t('Экономика')
+        }
+    ], [t])
 
     return (
         <DynamicModuleLoader reducers={reducers}>
@@ -104,7 +123,11 @@ const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
                         onChange={onChangeSearch}
                     />
                 </Card>
-
+                <Tabs
+                    tabs={typeTabs}
+                    value={}
+                    onTabClick={onChangeType}
+                />
             </div>
         </DynamicModuleLoader>
     );
