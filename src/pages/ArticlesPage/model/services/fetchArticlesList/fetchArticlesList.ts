@@ -1,14 +1,15 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import i18n from "i18next";
 import {ThunkConfig} from "app/providers/StoreProvider";
-import {Article} from "entities/Article";
+import {Article, ArticleType} from "entities/Article";
 import {
     getArticlesPageLimit,
     getArticlesPageNum,
     getArticlesPageOrder,
     getArticlesPageSearch,
-    getArticlesPageSort
-} from "pages/ArticlesPage/model/selectors/articlesPageSelectors";
+    getArticlesPageSort,
+    getArticlesPageType
+} from "../../selectors/articlesPageSelectors";
 import {addQueryParams} from "shared/lib/url/addQueryParams/addQueryParams";
 
 type FetchArticlesListProps = {
@@ -29,11 +30,14 @@ export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlesListPr
         const order = getArticlesPageOrder(getState())
         const search = getArticlesPageSearch(getState())
         const page = getArticlesPageNum(getState())
+        const type = getArticlesPageType(getState())
+
+        const typeToRequest = type === ArticleType.ALL ? undefined : type
 
         try {
 
             addQueryParams({
-                sort, order, search
+                sort, order, search, type
             })
 
             const response = await extra.api.get<Article[]>(`/articles`, {
@@ -43,7 +47,8 @@ export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlesListPr
                     _page: page,
                     _sort: sort,
                     _order: order,
-                    q: search
+                    q: search,
+                    type: typeToRequest
                 }
             })
 

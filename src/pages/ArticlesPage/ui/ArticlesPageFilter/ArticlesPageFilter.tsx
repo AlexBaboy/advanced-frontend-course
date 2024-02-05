@@ -1,23 +1,30 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from './ArticlesPageFilers.module.scss'
 import {useTranslation} from "react-i18next";
-import {memo, useCallback, useEffect, useMemo} from "react";
-import {ArticleSortField, ArticleSortSelector, ArticleView, ArticleViewSelector} from "entities/Article";
+import {memo, useCallback, useEffect} from "react";
+import {
+    ArticleSortField,
+    ArticleSortSelector,
+    ArticleTypeTabs,
+    ArticleView,
+    ArticleViewSelector
+} from "entities/Article";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import {articlesPageActions, articlesPageReducer} from "../../model/slices/articlesPageSlice";
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {useSelector} from "react-redux";
 import {
-    getArticlesPageOrder, getArticlesPageSearch,
+    getArticlesPageOrder,
+    getArticlesPageSearch,
     getArticlesPageSort,
+    getArticlesPageType,
     getArticlesPageView
-} from "pages/ArticlesPage/model/selectors/articlesPageSelectors";
+} from "../../model/selectors/articlesPageSelectors";
 import {Card} from "shared/ui/Card/Card";
 import {Input} from "shared/ui/Input/Input";
 import {SortOrder} from "shared/types";
-import {fetchArticlesList} from "pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList";
+import {fetchArticlesList} from "../../model/services/fetchArticlesList/fetchArticlesList";
 import {useDebounce} from "shared/lib/hooks/useDebounce/useDebounce";
-import {TabItem, Tabs} from "shared/ui/Tabs/Tabs";
 import {ArticleType} from "entities/Article/model/types/article";
 
 interface ArticlesPageFilterProps {
@@ -37,7 +44,7 @@ const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
     const sort = useSelector(getArticlesPageSort);
     const order = useSelector(getArticlesPageOrder);
     const search = useSelector(getArticlesPageSearch);
-    //const type = useSelector(getArticlesPageType);
+    const type = useSelector(getArticlesPageType);
 
     useEffect(() => {
     }, [sort, order, search])
@@ -72,30 +79,13 @@ const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
         debouncedFetchData()
     },[])
 
-    const onChangeType = useCallback((tab: TabItem) => {
-        dispatch(articlesPageActions.setType(tab.value as ArticleType))
+    const onChangeType = useCallback((value: ArticleType) => {
+        dispatch(articlesPageActions.setType(value))
         dispatch(articlesPageActions.setPage(1))
         debouncedFetchData()
     },[])
 
-    const typeTabs = useMemo<TabItem[]>(() => [
-        {
-            value: ArticleType.ALL,
-            content: t('Все')
-        },
-        {
-            value: ArticleType.IT,
-            content: t('Айти')
-        },
-        {
-            value: ArticleType.SCIENCE,
-            content: t('Наука')
-        },
-        {
-            value: ArticleType.ECONOMICS,
-            content: t('Экономика')
-        }
-    ], [t])
+
 
     return (
         <DynamicModuleLoader reducers={reducers}>
@@ -123,10 +113,10 @@ const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
                         onChange={onChangeSearch}
                     />
                 </Card>
-                <Tabs
-                    tabs={typeTabs}
-                    value={}
-                    onTabClick={onChangeType}
+                <ArticleTypeTabs
+                    value={type}
+                    onChangeType={onChangeType}
+                    className={cls.tabs}
                 />
             </div>
         </DynamicModuleLoader>
