@@ -7,7 +7,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {Text, TextSize} from "shared/ui/Text/Text";
 import {CommentList} from "entities/Comment";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import {articleDetailsCommentReducer, getArticleComments} from "../../model/slices/ArticleDetailsCommentSlice";
+import {getArticleComments} from "../../model/slices/ArticleDetailsCommentSlice";
 import {useSelector} from "react-redux";
 import {getArticleCommentsIsLoading} from "../../model/selectors/comments/comments";
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect/useInitialEffect";
@@ -19,24 +19,19 @@ import {addCommentForArticle} from "../../model/services/addCommentForArticle/ad
 import {Button, ButtonTheme} from "shared/ui/Button/Button";
 import {RoutePath} from "shared/config/routeConfig/routeConfig";
 import {Page} from "widgets/Page/Page";
-import {
-    ArticleDetailsPageRecommendationsReducer,
-    getArticleRecommendations
-} from "../../model/slices/ArticleDetailsPageRecommendationsSlice";
-import {
-    getArticleRecommendationsIsLoading
-} from "../../model/selectors/recommendations/recommendations";
+import {getArticleRecommendations} from "../../model/slices/ArticleDetailsPageRecommendationsSlice";
+import {getArticleRecommendationsIsLoading} from "../../model/selectors/recommendations/recommendations";
 import {
     fetchArticleRecommendations
 } from "../../model/services/fetchArticleRecommendations/fetchArticleRecommendations";
+import {articleDetailsPageReducer} from "../../model/slices";
 
 interface ArticleDetailsPage {
     className?: string
 }
 
 const reducers: ReducersList = {
-    articleDetailsComments: articleDetailsCommentReducer,
-    articleDetailsRecommendations: ArticleDetailsPageRecommendationsReducer
+    articlesDetailsPage: articleDetailsPageReducer
 }
 
 const ArticleDetailsPage = (props: ArticleDetailsPage) => {
@@ -103,6 +98,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPage) => {
                     articles={recommendations}
                     isLoading={recommendationsIsLoading}
                     className={cls.recommendations}
+                    target={'_blank'}
                 />
 
                 <Text

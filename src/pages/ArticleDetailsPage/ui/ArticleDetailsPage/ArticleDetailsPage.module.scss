@@ -1,16 +1,18 @@
 .ArticleDetailsPage {
   min-height: 100%;
 
-  .commentTitle, .recommendations {
+  .commentTitle {
     margin-top: 20px;
   }
 
-  .recommendations {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-y: hidden;
-    overflow-x: auto;
-    gap: 16px;
-  }
 }
 
+
+.recommendations {
+  margin-top: 20px;
+  /*display: flex;*/
+  flex-wrap: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+  gap: 16px;
+}

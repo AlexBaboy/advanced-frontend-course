@@ -4,10 +4,10 @@ import {AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject} fro
 import {ProfileSchema} from "entities/Profile";
 import {AxiosInstance} from "axios";
 import {ArticleDetailsSchema} from "entities/Article";
-import {ArticleDetailsCommentSchema, ArticleDetailsRecommendationsSchema} from "pages/ArticleDetailsPage";
 import {AddCommentFormSchema} from "features/addCommentForm";
 import {ArticlesPageSchema} from "pages/ArticlesPage";
 import {UISchema} from "features/ui";
+import {ArticleDetailsPageSchema} from "pages/ArticleDetailsPage/model/types";
 
 export type StateSchema = {
     user?: UserSchema
@@ -17,10 +17,9 @@ export type StateSchema = {
     loginForm?: LoginSchema
     profile?: ProfileSchema
     articleDetails?: ArticleDetailsSchema
-    articleDetailsComments?: ArticleDetailsCommentSchema
-    articleDetailsRecommendations?: ArticleDetailsRecommendationsSchema
     addCommentForm?: AddCommentFormSchema
     articlesPage?: ArticlesPageSchema
+    articlesDetailsPage?: ArticleDetailsPageSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
