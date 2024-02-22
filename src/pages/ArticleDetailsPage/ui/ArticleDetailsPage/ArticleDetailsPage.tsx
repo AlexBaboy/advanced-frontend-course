@@ -3,7 +3,7 @@ import cls from './ArticleDetailsPage.module.scss'
 import {useTranslation} from "react-i18next";
 import {memo, useCallback} from "react";
 import {ArticleDetails, ArticleList} from "entities/Article";
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {Text, TextSize} from "shared/ui/Text/Text";
 import {CommentList} from "entities/Comment";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
@@ -16,8 +16,6 @@ import {fetchCommentsByArticleId} from "../../model/services/fetchCommentsByArti
 import {AddCommentForm} from "features/addCommentForm";
 import {addCommentFormActions} from "features/addCommentForm/model/slice/addCommentFormSlice";
 import {addCommentForArticle} from "../../model/services/addCommentForArticle/addCommentForArticle";
-import {Button, ButtonTheme} from "shared/ui/Button/Button";
-import {RoutePath} from "shared/config/routeConfig/routeConfig";
 import {Page} from "widgets/Page/Page";
 import {getArticleRecommendations} from "../../model/slices/ArticleDetailsPageRecommendationsSlice";
 import {getArticleRecommendationsIsLoading} from "../../model/selectors/recommendations/recommendations";
@@ -25,6 +23,7 @@ import {
     fetchArticleRecommendations
 } from "../../model/services/fetchArticleRecommendations/fetchArticleRecommendations";
 import {articleDetailsPageReducer} from "../../model/slices";
+import ArticleDetailsPageHeader from "pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader";
 
 interface ArticleDetailsPage {
     className?: string
@@ -44,7 +43,6 @@ const ArticleDetailsPage = (props: ArticleDetailsPage) => {
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
     const recommendations = useSelector(getArticleRecommendations.selectAll);
     const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
-    const navigate = useNavigate()
 
     useInitialEffect(() => {
         id && dispatch(fetchCommentsByArticleId(id));
@@ -56,10 +54,6 @@ const ArticleDetailsPage = (props: ArticleDetailsPage) => {
         await dispatch(addCommentFormActions.setText(''))
         await dispatch(fetchCommentsByArticleId(id))
     }, [])
-
-    const onBackToList = useCallback(() => {
-        navigate(RoutePath.articles)
-    },[])
 
     if (!id) {
         return (
@@ -82,12 +76,8 @@ const ArticleDetailsPage = (props: ArticleDetailsPage) => {
                 {},
                 [className]
             )}>
-                <Button
-                    theme={ButtonTheme.OUTLINE}
-                    onClick={onBackToList}
-                >
-                    {t('Назад к списку')}
-                </Button>
+
+                <ArticleDetailsPageHeader />
                 <ArticleDetails id={id} />
 
                 <Text
