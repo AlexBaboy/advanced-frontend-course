@@ -1,6 +1,9 @@
 import {classNames} from "shared/lib/classNames/classNames";
-import cls from "pages/ArticlesPage/ui/ArticlesPage/ArticlesPage.module.scss";
+import cls from "./ArticleEdit.module.scss";
 import {memo} from "react";
+import {Page} from "widgets/Page/Page";
+import {useParams} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 interface ArticleEditProps {
 	className?: string
@@ -12,15 +15,21 @@ const ArticleEdit = (props: ArticleEditProps) => {
 		className
 	} = props
 
+	const {t} = useTranslation()
+	const {id} = useParams<{id: string}>()
+
 	return (
-		<div
+		<Page
 			className={classNames(
 				cls.ArticleEdit,
 				{},
 				[className]
 			)}>
-				article edit page
-		</div>
+				{id
+					? t('Редактирование статьи ID = ') + id
+					: t('Создание новой статьи')
+				}
+		</Page>
 	)
 }
 
