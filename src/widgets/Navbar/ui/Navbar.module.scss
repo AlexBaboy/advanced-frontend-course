@@ -5,13 +5,31 @@
   padding: 0 2rem;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 2rem;
 }
+
+.headerLeftPart {
+  display: flex;
+}
+
 
 .links {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  margin-left: auto;
   gap: 2rem;
+}
+
+.mainLink {
+  margin-right: 15px;
+}
+
+.appName {
+  width: var(--sidebar-width);
+  margin-left: 15px;
+}
+
+.createBtn {
+
 }

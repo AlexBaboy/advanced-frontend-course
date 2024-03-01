@@ -32,5 +32,4 @@ const ArticleEdit = (props: ArticleEditProps) => {
 		</Page>
 	)
 }
-
 export default memo(ArticleEdit)
