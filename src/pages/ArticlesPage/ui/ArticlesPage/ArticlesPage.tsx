@@ -33,7 +33,7 @@ const ArticlesPage = (props: ArticlesPage) => {
     const view = useSelector(getArticlesPageView)
     const [searchParams] = useSearchParams()
 
-    const onLoadNexPart = useCallback(async () => {
+    const onLoadNextPart = useCallback(async () => {
         dispatch(fetchNextArticlesPage())
     }, [])
 
@@ -47,21 +47,14 @@ const ArticlesPage = (props: ArticlesPage) => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <Page
-                onScrollEnd={onLoadNexPart}
-                className={classNames(
-                cls.ArticlesPage,
-                {},
-                [className]
-            )}>
-                <ArticlesPageFilter />
+                {/*<ArticlesPageFilter />*/}
                 <ArticleList
                     articles={articles}
                     view={view}
                     isLoading={isLoading}
                     className={cls.list}
+                    onLoadNextPart={onLoadNextPart}
                 />
-            </Page>
         </DynamicModuleLoader>
     );
 };
