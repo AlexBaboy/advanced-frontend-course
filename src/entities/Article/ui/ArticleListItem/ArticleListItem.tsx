@@ -13,6 +13,7 @@ import {ArticleBlockType, ArticleTextBlock} from "entities/Article/model/types/a
 import {ArticleTextBlockComponent} from "entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent";
 import {RoutePath} from "shared/config/routeConfig/routeConfig";
 import {AppLink} from "shared/ui/AppLink/AppLink";
+import {ARTICLES_LIST_ITEM_INDEX} from "shared/const/localStorage";
 
 interface ArticleListItemProps {
     className?: string
@@ -28,7 +29,8 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         className,
         article,
         view = ArticleView.SMALL,
-        target
+        target,
+        index
     } = props
 
     const {t} = useTranslation()
@@ -40,6 +42,10 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             <Icon Svg={EyeIcon} />
         </>
     )
+
+    const handleButtonClick = () => {
+        sessionStorage.setItem(ARTICLES_LIST_ITEM_INDEX, JSON.stringify(index))
+    }
 
     if (view === ArticleView.BIG) {
 
@@ -72,7 +78,9 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                             to={RoutePath.article_details + article.id}
                         >
                             <Button
-                                theme={ButtonTheme.OUTLINE}>
+                                theme={ButtonTheme.OUTLINE}
+                                onClick={handleButtonClick}
+                            >
                                 {t('Читать далее')}
                             </Button>
                         </AppLink>

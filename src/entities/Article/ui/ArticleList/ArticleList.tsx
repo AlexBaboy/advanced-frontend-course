@@ -1,7 +1,7 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from './ArticleList.module.scss'
 import {useTranslation} from "react-i18next";
-import {HTMLAttributeAnchorTarget, memo, useRef, useState} from "react";
+import {HTMLAttributeAnchorTarget, memo, useEffect, useRef, useState} from "react";
 import {Article, ArticleView} from "entities/Article";
 import {ArticleListItem} from "../../ui/ArticleListItem/ArticleListItem";
 import {ArticleListItemSkeleton} from "entities/Article/ui/ArticleListItem/ArticleListItemSkeleton";
@@ -47,6 +47,10 @@ export const ArticleList = memo((props: ArticleListProps) => {
     const {t} = useTranslation()
     const [selectedArticleId, setSelectedArticleId] = useState(1)
     const virtuosoRef = useRef<VirtuosoHandle | null>(null);
+
+    useEffect(() => {
+
+    }, [])
 
     const renderArticle = (index: number, article: Article) => {
         return (
