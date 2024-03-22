@@ -1,14 +1,14 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from './ArticleList.module.scss'
 import {useTranslation} from "react-i18next";
-import {HTMLAttributeAnchorTarget, memo, useEffect, useRef, useState} from "react";
+import {FC, HTMLAttributeAnchorTarget, memo, useEffect, useRef, useState} from "react";
 import {Article, ArticleView} from "entities/Article";
 import {ArticleListItem} from "../../ui/ArticleListItem/ArticleListItem";
 import {ArticleListItemSkeleton} from "entities/Article/ui/ArticleListItem/ArticleListItemSkeleton";
 import {Text, TextSize} from "shared/ui/Text/Text";
-import {Virtuoso, VirtuosoHandle} from "react-virtuoso";
-import {article} from "shared/mocks/articleDetail";
+import {Virtuoso, VirtuosoGrid, VirtuosoHandle} from "react-virtuoso";
 import ArticlesPageFilter from "pages/ArticlesPage/ui/ArticlesPageFilter/ArticlesPageFilter";
+import {ARTICLES_LIST_ITEM_INDEX} from "shared/const/localStorage";
 
 interface ArticleListProps {
     className?: string
@@ -46,11 +46,22 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
     const {t} = useTranslation()
     const [selectedArticleId, setSelectedArticleId] = useState(1)
-    const virtuosoRef = useRef<VirtuosoHandle | null>(null);
+    const virtuosoGridRef = useRef<VirtuosoHandle | null>(null);
 
     useEffect(() => {
-
+        const selectedArticeIndex = sessionStorage.getItem(ARTICLES_LIST_ITEM_INDEX) || 1
+        setSelectedArticleId(Number(selectedArticeIndex))
     }, [])
+
+    useEffect(() => {
+        let timeoutId: NodeJS.Timeout
+        if (view === ArticleView.SMALL) {
+            timeoutId = setTimeout(() => {
+                virtuosoGridRef.current && virtuosoGridRef.current?.scrollToIndex(selectedArticleId)
+            }, 100)
+        }
+        return () => clearInterval(timeoutId)
+    }, [selectedArticleId, view])
 
     const renderArticle = (index: number, article: Article) => {
         return (
@@ -87,6 +98,18 @@ export const ArticleList = memo((props: ArticleListProps) => {
         return null
     }
 
+    const ItemContainerComp: FC<{height: number, width: number, index: number}> = ({height, width, index}) => {
+        return (
+            <div className={cls.itemContainer}>
+                <ArticleListItemSkeleton
+                    key={index}
+                    view={view}
+                    className={cls.card}
+                />
+            </div>
+        )
+    }
+
     return (
         <div className={classNames(
             cls.ArticleList,
@@ -105,9 +128,24 @@ export const ArticleList = memo((props: ArticleListProps) => {
                       Header,
                       Footer
                   }}
-                  ref={virtuosoRef}/>
+              />
             ) : (
-                <></>
+                <VirtuosoGrid
+                    ref={virtuosoGridRef}
+                    totalCount={articles.length}
+                    components={{
+                        Header,
+                        ScrollSeekPlaceholder: ItemContainerComp
+                    }}
+                    endReached={onLoadNextPart}
+                    data={articles}
+                    itemContent={renderArticle}
+                    listClassName={cls.itemsWrapper}
+                    scrollSeekConfiguration={{
+                        enter: (velocity) => Math.abs(velocity) > 200,
+                        exit: (velocity) => Math.abs(velocity) < 30
+                    }}
+                />
             )}
 
             {/*{articles.length > 0

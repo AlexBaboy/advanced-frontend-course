@@ -97,10 +97,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             target={target}
             to={RoutePath.article_details + article.id}
             className={classNames(
-            cls.ArticleListItem,
-            {},
-            [className, cls[view]]
-        )}>
+                cls.ArticleListItem,
+                {},
+                [className, cls[view]]
+            )}
+            onClick={handleButtonClick}
+        >
             <Card className={cls.card}>
                 <div className={cls.imageWrapper}>
                     <img src={article.img} alt={article.title} className={cls.img} />
