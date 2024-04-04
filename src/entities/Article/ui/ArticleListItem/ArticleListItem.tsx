@@ -35,7 +35,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
     const {t} = useTranslation()
 
-    const types = <Text text={article.type?.join(', ')} className={cls.types} />
+    const types = <Text text={article?.type?.join(', ')} className={cls.types} />
     const views = (
         <>
             <Text text={article?.views?.toString() || '0'} className={cls.views} />
@@ -46,6 +46,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     const handleButtonClick = () => {
         sessionStorage.setItem(ARTICLES_LIST_ITEM_INDEX, JSON.stringify(index))
     }
+
+    /*if (!article) {
+        return null
+    }*/
+
+    console.log('54 article', article)
 
     if (view === ArticleView.BIG) {
 
@@ -75,7 +81,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     <div className={cls.footer}>
                         <AppLink
                             target={target}
-                            to={RoutePath.article_details + article.id}
+                            to={RoutePath.article_details + article?.id}
                         >
                             <Button
                                 theme={ButtonTheme.OUTLINE}
@@ -95,7 +101,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     return (
         <AppLink
             target={target}
-            to={RoutePath.article_details + article.id}
+            to={RoutePath.article_details + article?.id}
             className={classNames(
                 cls.ArticleListItem,
                 {},

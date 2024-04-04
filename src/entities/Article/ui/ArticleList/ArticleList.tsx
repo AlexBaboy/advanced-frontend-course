@@ -9,6 +9,7 @@ import {Text, TextSize} from "shared/ui/Text/Text";
 import {Virtuoso, VirtuosoGrid, VirtuosoHandle} from "react-virtuoso";
 import ArticlesPageFilter from "pages/ArticlesPage/ui/ArticlesPageFilter/ArticlesPageFilter";
 import {ARTICLES_LIST_ITEM_INDEX} from "shared/const/localStorage";
+import {article} from "shared/mocks/articleDetail";
 
 interface ArticleListProps {
     className?: string
@@ -57,18 +58,22 @@ export const ArticleList = memo((props: ArticleListProps) => {
         let timeoutId: NodeJS.Timeout
         if (view === ArticleView.SMALL) {
             timeoutId = setTimeout(() => {
-                virtuosoGridRef.current && virtuosoGridRef.current?.scrollToIndex(selectedArticleId)
+                //virtuosoGridRef.current && virtuosoGridRef.current?.scrollToIndex(selectedArticleId)
             }, 100)
         }
         return () => clearInterval(timeoutId)
     }, [selectedArticleId, view])
 
     const renderArticle = (index: number, article: Article) => {
+
+        console.log('68 renderArticle article', article)
+        if (!article) return null
+
         return (
             <ArticleListItem
                 article={article}
                 className={cls.card}
-                key={article.id}
+                key={article?.id}
                 view={view}
                 target={target}
                 index={index}
@@ -98,7 +103,13 @@ export const ArticleList = memo((props: ArticleListProps) => {
         return null
     }
 
+    console.log('102 articles.length', articles.length)
+    console.log('102 articles', articles)
+
     const ItemContainerComp: FC<{height: number, width: number, index: number}> = ({height, width, index}) => {
+
+        console.log('111 !!!')
+
         return (
             <div className={cls.itemContainer}>
                 <ArticleListItemSkeleton
@@ -121,6 +132,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
                 <Virtuoso
                   style={{ height: "100%" }}
                   data={articles}
+                  //itemContent={(index, article) => renderArticle(index, article)}
                   itemContent={renderArticle}
                   endReached={onLoadNextPart}
                   initialTopMostItemIndex={selectedArticleId}
@@ -131,6 +143,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
               />
             ) : (
                 <VirtuosoGrid
+                    style={{ height: 500, width: 'calc(100vw - var(--sidebar-width))' }}
                     ref={virtuosoGridRef}
                     totalCount={articles.length}
                     components={{
@@ -138,8 +151,16 @@ export const ArticleList = memo((props: ArticleListProps) => {
                         ScrollSeekPlaceholder: ItemContainerComp
                     }}
                     endReached={onLoadNextPart}
-                    data={articles}
-                    itemContent={renderArticle}
+                    //itemContent={renderArticle}
+                    itemContent={(index, article) => {
+
+                        console.log('157 article', article)
+
+                        return (
+                            <b>{article?.title} + {index}</b>
+                        )
+                    }}
+                    //itemContent={(index) => <b>{article?.title} + {index}</b>}
                     listClassName={cls.itemsWrapper}
                     scrollSeekConfiguration={{
                         enter: (velocity) => Math.abs(velocity) > 200,
