@@ -58,7 +58,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         let timeoutId: NodeJS.Timeout
         if (view === ArticleView.SMALL) {
             timeoutId = setTimeout(() => {
-                //virtuosoGridRef.current && virtuosoGridRef.current?.scrollToIndex(selectedArticleId)
+                virtuosoGridRef.current && virtuosoGridRef.current?.scrollToIndex(selectedArticleId)
             }, 100)
         }
         return () => clearInterval(timeoutId)
@@ -143,7 +143,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
               />
             ) : (
                 <VirtuosoGrid
-                    style={{ height: 500, width: 'calc(100vw - var(--sidebar-width))' }}
+                    style={{ height: '80vh', width: 'calc(100vw - var(--sidebar-width))' }}
                     ref={virtuosoGridRef}
                     totalCount={articles.length}
                     components={{
@@ -151,16 +151,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
                         ScrollSeekPlaceholder: ItemContainerComp
                     }}
                     endReached={onLoadNextPart}
-                    //itemContent={renderArticle}
-                    itemContent={(index, article) => {
-
-                        console.log('157 article', article)
-
-                        return (
-                            <b>{article?.title} + {index}</b>
-                        )
-                    }}
-                    //itemContent={(index) => <b>{article?.title} + {index}</b>}
+                    itemContent={index => renderArticle(index, articles[index])}
                     listClassName={cls.itemsWrapper}
                     scrollSeekConfiguration={{
                         enter: (velocity) => Math.abs(velocity) > 200,
