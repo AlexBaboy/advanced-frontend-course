@@ -1,6 +1,7 @@
-import {classNames, Mods} from "shared/lib/classNames/classNames";
-import cls from './Icon.module.scss'
-import React, {memo} from "react";
+// eslint-disable-next-line alexb-esling-plugin-path-checker/fsd-arch-path-checker
+import { classNames } from 'shared/lib/classNames/classNames';
+import React, { memo } from 'react';
+import cls from './Icon.module.scss';
 
 interface IconProps {
     className?: string
@@ -8,16 +9,17 @@ interface IconProps {
 }
 
 export const Icon = memo((props: IconProps) => {
-
     const {
         className,
-        Svg
-    } = props
+        Svg,
+    } = props;
 
     return (
         <Svg className={classNames(
-                    cls.Icon,
+            cls.Icon,
             {},
-            [className])} />
+            [className],
+        )}
+        />
     );
 });
