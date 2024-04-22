@@ -1,9 +1,9 @@
-import {classNames, Mods} from "shared/lib/classNames/classNames";
-import cls from './CountrySelect.module.scss'
-import {useTranslation} from "react-i18next";
-import {memo, useCallback} from "react";
-import {Select} from "shared/ui/Select/Select";
-import {Country} from "../../model/types/country";
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
+import { memo, useCallback } from 'react';
+import { Select } from 'shared/ui/Select/Select';
+import cls from './CountrySelect.module.scss';
+import { Country } from '../../model/types/country';
 
 interface CountrySelectProps {
     className?: string
@@ -12,34 +12,35 @@ interface CountrySelectProps {
     readOnly?: boolean
 }
 
-const  options= [
-        {value: Country.Russia, content: Country.Russia},
-        {value: Country.Belarus, content: Country.Belarus},
-        {value: Country.Kazakhstan, content: Country.Kazakhstan},
-    ]
+const options = [
+    { value: Country.Russia, content: Country.Russia },
+    { value: Country.Belarus, content: Country.Belarus },
+    { value: Country.Kazakhstan, content: Country.Kazakhstan },
+];
 
 export const CountrySelect = memo((props: CountrySelectProps) => {
-
     const {
         className,
         value,
         onChange,
-        readOnly
-    } = props
+        readOnly,
+    } = props;
 
-    const {t} = useTranslation()
+    const { t } = useTranslation();
 
-    const mods: Mods = {}
+    const mods: Mods = {};
 
     const onChangeHandler = useCallback((value: string) => {
-        onChange?.(value as Country)
-    },[onChange])
+        onChange?.(value as Country);
+    }, [onChange]);
 
     return (
         <Select
             className={classNames(
-            cls.CurrencySelect,
-            mods,[className])}
+                cls.CurrencySelect,
+                mods,
+                [className],
+            )}
             label={t('Укажите страну')}
             options={options}
             value={value}
@@ -47,4 +48,4 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
             readOnly={readOnly}
         />
     );
-})
+});

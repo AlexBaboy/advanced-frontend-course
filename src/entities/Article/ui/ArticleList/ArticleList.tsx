@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import {
     FC, HTMLAttributeAnchorTarget, memo, useEffect, useRef, useState,
 } from 'react';
-import { Article, ArticleView } from 'entities/Article';
-import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { Virtuoso, VirtuosoGrid, VirtuosoHandle } from 'react-virtuoso';
 import ArticlesPageFilter from 'pages/ArticlesPage/ui/ArticlesPageFilter/ArticlesPageFilter';
 import { ARTICLES_LIST_ITEM_INDEX } from 'shared/const/localStorage';
+import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSkeleton';
+import { Article, ArticleView } from '../../../Article';
 import { ArticleListItem } from '../../ui/ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
 

@@ -1,10 +1,10 @@
-import {classNames, Mods} from "shared/lib/classNames/classNames";
-import cls from './CommentList.module.scss'
-import {useTranslation} from "react-i18next";
-import {memo } from "react";
-import {CommentItem} from "entities/Comment";
-import {Text} from "shared/ui/Text/Text";
-import {CommentCard} from "../CommentCard/CommentCard";
+import {classNames} from 'shared/lib/classNames/classNames';
+import {useTranslation} from 'react-i18next';
+import {memo} from 'react';
+import {CommentItem} from '../../../Comment';
+import {Text} from 'shared/ui/Text/Text';
+import cls from './CommentList.module.scss';
+import {CommentCard} from '../CommentCard/CommentCard';
 
 interface CommentListProps {
     className?: string
@@ -13,36 +13,39 @@ interface CommentListProps {
 }
 
 export const CommentList = memo((props: CommentListProps) => {
-
     const {
         className,
         comments,
-        isLoading
-    } = props
+        isLoading,
+    } = props;
 
-    const {t} = useTranslation()
+    const { t } = useTranslation();
 
     if (isLoading) {
         return (
             <div
                 className={classNames(
                     cls.CommentList,
-                    {},[className])}
+                    {},
+                    [className],
+                )}
             >
                 <CommentCard isLoading />
             </div>
-        )
+        );
     }
 
     return (
         <div
             className={classNames(
                 cls.CommentList,
-                {},[className])}
+                {},
+                [className],
+            )}
         >
             {comments?.length
                 ? (
-                    comments.map(comment => (
+                    comments.map((comment) => (
                         <CommentCard
                             comment={comment}
                             className={cls.comment}
@@ -50,9 +53,7 @@ export const CommentList = memo((props: CommentListProps) => {
                             key={comment.id}
                         />
                     )))
-                :
-                    <Text text={t('Комментарии отсутствуют')} />
-            }
+                : <Text text={t('Комментарии отсутствуют')} />}
         </div>
     );
-})
+});

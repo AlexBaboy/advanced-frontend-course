@@ -1,19 +1,19 @@
-import {classNames} from "shared/lib/classNames/classNames";
-import cls from './ArticleListItem.module.scss'
-import {useTranslation} from "react-i18next";
-import {HTMLAttributeAnchorTarget, memo} from "react";
-import {Article, ArticleView} from "entities/Article";
-import {Text} from "shared/ui/Text/Text";
-import {Icon} from "shared/ui/Icon/Icon";
-import EyeIcon from 'shared/assets/icons/eye.svg'
-import {Card} from "shared/ui/Card/Card";
-import {Avatar} from "shared/ui/Avatar/Avatar";
-import {Button, ButtonTheme} from "shared/ui/Button/Button";
-import {ArticleBlockType, ArticleTextBlock} from "entities/Article/model/types/article";
-import {ArticleTextBlockComponent} from "entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent";
-import {RoutePath} from "shared/config/routeConfig/routeConfig";
-import {AppLink} from "shared/ui/AppLink/AppLink";
-import {ARTICLES_LIST_ITEM_INDEX} from "shared/const/localStorage";
+import { classNames } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
+import { Article, ArticleView } from 'entities/Article';
+import { Text } from 'shared/ui/Text/Text';
+import { Icon } from 'shared/ui/Icon/Icon';
+import EyeIcon from 'shared/assets/icons/eye.svg';
+import { Card } from 'shared/ui/Card/Card';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { ARTICLES_LIST_ITEM_INDEX } from 'shared/const/localStorage';
+import { ArticleBlockType, ArticleTextBlock } from '../../model/types/article';
+import { ArticleTextBlockComponent } from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
+import cls from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
     className?: string
@@ -24,45 +24,44 @@ interface ArticleListItemProps {
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
-
     const {
         className,
         article,
         view = ArticleView.SMALL,
         target,
-        index
-    } = props
+        index,
+    } = props;
 
-    const {t} = useTranslation()
+    const { t } = useTranslation();
 
-    const types = <Text text={article?.type?.join(', ')} className={cls.types} />
+    const types = <Text text={article?.type?.join(', ')} className={cls.types} />;
     const views = (
         <>
             <Text text={article?.views?.toString() || '0'} className={cls.views} />
             <Icon Svg={EyeIcon} />
         </>
-    )
+    );
 
     const handleButtonClick = () => {
-        sessionStorage.setItem(ARTICLES_LIST_ITEM_INDEX, JSON.stringify(index))
-    }
+        sessionStorage.setItem(ARTICLES_LIST_ITEM_INDEX, JSON.stringify(index));
+    };
 
-    /*if (!article) {
+    /* if (!article) {
         return null
-    }*/
+    } */
 
-    console.log('54 article', article)
+    console.log('54 article', article);
 
     if (view === ArticleView.BIG) {
-
-        const texBlock = article.blocks.find(block => block.type === ArticleBlockType.TEXT) as ArticleTextBlock
+        const texBlock = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
 
         return (
             <div className={classNames(
                 cls.ArticleListItem,
                 {},
-                [className, cls[view]]
-            )}>
+                [className, cls[view]],
+            )}
+            >
                 <Card className={cls.card}>
                     <div className={cls.header}>
                         <Avatar size={30} src={article?.user?.avatar} />
@@ -95,7 +94,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     </div>
                 </Card>
             </div>
-        )
+        );
     }
 
     return (
@@ -105,7 +104,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             className={classNames(
                 cls.ArticleListItem,
                 {},
-                [className, cls[view]]
+                [className, cls[view]],
             )}
             onClick={handleButtonClick}
         >

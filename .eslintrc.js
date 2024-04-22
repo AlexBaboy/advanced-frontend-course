@@ -22,7 +22,7 @@ module.exports = {
         '@typescript-eslint',
         'i18next',
         'react-hooks',
-        'alexb-esling-plugin-path-checker',
+        'alexb-fsd-path-checker',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -59,7 +59,7 @@ module.exports = {
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
         'arrow-body-style': 'off',
-        'alexb-esling-plugin-path-checker/fsd-arch-path-checker': 2,
+        'alexb-fsd-path-checker/fsd-arch-path-checker': 2,
     },
     globals: {
         __IS_DEV__: true,
