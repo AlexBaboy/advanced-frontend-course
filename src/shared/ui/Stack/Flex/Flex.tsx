@@ -5,13 +5,15 @@ import cls from './Flex.module.scss';
 export type FlexJustify = 'start' | 'center' | 'end' | 'between'
 export type FlexAlign = 'start' | 'center' | 'end'
 export type FlexDirection = 'row' | 'column'
+export type FlexGap = '4' | '8' | '16' | '32'
 
-interface FlexProps {
+export interface FlexProps {
     className?: string;
     children?: ReactNode;
     justify?: FlexJustify;
     align?: FlexAlign;
     direction?: FlexDirection;
+    gap?: FlexGap;
 }
 
 const justifyClasses: Record<FlexJustify, string> = {
@@ -32,6 +34,13 @@ const directionClasses: Record<FlexDirection, string> = {
     column: cls.directionColumn,
 }
 
+const gapClasses: Record<FlexGap, string> = {
+    4: cls.gap4,
+    8: cls.gap8,
+    16: cls.gap16,
+    32: cls.gap32,
+}
+
 export const Flex = (props: FlexProps) => {
 
     const {
@@ -39,17 +48,20 @@ export const Flex = (props: FlexProps) => {
         className,
         justify = 'center',
         align = 'center',
-        direction = 'row'} = props
+        direction = 'row',
+        gap,
+    } = props
 
     const classes = [
         className,
         justifyClasses[justify],
         alignClasses[align],
         directionClasses[direction],
+        gap && gapClasses[gap],
     ]
 
     return (
-        <div className={classNames(cls.Flex, {}, [className])}>
+        <div className={classNames(cls.Flex, {}, classes)}>
             {children}
         </div>
     );
