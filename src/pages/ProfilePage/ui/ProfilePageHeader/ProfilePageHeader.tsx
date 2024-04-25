@@ -1,73 +1,69 @@
-import {classNames} from "shared/lib/classNames/classNames";
-import cls from './ProfilePageHeader.module.scss'
-import {useTranslation} from "react-i18next";
+import { classNames } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
 import {
     getProfileData,
     getProfileReadOnly,
     profileActions, updateProfileData,
-} from "entities/Profile";
-import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import {Text} from "shared/ui/Text/Text";
-import {Button, ButtonTheme} from "shared/ui/Button/Button";
-import {useSelector} from "react-redux";
-import {memo} from "react";
-import {getUserAuthData} from "entities/User";
-
+} from 'entities/Profile';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Text } from 'shared/ui/Text/Text';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { useSelector } from 'react-redux';
+import { memo } from 'react';
+import { getUserAuthData } from 'entities/User';
+import {HStack} from "shared/ui/Stack/HStack/HStack";
 
 interface ProfilePageHeaderProps {
     className?: string
 }
 
 export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
-
-    const {t} = useTranslation('profile')
+    const { t } = useTranslation('profile');
 
     const {
         className,
-    } = props
+    } = props;
 
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
 
-    const readonly = useSelector(getProfileReadOnly)
-    const authData = useSelector(getUserAuthData)
-    const profileData = useSelector(getProfileData)
-    const canEdit = authData?.id === profileData?.id
+    const readonly = useSelector(getProfileReadOnly);
+    const authData = useSelector(getUserAuthData);
+    const profileData = useSelector(getProfileData);
+    const canEdit = authData?.id === profileData?.id;
 
     const onEdit = () => {
-        dispatch(profileActions.setReadOnly(false))
-    }
+        dispatch(profileActions.setReadOnly(false));
+    };
 
     const onCancelEdit = () => {
-        dispatch(profileActions.cancelEdit())
-    }
+        dispatch(profileActions.cancelEdit());
+    };
 
     const onSave = () => {
-        dispatch(updateProfileData())
-    }
+        dispatch(updateProfileData());
+    };
 
     return (
-        <div className={classNames(
-            cls.ProfilePageHeader,
-            {},
-            [className]
-        )}>
+        <HStack
+            max
+            justify={'between'}
+            className={classNames('',{}, [className])}
+        >
             <Text title={t('Профиль')} />
 
             {canEdit && (
-                <div className={cls.btnWrapper}>
+                <>
                     {readonly ? (
                         <Button
                             theme={ButtonTheme.OUTLINE}
-                            className={cls.editBtn}
                             onClick={onEdit}
                         >
                             {t('Редактировать')}
                         </Button>
                     ) : (
-                        <div className={cls.btnEditWrapper}>
+                        <HStack gap={'8'}>
                             <Button
                                 theme={ButtonTheme.OUTLINE_RED}
-                                className={cls.editBtn}
                                 onClick={onCancelEdit}
                             >
                                 {t('Отменить')}
@@ -75,17 +71,16 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
 
                             <Button
                                 theme={ButtonTheme.OUTLINE}
-                                className={cls.editBtn}
                                 onClick={onSave}
                             >
                                 {t('Сохранить')}
                             </Button>
-                        </div>
+                        </HStack>
                     )}
-                </div>
+                </>
             )}
-        </div>
+        </HStack>
     );
 };
 
-export default memo(ProfilePageHeader)
+export default memo(ProfilePageHeader);
