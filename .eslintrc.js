@@ -60,6 +60,7 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'arrow-body-style': 'off',
         'alexb-fsd-path-checker/fsd-arch-path-checker': 2,
+        semi: 'off',
     },
     globals: {
         __IS_DEV__: true,

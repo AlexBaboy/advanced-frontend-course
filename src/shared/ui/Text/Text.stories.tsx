@@ -1,8 +1,8 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import {Text, TextSize, TextTheme} from './Text';
-import {ThemeDecorator} from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import {Theme} from "app/providers/ThemeProvider";
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from 'app/providers/ThemeProvider';
+import { Text, TextSize, TextTheme } from './Text';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -29,7 +29,7 @@ export const Error = Template.bind({});
 Error.args = {
     title: 'Title',
     text: 'Text',
-    theme: TextTheme.ERROR
+    theme: TextTheme.ERROR,
 };
 
 export const OnlyTitle = Template.bind({});
@@ -66,11 +66,26 @@ OnlyTextDark.args = {
 };
 OnlyTextDark.decorators = [ThemeDecorator(Theme.DARK)]
 
-
 export const SizeL = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 SizeL.args = {
     title: 'Title',
     text: 'Text',
-    size: TextSize.L
+    size: TextSize.L,
+};
+
+export const SizeM = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+SizeM.args = {
+    title: 'Title',
+    text: 'Text',
+    size: TextSize.M,
+};
+
+export const SizeS = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+SizeS.args = {
+    title: 'Title',
+    text: 'Text',
+    size: TextSize.S,
 };
