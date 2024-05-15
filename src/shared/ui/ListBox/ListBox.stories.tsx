@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
@@ -20,6 +21,7 @@ const Template: ComponentStory<typeof ListBox> = (args) => <ListBox />;
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-    placeholder: 'Text',
-    value: 'Enter Login',
+    readonly: false,
+    value
 };
+*/
