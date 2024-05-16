@@ -157,7 +157,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
             <CountrySelect
                 value={data?.country}
                 onChange={onChangeCountry}
-                readOnly={readonly}
+                readonly={readonly}
                 className={cls.input}
             />
         </VStack>

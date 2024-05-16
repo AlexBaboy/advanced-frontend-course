@@ -1,8 +1,6 @@
-/*
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Input } from 'shared/ui/Input/Input';
 import { ListBox } from 'shared/ui/ListBox/ListBox';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -16,12 +14,11 @@ export default {
 } as ComponentMeta<typeof ListBox>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof ListBox> = (args) => <ListBox />;
+const Template: ComponentStory<typeof ListBox> = (args) => <ListBox {...args} />;
 
-export const Primary = Template.bind({});
+export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
+/* Default.args = {
     readonly: false,
-    value
-};
-*/
+
+}; */

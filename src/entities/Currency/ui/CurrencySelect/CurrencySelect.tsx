@@ -35,6 +35,7 @@ export const CurrencySelect = memo((props: CurrencySelectProps) => {
             value={value}
             items={options}
             defaultValue={t('Укажите валюту')}
+            label={t('Укажите валюту')}
             onChange={onChangeHandler}
             className={className}
             readonly={readOnly}
