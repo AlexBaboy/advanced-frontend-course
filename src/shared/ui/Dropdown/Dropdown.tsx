@@ -1,34 +1,43 @@
-import { Menu } from '@headlessui/react'
-import { classNames } from 'shared/lib/classNames/classNames';
+import {Menu} from '@headlessui/react'
+import {classNames} from 'shared/lib/classNames/classNames';
+import {Fragment, ReactNode} from 'react';
 import cls from './Dropdown.module.scss'
 
+export interface DropdownItem {
+    disabled?: boolean,
+    content?: ReactNode,
+    onClick?: () => void,
+    href?: string
+}
+
 interface DropdownProps {
-    className?: string
+    className?: string,
+    items: DropdownItem[],
+    trigger?: ReactNode,
 }
 
 export const Dropdown = (props: DropdownProps) => {
-
-    const {className} = props
+    const { className, trigger, items} = props
 
     return (
         <Menu as="div" className={classNames(cls.Dropdown, {}, [className])}>
-            <Menu.Button>My account</Menu.Button>
-            <Menu.Items anchor="bottom">
-                <Menu.Item>
-                    <a className="block data-[focus]:bg-blue-100" href="/settings">
-                        Settings
-                    </a>
-                </Menu.Item>
-                <Menu.Item>
-                    <a className="block data-[focus]:bg-blue-100" href="/support">
-                        Support
-                    </a>
-                </Menu.Item>
-                <Menu.Item>
-                    <a className="block data-[focus]:bg-blue-100" href="/license">
-                        License
-                    </a>
-                </Menu.Item>
+            <Menu.Button className={cls.btn}>My account</Menu.Button>
+            <Menu.Items className={cls.menu}>
+                {items.map(item => {
+                    return (
+                        <Menu.Item as={Fragment} disabled={item.disabled}>
+                            {({ active }) => (
+                                <button
+                                    type="button"
+                                    className={classNames(cls.item, { [cls.active]: active })}
+                                    onClick={item.onClick}
+                                >
+                                    {item.content}
+                                </button>
+                            )}
+                        </Menu.Item>
+                    )
+                })}
             </Menu.Items>
         </Menu>
     )
