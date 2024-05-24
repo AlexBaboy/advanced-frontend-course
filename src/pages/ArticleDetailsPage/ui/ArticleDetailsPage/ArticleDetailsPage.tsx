@@ -25,6 +25,7 @@ import {
 import { articleDetailsPageReducer } from '../../model/slices';
 import cls from './ArticleDetailsPage.module.scss';
 import {VStack} from "shared/ui/Stack";
+import {ArticleRecommendationsList} from "features/articleRecommendationsList";
 
 interface ArticleDetailsPage {
     className?: string
@@ -41,12 +42,10 @@ const ArticleDetailsPage = (props: ArticleDetailsPage) => {
     const dispatch = useAppDispatch();
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-    const recommendations = useSelector(getArticleRecommendations.selectAll);
-    const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
 
     useInitialEffect(() => {
         id && dispatch(fetchCommentsByArticleId(id));
-        dispatch(fetchArticleRecommendations());
+
     });
 
     const onSendComment = useCallback(async (text) => {
@@ -82,17 +81,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPage) => {
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
 
-                    <Text
-                        title={t('Рекомендуем')}
-                        className={cls.commentTitle}
-                        size={TextSize.L}
-                    />
-                    <ArticleList
-                        articles={recommendations}
-                        isLoading={recommendationsIsLoading}
-                        className={cls.recommendations}
-                        target="_blank"
-                    />
+                    <ArticleRecommendationsList />
 
                     <Text
                         title={t('Комментарии')}

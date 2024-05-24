@@ -3,7 +3,7 @@ import i18n from "i18next";
 import {ThunkConfig} from "app/providers/StoreProvider";
 import {Article} from "entities/Article";
 
-const LIMIT_RECOMMENDATIONS_COUNT = 4
+export const LIMIT_RECOMMENDATIONS_COUNT = 4
 
 export const fetchArticleRecommendations = createAsyncThunk<
     Article[],
