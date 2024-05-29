@@ -65,7 +65,6 @@ export const ArticleList = memo((props: ArticleListProps) => {
     }, [selectedArticleId, view]);
 
     const renderArticle = (index: number, article: Article) => {
-        console.log('68 renderArticle article', article);
         if (!article) return null;
 
         return (
@@ -127,14 +126,14 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
             {view === ArticleView.BIG ? (
                 <Virtuoso
-                    style={{ height: '100%' }}
+                    style={{ height: '20vh', width: 'calc(100vw - var(--sidebar-width))' }}
                     data={articles}
                     // itemContent={(index, article) => renderArticle(index, article)}
                     itemContent={renderArticle}
                     endReached={onLoadNextPart}
                     initialTopMostItemIndex={selectedArticleId}
                     components={{
-                        Header,
+                        //Header,
                         Footer,
                     }}
                 />
