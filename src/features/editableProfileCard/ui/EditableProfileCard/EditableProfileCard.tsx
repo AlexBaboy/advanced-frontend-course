@@ -2,24 +2,35 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import cls from './EditableProfileCard.module.scss';
 import {memo, useCallback} from 'react';
-import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import {useSelector} from "react-redux";
+import {useAppDispatch} from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {useSelector} from 'react-redux';
+
+import {useParams} from 'react-router-dom';
+import {useInitialEffect} from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import {Currency} from 'entities/Currency';
+import {Country} from 'entities/Country';
+import {Text, TextTheme} from 'shared/ui/Text/Text';
+import {getProfileForm} from 'features/editableProfileCard/model/selectors/getProfileForm/getProfileForm';
 import {
-    fetchProfileData,
-    getProfileError,
-    getProfileForm,
-    getProfileIsLoading,
-    getProfileReadOnly,
-    getProfileValidateErrors, profileActions, ProfileCard, ValidateProfileError
-} from "entities/Profile";
-import {useParams} from "react-router-dom";
-import {useInitialEffect} from "shared/lib/hooks/useInitialEffect/useInitialEffect";
-import {Currency} from "entities/Currency";
-import {Country} from "entities/Country";
-import {Text, TextTheme} from "shared/ui/Text/Text";
+    getProfileIsLoading
+} from "features/editableProfileCard/model/selectors/getProfileIsLoading/getProfileIsLoading";
+import {getProfileError} from "features/editableProfileCard/model/selectors/getProfileError/getProfileError";
+import {getProfileReadOnly} from "features/editableProfileCard/model/selectors/getProfileReadOnly/getProfileReadOnly";
+import {
+    getProfileValidateErrors
+} from "features/editableProfileCard/model/selectors/getProfileValidateErrors/getProfileValidateErrors";
+import {fetchProfileData} from "features/editableProfileCard/model/services/fetchProfileData/fetchProfileData";
+import {profileActions} from "features/editableProfileCard/model/slice/profileSlice";
+import {ValidateProfileError} from "features/editableProfileCard/model/types/editableProfileCardSchema";
+import {ProfileCard, profileReducer} from "entities/Profile";
+import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 
 interface EditableProfileCardProps {
     className?: string;
+}
+
+const reducers: ReducersList = {
+    profile: profileReducer,
 }
 
 export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
@@ -80,29 +91,31 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     }, [])
 
     return (
-        <div className={classNames(cls.EditableProfileCard, {}, [className])}>
-            {validateErrors?.length && validateErrors.map((err) => (
-                <Text
-                    key={err}
-                    theme={TextTheme.ERROR}
-                    text={validateErrorTranslates[err]}
-                />
-            ))}
+        <DynamicModuleLoader reducers={reducers}>
+            <div className={classNames(cls.EditableProfileCard, {}, [className])}>
+                {validateErrors?.length && validateErrors.map((err) => (
+                    <Text
+                        key={err}
+                        theme={TextTheme.ERROR}
+                        text={validateErrorTranslates[err]}
+                    />
+                ))}
 
-            <ProfileCard
-                data={formData}
-                isLoading={isLoading}
-                error={error}
-                readonly={readonly}
-                onChangeFirstName={onChangeFirstName}
-                onChangeLastName={onChangeLastName}
-                onChangeCity={onChangeCity}
-                onChangeAge={onChangeAge}
-                onChangeUsername={onChangeUsername}
-                onChangeAvatar={onChangeAvatar}
-                onChangeCurrency={onChangeCurrency}
-                onChangeCountry={onChangeCountry}
-            />
-        </div>
+                <ProfileCard
+                    data={formData}
+                    isLoading={isLoading}
+                    error={error}
+                    readonly={readonly}
+                    onChangeFirstName={onChangeFirstName}
+                    onChangeLastName={onChangeLastName}
+                    onChangeCity={onChangeCity}
+                    onChangeAge={onChangeAge}
+                    onChangeUsername={onChangeUsername}
+                    onChangeAvatar={onChangeAvatar}
+                    onChangeCurrency={onChangeCurrency}
+                    onChangeCountry={onChangeCountry}
+                />
+            </div>
+        </DynamicModuleLoader>
     );
 });
