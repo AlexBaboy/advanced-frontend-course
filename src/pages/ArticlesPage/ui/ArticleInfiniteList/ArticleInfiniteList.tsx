@@ -1,57 +1,56 @@
-import { Text, TextSize } from 'shared/ui/Text/Text';
 import cls from 'pages/ArticleDetailsPage/ui/ArticleDetailsPage/ArticleDetailsPage.module.scss';
-import { AddCommentForm } from 'features/addCommentForm';
-import { CommentList } from 'entities/Comment';
-import { memo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import { getArticleComments } from 'pages/ArticleDetailsPage/model/slices/ArticleDetailsCommentSlice';
-import { getArticleCommentsIsLoading } from 'pages/ArticleDetailsPage/model/selectors/comments/comments';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import {memo} from 'react';
+import {useTranslation} from 'react-i18next';
+import {ArticleList} from "entities/Article";
+import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import {useSelector} from "react-redux";
+import {getArticles} from "pages/ArticlesPage/model/slices/articlesPageSlice";
 import {
-    fetchCommentsByArticleId,
-} from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import { addCommentForArticle } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
-import { addCommentFormActions } from 'features/addCommentForm/model/slice/addCommentFormSlice';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { classNames } from 'shared/lib/classNames/classNames';
+    getArticlesPageError,
+    getArticlesPageIsLoading,
+    getArticlesPageView
+} from "pages/ArticlesPage/model/selectors/articlesPageSelectors";
+import {useSearchParams} from "react-router-dom";
+import {useInitialEffect} from "shared/lib/hooks/useInitialEffect/useInitialEffect";
+import {initArticlesPage} from "pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage";
+import { Text } from 'shared/ui/Text/Text';
 
 interface ArticleInfiniteListProps {
     className?: string,
-    id: string
 }
 
 export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
     const {
         className,
-        id,
     } = props;
 
     const { t } = useTranslation('article-details');
 
-    const comments = useSelector(getArticleComments.selectAll);
-    const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
     const dispatch = useAppDispatch();
 
+    const articles = useSelector(getArticles.selectAll);
+    const isLoading = useSelector(getArticlesPageIsLoading);
+    const error = useSelector(getArticlesPageError);
+
+    const view = useSelector(getArticlesPageView);
+    const [searchParams] = useSearchParams();
+
     useInitialEffect(() => {
-        dispatch(fetchCommentsByArticleId(id));
+        dispatch(initArticlesPage(searchParams));
     });
 
-    const onSendComment = useCallback(async (text) => {
-        dispatch(addCommentForArticle(text));
-        dispatch(addCommentFormActions.setText(''));
-        await dispatch(fetchCommentsByArticleId(id));
-    }, [id]);
+    const repeatedArticles = Array(5).fill(articles).flat();
+
+    if (error) {
+        return <Text title={t('Ошибка при загрузке статей')} />
+    }
 
     return (
-        <div className={classNames(cls.ArticleDetailsComments, {}, [className])}>
-            <Text
-                title={t('Комментарии')}
-                className={cls.commentTitle}
-                size={TextSize.L}
-            />
-            <AddCommentForm onSendComment={onSendComment} />
-            <CommentList isLoading={commentsIsLoading} comments={comments} />
-        </div>
+        <ArticleList
+            articles={repeatedArticles}
+            view={view}
+            isLoading={isLoading}
+            className={cls.list}
+        />
     )
 })

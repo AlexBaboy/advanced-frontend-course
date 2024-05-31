@@ -25,8 +25,6 @@ const ArticleDetailsPage = (props: ArticleDetailsPage) => {
     const { className } = props;
     const { t } = useTranslation('article-details');
     const { id } = useParams<{ id: string }>();
-    const dispatch = useAppDispatch();
-
 
     if (!id) {
         return (

@@ -10,11 +10,11 @@ import {getArticleCommentsIsLoading} from "pages/ArticleDetailsPage/model/select
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 import {
     fetchCommentsByArticleId
-} from "pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
+} from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import {addCommentForArticle} from "pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle";
 import {addCommentFormActions} from "features/addCommentForm/model/slice/addCommentFormSlice";
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import {classNames} from "shared/lib/classNames/classNames";
+import {classNames} from 'shared/lib/classNames/classNames';
 
 interface ArticleDetailsCommentsProps {
     className?: string,
