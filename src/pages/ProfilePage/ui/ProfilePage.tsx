@@ -1,40 +1,38 @@
 import {classNames} from 'shared/lib/classNames/classNames';
-import {DynamicModuleLoader, ReducersList} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import {profileReducer} from 'entities/Profile';
 import {Page} from 'widgets/Page/Page';
 import {VStack} from 'shared/ui/Stack/VStack/VStack';
 import {EditableProfileCard} from 'features/editableProfileCard';
 import ProfilePageHeader from './ProfilePageHeader/ProfilePageHeader';
 import cls from './ProfilePage.module.scss'
-
-const reducers: ReducersList = {
-    profile: profileReducer,
-}
+import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import {Text} from "shared/ui/Text/Text";
 
 interface ProfilePageProps {
     className?: string
 }
 
-const ProfilePage = ({ className }: ProfilePageProps) => {
+const ProfilePage = ({className}: ProfilePageProps) => {
+
+    const { id} = useParams<{id: string}>()
+    const { t} = useTranslation('profile')
+
+    if (!id) {
+        return <Text text={t('Профиль не найден')} />
+    }
 
     return (
-        <DynamicModuleLoader
-            reducers={reducers}
-            removeAfterUnmount
+        <Page className={classNames(
+            cls.ProfilePage,
+            {},
+            [className, cls.loading],
+        )}
         >
-            <Page className={classNames(
-                cls.ProfilePage,
-                {},
-                [className, cls.loading],
-            )}
-            >
-                <VStack gap="16" max>
-                    <ProfilePageHeader />
-                    <EditableProfileCard />
-                </VStack>
-
-            </Page>
-        </DynamicModuleLoader>
+            <VStack gap="16" max>
+                <ProfilePageHeader />
+                <EditableProfileCard id={id} />
+            </VStack>
+        </Page>
     );
 };
 

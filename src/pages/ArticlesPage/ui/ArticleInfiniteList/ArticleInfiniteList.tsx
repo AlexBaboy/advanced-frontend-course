@@ -50,7 +50,7 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
             articles={repeatedArticles}
             view={view}
             isLoading={isLoading}
-            className={cls.list}
+            className={className}
         />
     )
 })

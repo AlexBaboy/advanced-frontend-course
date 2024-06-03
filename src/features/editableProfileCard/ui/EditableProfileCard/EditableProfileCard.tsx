@@ -1,11 +1,9 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
+import {classNames} from 'shared/lib/classNames/classNames';
+import {useTranslation} from 'react-i18next';
 import cls from './EditableProfileCard.module.scss';
 import {memo, useCallback} from 'react';
 import {useAppDispatch} from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {useSelector} from 'react-redux';
-
-import {useParams} from 'react-router-dom';
 import {useInitialEffect} from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import {Currency} from 'entities/Currency';
 import {Country} from 'entities/Country';
@@ -20,13 +18,14 @@ import {
     getProfileValidateErrors
 } from "features/editableProfileCard/model/selectors/getProfileValidateErrors/getProfileValidateErrors";
 import {fetchProfileData} from "features/editableProfileCard/model/services/fetchProfileData/fetchProfileData";
-import {profileActions} from "features/editableProfileCard/model/slice/profileSlice";
+import {profileActions, profileReducer} from "features/editableProfileCard/model/slice/profileSlice";
 import {ValidateProfileError} from "features/editableProfileCard/model/types/editableProfileCardSchema";
-import {ProfileCard, profileReducer} from "entities/Profile";
+import {ProfileCard} from "entities/Profile";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 
 interface EditableProfileCardProps {
     className?: string;
+    id: string
 }
 
 const reducers: ReducersList = {
@@ -34,7 +33,7 @@ const reducers: ReducersList = {
 }
 
 export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
-    const { className } = props;
+    const { className, id } = props;
     const { t } = useTranslation();
 
     const dispatch = useAppDispatch()
@@ -44,7 +43,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadOnly);
     const validateErrors = useSelector(getProfileValidateErrors);
-    const {id} = useParams<{id: string}>()
+
 
     const validateErrorTranslates = {
         [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),

@@ -1,5 +1,5 @@
-import {Currency} from "entities/currency";
-import {Country} from "entities/Country";
+import { Currency } from 'entities/currency';
+import { Country } from 'entities/Country';
 
 export type Profile = {
     id?: string,

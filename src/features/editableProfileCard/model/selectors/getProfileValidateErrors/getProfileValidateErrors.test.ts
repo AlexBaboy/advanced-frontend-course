@@ -1,18 +1,17 @@
-import {DeepPartial} from "@reduxjs/toolkit";
-import {StateSchema} from "app/providers/StoreProvider";
-import {getProfileValidateErrors} from "./getProfileValidateErrors";
-import {ValidateProfileError} from "entities/Profile";
+import { DeepPartial } from '@reduxjs/toolkit';
+import { StateSchema } from 'app/providers/StoreProvider';
+import { ValidateProfileError } from 'features/editableProfileCard/model/types/editableProfileCardSchema';
+import { getProfileValidateErrors } from './getProfileValidateErrors';
 
 describe('getProfileData test', () => {
     test('should work with filled state', () => {
-
         const state: DeepPartial<StateSchema> = {
             profile: {
                 validateErrors: [
                     ValidateProfileError.SERVER_ERROR,
                     ValidateProfileError.INCORRECT_AGE,
-                ]
-            }
+                ],
+            },
         }
         expect(getProfileValidateErrors(state as StateSchema)).toEqual([
             ValidateProfileError.SERVER_ERROR,

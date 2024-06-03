@@ -1,22 +1,19 @@
-import axios from "axios";
-import {updateProfileData} from "./updateProfileData";
-import {TestAsyncThunk} from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
-import {profileData} from "shared/mocks/profileData";
-import {ValidateProfileError} from "entities/Profile";
+import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { profileData } from 'shared/mocks/profileData';
+import { ValidateProfileError } from 'features/editableProfileCard/model/types/editableProfileCardSchema';
+import { updateProfileData } from './updateProfileData';
 
-//jest.mock('axios')
+// jest.mock('axios')
 
-//const mockedAxios = jest.mocked(axios, true)
-describe('updateProfileData test' , () => {
-
+// const mockedAxios = jest.mocked(axios, true)
+describe('updateProfileData test', () => {
     test('success', async () => {
-
         const thunk = new TestAsyncThunk(updateProfileData, {
-            profile: {form: profileData}
+            profile: { form: profileData },
         })
 
         thunk.api.put.mockReturnValue(Promise.resolve({
-            data: profileData
+            data: profileData,
         }))
 
         const result = await thunk.callThunk()
@@ -27,32 +24,30 @@ describe('updateProfileData test' , () => {
     })
 
     test('server error', async () => {
-
         const thunk = new TestAsyncThunk(updateProfileData, {
-            profile: {form: profileData}
+            profile: { form: profileData },
         })
-        thunk.api.put.mockReturnValue(Promise.resolve({status: 403}))
+        thunk.api.put.mockReturnValue(Promise.resolve({ status: 403 }))
 
         const result = await thunk.callThunk()
 
         expect(result.meta.requestStatus).toBe('rejected')
         expect(result.payload).toEqual([
-            ValidateProfileError.SERVER_ERROR
+            ValidateProfileError.SERVER_ERROR,
         ])
     })
 
     test('validate error', async () => {
-
         const thunk = new TestAsyncThunk(updateProfileData, {
             profile: {
-                form: {...profileData, lastname: ''}
-            }
+                form: { ...profileData, lastname: '' },
+            },
         })
         const result = await thunk.callThunk()
 
         expect(result.meta.requestStatus).toBe('rejected')
         expect(result.payload).toEqual([
-            ValidateProfileError.INCORRECT_USER_DATA
+            ValidateProfileError.INCORRECT_USER_DATA,
         ])
     })
 })
