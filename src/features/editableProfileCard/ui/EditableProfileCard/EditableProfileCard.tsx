@@ -22,6 +22,8 @@ import {profileActions, profileReducer} from "features/editableProfileCard/model
 import {ValidateProfileError} from "features/editableProfileCard/model/types/editableProfileCardSchema";
 import {ProfileCard} from "entities/Profile";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import {EditableProfileHeader} from "features/editableProfileCard/ui/EditableProfileHeader/EditableProfileHeader";
+import {VStack} from "shared/ui/Stack";
 
 interface EditableProfileCardProps {
     className?: string;
@@ -91,7 +93,10 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <div className={classNames(cls.EditableProfileCard, {}, [className])}>
+            <VStack gap={'8'} max className={classNames(cls.EditableProfileCard, {}, [className])}>
+
+                <EditableProfileHeader />
+
                 {validateErrors?.length && validateErrors.map((err) => (
                     <Text
                         key={err}
@@ -114,7 +119,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                     onChangeCurrency={onChangeCurrency}
                     onChangeCountry={onChangeCountry}
                 />
-            </div>
+            </VStack>
         </DynamicModuleLoader>
     );
 });

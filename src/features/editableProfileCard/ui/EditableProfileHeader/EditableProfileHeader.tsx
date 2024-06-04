@@ -1,23 +1,22 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import {
-    getProfileData,
-    getProfileReadOnly,
-    profileActions, updateProfileData,
-} from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { memo } from 'react';
 import { getUserAuthData } from 'entities/User';
-import {HStack} from "shared/ui/Stack/HStack/HStack";
+import { HStack } from 'shared/ui/Stack/HStack/HStack';
+import {updateProfileData} from "features/editableProfileCard/model/services/updateProfileData/updateProfileData";
+import {profileActions} from 'features/editableProfileCard/model/slice/profileSlice';
+import {getProfileReadOnly} from "features/editableProfileCard/model/selectors/getProfileReadOnly/getProfileReadOnly";
+import {getProfileData} from 'features/editableProfileCard/model/selectors/getProfileData/getProfileData';
 
-interface ProfilePageHeaderProps {
+interface EditableProfileHeaderProps {
     className?: string
 }
 
-export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
+export const EditableProfileHeader = (props: EditableProfileHeaderProps) => {
     const { t } = useTranslation('profile');
 
     const {
@@ -46,8 +45,8 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     return (
         <HStack
             max
-            justify={'between'}
-            className={classNames('',{}, [className])}
+            justify="between"
+            className={classNames('', {}, [className])}
         >
             <Text title={t('Профиль')} />
 
@@ -61,7 +60,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
                             {t('Редактировать')}
                         </Button>
                     ) : (
-                        <HStack gap={'8'}>
+                        <HStack gap="8">
                             <Button
                                 theme={ButtonTheme.OUTLINE_RED}
                                 onClick={onCancelEdit}
@@ -83,4 +82,4 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     );
 };
 
-export default memo(ProfilePageHeader);
+export default memo(EditableProfileHeader);
