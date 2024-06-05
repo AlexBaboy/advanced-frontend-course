@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { EditableProfileCard } from './EditableProfileCard';
 
 export default {
-    title: 'features/EditableProfileCard',
+    title: 'features/EditableProfileCard/EditableProfileCard',
     component: EditableProfileCard,
     argTypes: {
         backgroundColor: { control: 'color' },
