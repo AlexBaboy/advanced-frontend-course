@@ -1,6 +1,5 @@
 import {classNames} from 'shared/lib/classNames/classNames';
 import {useTranslation} from 'react-i18next';
-import cls from './EditableProfileCard.module.scss';
 import {memo, useCallback} from 'react';
 import {useAppDispatch} from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {useSelector} from 'react-redux';
@@ -22,8 +21,8 @@ import {profileActions, profileReducer} from "features/editableProfileCard/model
 import {ValidateProfileError} from "features/editableProfileCard/model/types/editableProfileCardSchema";
 import {ProfileCard} from "entities/Profile";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import {EditableProfileHeader} from "features/editableProfileCard/ui/EditableProfileHeader/EditableProfileHeader";
-import {VStack} from "shared/ui/Stack";
+import {EditableProfileHeader} from 'features/editableProfileCard/ui/EditableProfileHeader/EditableProfileHeader';
+import {VStack} from 'shared/ui/Stack';
 
 interface EditableProfileCardProps {
     className?: string;
@@ -35,8 +34,8 @@ const reducers: ReducersList = {
 }
 
 export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
-    const { className, id } = props;
-    const { t } = useTranslation();
+    const {className, id} = props;
+    const {t} = useTranslation();
 
     const dispatch = useAppDispatch()
 
@@ -93,9 +92,9 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <VStack gap="8" max className={classNames(cls.EditableProfileCard, {}, [className])}>
+            <VStack gap="8" max className={classNames('', {}, [className])}>
 
-                <EditableProfileHeader />
+                <EditableProfileHeader/>
 
                 {validateErrors?.length && validateErrors.map((err) => (
                     <Text
