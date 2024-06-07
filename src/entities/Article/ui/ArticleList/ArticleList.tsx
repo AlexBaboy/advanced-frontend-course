@@ -1,15 +1,15 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
+import {classNames} from 'shared/lib/classNames/classNames';
+import {useTranslation} from 'react-i18next';
 import {
     FC, HTMLAttributeAnchorTarget, memo, useEffect, useRef, useState,
 } from 'react';
-import { Text, TextSize } from 'shared/ui/Text/Text';
-import { Virtuoso, VirtuosoGrid, VirtuosoHandle } from 'react-virtuoso';
+import {Text, TextSize} from 'shared/ui/Text/Text';
+import {Virtuoso, VirtuosoGrid, VirtuosoHandle} from 'react-virtuoso';
 import ArticlesPageFilter from 'pages/ArticlesPage/ui/ArticlesPageFilter/ArticlesPageFilter';
-import { ARTICLES_LIST_ITEM_INDEX } from 'shared/const/localStorage';
-import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSkeleton';
-import { Article, ArticleView } from '../../../Article';
-import { ArticleListItem } from '../../ui/ArticleListItem/ArticleListItem';
+import {ARTICLES_LIST_ITEM_INDEX} from 'shared/const/localStorage';
+import {ArticleListItemSkeleton} from '../../ui/ArticleListItem/ArticleListItemSkeleton';
+import {Article, ArticleView} from '../../../Article';
+import {ArticleListItem} from '../../ui/ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
 
 interface ArticleListProps {
@@ -18,7 +18,8 @@ interface ArticleListProps {
     isLoading?: boolean
     view?: ArticleView
     target?: HTMLAttributeAnchorTarget
-    onLoadNextPart?: () => {}
+    onLoadNextPart?: () => {},
+    virtualized?: boolean
 }
 
 const getSkeletons = (view: ArticleView) => {
@@ -33,7 +34,7 @@ const getSkeletons = (view: ArticleView) => {
         ));
 };
 
-const Header = () => <ArticlesPageFilter />;
+const Header = () => <ArticlesPageFilter/>;
 
 export const ArticleList = memo((props: ArticleListProps) => {
     const {
@@ -43,9 +44,10 @@ export const ArticleList = memo((props: ArticleListProps) => {
         view = ArticleView.BIG,
         target,
         onLoadNextPart,
+        virtualized = true
     } = props;
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const [selectedArticleId, setSelectedArticleId] = useState(1);
     const virtuosoGridRef = useRef<VirtuosoHandle | null>(null);
 
@@ -102,7 +104,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
     console.log('102 articles.length', articles.length);
     console.log('102 articles', articles);
 
-    const ItemContainerComp: FC<{height: number, width: number, index: number}> = ({ height, width, index }) => {
+    const ItemContainerComp: FC<{ height: number, width: number, index: number }> = ({height, width, index}) => {
         console.log('111 !!!');
 
         return (
@@ -124,36 +126,43 @@ export const ArticleList = memo((props: ArticleListProps) => {
         )}
         >
 
-            {view === ArticleView.BIG ? (
-                <Virtuoso
-                    style={{ height: '20vh', width: 'calc(100vw - var(--sidebar-width))' }}
-                    data={articles}
-                    // itemContent={(index, article) => renderArticle(index, article)}
-                    itemContent={renderArticle}
-                    endReached={onLoadNextPart}
-                    initialTopMostItemIndex={selectedArticleId}
-                    components={{
-                        //Header,
-                        Footer,
-                    }}
-                />
+            {virtualized ? (
+                view === ArticleView.BIG ? (
+                    <Virtuoso
+                        style={{height: '20vh', width: 'calc(100vw - var(--sidebar-width))'}}
+                        data={articles}
+                        // itemContent={(index, article) => renderArticle(index, article)}
+                        itemContent={renderArticle}
+                        endReached={onLoadNextPart}
+                        initialTopMostItemIndex={selectedArticleId}
+                        components={{
+                            //Header,
+                            Footer,
+                        }}
+                    />
+                ) : (
+                    <VirtuosoGrid
+                        style={{height: '80vh', width: 'calc(100vw - var(--sidebar-width))'}}
+                        ref={virtuosoGridRef}
+                        totalCount={articles.length}
+                        components={{
+                            Header,
+                            ScrollSeekPlaceholder: ItemContainerComp,
+                        }}
+                        endReached={onLoadNextPart}
+                        itemContent={(index) => renderArticle(index, articles[index])}
+                        listClassName={cls.itemsWrapper}
+                        scrollSeekConfiguration={{
+                            enter: (velocity) => Math.abs(velocity) > 200,
+                            exit: (velocity) => Math.abs(velocity) < 30,
+                        }}
+                    />
+                )
             ) : (
-                <VirtuosoGrid
-                    style={{ height: '80vh', width: 'calc(100vw - var(--sidebar-width))' }}
-                    ref={virtuosoGridRef}
-                    totalCount={articles.length}
-                    components={{
-                        Header,
-                        ScrollSeekPlaceholder: ItemContainerComp,
-                    }}
-                    endReached={onLoadNextPart}
-                    itemContent={(index) => renderArticle(index, articles[index])}
-                    listClassName={cls.itemsWrapper}
-                    scrollSeekConfiguration={{
-                        enter: (velocity) => Math.abs(velocity) > 200,
-                        exit: (velocity) => Math.abs(velocity) < 30,
-                    }}
-                />
+
+                articles.length > 0
+                    ? articles.map((article, index) => renderArticle(index, article))
+                    : null
             )}
 
             {/* {articles.length > 0
