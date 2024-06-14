@@ -6,7 +6,7 @@ const AdminPanel = () => {
 
     return (
         <div>
-            {t('Админка')}
+            {t('Админ панель')}
         </div>
     );
 };

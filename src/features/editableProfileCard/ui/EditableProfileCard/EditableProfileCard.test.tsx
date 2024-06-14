@@ -4,7 +4,7 @@ import { EditableProfileCard } from 'features/editableProfileCard';
 import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
 import userEvent from '@testing-library/user-event'
 import { screen } from '@testing-library/react';
-import {$api} from "shared/api/api";
+import { $api } from 'shared/api/api';
 
 const options = {
     initialState: {
@@ -16,7 +16,8 @@ const options = {
         user: {
             authData: {
                 id: '1',
-                name: 'John Doe',
+                // name: 'John Doe',
+                username: 'John Doe',
             },
         },
     },
@@ -28,7 +29,7 @@ const options = {
 describe('EditableProfileCard tests', () => {
     test('режим редактирвоания', async () => {
         componentRender(<EditableProfileCard id="1" />, options)
-        await userEvent.click(screen.getByTestId('EditableProfileHeader.EditButton'))
+        userEvent.click(screen.getByTestId('EditableProfileHeader.EditButton'))
         expect(screen.getByTestId('EditableProfileHeader.CancelButton')).toBeInTheDocument();
     });
 

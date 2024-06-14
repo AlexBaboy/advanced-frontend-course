@@ -1,4 +1,4 @@
-import {lazy} from "react";
+import { lazy } from 'react';
 
 // @ts-ignore
-export const AdminPanelAsync = lazy( ()=> import('./AdminPanel'))
+export const AdminPanelAsync = lazy(() => import('./AdminPanel'))
