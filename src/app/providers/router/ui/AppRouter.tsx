@@ -1,13 +1,11 @@
-import React, {Suspense} from 'react';
-import {Route, Routes} from "react-router-dom";
-import {AppRoutesProps, routeConfig} from "shared/config/routeConfig/routeConfig";
-import {PageLoader} from "widgets/PageLoader/PageLoader";
-import {RequireAuth} from "app/providers/router/ui/RequireAuth";
+import React, { Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { AppRoutesProps, routeConfig } from 'shared/config/routeConfig/routeConfig';
+import { PageLoader } from 'widgets/PageLoader/PageLoader';
+import { RequireAuth } from 'app/providers/router/ui/RequireAuth';
 
 export const AppRouter = () => {
-
     const renderWithWrapper = (route: AppRoutesProps) => {
-
         const element = (
             <Suspense fallback={<PageLoader />}>
                 {route.element}
@@ -23,10 +21,9 @@ export const AppRouter = () => {
         )
     }
 
-
     return (
-            <Routes>
-                {Object.values(routeConfig).map(renderWithWrapper)}
-            </Routes>
+        <Routes>
+            {Object.values(routeConfig).map(renderWithWrapper)}
+        </Routes>
     );
 };

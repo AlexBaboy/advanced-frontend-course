@@ -62,13 +62,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         direction="bottom left"
                         items={[
 
-                            isAdminPanelAvailable && (
-                                {
-                                    content: t('Админка'),
-                                    href: RoutePath.admin_panel,
-                                },
-                            ),
-
+                            ...(isAdminPanelAvailable ? [{
+                                content: t('Админка'),
+                                href: RoutePath.admin_panel,
+                            }] : []),
 
                             {
                                 content: t('Профиль'),
