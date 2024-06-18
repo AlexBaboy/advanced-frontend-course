@@ -28,12 +28,14 @@ const options = {
 
 describe('EditableProfileCard tests', () => {
     test('режим редактирвоания', async () => {
+        // @ts-ignore
         componentRender(<EditableProfileCard id="1" />, options)
         userEvent.click(screen.getByTestId('EditableProfileHeader.EditButton'))
         expect(screen.getByTestId('EditableProfileHeader.CancelButton')).toBeInTheDocument();
     });
 
     test('при отмене сбрасываются введенные значения', async () => {
+        // @ts-ignore
         componentRender(<EditableProfileCard id="1" />, options)
         userEvent.click(screen.getByTestId('EditableProfileHeader.EditButton'))
 
@@ -53,6 +55,7 @@ describe('EditableProfileCard tests', () => {
     });
 
     test('должна появиться ошибка', async () => {
+        // @ts-ignore
         componentRender(<EditableProfileCard id="1" />, options)
         userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton'))
         userEvent.clear(screen.getByTestId('ProfileCard.firstname'))
@@ -63,7 +66,7 @@ describe('EditableProfileCard tests', () => {
     test('при отсутствии ошибок валидации должен уйти PUT запрос', async () => {
 
         const mockPutReq = jest.spyOn($api, 'put')
-
+        // @ts-ignore
         componentRender(<EditableProfileCard id="1" />, options)
         userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton'))
         userEvent.type(screen.getByTestId('ProfileCard.firstname'), 'user')

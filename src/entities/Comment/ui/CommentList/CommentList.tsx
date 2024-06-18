@@ -1,10 +1,10 @@
-import {classNames} from 'shared/lib/classNames/classNames';
-import {useTranslation} from 'react-i18next';
-import {memo} from 'react';
-import {CommentItem} from '../../../Comment';
-import {Text} from 'shared/ui/Text/Text';
-import {CommentCard} from '../CommentCard/CommentCard';
-import {VStack} from "shared/ui/Stack";
+import { classNames } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
+import { VStack } from 'shared/ui/Stack';
+import { Text } from 'shared/ui/Text/Text';
+import { CommentItem } from '../../../Comment';
+import { CommentCard } from '../CommentCard/CommentCard';
 
 interface CommentListProps {
     className?: string
@@ -25,7 +25,7 @@ export const CommentList = memo((props: CommentListProps) => {
         return (
             <VStack
                 max
-                gap={'16'}
+                gap="16"
                 className={classNames(
                     '',
                     {},
@@ -39,8 +39,8 @@ export const CommentList = memo((props: CommentListProps) => {
 
     return (
         <VStack
-            gap={'16'}
             max
+            gap={"8"}
             className={classNames(
                 '',
                 {},

@@ -53,7 +53,7 @@ export const Flex = (props: FlexProps) => {
         align = 'center',
         direction = 'row',
         gap,
-        max
+        max,
     } = props
 
     const classes = [
@@ -65,7 +65,7 @@ export const Flex = (props: FlexProps) => {
     ]
 
     const mods: Mods = {
-        [cls.max]: max
+        [cls.max]: max,
     }
 
     return (
