@@ -40,7 +40,7 @@ export const CommentList = memo((props: CommentListProps) => {
     return (
         <VStack
             max
-            gap={"8"}
+            gap="8"
             className={classNames(
                 '',
                 {},

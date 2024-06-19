@@ -15,7 +15,7 @@ import { addCommentForArticle } from 'pages/ArticleDetailsPage/model/services/ad
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { addCommentFormActions } from 'features/addCommentForm/model/slice/addCommentFormSlice';
-import {VStack} from "shared/ui/Stack";
+import { VStack } from 'shared/ui/Stack';
 
 interface ArticleDetailsCommentsProps {
     className?: string,
@@ -45,7 +45,7 @@ export const ArticleDetailsComments = memo((props: ArticleDetailsCommentsProps) 
     }, [id]);
 
     return (
-        <VStack gap="16" className={classNames(cls.ArticleDetailsComments, {}, [className])}>
+        <VStack gap="16" max className={classNames(cls.ArticleDetailsComments, {}, [className])}>
             <Text
                 title={t('Комментарии')}
                 className={cls.commentTitle}
