@@ -7,8 +7,8 @@ import { Text } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { VStack } from 'shared/ui/Stack';
 import cls from './CommentCard.module.scss';
-import {VStack} from "shared/ui/Stack";
 
 interface CommentCardProps {
     className?: string
@@ -31,7 +31,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
         return (
             <VStack
                 max
-                gap={'8'}
+                gap="8"
                 className={classNames(
                     cls.CommentCard,
                     mods,
@@ -53,7 +53,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
 
     return (
         <VStack
-            gap={'8'}
+            gap="8"
             max
             className={classNames(
                 cls.CommentCard,
