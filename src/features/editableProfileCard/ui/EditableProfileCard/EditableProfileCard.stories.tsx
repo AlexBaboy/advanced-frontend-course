@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { EditableProfileCard } from './EditableProfileCard';
+import {StoreDecorator} from "shared/config/storybook/StoreDecorator/StoreDecorator";
 
 export default {
     title: 'features/EditableProfileCard/EditableProfileCard',
@@ -14,6 +15,5 @@ export default {
 const Template: ComponentStory<typeof EditableProfileCard> = (args) => <EditableProfileCard {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {
-   
-};
+Normal.args = {};
+Normal.decorators = [StoreDecorator({})]

@@ -2,7 +2,7 @@ import { Text, TextSize } from 'shared/ui/Text/Text';
 import cls from 'pages/ArticleDetailsPage/ui/ArticleDetailsPage/ArticleDetailsPage.module.scss';
 import { AddCommentForm } from 'features/addCommentForm';
 import { CommentList } from 'entities/Comment';
-import { memo, useCallback } from 'react';
+import {memo, Suspense, useCallback} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { getArticleComments } from 'pages/ArticleDetailsPage/model/slices/ArticleDetailsCommentSlice';
@@ -19,7 +19,7 @@ import { VStack } from 'shared/ui/Stack';
 
 interface ArticleDetailsCommentsProps {
     className?: string,
-    id: string
+    id?: string
 }
 
 export const ArticleDetailsComments = memo((props: ArticleDetailsCommentsProps) => {
@@ -51,7 +51,9 @@ export const ArticleDetailsComments = memo((props: ArticleDetailsCommentsProps) 
                 className={cls.commentTitle}
                 size={TextSize.L}
             />
-            <AddCommentForm onSendComment={onSendComment} />
+            <Suspense fallback="загрузка">
+                <AddCommentForm onSendComment={onSendComment} />
+            </Suspense>
             <CommentList isLoading={commentsIsLoading} comments={comments} />
         </VStack>
     )

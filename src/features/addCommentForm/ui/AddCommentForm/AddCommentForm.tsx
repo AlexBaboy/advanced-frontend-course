@@ -6,10 +6,10 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Input } from 'shared/ui/Input/Input';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
+import { HStack } from 'shared/ui/Stack';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slice/addCommentFormSlice';
 import cls from './AddCommentForm.module.scss';
 import { getAddCommentFormError, getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
-import {HStack, VStack} from "shared/ui/Stack";
 
 export interface AddCommentFormProps {
     className?: string
@@ -43,12 +43,12 @@ const AddCommentForm = memo(({ className, onSendComment }: AddCommentFormProps) 
         >
             <HStack
                 max
-                justify={'between'}
+                justify="between"
                 className={classNames(
-                cls.AddCommentForm,
-                {},
-                [className],
-            )}
+                    cls.AddCommentForm,
+                    {},
+                    [className],
+                )}
             >
                 <Input
                     placeholder={t('Введите текст комментария')}
