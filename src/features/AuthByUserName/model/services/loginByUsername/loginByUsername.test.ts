@@ -5,7 +5,7 @@ import {TestAsyncThunk} from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 
 jest.mock('axios')
 
-const mockedAxios = jest.mocked(axios, true)
+const mockedAxios = jest.mocked(axios, { shallow: false })
 describe('loginByUsername test' , () => {
 
     test('success login', async () => {

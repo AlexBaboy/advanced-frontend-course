@@ -14,7 +14,6 @@ import { getAddCommentFormError, getAddCommentFormText } from '../../model/selec
 export interface AddCommentFormProps {
     className?: string
     onSendComment: (text: string) => void
-
 }
 
 const initialReducers: ReducersList = {

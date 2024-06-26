@@ -1,11 +1,9 @@
-import axios from "axios";
 import {fetchProfileData} from "./fetchProfileData";
 import {TestAsyncThunk} from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 import {profileData} from "shared/mocks/profileData";
 
 jest.mock('axios')
 
-const mockedAxios = jest.mocked(axios, true)
 describe('fetchProfileData test' , () => {
 
     test('success', async () => {

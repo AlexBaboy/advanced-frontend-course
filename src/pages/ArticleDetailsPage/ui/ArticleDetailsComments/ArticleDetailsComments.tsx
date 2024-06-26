@@ -39,7 +39,7 @@ export const ArticleDetailsComments = memo((props: ArticleDetailsCommentsProps) 
         dispatch(fetchCommentsByArticleId(id));
     });
 
-    const onSendComment = useCallback(async (text) => {
+    const onSendComment = useCallback(async (text: string) => {
         dispatch(addCommentForArticle(text));
         dispatch(addCommentFormActions.setText(''));
         await dispatch(fetchCommentsByArticleId(id));

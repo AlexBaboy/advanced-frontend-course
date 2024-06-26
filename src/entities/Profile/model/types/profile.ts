@@ -1,4 +1,4 @@
-import { Currency } from 'entities/currency';
+import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 
 export type Profile = {
