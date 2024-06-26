@@ -10,7 +10,6 @@ export const fetchArticleById = createAsyncThunk<Article, string | undefined,
             const { extra, rejectWithValue } = thunkAPI
 
             try {
-
                 if (!articleId) {
                     throw new Error('Не передан id статьи!')
                 }

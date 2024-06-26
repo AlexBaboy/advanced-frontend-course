@@ -16,6 +16,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { addCommentFormActions } from 'features/addCommentForm/model/slice/addCommentFormSlice';
 import { VStack } from 'shared/ui/Stack';
+import {Loader} from "shared/ui/Loader/Loader";
 
 interface ArticleDetailsCommentsProps {
     className?: string,
@@ -51,7 +52,7 @@ export const ArticleDetailsComments = memo((props: ArticleDetailsCommentsProps) 
                 className={cls.commentTitle}
                 size={TextSize.L}
             />
-            <Suspense fallback="загрузка">
+            <Suspense fallback={<Loader />}>
                 <AddCommentForm onSendComment={onSendComment} />
             </Suspense>
             <CommentList isLoading={commentsIsLoading} comments={comments} />
