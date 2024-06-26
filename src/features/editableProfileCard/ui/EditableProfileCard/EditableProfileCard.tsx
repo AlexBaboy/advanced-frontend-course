@@ -26,7 +26,7 @@ import {VStack} from 'shared/ui/Stack';
 
 interface EditableProfileCardProps {
     className?: string;
-    id: string
+    id?: string
 }
 
 const reducers: ReducersList = {
@@ -44,7 +44,6 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadOnly);
     const validateErrors = useSelector(getProfileValidateErrors);
-
 
     const validateErrorTranslates = {
         [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
