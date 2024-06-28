@@ -18,11 +18,11 @@ import {
 } from "features/editableProfileCard/model/selectors/getProfileValidateErrors/getProfileValidateErrors";
 import {fetchProfileData} from "features/editableProfileCard/model/services/fetchProfileData/fetchProfileData";
 import {profileActions, profileReducer} from "features/editableProfileCard/model/slice/profileSlice";
-import {ValidateProfileError} from "features/editableProfileCard/model/types/editableProfileCardSchema";
 import {ProfileCard} from "entities/Profile";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import {EditableProfileHeader} from 'features/editableProfileCard/ui/EditableProfileHeader/EditableProfileHeader';
 import {VStack} from 'shared/ui/Stack';
+import {ValidateProfileError} from "features/editableProfileCard/model/constants/constants";
 
 interface EditableProfileCardProps {
     className?: string;

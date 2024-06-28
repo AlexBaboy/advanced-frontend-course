@@ -1,6 +1,7 @@
 import {validateProfileData} from "./validateProfileData";
 import {profileData} from "shared/mocks/profileData";
-import {ValidateProfileError} from "features/editableProfileCard/model/types/editableProfileCardSchema";
+
+import {ValidateProfileError} from "features/editableProfileCard/model/constants/constants";
 
 describe('validateProfileData test' , () => {
 

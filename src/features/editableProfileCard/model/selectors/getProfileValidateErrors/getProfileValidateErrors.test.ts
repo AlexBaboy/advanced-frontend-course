@@ -1,7 +1,7 @@
 import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
-import { ValidateProfileError } from 'features/editableProfileCard/model/types/editableProfileCardSchema';
 import { getProfileValidateErrors } from './getProfileValidateErrors';
+import {ValidateProfileError} from "features/editableProfileCard/model/constants/constants";
 
 describe('getProfileData test', () => {
     test('should work with filled state', () => {

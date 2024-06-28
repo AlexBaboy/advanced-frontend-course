@@ -1,2 +1,2 @@
 export {CommentList} from "./ui/CommentList/CommentList";
-export {CommentItem} from "./model/types/commentItem";
+export type {CommentItem} from "./model/types/commentItem";

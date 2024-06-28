@@ -1,8 +1,4 @@
-export enum UserRole {
-    ADMIN = 'ADMIN',
-    USER = 'USER',
-    MANAGER = 'MANAGER',
-}
+import {UserRole} from "entities/User/model/constants/constants";
 
 export type User = {
     id: string,
