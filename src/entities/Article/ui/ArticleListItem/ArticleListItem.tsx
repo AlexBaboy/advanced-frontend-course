@@ -11,9 +11,10 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { ARTICLES_LIST_ITEM_INDEX } from 'shared/const/localStorage';
-import { ArticleBlockType, ArticleTextBlock } from '../../model/types/article';
+import { ArticleTextBlock } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticleListItem.module.scss';
+import {ArticleBlockType} from "entities/Article/model/constants/constants";
 
 interface ArticleListItemProps {
     className?: string

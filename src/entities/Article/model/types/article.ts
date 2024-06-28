@@ -1,8 +1,4 @@
-export enum ArticleBlockType {
-    CODE = 'CODE',
-    IMAGE = 'IMAGE',
-    TEXT = 'TEXT',
-}
+import {ArticleBlockType, ArticleType} from "entities/Article/model/constants/constants";
 
 export type ArticleBlockBase = {
     id: string,
@@ -26,12 +22,6 @@ export type ArticleTextBlock = ArticleBlockBase & {
     paragraphs: string[]
 }
 
-export enum ArticleType {
-    ALL = 'ALL',
-    IT = 'IT',
-    SCIENCE = 'SCIENCE',
-    ECONOMICS = 'ECONOMICS',
-}
 
 export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock
 
@@ -49,15 +39,4 @@ export type Article = {
         username: string,
         avatar: string
     }
-}
-
-export enum ArticleView {
-    BIG = 'BIG',
-    SMALL = 'SMALL'
-}
-
-export enum ArticleSortField {
-    VIEWS= 'views',
-    TITLE = 'title',
-    CREATED = 'createdAt'
 }
