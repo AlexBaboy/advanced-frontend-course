@@ -4,6 +4,7 @@ import { Fragment, ReactNode } from 'react';
 import { DropdownDirection } from 'shared/types/ui';
 import {AppLink} from "shared/ui/AppLink/AppLink";
 import cls from './Dropdown.module.scss'
+import {mapDirectionClass} from "shared/ui/Popups/styles/constants";
 
 export interface DropdownItem {
     disabled?: boolean,
@@ -17,13 +18,6 @@ interface DropdownProps {
     items: DropdownItem[],
     trigger?: ReactNode,
     direction?: DropdownDirection,
-}
-
-const mapDirectionClass: Record<DropdownDirection, string> = {
-    'bottom left': cls.optionsBottomLeft,
-    'bottom right': cls.optionsBottomRight,
-    'top left': cls.optionsTopLeft,
-    'top right': cls.optionsTopRight,
 }
 
 export const Dropdown = (props: DropdownProps) => {
