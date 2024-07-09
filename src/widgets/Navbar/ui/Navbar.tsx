@@ -14,6 +14,7 @@ import cls from './Navbar.module.scss'
 import {HStack} from "shared/ui/Stack";
 import {Icon} from "shared/ui/Icon/Icon";
 import NotificationIcon from "shared/assets/icons/notification.svg"
+import {Popover} from "shared/ui/Popups";
 
 interface NavbarProps {
   className?: string
@@ -64,12 +65,20 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     gap={"16"}
                     className={cls.actions}
                 >
-                    <Button theme={ButtonTheme.CLEAR}>
-                        <Icon
-                            Svg={NotificationIcon}
-                            inverted
-                        />
-                    </Button>
+
+                    <Popover
+                        direction={'bottom left'}
+                        trigger={(
+                            <Button theme={ButtonTheme.CLEAR}>
+                                <Icon
+                                    Svg={NotificationIcon}
+                                    inverted
+                                />
+                            </Button>
+                        )}>
+                        asdasd
+                    </Popover>
+
                     <Dropdown
                         direction="bottom left"
                         items={[

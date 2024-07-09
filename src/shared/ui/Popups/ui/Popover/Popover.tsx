@@ -1,31 +1,35 @@
-import { Popover as HPopover, PopoverButton, PopoverPanel } from '@headlessui/react'
+import {Popover as HPopover} from '@headlessui/react'
 import {ReactNode} from "react";
 import {DropdownDirection} from "shared/types/ui";
 import cls from "shared/ui/Popups/ui/ListBox/ListBox.module.scss";
 import {mapDirectionClass} from "../../styles/constants";
+import popupCls from '../../styles/popup.module.scss'
+import {classNames} from "shared/lib/classNames/classNames";
 
 interface PopoverProps {
     className?: string;
     trigger?: ReactNode;
     direction?: DropdownDirection;
+    children: ReactNode
 }
 
 export const Popover = (props: PopoverProps) => {
 
-    const { className, trigger, direction } = props
-    const optionsClasses = [cls.options, direction && mapDirectionClass[direction]]
+    const { className, trigger, direction = 'bottom right', children } = props
+    const optionsClasses = [cls.options, mapDirectionClass[direction]]
 
     return (
-        <HPopover className="relative">
-            <PopoverButton>
-                {trigger}
-            </PopoverButton>
-            {/*<PopoverPanel anchor="bottom" className="flex flex-col">
-                <a href="/analytics">Analytics</a>
-                <a href="/engagement">Engagement</a>
-                <a href="/security">Security</a>
-                <a href="/integrations">Integrations</a>
-            </PopoverPanel>*/}
-        </HPopover>
+        <div className={classNames(cls.popup, {}, [className, popupCls.popup])}>
+            <HPopover className="relative">
+                <HPopover.Button className={popupCls.trigger}>
+                    {trigger}
+                </HPopover.Button>
+
+                <HPopover.Panel
+                    className={classNames(cls.panel, {}, optionsClasses)}>
+                    {children}
+                </HPopover.Panel>
+            </HPopover>
+        </div>
     )
 }
