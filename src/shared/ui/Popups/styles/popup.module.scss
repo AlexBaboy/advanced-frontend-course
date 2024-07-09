@@ -6,6 +6,10 @@
   background: var(--inverted-primary-color);
 }
 
+.disabled {
+  opacity: .7;
+}
+
 .optionsBottomLeft {
   top: 100%;
   right: 0;
