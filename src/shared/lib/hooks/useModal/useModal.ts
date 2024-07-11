@@ -48,5 +48,4 @@ export const useModal = (props: UseModalProps) => {
         isMounted,
         close
     }
-
 }
