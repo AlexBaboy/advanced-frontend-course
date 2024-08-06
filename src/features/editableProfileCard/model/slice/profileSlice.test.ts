@@ -1,9 +1,9 @@
 import { DeepPartial } from '@reduxjs/toolkit';
-import { profileData } from 'shared/mocks/profileData';
-import { ProfileSchema } from 'features/editableProfileCard';
-import { updateProfileData } from 'features/editableProfileCard/model/services/updateProfileData/updateProfileData';
+import { profileData } from '@/shared/mocks/profileData';
+import { ProfileSchema } from '@/features/editableProfileCard';
+import { updateProfileData } from '@/features/editableProfileCard/model/services/updateProfileData/updateProfileData';
 import { profileActions, profileReducer } from './profileSlice';
-import {ValidateProfileError} from "features/editableProfileCard/model/constants/constants";
+import {ValidateProfileError} from "@/features/editableProfileCard/model/constants/constants";
 
 describe('profileSlice test', () => {
     test('test readonly state', () => {

@@ -1,7 +1,7 @@
 import {DeepPartial} from "@reduxjs/toolkit";
-import {StateSchema} from "app/providers/StoreProvider";
+import {StateSchema} from "@/app/providers/StoreProvider";
 import {getProfileData} from "./getProfileData";
-import {profileData} from "shared/mocks/profileData";
+import {profileData} from "@/shared/mocks/profileData";
 
 describe('getProfileData test', () => {
     test('should work with filled state', () => {

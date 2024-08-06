@@ -1,7 +1,7 @@
 import {validateProfileData} from "./validateProfileData";
-import {profileData} from "shared/mocks/profileData";
+import {profileData} from "@/shared/mocks/profileData";
 
-import {ValidateProfileError} from "features/editableProfileCard/model/constants/constants";
+import {ValidateProfileError} from "@/features/editableProfileCard/model/constants/constants";
 
 describe('validateProfileData test' , () => {
 

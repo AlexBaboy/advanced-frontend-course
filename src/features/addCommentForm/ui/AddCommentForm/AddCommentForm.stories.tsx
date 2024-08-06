@@ -1,8 +1,8 @@
 import React from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {StoreDecorator} from "shared/config/storybook/StoreDecorator/StoreDecorator";
-import AddCommentForm from "features/addCommentForm/ui/AddCommentForm/AddCommentForm";
+import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
+import AddCommentForm from "@/features/addCommentForm/ui/AddCommentForm/AddCommentForm";
 import {action} from "@storybook/addon-actions";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

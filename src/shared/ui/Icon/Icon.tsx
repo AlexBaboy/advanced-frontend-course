@@ -1,5 +1,5 @@
 // eslint-disable-next-line alexb-esling-plugin-path-checker/fsd-arch-path-checker
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import React, { memo } from 'react';
 import cls from './Icon.module.scss';
 

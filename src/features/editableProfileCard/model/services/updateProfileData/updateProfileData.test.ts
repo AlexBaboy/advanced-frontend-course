@@ -1,7 +1,7 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { profileData } from 'shared/mocks/profileData';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { profileData } from '@/shared/mocks/profileData';
 import { updateProfileData } from './updateProfileData';
-import {ValidateProfileError} from "features/editableProfileCard/model/constants/constants";
+import {ValidateProfileError} from "@/features/editableProfileCard/model/constants/constants";
 
 // jest.mock('axios')
 

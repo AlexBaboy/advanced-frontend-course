@@ -1,11 +1,11 @@
 import {DeepPartial} from "@reduxjs/toolkit";
-import {StateSchema} from "app/providers/StoreProvider";
+import {StateSchema} from "@/app/providers/StoreProvider";
 import {
     getArticleDetailsData,
     getArticleDetailsError,
     getArticleDetailsIsLoading
-} from "entities/Article/model/selectors/articleDetails";
-import {article} from "shared/mocks/articleDetail";
+} from "@/entities/Article/model/selectors/articleDetails";
+import {article} from "@/shared/mocks/articleDetail";
 
 describe('articleDetails test', () => {
     test('should return data', () => {

@@ -1,6 +1,6 @@
 import {fetchProfileData} from "./fetchProfileData";
-import {TestAsyncThunk} from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
-import {profileData} from "shared/mocks/profileData";
+import {TestAsyncThunk} from "@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
+import {profileData} from "@/shared/mocks/profileData";
 
 jest.mock('axios')
 

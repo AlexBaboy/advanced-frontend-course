@@ -1,6 +1,6 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {Card} from "shared/ui/Card/Card";
-import {Text} from "shared/ui/Text/Text";
+import {Card} from "@/shared/ui/Card/Card";
+import {Text} from "@/shared/ui/Text/Text";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

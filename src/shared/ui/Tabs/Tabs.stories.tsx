@@ -1,7 +1,7 @@
 import React from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {Tabs} from 'shared/ui/Tabs/Tabs';
+import {Tabs} from '@/shared/ui/Tabs/Tabs';
 import {action} from "@storybook/addon-actions";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

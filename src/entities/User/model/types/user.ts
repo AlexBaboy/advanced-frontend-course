@@ -1,4 +1,4 @@
-import {UserRole} from "entities/User/model/constants/constants";
+import {UserRole} from "@/entities/User/model/constants/constants";
 
 export type User = {
     id: string,

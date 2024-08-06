@@ -1,15 +1,15 @@
-import {classNames} from 'shared/lib/classNames/classNames';
+import {classNames} from '@/shared/lib/classNames/classNames';
 import {useTranslation} from 'react-i18next';
 import {memo} from 'react';
-import {Text, TextSize} from 'shared/ui/Text/Text';
-import {ArticleList} from 'entities/Article';
-import {VStack} from 'shared/ui/Stack';
+import {Text, TextSize} from '@/shared/ui/Text/Text';
+import {ArticleList} from '@/entities/Article';
+import {VStack} from '@/shared/ui/Stack';
 import {
     LIMIT_RECOMMENDATIONS_COUNT
-} from 'pages/ArticleDetailsPage/model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+} from '@/pages/ArticleDetailsPage/model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 import {
     useArticlesRecommendationsList,
-} from 'features/articleRecommendationsList/ui/api/articleRecommendationsApi';
+} from '@/features/articleRecommendationsList/ui/api/articleRecommendationsApi';
 
 interface ArticleRecommendationsListProps {
     className?: string;

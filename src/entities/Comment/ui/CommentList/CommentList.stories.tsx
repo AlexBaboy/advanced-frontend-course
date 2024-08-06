@@ -1,9 +1,9 @@
 import React from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {StoreDecorator} from "shared/config/storybook/StoreDecorator/StoreDecorator";
-import {CommentList} from "entities/Comment";
-import {commentList} from "shared/mocks/commentList";
+import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
+import {CommentList} from "@/entities/Comment";
+import {commentList} from "@/shared/mocks/commentList";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

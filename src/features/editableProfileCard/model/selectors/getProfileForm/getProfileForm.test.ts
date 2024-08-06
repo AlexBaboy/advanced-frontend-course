@@ -1,6 +1,6 @@
 import { DeepPartial } from '@reduxjs/toolkit';
-import { StateSchema } from 'app/providers/StoreProvider';
-import { profileData } from 'shared/mocks/profileData';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { profileData } from '@/shared/mocks/profileData';
 import { getProfileForm } from './getProfileForm';
 
 describe('getProfileForm test', () => {

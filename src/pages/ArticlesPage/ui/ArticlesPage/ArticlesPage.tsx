@@ -1,13 +1,13 @@
 import {useTranslation} from 'react-i18next';
 import {memo, useCallback} from 'react';
-import {DynamicModuleLoader, ReducersList} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import {useAppDispatch} from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import {ArticleInfiniteList} from "pages/ArticlesPage/ui/ArticleInfiniteList/ArticleInfiniteList";
+import {DynamicModuleLoader, ReducersList} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {useAppDispatch} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {ArticleInfiniteList} from "@/pages/ArticlesPage/ui/ArticleInfiniteList/ArticleInfiniteList";
 import {articlesPageReducer} from '../../model/slices/articlesPageSlice';
 import {fetchNextArticlesPage} from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import cls from './ArticlesPage.module.scss';
-import {Page} from "widgets/Page/Page";
-import {classNames} from 'shared/lib/classNames/classNames';
+import {Page} from "@/widgets/Page/Page";
+import {classNames} from '@/shared/lib/classNames/classNames';
 
 interface ArticlesPage {
     className?: string

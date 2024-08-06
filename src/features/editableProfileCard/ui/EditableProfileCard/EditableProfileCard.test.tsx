@@ -1,10 +1,10 @@
-import { profileData } from 'shared/mocks/profileData';
-import { profileReducer } from 'features/editableProfileCard/model/slice/profileSlice';
-import { EditableProfileCard } from 'features/editableProfileCard';
-import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
+import { profileData } from '@/shared/mocks/profileData';
+import { profileReducer } from '@/features/editableProfileCard/model/slice/profileSlice';
+import { EditableProfileCard } from '@/features/editableProfileCard';
+import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
 import userEvent from '@testing-library/user-event'
 import { screen } from '@testing-library/react';
-import { $api } from 'shared/api/api';
+import { $api } from '@/shared/api/api';
 
 const options = {
     initialState: {

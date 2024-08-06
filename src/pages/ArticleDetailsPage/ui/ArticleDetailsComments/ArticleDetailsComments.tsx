@@ -1,22 +1,22 @@
-import { Text, TextSize } from 'shared/ui/Text/Text';
-import cls from 'pages/ArticleDetailsPage/ui/ArticleDetailsPage/ArticleDetailsPage.module.scss';
-import { AddCommentForm } from 'features/addCommentForm';
-import { CommentList } from 'entities/Comment';
+import { Text, TextSize } from '@/shared/ui/Text/Text';
+import cls from '@/pages/ArticleDetailsPage/ui/ArticleDetailsPage/ArticleDetailsPage.module.scss';
+import { AddCommentForm } from '@/features/addCommentForm';
+import { CommentList } from '@/entities/Comment';
 import {memo, Suspense, useCallback} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { getArticleComments } from 'pages/ArticleDetailsPage/model/slices/ArticleDetailsCommentSlice';
-import { getArticleCommentsIsLoading } from 'pages/ArticleDetailsPage/model/selectors/comments/comments';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { getArticleComments } from '@/pages/ArticleDetailsPage/model/slices/ArticleDetailsCommentSlice';
+import { getArticleCommentsIsLoading } from '@/pages/ArticleDetailsPage/model/selectors/comments/comments';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import {
     fetchCommentsByArticleId,
-} from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import { addCommentForArticle } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { addCommentFormActions } from 'features/addCommentForm/model/slice/addCommentFormSlice';
-import { VStack } from 'shared/ui/Stack';
-import {Loader} from "shared/ui/Loader/Loader";
+} from '@/pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { addCommentForArticle } from '@/pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { addCommentFormActions } from '@/features/addCommentForm/model/slice/addCommentFormSlice';
+import { VStack } from '@/shared/ui/Stack';
+import {Loader} from "@/shared/ui/Loader/Loader";
 
 interface ArticleDetailsCommentsProps {
     className?: string,
