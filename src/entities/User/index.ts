@@ -1,7 +1,7 @@
 export {
     isUserAdmin,
     isUserManager,
-} from 'entities/User/model/selectors/getUserRoles/getUserRoles';
+} from '@/entities/User/model/selectors/getUserRoles/getUserRoles';
 
 export {
     userReducer,
@@ -20,4 +20,4 @@ export type {
     UserSchema,
     User,
 } from './model/types/user'
-export {UserRole} from "entities/User/model/constants/constants";
+export {UserRole} from "@/entities/User/model/constants/constants";
