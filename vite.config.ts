@@ -2,14 +2,9 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 
-// @ts-ignore
 export default defineConfig({
     plugins: [
-        svgr({
-            svgrOptions: {
-                exportType: 'default',
-            },
-        }),
+        svgr({ exportAsDefault: true }),
         react(),
     ],
     resolve: {
