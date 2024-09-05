@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import {StarRating} from "@/shared/ui/StarRating/StarRating";
 
 const MainPage = () => {
     const { t } = useTranslation();
@@ -6,6 +7,7 @@ const MainPage = () => {
     return (
         <div>
             {t('Главная страница')}
+            <StarRating size={50} />
         </div>
     );
 };
