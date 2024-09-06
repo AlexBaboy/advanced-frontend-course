@@ -22,7 +22,6 @@ export const StarRating = memo((props: StarRatingProps) => {
         selectedStars= 0,
     } = props
 
-    const [isHovered, setHovered] = useState(false)
     const [currentStarsCount, setCurrentStarsCount] = useState(0)
     const [isSelected, setSelected] = useState(Boolean(selectedStars))
 
@@ -32,9 +31,17 @@ export const StarRating = memo((props: StarRatingProps) => {
         }
     }
 
-    const onLeave = (starsCount: number) => {
+    const onLeave = () => {
         if (!isSelected) {
             setCurrentStarsCount(0)
+        }
+    }
+
+    const onClick = (starsCount: number) => {
+        if (!isSelected) {
+            onSelect?.(starsCount)
+            setCurrentStarsCount(starsCount)
+            setSelected(true)
         }
     }
 
@@ -51,6 +58,9 @@ export const StarRating = memo((props: StarRatingProps) => {
                     )}
                     width={size}
                     height={size}
+                    onMouseLeave={onLeave}
+                    onMouseEnter={() => onHover(starNumber)}
+                    onClick={() => onClick(starNumber)}
                 />
             ))}
         </div>
