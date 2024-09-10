@@ -771,6 +771,20 @@
       "feedback": "Неплохо",
       "userId": "2",
       "articleId": "3"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 3,
+      "feedback": "werwerewr",
+      "id": "2SJYVQO"
+    },
+    {
+      "userId": "1",
+      "articleId": "10",
+      "rate": 5,
+      "feedback": "круто!",
+      "id": "isXjejz"
     }
   ]
 }

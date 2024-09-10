@@ -7,12 +7,12 @@ import {useSelector} from "react-redux";
 import {getUserAuthData} from "@/entities/User";
 import {Skeleton} from "@/shared/ui/Skeleton/Skeleton";
 
-interface ArticleRatingProps {
+export interface ArticleRatingProps {
     className?: string;
     articleId: string;
 }
 
-export const ArticleRating = memo((props: ArticleRatingProps) => {
+const ArticleRating = memo((props: ArticleRatingProps) => {
 
     const {className, articleId} = props
 
@@ -31,9 +31,13 @@ export const ArticleRating = memo((props: ArticleRatingProps) => {
 
     const [rateArticleMutation] = useRateArticle()
 
-    const onAccept = useCallback(() => {},[])
+    const onAccept = useCallback((starsCount: number, feedback?: string) => {
+        handleArticleRate(starsCount, feedback)
+    },[])
 
-    const onCancel = useCallback(() => {},[])
+    const onCancel = useCallback((starsCount: number) => {
+        handleArticleRate(starsCount)
+    },[])
 
     const handleArticleRate = (starsCount: number, feedback?: string) => {
         try {
@@ -67,3 +71,5 @@ export const ArticleRating = memo((props: ArticleRatingProps) => {
         />
     );
 });
+
+export default ArticleRating

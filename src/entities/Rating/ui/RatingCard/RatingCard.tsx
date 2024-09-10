@@ -77,7 +77,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
     return (
         <Card className={classNames(cls.RatingCard, {}, [className])} max>
             <VStack align={'center'} gap={'8'} max>
-                <Text title={title} />
+                <Text title={starsCount ? t('Спасибо за оценку') : title} />
                 <StarRating
                     size={40}
                     onSelect={onSelectStars}
