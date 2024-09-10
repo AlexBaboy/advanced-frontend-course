@@ -785,6 +785,13 @@
       "rate": 5,
       "feedback": "круто!",
       "id": "isXjejz"
+    },
+    {
+      "userId": "1",
+      "articleId": "3",
+      "rate": 4,
+      "feedback": "!!!",
+      "id": "UZKum4k"
     }
   ]
 }
