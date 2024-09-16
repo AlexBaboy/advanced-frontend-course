@@ -1,14 +1,13 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, useCallback } from 'react';
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { getUserAuthData } from '@/entities/User';
-import { getArticleDetailsData } from '@/entities/Article/model/selectors/articleDetails';
-import { getCanEditArticle } from '@/pages/ArticleDetailsPage/model/selectors/article/article';
-import { HStack } from '@/shared/ui/Stack';
+import {classNames} from '@/shared/lib/classNames/classNames';
+import {memo, useCallback} from 'react';
+import {Button, ButtonTheme} from '@/shared/ui/Button/Button';
+import {RoutePath} from '@/shared/config/routeConfig/routeConfig';
+import {useTranslation} from 'react-i18next';
+import {useNavigate} from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import {getArticleDetailsData} from '@/entities/Article';
+import {HStack} from '@/shared/ui/Stack';
+import {getCanEditArticle} from "../../model/selectors/article/article";
 
 interface ArticleDetailsPageHeaderProps {
     className?: string
@@ -21,7 +20,6 @@ const ArticleDetailsPageHeader = (props: ArticleDetailsPageHeaderProps) => {
 
     const { t } = useTranslation('article-details');
     const navigate = useNavigate();
-    const userData = useSelector(getUserAuthData);
     const article = useSelector(getArticleDetailsData);
     const canEdit = useSelector(getCanEditArticle);
 
