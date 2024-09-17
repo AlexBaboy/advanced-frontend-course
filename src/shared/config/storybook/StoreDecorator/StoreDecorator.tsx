@@ -1,13 +1,12 @@
 import { Story } from '@storybook/react';
-import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { DeepPartial } from '@reduxjs/toolkit';
-
+import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { articleDetailsReducer } from '@/entities/Article/model/slice/articleDetailsSlice';
-import { addCommentFormReducer } from '@/features/addCommentForm/model/slice/addCommentFormSlice';
+import { articleDetailsReducer } from '@/entities/Article/testing';
+import { addCommentFormReducer } from '@/features/addCommentForm/testing';
 import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/model/slices';
-import { profileReducer } from '@/features/editableProfileCard/model/slice/profileSlice';
-import {loginReducer} from "@/features/AuthByUserName/testing";
+import { profileReducer } from '@/features/editableProfileCard/testing';
+import { loginReducer } from '@/features/AuthByUserName/testing';
 
 const defaultAsyncReducers: ReducersList = {
     loginForm: loginReducer,
@@ -15,7 +14,7 @@ const defaultAsyncReducers: ReducersList = {
     articleDetails: articleDetailsReducer,
     addCommentForm: addCommentFormReducer,
     articlesDetailsPage: articleDetailsPageReducer,
-}
+};
 
 export const StoreDecorator = (
     state: DeepPartial<StateSchema>,
@@ -30,4 +29,4 @@ export const StoreDecorator = (
     >
         <StoryComponent />
     </StoreProvider>
-)
+);

@@ -30,7 +30,7 @@ module.exports = {
         indent: [2, 4],
         'react/jsx-filename-extension': [
             2,
-            {extensions: ['.js', '.jsx', '.tsx']},
+            { extensions: ['.js', '.jsx', '.tsx'] },
         ],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
@@ -61,7 +61,7 @@ module.exports = {
                 ],
             },
         ],
-        'max-len': ['error', {ignoreComments: true, code: 125}],
+        'max-len': ['error', { ignoreComments: true, code: 125 }],
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
@@ -75,7 +75,7 @@ module.exports = {
             {
                 alias: '@',
                 testFilesPatterns: ['**/*.test.js', '**/*.stories.*', '**/*.storeDecorator.*'],
-            }
+            },
         ],
     },
     globals: {
