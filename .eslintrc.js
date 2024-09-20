@@ -74,6 +74,19 @@ module.exports = {
             'error',
             {
                 alias: '@',
+            },
+        ],
+        'ulbi-tv-plugin/layer-imports': [
+            'error',
+            {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider.*'],
+            },
+        ],
+        'ulbi-tv-plugin/public-api-imports': [
+            'error',
+            {
+                alias: '@',
                 testFilesPatterns: ['**/*.test.js', '**/*.stories.*', '**/*.storeDecorator.*'],
             },
         ],
