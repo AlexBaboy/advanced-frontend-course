@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AppRoutesProps, routeConfig } from '@/shared/config/routeConfig/routeConfig';
-import { RequireAuth } from '@/app/providers/router/ui/RequireAuth';
+import { RequireAuth } from './RequireAuth';
 import { PageLoader } from '@/widgets/PageLoader';
 
 export const AppRouter = () => {

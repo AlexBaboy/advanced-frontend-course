@@ -2,7 +2,8 @@ import React from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import {Skeleton} from "@/shared/ui/Skeleton/Skeleton";
 import {ThemeDecorator} from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import {Theme} from "@/app/providers/ThemeProvider";
+
+import {Theme} from "@/shared/const/theme";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

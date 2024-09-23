@@ -1,8 +1,8 @@
-import {ReactNode} from "react";
-import {DeepPartial, ReducersMapObject} from "@reduxjs/toolkit";
-import {StateSchema} from "@/app/providers/StoreProvider/config/StateSchema";
-import {createReduxStore} from "@/app/providers/StoreProvider/config/store";
-import {Provider} from "react-redux";
+import { ReactNode } from 'react';
+import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import { StateSchema } from '../config/StateSchema';
+import { createReduxStore } from '../config/store';
 
 type StoreProviderProps = {
     children?: ReactNode
@@ -14,17 +14,17 @@ export const StoreProvider = (props: StoreProviderProps) => {
     const {
         children,
         initialState,
-        asyncReducers
-    } = props
+        asyncReducers,
+    } = props;
 
     const store = createReduxStore(
         initialState as StateSchema,
         asyncReducers as ReducersMapObject<StateSchema>,
-    )
+    );
 
     return (
         <Provider store={store}>
             {children}
         </Provider>
-    )
-}
+    );
+};

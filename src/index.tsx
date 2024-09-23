@@ -26,3 +26,4 @@ root.render(
         </BrowserRouter>
     </StoreProvider>,
 )
+export {Theme} from "@/shared/const/theme";

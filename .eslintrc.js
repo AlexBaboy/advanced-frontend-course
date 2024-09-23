@@ -80,7 +80,7 @@ module.exports = {
             'error',
             {
                 alias: '@',
-                ignoreImportPatterns: ['**/StoreProvider.*'],
+                ignoreImportPatterns: ['**/StoreProvider.*', '**/testing.*'],
             },
         ],
         'ulbi-tv-plugin/public-api-imports': [
