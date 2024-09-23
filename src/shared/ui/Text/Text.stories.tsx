@@ -1,8 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Text, TextSize, TextTheme } from './Text';
-import {Theme} from "@/shared/const/theme";
+import { Theme } from '@/shared/const/theme';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -50,21 +49,21 @@ PrimaryDark.args = {
     title: 'Title',
     text: 'Text',
 };
-PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)]
+PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const OnlyTitleDark = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 OnlyTitleDark.args = {
     title: 'Title',
 };
-OnlyTitleDark.decorators = [ThemeDecorator(Theme.DARK)]
+OnlyTitleDark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const OnlyTextDark = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 OnlyTextDark.args = {
     text: 'Text',
 };
-OnlyTextDark.decorators = [ThemeDecorator(Theme.DARK)]
+OnlyTextDark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const SizeL = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

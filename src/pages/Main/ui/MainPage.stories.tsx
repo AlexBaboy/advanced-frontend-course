@@ -1,7 +1,8 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import MainPage from './MainPage';
-import {ThemeDecorator} from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { Theme } from '@/shared/const/theme';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -11,7 +12,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [StoreDecorator({})]
+    decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof MainPage>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
@@ -23,4 +24,4 @@ Light.args = {};
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
+Dark.decorators = [ThemeDecorator(Theme.DARK)];

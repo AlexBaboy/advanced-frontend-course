@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { ThemeSwitcher } from './ThemeSwitcher';
-import {Theme} from "@/shared/const/theme";
+import { Theme } from '@/shared/const/theme';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
