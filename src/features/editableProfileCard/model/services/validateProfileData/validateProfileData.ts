@@ -1,29 +1,29 @@
-import {Profile} from '@/entities/Profile';
+import { Profile } from '@/entities/Profile';
 
-import {ValidateProfileError} from "@/features/editableProfileCard/model/constants/constants";
+import { ValidateProfileError } from '@/features/editableProfileCard/model/constants/constants';
 
 export const validateProfileData = (profile?: Profile) => {
     if (!profile) {
-        return [ValidateProfileError.NO_DATA]
+        return [ValidateProfileError.NO_DATA];
     }
 
     const {
         first, lastname, age, country,
-    } = profile
+    } = profile;
 
-    const errors: ValidateProfileError[] = []
+    const errors: ValidateProfileError[] = [];
 
     if (!first || !lastname) {
-        errors.push(ValidateProfileError.INCORRECT_USER_DATA)
+        errors.push(ValidateProfileError.INCORRECT_USER_DATA);
     }
 
     if (!age || !Number.isInteger(age)) {
-        errors.push(ValidateProfileError.INCORRECT_AGE)
+        errors.push(ValidateProfileError.INCORRECT_AGE);
     }
 
     if (!country) {
-        errors.push(ValidateProfileError.INCORRECT_COUNTRY)
+        errors.push(ValidateProfileError.INCORRECT_COUNTRY);
     }
 
-    return errors
-}
+    return errors;
+};

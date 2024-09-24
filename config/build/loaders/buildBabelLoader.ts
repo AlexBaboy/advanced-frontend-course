@@ -1,22 +1,21 @@
-import {BuildOptions} from "../types/config";
-import babelRemovePropsPlugin from "../../babel/babelRemovePropsPlugin";
+import { BuildOptions } from '../types/config';
+import babelRemovePropsPlugin from '../../babel/babelRemovePropsPlugin';
 
 interface buildBabelLoaderProps extends BuildOptions {
     isTsx?: boolean
 }
 
 export function buildBabelLoader(options: buildBabelLoaderProps) {
-
-    const {isDev, isTsx} = options
+    const { isDev, isTsx } = options;
 
     return {
         test: isTsx ? /\.(jsx|tsx)$/ : /\.(js|ts)$/,
         exclude: /node_modules/,
         use: {
-            loader: "babel-loader",
-                options: {
+            loader: 'babel-loader',
+            options: {
                 presets: ['@babel/preset-env'],
-                    plugins: [
+                plugins: [
                     [
                         'i18next-extract',
                         {
@@ -25,21 +24,21 @@ export function buildBabelLoader(options: buildBabelLoaderProps) {
                         },
                     ],
                     [
-                        "@babel/plugin-transform-typescript",
+                        '@babel/plugin-transform-typescript',
                         {
-                            isTsx
-                        }
+                            isTsx,
+                        },
                     ],
-                    "@babel/plugin-transform-runtime",
+                    '@babel/plugin-transform-runtime',
                     isTsx && [
                         babelRemovePropsPlugin,
                         {
-                            props: ['data-testid']
-                        }
+                            props: ['data-testid'],
+                        },
                     ],
-                    isDev && require.resolve('react-refresh/babel')
-                ].filter(Boolean)
-            }
-        }
-    }
+                    isDev && require.resolve('react-refresh/babel'),
+                ].filter(Boolean),
+            },
+        },
+    };
 }

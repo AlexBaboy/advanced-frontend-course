@@ -1,7 +1,7 @@
 import React from 'react';
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {ArticleList, ArticleView} from "../../../Article";
-import {article} from "@/shared/mocks/articleDetail";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ArticleList, ArticleView } from '../../../Article';
+import { article } from '@/shared/mocks/articleDetail';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -21,7 +21,7 @@ export const isLoadingBig = Template.bind({});
 isLoadingBig.args = {
     isLoading: true,
     articles: [],
-    view: ArticleView.BIG
+    view: ArticleView.BIG,
 };
 
 export const isLoadingSmall = Template.bind({});
@@ -29,7 +29,7 @@ export const isLoadingSmall = Template.bind({});
 isLoadingSmall.args = {
     isLoading: true,
     articles: [],
-    view: ArticleView.SMALL
+    view: ArticleView.SMALL,
 };
 
 export const ListSmall = Template.bind({});
@@ -41,9 +41,9 @@ ListSmall.args = {
             .fill(0)
             .map((item, index) => ({
                 ...article,
-                id: String(index)
+                id: String(index),
             })),
-    view: ArticleView.SMALL
+    view: ArticleView.SMALL,
 };
 
 export const ListBig = Template.bind({});
@@ -54,7 +54,7 @@ ListBig.args = {
         .fill(0)
         .map((item, index) => ({
             ...article,
-            id: String(index)
+            id: String(index),
         })),
-    view: ArticleView.BIG
+    view: ArticleView.BIG,
 };

@@ -1,7 +1,7 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {ArticleDetailsPage} from "@/pages/ArticleDetailsPage";
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
-import {article} from "@/shared/mocks/articleDetail";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { article } from '@/shared/mocks/articleDetail';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -20,5 +20,5 @@ export const Light = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Light.args = {};
 Light.decorators = [StoreDecorator({
-    articleDetails: {data: article, isLoading: false}
-})]
+    articleDetails: { data: article, isLoading: false },
+})];

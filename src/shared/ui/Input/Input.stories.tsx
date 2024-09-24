@@ -1,7 +1,7 @@
 import React from 'react';
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import {Input} from '@/shared/ui/Input/Input';
+import { Input } from '@/shared/ui/Input/Input';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -20,5 +20,5 @@ export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
     placeholder: 'Text',
-    value: 'Enter Login'
+    value: 'Enter Login',
 };

@@ -1,13 +1,13 @@
 import React from 'react';
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {Code} from "@/shared/ui/Code/Code";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Code } from '@/shared/ui/Code/Code';
 
 export default {
     title: 'shared/Code',
     component: Code,
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
-        backgroundColor: {control: 'color'},
+        backgroundColor: { control: 'color' },
     },
 } as ComponentMeta<typeof Code>;
 
@@ -25,5 +25,5 @@ Primary.args = {
             backgroundColor: {control: 'color'},
         },
     } as ComponentMeta<typeof Code>;
-    const Template: ComponentStory<typeof Code> = (args) => <Code {...args} />;`
+    const Template: ComponentStory<typeof Code> = (args) => <Code {...args} />;`,
 };

@@ -1,5 +1,5 @@
-import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Text.module.scss';
 
 export enum TextTheme {
@@ -50,7 +50,7 @@ export const Text = memo((props: TextProps) => {
         'data-testid': dataTestId = 'Text',
     } = props;
 
-    const HeaderTag = mapSizeToHeaderTag[size]
+    const HeaderTag = mapSizeToHeaderTag[size];
 
     const mods: Mods = {
         [cls[theme]]: true,
@@ -79,7 +79,8 @@ export const Text = memo((props: TextProps) => {
                     data-testid={`${dataTestId}.Paragraph`}
                 >
                     {text}
-                </p>)}
+                </p>
+            )}
         </div>
     );
 });

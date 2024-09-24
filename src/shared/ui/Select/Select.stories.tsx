@@ -1,6 +1,6 @@
 import React from 'react';
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {Select} from "@/shared/ui/Select/Select";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Select } from '@/shared/ui/Select/Select';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -18,9 +18,9 @@ const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-    label: "Укажите значение",
+    label: 'Укажите значение',
     options: [
-        {value: '123', content: 'Первый пункт'},
-        {value: '456', content: 'Второй пункт'}
-    ]
+        { value: '123', content: 'Первый пункт' },
+        { value: '456', content: 'Второй пункт' },
+    ],
 };

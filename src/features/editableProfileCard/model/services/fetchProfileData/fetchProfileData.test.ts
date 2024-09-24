@@ -1,30 +1,27 @@
-import {fetchProfileData} from "./fetchProfileData";
-import {TestAsyncThunk} from "@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
-import {profileData} from "@/shared/mocks/profileData";
+import { fetchProfileData } from './fetchProfileData';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { profileData } from '@/shared/mocks/profileData';
 
-jest.mock('axios')
+jest.mock('axios');
 
-describe('fetchProfileData test' , () => {
-
+describe('fetchProfileData test', () => {
     test('success', async () => {
-
-        const thunk = new TestAsyncThunk(fetchProfileData)
+        const thunk = new TestAsyncThunk(fetchProfileData);
         thunk.api.get.mockReturnValue(Promise.resolve({
-            data: profileData
-        }))
+            data: profileData,
+        }));
 
-        const result = await thunk.callThunk('1')
+        const result = await thunk.callThunk('1');
 
-        expect(thunk.api.get).toHaveBeenCalled()
-        expect(result.meta.requestStatus).toBe('fulfilled')
-        expect(result.payload).toEqual(profileData)
-    })
+        expect(thunk.api.get).toHaveBeenCalled();
+        expect(result.meta.requestStatus).toBe('fulfilled');
+        expect(result.payload).toEqual(profileData);
+    });
 
     test('error', async () => {
-
-        const thunk = new TestAsyncThunk(fetchProfileData)
-        thunk.api.get.mockReturnValue(Promise.resolve({status: 403}))
-        const result = await thunk.callThunk('1')
-        expect(result.meta.requestStatus).toBe('rejected')
-    })
-})
+        const thunk = new TestAsyncThunk(fetchProfileData);
+        thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
+        const result = await thunk.callThunk('1');
+        expect(result.meta.requestStatus).toBe('rejected');
+    });
+});

@@ -10,4 +10,4 @@ export const profileData = {
     country: Country.Belarus,
     city: 'Moscow123',
     username: 'admin',
-}
+};

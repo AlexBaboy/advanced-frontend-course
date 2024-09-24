@@ -1,6 +1,6 @@
 import React from 'react';
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {StarRating} from "@/shared/ui/StarRating/StarRating";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { StarRating } from '@/shared/ui/StarRating/StarRating';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -18,5 +18,5 @@ const Template: ComponentStory<typeof StarRating> = (args) => <StarRating {...ar
 export const Primary = Template.bind({});
 Primary.args = {
     size: 20,
-    selectedStars: 3
+    selectedStars: 3,
 };

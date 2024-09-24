@@ -1,38 +1,37 @@
-import {createAsyncThunk} from "@reduxjs/toolkit";
-import {getUserAuthData} from "@/entities/User";
-import {ThunkConfig} from "@/app/providers/StoreProvider";
-import {CommentItem} from "@/entities/Comment";
-import {getArticleDetailsData} from "@/entities/Article";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getUserAuthData } from '@/entities/User';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { CommentItem } from '@/entities/Comment';
+import { getArticleDetailsData } from '@/entities/Article';
 
 export const addCommentForArticle = createAsyncThunk<CommentItem, string,
-    ThunkConfig<string>>
-(
-    'articleDetails/addCommentForArticle',
-    async (text, thunkAPI) => {
+    ThunkConfig<string>>(
+        'articleDetails/addCommentForArticle',
+        async (text, thunkAPI) => {
+            const {
+                extra, dispatch, rejectWithValue, getState,
+            } = thunkAPI;
+            const userData = getUserAuthData(getState());
+            const article = getArticleDetailsData(getState());
 
-        const {extra, dispatch, rejectWithValue, getState} = thunkAPI
-        const userData = getUserAuthData(getState())
-        const article = getArticleDetailsData(getState())
-
-        if (!userData || !text || !article) {
-            return rejectWithValue('no data')
-        }
-
-        try {
-
-            const response = await extra.api.post<CommentItem>('/comments', {
-                articleId: article.id,
-                userId: userData.id,
-                text
-            })
-
-            if (!response.data) {
-                throw new Error('no data!')
+            if (!userData || !text || !article) {
+                return rejectWithValue('no data');
             }
 
-            return response.data
-        } catch (e) {
-            return rejectWithValue('error')
-        }
-    }
-)
+            try {
+                const response = await extra.api.post<CommentItem>('/comments', {
+                    articleId: article.id,
+                    userId: userData.id,
+                    text,
+                });
+
+                if (!response.data) {
+                    throw new Error('no data!');
+                }
+
+                return response.data;
+            } catch (e) {
+                return rejectWithValue('error');
+            }
+        },
+    );

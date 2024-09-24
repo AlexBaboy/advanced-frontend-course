@@ -1,23 +1,22 @@
-import {Button} from "@/shared/ui/Button/Button";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from 'react';
+import { Button } from '@/shared/ui/Button/Button';
 
 // компонент для тестирование Error Boundary
 export const BugButton = () => {
+    const [error, setError] = useState(false);
 
-    const [error, setError] = useState(false)
-
-    const onThrow = () => setError(true)
+    const onThrow = () => setError(true);
 
     useEffect(() => {
         if (error) {
-            throw new Error()
+            throw new Error();
         }
-    }, [error])
+    }, [error]);
 
     return (
         <Button
             onClick={onThrow}
-            >
+        >
             throw error
         </Button>
     );

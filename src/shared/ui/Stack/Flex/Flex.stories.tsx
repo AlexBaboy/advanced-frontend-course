@@ -1,5 +1,5 @@
 import React from 'react';
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Flex } from '@/shared/ui/Stack/Flex/Flex';
 
 const childrenLayout = (
@@ -10,7 +10,7 @@ const childrenLayout = (
         <div>fourth</div>
         <div>fifth</div>
     </>
-)
+);
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

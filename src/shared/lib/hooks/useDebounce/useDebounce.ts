@@ -1,14 +1,12 @@
-import {MutableRefObject, useCallback, useRef} from "react";
+import { MutableRefObject, useCallback, useRef } from 'react';
 
 export const useDebounce = (callback: (...args: any[]) => void, delay: number) => {
-
-    const timer = useRef() as MutableRefObject<any>
+    const timer = useRef() as MutableRefObject<any>;
 
     return useCallback((...args: any[]) => {
-
-        timer.current && clearTimeout(timer.current)
+        timer.current && clearTimeout(timer.current);
         timer.current = setTimeout(() => {
-            callback(...args)
-        }, delay)
-    }, [callback, delay])
-}
+            callback(...args);
+        }, delay);
+    }, [callback, delay]);
+};

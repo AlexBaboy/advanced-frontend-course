@@ -1,7 +1,7 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {ThemeDecorator} from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import {ArticlesPage} from "@/pages/ArticlesPage";
-import {Theme} from "@/shared/const/theme";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { ArticlesPage } from '@/pages/ArticlesPage';
+import { Theme } from '@/shared/const/theme';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -22,4 +22,4 @@ Light.args = {};
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
+Dark.decorators = [ThemeDecorator(Theme.DARK)];

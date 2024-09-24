@@ -1,7 +1,7 @@
 import React from 'react';
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {Modal} from './Modal';
-import {ThemeDecorator} from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Modal } from './Modal';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -29,4 +29,4 @@ Dark.args = {
     isOpen: true,
     children: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium, assumenda commodi consequatur debitis deleniti deserunt dignissimos dolor dolore ea eum expedita fuga illum ipsam labore molestias necessitatibus nihil nostrum nulla officia quos rem sit sunt temporibus veritatis. Blanditiis consequuntur culpa explicabo minus nam non odio officia optio quidem repellendus.',
 };
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
+Dark.decorators = [ThemeDecorator(Theme.DARK)];

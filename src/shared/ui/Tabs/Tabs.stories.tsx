@@ -1,8 +1,8 @@
 import React from 'react';
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import {Tabs} from '@/shared/ui/Tabs/Tabs';
-import {action} from "@storybook/addon-actions";
+import { action } from '@storybook/addon-actions';
+import { Tabs } from '@/shared/ui/Tabs/Tabs';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -23,17 +23,17 @@ Primary.args = {
     tabs: [
         {
             value: 'tab 1',
-            content: 'content tab 1'
+            content: 'content tab 1',
         },
         {
             value: 'tab 2',
-            content: 'content tab 2'
+            content: 'content tab 2',
         },
         {
             value: 'tab 3',
-            content: 'content tab 3'
-        }
+            content: 'content tab 3',
+        },
     ],
     value: 'tab 2',
-    onTabClick: action('onTabClick')
+    onTabClick: action('onTabClick'),
 };

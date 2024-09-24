@@ -1,7 +1,7 @@
 import React from 'react';
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {Avatar} from "@/shared/ui/Avatar/Avatar";
-import AvatarImg from './img/avatar.jpg'
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import AvatarImg from './img/avatar.jpg';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -20,12 +20,12 @@ export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
     size: 150,
-    src: AvatarImg
+    src: AvatarImg,
 };
 
 export const Small = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Small.args = {
     size: 50,
-    src: AvatarImg
+    src: AvatarImg,
 };

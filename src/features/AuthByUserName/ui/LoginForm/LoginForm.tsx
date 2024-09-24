@@ -1,21 +1,21 @@
-import {classNames} from "@/shared/lib/classNames/classNames";
-import cls from './LoginForm.module.scss'
-import {useTranslation} from "react-i18next";
-import {Button, ButtonTheme} from "@/shared/ui/Button/Button";
-import {Input} from "@/shared/ui/Input/Input";
-import {memo, } from "react";
-import {useSelector} from "react-redux";
-import {loginActions, loginReducer} from "../../model/slice/loginSlice";
+import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
+import { useSelector } from 'react-redux';
+import { AnyAction } from '@reduxjs/toolkit';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './LoginForm.module.scss';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Input } from '@/shared/ui/Input/Input';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 
-import {loginByUsername} from "../../model/services/loginByUsername/loginByUsername";
-import {AnyAction} from "@reduxjs/toolkit";
-import {TextTheme, Text} from "@/shared/ui/Text/Text";
-import {getLoginUsername} from "../../model/selectors/getLoginUsername/getLoginUsername";
-import {getLoginIsLoading} from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
-import {getLoginError} from "../../model/selectors/getLoginError/getLoginError";
-import {getLoginPassword} from "../../model/selectors/getLoginPassword/getLoginPassword";
-import {DynamicModuleLoader, ReducersList} from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
+import { TextTheme, Text } from '@/shared/ui/Text/Text';
+import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
+import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
+import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface LoginFormProps {
     className?: string
@@ -24,46 +24,47 @@ export interface LoginFormProps {
 
 const initialReducers: ReducersList = {
     loginForm: loginReducer,
-}
+};
 
-const LoginForm = memo(({className, onSuccess}: LoginFormProps) => {
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
+    const { t } = useTranslation();
+    const dispatch = useAppDispatch();
 
-    const {t} = useTranslation()
-    const dispatch = useAppDispatch()
-
-    const username = useSelector(getLoginUsername)
-    const password = useSelector(getLoginPassword)
-    const isLoading = useSelector(getLoginIsLoading)
-    const error = useSelector(getLoginError)
+    const username = useSelector(getLoginUsername);
+    const password = useSelector(getLoginPassword);
+    const isLoading = useSelector(getLoginIsLoading);
+    const error = useSelector(getLoginError);
 
     const onChangeUserName = (value: string) => {
-        dispatch(loginActions.setUserName(value))
-    }
+        dispatch(loginActions.setUserName(value));
+    };
 
     const onChangePassword = (value: string) => {
-        dispatch(loginActions.setPassword(value))
-    }
+        dispatch(loginActions.setPassword(value));
+    };
 
     const onLoginClick = async () => {
         const result = await dispatch(loginByUsername({
             username,
-            password
-        }) as unknown as AnyAction)
+            password,
+        }) as unknown as AnyAction);
 
         if (result?.meta?.requestStatus === 'fulfilled') {
-            onSuccess()
+            onSuccess();
         }
-    }
+    };
 
     return (
         <DynamicModuleLoader
-            removeAfterUnmount={true}
-            reducers={initialReducers}>
+            removeAfterUnmount
+            reducers={initialReducers}
+        >
             <div className={classNames(
                 cls.LoginForm,
                 {},
-                [className]
-            )}>
+                [className],
+            )}
+            >
                 <Text title={t('Форма авторизации')} />
                 {error && (
                     <Text
@@ -99,4 +100,4 @@ const LoginForm = memo(({className, onSuccess}: LoginFormProps) => {
     );
 });
 
-export default LoginForm
+export default LoginForm;

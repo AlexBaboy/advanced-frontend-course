@@ -1,11 +1,11 @@
-import {classNames} from '@/shared/lib/classNames/classNames';
-import {useTranslation} from 'react-i18next';
-import {memo} from 'react';
-import {Text, TextSize} from '@/shared/ui/Text/Text';
-import {ArticleList} from '@/entities/Article';
-import {VStack} from '@/shared/ui/Stack';
+import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Text, TextSize } from '@/shared/ui/Text/Text';
+import { ArticleList } from '@/entities/Article';
+import { VStack } from '@/shared/ui/Stack';
 import {
-    LIMIT_RECOMMENDATIONS_COUNT
+    LIMIT_RECOMMENDATIONS_COUNT,
 } from '@/pages/ArticleDetailsPage/model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 import {
     useArticlesRecommendationsList,
@@ -19,9 +19,9 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
     const { className } = props;
     const { t } = useTranslation();
 
-    const { data: articles, isLoading, error } = useArticlesRecommendationsList(LIMIT_RECOMMENDATIONS_COUNT)
+    const { data: articles, isLoading, error } = useArticlesRecommendationsList(LIMIT_RECOMMENDATIONS_COUNT);
 
-    if (isLoading || error || !articles) return null
+    if (isLoading || error || !articles) return null;
 
     return (
         <VStack gap="8" className={classNames('', {}, [className])}>

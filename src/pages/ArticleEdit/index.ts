@@ -1,1 +1,1 @@
-export {ArticleEditAsync as ArticleEdit } from './ui/ArticleEdit/ArticleEdit.async'
+export { ArticleEditAsync as ArticleEdit } from './ui/ArticleEdit/ArticleEdit.async';

@@ -17,7 +17,7 @@ export default {
                 <Story />
             </div>
         ),
-    ]
+    ],
 } as ComponentMeta<typeof ListBox>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args

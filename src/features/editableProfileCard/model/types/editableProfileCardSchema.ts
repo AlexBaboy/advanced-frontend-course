@@ -1,5 +1,5 @@
-import {Profile} from "@/entities/Profile";
-import {ValidateProfileError} from "@/features/editableProfileCard/model/constants/constants";
+import { Profile } from '@/entities/Profile';
+import { ValidateProfileError } from '@/features/editableProfileCard/model/constants/constants';
 
 export type ProfileSchema = {
     data?: Profile

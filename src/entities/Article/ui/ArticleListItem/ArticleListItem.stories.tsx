@@ -1,8 +1,8 @@
 import React from 'react';
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {ArticleView} from "../../../Article";
-import {ArticleListItem} from "../../ui/ArticleListItem/ArticleListItem";
-import {article} from "@/shared/mocks/articleDetail";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ArticleView } from '../../../Article';
+import { ArticleListItem } from '../../ui/ArticleListItem/ArticleListItem';
+import { article } from '@/shared/mocks/articleDetail';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -21,12 +21,12 @@ export const Big = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Big.args = {
     article,
-    view: ArticleView.BIG
+    view: ArticleView.BIG,
 };
 
 export const Small = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Small.args = {
     article,
-    view: ArticleView.SMALL
+    view: ArticleView.SMALL,
 };

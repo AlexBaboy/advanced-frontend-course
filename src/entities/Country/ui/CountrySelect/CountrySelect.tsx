@@ -41,5 +41,5 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
             readonly={readonly}
             direction="top right"
         />
-    )
+    );
 });

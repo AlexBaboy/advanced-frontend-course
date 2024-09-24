@@ -1,19 +1,19 @@
-import {createEntityAdapter, createSlice, PayloadAction,} from '@reduxjs/toolkit'
-import {StateSchema} from "@/app/providers/StoreProvider";
-import {ArticleType, ArticleSortField, ArticleView} from "@/entities/Article/model/constants/constants";
-import {ArticlesPageSchema} from "../types/ArticlesPageSchema";
-import {fetchArticlesList} from "../../model/services/fetchArticlesList/fetchArticlesList";
-import {ARTICLES_VIEW_LOCALSTORAGE_KEY} from "@/shared/const/localStorage";
-import {SortOrder} from "@/shared/types";
-import {Article} from "@/entities/Article";
+import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { ArticleType, ArticleSortField, ArticleView } from '@/entities/Article/model/constants/constants';
+import { ArticlesPageSchema } from '../types/ArticlesPageSchema';
+import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
+import { SortOrder } from '@/shared/types';
+import { Article } from '@/entities/Article';
 
 const articlesAdapter = createEntityAdapter<Article>({
     selectId: (article) => article.id,
-})
+});
 
 export const getArticles = articlesAdapter.getSelectors<StateSchema>(
-    (state) => state.articlesPage || articlesAdapter.getInitialState()
-)
+    (state) => state.articlesPage || articlesAdapter.getInitialState(),
+);
 
 export const enum limits {
     VIEW_BIG_LIMIT = 4,
@@ -35,69 +35,68 @@ const articlesPageSlice = createSlice({
         sort: ArticleSortField.CREATED,
         order: 'asc',
         search: '',
-        type: ArticleType.ALL
+        type: ArticleType.ALL,
     }),
     reducers: {
         setView: (state, action: PayloadAction<ArticleView>) => {
-            state.view = action.payload
-            localStorage.setItem(ARTICLES_VIEW_LOCALSTORAGE_KEY, action.payload)
+            state.view = action.payload;
+            localStorage.setItem(ARTICLES_VIEW_LOCALSTORAGE_KEY, action.payload);
         },
         setPage: (state, action: PayloadAction<number>) => {
-            state.page = action.payload
+            state.page = action.payload;
         },
         setOrder: (state, action: PayloadAction<SortOrder>) => {
-            state.order = action.payload
+            state.order = action.payload;
         },
         setSort: (state, action: PayloadAction<ArticleSortField>) => {
-            state.sort = action.payload
+            state.sort = action.payload;
         },
         setSearch: (state, action: PayloadAction<string>) => {
-            state.search = action.payload
+            state.search = action.payload;
         },
         setType: (state, action: PayloadAction<ArticleType>) => {
-            state.type = action.payload
+            state.type = action.payload;
         },
-        initState: state => {
-            const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView
-            state.view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView
-            state.limit = view === ArticleView.BIG ? limits.VIEW_BIG_LIMIT : limits.VIEW_SMALL_LIMIT
-            state._inited = true
+        initState: (state) => {
+            const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView;
+            state.view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView;
+            state.limit = view === ArticleView.BIG ? limits.VIEW_BIG_LIMIT : limits.VIEW_SMALL_LIMIT;
+            state._inited = true;
         },
     },
-    extraReducers: builder => {
+    extraReducers: (builder) => {
         builder
             // fetch
             .addCase(fetchArticlesList.pending, (state, action) => {
-                state.error = ''
-                state.isLoading = true
+                state.error = '';
+                state.isLoading = true;
 
                 if (action.meta.arg.replace) {
-                    articlesAdapter.removeAll(state)
+                    articlesAdapter.removeAll(state);
                 }
-
             })
             .addCase(
                 fetchArticlesList.fulfilled,
                 (state, action) => {
-                    state.isLoading = false
+                    state.isLoading = false;
                     // @ts-ignore
-                    state.hasMore = action.payload.length >= state.limit
+                    state.hasMore = action.payload.length >= state.limit;
 
                     if (action.meta.arg.replace) {
-                        articlesAdapter.setAll(state, action.payload)
+                        articlesAdapter.setAll(state, action.payload);
                     } else {
-                        articlesAdapter.addMany(state, action.payload)
+                        articlesAdapter.addMany(state, action.payload);
                     }
-
-                })
+                },
+            )
             .addCase(fetchArticlesList.rejected, (state, action) => {
-                state.isLoading = false
-                state.error = action.payload as string | undefined
-            })
-    }
-})
+                state.isLoading = false;
+                state.error = action.payload as string | undefined;
+            });
+    },
+});
 
 export const {
     reducer: articlesPageReducer,
-    actions: articlesPageActions
-} = articlesPageSlice
+    actions: articlesPageActions,
+} = articlesPageSlice;

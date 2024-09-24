@@ -1,6 +1,6 @@
 import {
     CombinedState, configureStore, Reducer, ReducersMapObject,
-} from '@reduxjs/toolkit'
+} from '@reduxjs/toolkit';
 import { userReducer } from '@/entities/User';
 import { $api } from '@/shared/api/api';
 import { uiReducer } from '@/features/ui';
@@ -18,9 +18,9 @@ export const createReduxStore = (
         user: userReducer,
         ui: uiReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
-    }
+    };
 
-    const reducerManager = createReducerManager(rootReducers)
+    const reducerManager = createReducerManager(rootReducers);
 
     const store = configureStore({
         reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
@@ -33,12 +33,12 @@ export const createReduxStore = (
                 },
             },
         }).concat(rtkApi.middleware),
-    })
+    });
 
     // @ts-ignore
-    store.reducerManager = reducerManager
+    store.reducerManager = reducerManager;
 
-    return store
-}
+    return store;
+};
 
 export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']

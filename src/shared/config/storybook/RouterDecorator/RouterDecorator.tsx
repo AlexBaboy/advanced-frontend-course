@@ -6,5 +6,5 @@ export const RouterDecorator = (StoryComponent: Story) => {
         <BrowserRouter>
             <StoryComponent />
         </BrowserRouter>
-    )
-}
+    );
+};

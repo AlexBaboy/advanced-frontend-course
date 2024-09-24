@@ -1,4 +1,3 @@
-import {lazy} from "react";
+import { lazy } from 'react';
 
-
-export const MainAsync = lazy( ()=> import('./MainPage'))
+export const MainAsync = lazy(() => import('./MainPage'));

@@ -1,4 +1,4 @@
-import {StateSchema} from "@/app/providers/StoreProvider";
-import {DeepPartial} from "@reduxjs/toolkit";
+import { DeepPartial } from '@reduxjs/toolkit';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
-export const getLoginUsername = (state: DeepPartial<StateSchema>) => state.loginForm?.username || ''
+export const getLoginUsername = (state: DeepPartial<StateSchema>) => state.loginForm?.username || '';

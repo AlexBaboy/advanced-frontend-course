@@ -1,16 +1,16 @@
-import {classNames} from "@/shared/lib/classNames/classNames";
-import cls from './RatingCard.module.scss'
-import {memo, useCallback, useState} from "react";
-import {Card} from "@/shared/ui/Card/Card";
-import {HStack, VStack} from "@/shared/ui/Stack";
-import {Text} from '@/shared/ui/Text/Text';
-import {StarRating} from "@/shared/ui/StarRating/StarRating";
-import {Modal} from "@/shared/ui/Modal/Modal";
-import {Input} from "@/shared/ui/Input/Input";
-import {useTranslation} from "react-i18next";
-import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button/Button";
-import {BrowserView, MobileView} from "react-device-detect";
-import {Drawer} from "@/shared/ui/Drawer/Drawer";
+import { memo, useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { BrowserView, MobileView } from 'react-device-detect';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './RatingCard.module.scss';
+import { Card } from '@/shared/ui/Card/Card';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import { Text } from '@/shared/ui/Text/Text';
+import { StarRating } from '@/shared/ui/StarRating/StarRating';
+import { Modal } from '@/shared/ui/Modal/Modal';
+import { Input } from '@/shared/ui/Input/Input';
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Drawer } from '@/shared/ui/Drawer/Drawer';
 
 interface RatingCardProps {
     className?: string;
@@ -23,8 +23,7 @@ interface RatingCardProps {
 }
 
 export const RatingCard = memo((props: RatingCardProps) => {
-
-    const {t} = useTranslation()
+    const { t } = useTranslation();
 
     const {
         className,
@@ -33,34 +32,33 @@ export const RatingCard = memo((props: RatingCardProps) => {
         feedbackTitle,
         hasFeedback,
         title,
-        rate = 0
-    } = props
+        rate = 0,
+    } = props;
 
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [starsCount, setStarsCount] = useState(rate)
-    const [feedback, setFeedback] = useState('')
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [starsCount, setStarsCount] = useState(rate);
+    const [feedback, setFeedback] = useState('');
 
     const onSelectStars = useCallback((selectedStarsCount: number) => {
-        setStarsCount(selectedStarsCount)
-        setIsModalOpen(true)
+        setStarsCount(selectedStarsCount);
+        setIsModalOpen(true);
 
         if (hasFeedback) {
-            setIsModalOpen(true)
+            setIsModalOpen(true);
         } else {
-            onAccept?.(selectedStarsCount)
+            onAccept?.(selectedStarsCount);
         }
-
-    },[hasFeedback, onAccept])
+    }, [hasFeedback, onAccept]);
 
     const acceptHandler = useCallback(() => {
-        setIsModalOpen(false)
-        onAccept?.(starsCount, feedback)
-    },[feedback, starsCount])
+        setIsModalOpen(false);
+        onAccept?.(starsCount, feedback);
+    }, [feedback, starsCount]);
 
     const cancelHandler = useCallback(() => {
-        setIsModalOpen(false)
-        onCancel?.(starsCount)
-    },[onCancel, starsCount])
+        setIsModalOpen(false);
+        onCancel?.(starsCount);
+    }, [onCancel, starsCount]);
 
     const modalContent = (
         <>
@@ -72,11 +70,11 @@ export const RatingCard = memo((props: RatingCardProps) => {
             />
 
         </>
-    )
+    );
 
     return (
         <Card className={classNames(cls.RatingCard, {}, [className])} max>
-            <VStack align={'center'} gap={'8'} max>
+            <VStack align="center" gap="8" max>
                 <Text title={starsCount ? t('Спасибо за оценку') : title} />
                 <StarRating
                     size={40}
@@ -87,13 +85,13 @@ export const RatingCard = memo((props: RatingCardProps) => {
 
             <BrowserView>
                 <Modal lazy isOpen={isModalOpen}>
-                    <VStack gap={'32'} max>
+                    <VStack gap="32" max>
                         {modalContent}
-                        <HStack max gap={'32'} justify={'end'}>
+                        <HStack max gap="32" justify="end">
                             <Button theme={ButtonTheme.OUTLINE_RED} onClick={cancelHandler}>
                                 {t('Закрыть')}
                             </Button>
-                            <Button  theme={ButtonTheme.OUTLINE} onClick={acceptHandler}>
+                            <Button theme={ButtonTheme.OUTLINE} onClick={acceptHandler}>
                                 {t('Отправить')}
                             </Button>
                         </HStack>
@@ -102,7 +100,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
             </BrowserView>
             <MobileView>
                 <Drawer lazy isOpen={isModalOpen} onClose={cancelHandler}>
-                    <VStack max gap={'32'}></VStack>
+                    <VStack max gap="32" />
                     {modalContent}
                     <Button
                         onClick={acceptHandler}
@@ -114,5 +112,5 @@ export const RatingCard = memo((props: RatingCardProps) => {
                 </Drawer>
             </MobileView>
         </Card>
-    )
+    );
 });

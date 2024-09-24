@@ -1,18 +1,18 @@
+import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import cls from '@/pages/ArticleDetailsPage/ui/ArticleDetailsPage/ArticleDetailsPage.module.scss';
-import {memo} from 'react';
-import {useTranslation} from 'react-i18next';
-import {ArticleList} from "@/entities/Article";
-import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import {useSelector} from "react-redux";
-import {getArticles} from "@/pages/ArticlesPage/model/slices/articlesPageSlice";
+import { ArticleList } from '@/entities/Article';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { getArticles } from '@/pages/ArticlesPage/model/slices/articlesPageSlice';
 import {
     getArticlesPageError,
     getArticlesPageIsLoading,
-    getArticlesPageView
-} from "@/pages/ArticlesPage/model/selectors/articlesPageSelectors";
-import {useSearchParams} from "react-router-dom";
-import {useInitialEffect} from "@/shared/lib/hooks/useInitialEffect/useInitialEffect";
-import {initArticlesPage} from "@/pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage";
+    getArticlesPageView,
+} from '@/pages/ArticlesPage/model/selectors/articlesPageSelectors';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { initArticlesPage } from '@/pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage';
 import { Text } from '@/shared/ui/Text/Text';
 
 interface ArticleInfiniteListProps {
@@ -42,7 +42,7 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
     const repeatedArticles = Array(5).fill(articles).flat();
 
     if (error) {
-        return <Text title={t('Ошибка при загрузке статей')} />
+        return <Text title={t('Ошибка при загрузке статей')} />;
     }
 
     return (
@@ -52,5 +52,5 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
             isLoading={isLoading}
             className={className}
         />
-    )
-})
+    );
+});

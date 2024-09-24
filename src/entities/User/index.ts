@@ -14,10 +14,10 @@ export {
 
 export {
     getUserAuthData,
-} from './model/selectors/getUserAuthData/getUserAuthData'
+} from './model/selectors/getUserAuthData/getUserAuthData';
 
 export type {
     UserSchema,
     User,
-} from './model/types/user'
-export {UserRole} from "@/entities/User/model/constants/constants";
+} from './model/types/user';
+export { UserRole } from '@/entities/User/model/constants/constants';

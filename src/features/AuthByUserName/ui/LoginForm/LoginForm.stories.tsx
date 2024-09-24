@@ -1,8 +1,8 @@
 import React from 'react';
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import LoginForm from './LoginForm';
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -24,9 +24,9 @@ Primary.decorators = [StoreDecorator({
     loginForm: {
         username: 'usernameTest',
         password: '123',
-        isLoading: false
-    }
-})]
+        isLoading: false,
+    },
+})];
 
 export const WithError = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
@@ -36,15 +36,15 @@ WithError.decorators = [StoreDecorator({
         username: 'usernameTest',
         password: '123',
         error: 'error message',
-        isLoading: false
-    }
-})]
+        isLoading: false,
+    },
+})];
 
 export const Loading = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Loading.args = {};
 Loading.decorators = [StoreDecorator({
     loginForm: {
-        isLoading: true
-    }
-})]
+        isLoading: true,
+    },
+})];

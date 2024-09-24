@@ -1,4 +1,4 @@
-import {ArticleBlockType, ArticleType} from "@/entities/Article/model/constants/constants";
+import { ArticleBlockType, ArticleType } from '@/entities/Article/model/constants/constants';
 
 export type ArticleBlockBase = {
     id: string,
@@ -21,7 +21,6 @@ export type ArticleTextBlock = ArticleBlockBase & {
     title?: string,
     paragraphs: string[]
 }
-
 
 export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock
 

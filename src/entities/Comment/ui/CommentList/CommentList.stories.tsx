@@ -1,9 +1,9 @@
 import React from 'react';
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
-import {CommentList} from "@/entities/Comment";
-import {commentList} from "@/shared/mocks/commentList";
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { CommentList } from '@/entities/Comment';
+import { commentList } from '@/shared/mocks/commentList';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -21,14 +21,14 @@ const Template: ComponentStory<typeof CommentList> = (args) => <CommentList {...
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-    comments: commentList
+    comments: commentList,
 };
 
 export const Loading = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Loading.args = {
     comments: [],
-    isLoading: true
+    isLoading: true,
 };
 
-Primary.decorators = [StoreDecorator({})]
+Primary.decorators = [StoreDecorator({})];

@@ -1,7 +1,7 @@
 import React from 'react';
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {ArticleView} from "../../../Article";
-import {ArticleViewSelector} from "../../ui/ArticleViewSelector/ArticleViewSelector";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ArticleView } from '../../../Article';
+import { ArticleViewSelector } from '../../ui/ArticleViewSelector/ArticleViewSelector';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -19,11 +19,11 @@ const Template: ComponentStory<typeof ArticleViewSelector> = (args) => <ArticleV
 export const Big = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Big.args = {
-    view: ArticleView.BIG
+    view: ArticleView.BIG,
 };
 
 export const Small = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Small.args = {
-    view: ArticleView.SMALL
+    view: ArticleView.SMALL,
 };

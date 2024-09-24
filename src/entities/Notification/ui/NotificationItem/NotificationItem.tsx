@@ -1,10 +1,10 @@
-import {useTranslation} from 'react-i18next';
-import {memo} from 'react';
-import {classNames} from "@/shared/lib/classNames/classNames";
-import {useNotifications} from "@/entities/Notification/api/notificationApi";
-import cls from './NotificationItem.module.scss'
-import {Notification} from "../../model/types/notifications";
-import {Card, CardTheme} from "@/shared/ui/Card/Card";
+import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useNotifications } from '@/entities/Notification/api/notificationApi';
+import cls from './NotificationItem.module.scss';
+import { Notification } from '../../model/types/notifications';
+import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { Text } from '@/shared/ui/Text/Text';
 
 interface NotificationItemProps {
@@ -15,32 +15,33 @@ interface NotificationItemProps {
 export const NotificationItem = memo((props: NotificationItemProps) => {
     const {
         className,
-        item
+        item,
     } = props;
 
-    const {t} = useTranslation();
-    const { data, isLoading } = useNotifications(null)
+    const { t } = useTranslation();
+    const { data, isLoading } = useNotifications(null);
 
     const content = (
         <Card
             theme={CardTheme.OUTLINED}
-            className={classNames(cls.NotificationItem, {}, [className])}>
+            className={classNames(cls.NotificationItem, {}, [className])}
+        >
             <Text title={item.title} text={item.description} />
         </Card>
-    )
+    );
 
     if (item.href) {
         return (
             <a
-                target={"_blank"}
+                target="_blank"
                 href={item.href}
                 className={cls.link}
                 rel="noreferrer"
             >
                 {content}
             </a>
-        )
+        );
     }
 
-    return content
-})
+    return content;
+});

@@ -1,6 +1,6 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {Card} from "@/shared/ui/Card/Card";
-import {Text} from "@/shared/ui/Text/Text";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Card } from '@/shared/ui/Card/Card';
+import { Text } from '@/shared/ui/Text/Text';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -19,7 +19,7 @@ const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 export const Light = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Light.args = {
-    children: <Text title={'test title'} text={'test text'} />
+    children: <Text title="test title" text="test text" />,
 };
 /*
 export const Loading = Template.bind({});
@@ -32,4 +32,4 @@ export const Error = Template.bind({});
 Error.args = {};
 Error.decorators = [StoreDecorator({
     articleDetails: {error: 'error message', isLoading: false}
-})]*/
+})] */

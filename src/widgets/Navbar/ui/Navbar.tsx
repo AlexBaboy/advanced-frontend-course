@@ -1,34 +1,34 @@
-import React, {memo, useState} from 'react'
-import {classNames} from '@/shared/lib/classNames/classNames'
-import {useTranslation} from 'react-i18next';
-import {Button, ButtonTheme} from '@/shared/ui/Button/Button';
-import {LoginModal} from '@/features/AuthByUserName';
-import {useSelector} from 'react-redux';
-import {getUserAuthData} from '@/entities/User';
-import {Text, TextTheme} from '@/shared/ui/Text/Text';
-import {AppLink, AppLinkTheme} from '@/shared/ui/AppLink/AppLink';
-import {RoutePath} from '@/shared/config/routeConfig/routeConfig';
-import cls from './Navbar.module.scss'
-import {HStack} from "@/shared/ui/Stack";
-import {NotificationButton} from "@/features/notificationButton";
-import {AvatarDropdown} from "@/features/avatarDropdown";
+import React, { memo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { LoginModal } from '@/features/AuthByUserName';
+import { getUserAuthData } from '@/entities/User';
+import { Text, TextTheme } from '@/shared/ui/Text/Text';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import cls from './Navbar.module.scss';
+import { HStack } from '@/shared/ui/Stack';
+import { NotificationButton } from '@/features/notificationButton';
+import { AvatarDropdown } from '@/features/avatarDropdown';
 
 interface NavbarProps {
     className?: string
 }
 
-export const Navbar = memo(({className}: NavbarProps) => {
-    const {t} = useTranslation()
-    const [isAuthModal, setIsAuthModal] = useState(false)
-    const authData = useSelector(getUserAuthData)
+export const Navbar = memo(({ className }: NavbarProps) => {
+    const { t } = useTranslation();
+    const [isAuthModal, setIsAuthModal] = useState(false);
+    const authData = useSelector(getUserAuthData);
 
     const onCloseModal = () => {
-        setIsAuthModal(false)
-    }
+        setIsAuthModal(false);
+    };
 
     const onShowModal = () => {
-        setIsAuthModal(true)
-    }
+        setIsAuthModal(true);
+    };
 
     if (authData) {
         return (
@@ -50,7 +50,7 @@ export const Navbar = memo(({className}: NavbarProps) => {
                 </div>
 
                 <HStack
-                    gap={"16"}
+                    gap="16"
                     className={cls.actions}
                 >
                     <NotificationButton />
@@ -58,7 +58,7 @@ export const Navbar = memo(({className}: NavbarProps) => {
 
                 </HStack>
             </header>
-        )
+        );
     }
 
     return (
@@ -78,5 +78,5 @@ export const Navbar = memo(({className}: NavbarProps) => {
                 />
             )}
         </header>
-    )
-})
+    );
+});

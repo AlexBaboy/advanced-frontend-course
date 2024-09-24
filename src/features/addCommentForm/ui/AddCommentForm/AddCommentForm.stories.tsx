@@ -1,9 +1,9 @@
 import React from 'react';
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
-import AddCommentForm from "@/features/addCommentForm/ui/AddCommentForm/AddCommentForm";
-import {action} from "@storybook/addon-actions";
+import { action } from '@storybook/addon-actions';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import AddCommentForm from '@/features/addCommentForm/ui/AddCommentForm/AddCommentForm';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -21,6 +21,6 @@ const Template: ComponentStory<typeof AddCommentForm> = (args) => <AddCommentFor
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-    onSendComment: action('onSendComment')
+    onSendComment: action('onSendComment'),
 };
-Primary.decorators = [StoreDecorator({})]
+Primary.decorators = [StoreDecorator({})];
