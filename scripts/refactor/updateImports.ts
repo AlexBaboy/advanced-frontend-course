@@ -1,13 +1,14 @@
+/*
 import { Project, ScriptTarget } from 'ts-morph';
 
 const project = new Project({
-    /* compilerOptions: {
+    /!* compilerOptions: {
         target: ScriptTarget.ES3,
-    }, */
+    }, *!/
 });
 
-project.addSourceFilesAtPaths('src/**/*.ts');
-project.addSourceFilesAtPaths('src/**/*.tsx');
+project.addSourceFilesAtPaths('src/!**!/!*.ts');
+project.addSourceFilesAtPaths('src/!**!/!*.tsx');
 
 const isAbsolute = (value: string) => {
     const layers = ['app', 'shared', 'entities', 'features', 'widgets', 'pages'];
@@ -28,3 +29,4 @@ files.forEach((file) => {
 });
 
 project.save();
+*/
