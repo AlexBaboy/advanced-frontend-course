@@ -1,5 +1,5 @@
 import React, {
-    FC, ReactNode, useEffect, useMemo, useState,
+    ReactNode, useEffect, useMemo, useState,
 } from 'react';
 import { ThemeContext } from '../../../../shared/lib/context/ThemeContext';
 

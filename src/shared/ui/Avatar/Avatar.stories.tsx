@@ -1,26 +1,31 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ArticleTypeTabs } from '../../ui/ArticleTypeTabs/ArticleTypeTabs';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import AvatarImg from './img/avatar.jpg';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-    title: 'entities/Articles/ArticleTypeTabs',
-    component: ArticleTypeTabs,
+    title: 'shared/Avatar',
+    component: Avatar,
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ArticleTypeTabs>;
+} as ComponentMeta<typeof Avatar>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof ArticleTypeTabs> = (args) => <ArticleTypeTabs {...args} />;
+const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 
-export const Big = Template.bind({});
+export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Big.args = {
+Primary.args = {
+    size: 150,
+    src: AvatarImg,
 };
 
 export const Small = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Small.args = {
+    size: 50,
+    src: AvatarImg,
 };
