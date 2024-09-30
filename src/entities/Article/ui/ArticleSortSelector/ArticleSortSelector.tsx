@@ -7,7 +7,7 @@ import { SortOrder } from '@/shared/types';
 import cls from './ArticlesSortSelector.module.scss';
 import { ArticleSortField } from '@/entities/Article';
 
-interface ArticlesSortSelectorProps {
+interface ArticlesSortSelectorProps<> {
     className?: string
     sort: ArticleSortField
     order: SortOrder
