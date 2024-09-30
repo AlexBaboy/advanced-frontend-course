@@ -4,7 +4,7 @@ import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { articleDetailsReducer } from '@/entities/Article/testing';
 import { addCommentFormReducer } from '@/features/addCommentForm/testing';
-import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/model/slices';
+import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/testing';
 import { profileReducer } from '@/features/editableProfileCard/testing';
 import { loginReducer } from '@/features/AuthByUserName/testing';
 

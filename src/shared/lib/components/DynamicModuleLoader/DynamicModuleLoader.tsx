@@ -1,11 +1,11 @@
 import { ReactNode, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 import { Reducer } from '@reduxjs/toolkit';
-import { ReduxStoreWithManager, StateSchemaKey } from '@/app/providers/StoreProvider/config/StateSchema';
+import {ReduxStoreWithManager, StateSchema, StateSchemaKey} from '@/app/providers/StoreProvider/config/StateSchema';
 import { ArticleDetailsCommentSchema } from '@/pages/ArticleDetailsPage';
 
 export type ReducersList = {
-    [name in StateSchemaKey]?: Reducer
+    [name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[name]>>
     & {
         articleDetailsComments?: ArticleDetailsCommentSchema[];
     };
