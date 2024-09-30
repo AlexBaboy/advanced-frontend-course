@@ -4,6 +4,7 @@ import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import { TranslationDecorator } from '../../src/shared/config/storybook/TranslationDecorator/TranslationDecorator';
 import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
+import { Theme } from '../../src/shared/const/theme';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -13,10 +14,11 @@ export const parameters = {
             date: /Date$/,
         },
     },
-}
+    layout: 'fullscreen',
+};
 
-addDecorator(StyleDecorator)
-addDecorator(ThemeDecorator(Theme.LIGHT))
-addDecorator(RouterDecorator)
-addDecorator(TranslationDecorator)
-addDecorator(SuspenseDecorator)
+addDecorator(StyleDecorator);
+addDecorator(ThemeDecorator(Theme.LIGHT));
+addDecorator(RouterDecorator);
+addDecorator(TranslationDecorator);
+addDecorator(SuspenseDecorator);
