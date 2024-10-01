@@ -1,13 +1,13 @@
-import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
-import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import { CommentItem } from '@/entities/Comment';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
-import { Text } from '@/shared/ui/Text/Text';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
-import { VStack } from '@/shared/ui/Stack';
+import {useTranslation} from 'react-i18next';
+import {memo} from 'react';
+import {classNames, Mods} from '@/shared/lib/classNames/classNames';
+import {CommentItem} from '@/entities/Comment';
+import {Avatar} from '@/shared/ui/Avatar/Avatar';
+import {Text} from '@/shared/ui/Text/Text';
+import {Skeleton} from '@/shared/ui/Skeleton/Skeleton';
+import {AppLink} from '@/shared/ui/AppLink/AppLink';
+import {getRouteProfile} from '@/shared/config/routeConfig/routeConfig';
+import {VStack} from '@/shared/ui/Stack';
 import cls from './CommentCard.module.scss';
 
 interface CommentCardProps {
@@ -61,7 +61,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
                 [className],
             )}
         >
-            <AppLink to={`${RoutePath.profile}${comment?.user.id}`} className={cls.header}>
+            <AppLink to={getRouteProfile(comment?.user.id)} className={cls.header}>
                 {comment?.user?.avatar ? <Avatar size={30} src={comment?.user?.avatar} /> : null}
                 <Text title={comment?.user.username} className={cls.username} />
             </AppLink>

@@ -1,20 +1,20 @@
-import { useTranslation } from 'react-i18next';
-import { HTMLAttributeAnchorTarget, memo } from 'react';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Article, ArticleView } from '@/entities/Article';
-import { Text } from '@/shared/ui/Text/Text';
-import { Icon } from '@/shared/ui/Icon/Icon';
+import {useTranslation} from 'react-i18next';
+import {HTMLAttributeAnchorTarget, memo} from 'react';
+import {classNames} from '@/shared/lib/classNames/classNames';
+import {Article, ArticleView} from '@/entities/Article';
+import {Text} from '@/shared/ui/Text/Text';
+import {Icon} from '@/shared/ui/Icon/Icon';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
-import { Card } from '@/shared/ui/Card/Card';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { ARTICLES_LIST_ITEM_INDEX } from '@/shared/const/localStorage';
-import { ArticleTextBlock } from '../../model/types/article';
-import { ArticleTextBlockComponent } from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
+import {Card} from '@/shared/ui/Card/Card';
+import {Avatar} from '@/shared/ui/Avatar/Avatar';
+import {Button, ButtonTheme} from '@/shared/ui/Button/Button';
+import {getRouteArticleDetails} from '@/shared/config/routeConfig/routeConfig';
+import {AppLink} from '@/shared/ui/AppLink/AppLink';
+import {ARTICLES_LIST_ITEM_INDEX} from '@/shared/const/localStorage';
+import {ArticleTextBlock} from '../../model/types/article';
+import {ArticleTextBlockComponent} from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticleListItem.module.scss';
-import { ArticleBlockType } from '@/entities/Article/model/constants/constants';
+import {ArticleBlockType} from '@/entities/Article/model/constants/constants';
 
 interface ArticleListItemProps {
     className?: string
@@ -81,7 +81,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     <div className={cls.footer}>
                         <AppLink
                             target={target}
-                            to={RoutePath.article_details + article?.id}
+                            to={getRouteArticleDetails(article?.id)}
                         >
                             <Button
                                 theme={ButtonTheme.OUTLINE}
@@ -101,7 +101,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     return (
         <AppLink
             target={target}
-            to={RoutePath.article_details + article?.id}
+            to={getRouteArticleDetails(article?.id)}
             className={classNames(
                 cls.ArticleListItem,
                 {},
