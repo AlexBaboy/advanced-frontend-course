@@ -15,6 +15,8 @@ import {ArticleTextBlock} from '../../model/types/article';
 import {ArticleTextBlockComponent} from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticleListItem.module.scss';
 import {ArticleBlockType} from '@/entities/Article/model/constants/constants';
+import {AppImage} from "@/shared/ui/AppImage";
+import {Skeleton} from "@/shared/ui/Skeleton/Skeleton";
 
 interface ArticleListItemProps {
     className?: string
@@ -47,12 +49,6 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         sessionStorage.setItem(ARTICLES_LIST_ITEM_INDEX, JSON.stringify(index));
     };
 
-    /* if (!article) {
-        return null
-    } */
-
-    console.log('54 article', article);
-
     if (view === ArticleView.BIG) {
         const texBlock = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
 
@@ -71,7 +67,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     </div>
                     <Text text={article.title} className={cls.title} />
                     {types}
-                    <img src={article.img} alt={article.title} className={cls.img} />
+                    <AppImage
+                        fallback={<Skeleton width="100%" height={250} />}
+                        src={article.img}
+                        alt={article.title}
+                        className={cls.img}
+                    />
                     {texBlock && (
                         <ArticleTextBlockComponent
                             block={texBlock}
@@ -111,7 +112,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         >
             <Card className={cls.card}>
                 <div className={cls.imageWrapper}>
-                    <img src={article.img} alt={article.title} className={cls.img} />
+                    <AppImage
+                        fallback={<Skeleton width={200} height={200} />}
+                        src={article.img}
+                        alt={article.title}
+                        className={cls.img}
+                    />
                     <Text text={article.createdAt} className={cls.date} />
                 </div>
                 <div className={cls.infoWrapper}>
