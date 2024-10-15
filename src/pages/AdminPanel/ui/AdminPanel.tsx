@@ -5,7 +5,7 @@ const AdminPanel = () => {
     const { t } = useTranslation('about');
 
     return (
-        <div>
+        <div data-testid="AdminPanel">
             {t('Админ панель')}
         </div>
     );

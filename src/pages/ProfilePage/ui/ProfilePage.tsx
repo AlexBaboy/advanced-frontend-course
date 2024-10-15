@@ -16,10 +16,10 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
         <Page
             data-testid="ProfilePage"
             className={classNames(
-            cls.ProfilePage,
-            {},
-            [className, cls.loading],
-        )}
+                cls.ProfilePage,
+                {},
+                [className, cls.loading],
+            )}
         >
             <VStack gap="16" max>
                 <EditableProfileCard id={id} />
