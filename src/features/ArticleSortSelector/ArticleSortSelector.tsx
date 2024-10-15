@@ -3,9 +3,10 @@ import { memo, useCallback, useMemo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Select, SelectOption } from '@/shared/ui/Select/Select';
-import { SortOrder } from '@/shared/types';
+
 import cls from './ArticlesSortSelector.module.scss';
 import { ArticleSortField } from '@/entities/Article';
+import { SortOrder } from '@/shared/types/sort';
 
 interface ArticlesSortSelectorProps {
     className?: string

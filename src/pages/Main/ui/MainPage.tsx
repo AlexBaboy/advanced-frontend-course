@@ -4,7 +4,7 @@ const MainPage = () => {
     const { t } = useTranslation();
 
     return (
-        <div>
+        <div data-testid="MainPage">
             {t('Главная страница')}
         </div>
     );

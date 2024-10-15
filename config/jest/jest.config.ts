@@ -65,7 +65,7 @@ export default {
         '\\.(css|less|scss|sss|styl)$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
         '^axios$': require.resolve('axios'),
-        '~src/(.*)': '<rootDir>/src/$1',
+        // '~src/(.*)': '<rootDir>/src/$1',
         '^@/(.*)$': '<rootDir>/src/$1',
     },
 

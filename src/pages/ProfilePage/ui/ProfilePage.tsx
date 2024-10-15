@@ -13,7 +13,9 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     const { id } = useParams<{id: string}>();
 
     return (
-        <Page className={classNames(
+        <Page
+            data-testid="ProfilePage"
+            className={classNames(
             cls.ProfilePage,
             {},
             [className, cls.loading],
