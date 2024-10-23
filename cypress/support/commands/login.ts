@@ -1,6 +1,6 @@
 import { USER_LOCALSTORAGE_KEY } from '../../../src/shared/const/localStorage';
 
-export const login = (username: string, password: string) => {
+export const login = (username: string = 'testuser', password: string = '123') => {
     cy.request({
         method: 'POST',
         url: 'http://localhost:8000/login',
