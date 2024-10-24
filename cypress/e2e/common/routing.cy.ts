@@ -20,16 +20,16 @@ describe('Маршрутизация', () => {
     describe('Пользователь авторизован', () => {
 
         beforeEach(() => {
-            login();
+            cy.login();
         });
 
         it('Переход на страницу профиля', () => {
-            login('admin', '123');
+            //login('admin', '123');
             cy.visit('/profile/1');
             cy.get(selectByTestId('ProfilePage')).should('exist');
         });
         it('Переход на страницу со списком статей', () => {
-            login('admin', '123');
+            //login('admin', '123');
             cy.visit('/articles');
             cy.get(selectByTestId('ArticlesPage')).should('exist');
         });

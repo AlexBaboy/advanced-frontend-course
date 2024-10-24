@@ -743,7 +743,7 @@
       "age": 465,
       "currency": "RUB",
       "country": "Belarus",
-      "city": "Tiraspol",
+      "city": "Moscow",
       "username": "admin213",
       "avatar": "https://yt3.ggpht.com/ytc/AKedOLTYUJxG8Hu036PQ_TXpMLq2fG8Kj8NZI4h0lbn_3g=s900-c-k-c0x00ffffff-no-rj"
     },
@@ -762,8 +762,8 @@
   "article-ratings": [
     {
       "id": "1",
-      "rate": 5,
-      "feedback": "Отличная статья!",
+      "rate": 4,
+      "feedback": "Хорошая статья",
       "userId": "1",
       "articleId": "1"
     },
@@ -775,32 +775,48 @@
       "articleId": "2"
     },
     {
-      "id": "3",
+      "userId": "1",
+      "articleId": "3",
       "rate": 3,
-      "feedback": "Неплохо",
-      "userId": "2",
-      "articleId": "3"
+      "feedback": "",
+      "id": "I7ofk1u"
+    },
+    {
+      "userId": "1",
+      "articleId": "9",
+      "rate": 5,
+      "feedback": "asdasdasdasd",
+      "id": "Y7MhPzo"
+    },
+    {
+      "userId": "1",
+      "articleId": "10",
+      "rate": 1,
+      "feedback": "отстой",
+      "id": "II0a75O"
     },
     {
       "userId": "1",
       "articleId": "7",
       "rate": 3,
-      "feedback": "werwerewr",
-      "id": "2SJYVQO"
-    },
+      "feedback": "",
+      "id": "bcPnbbZ"
+    }
+  ],
+  "profile-ratings": [
     {
-      "userId": "1",
-      "articleId": "10",
-      "rate": 5,
-      "feedback": "круто!",
-      "id": "isXjejz"
-    },
-    {
-      "userId": "1",
-      "articleId": "3",
+      "id": "1",
       "rate": 4,
-      "feedback": "!!!",
-      "id": "UZKum4k"
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "2"
     }
   ]
 }
