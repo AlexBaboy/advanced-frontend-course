@@ -1,5 +1,4 @@
-import { selectByTestId } from '../../helpers/selectByTestId';
-import { login } from '../../support/commands/login';
+import {selectByTestId} from '../../helpers/selectByTestId';
 
 describe('Маршрутизация', () => {
     describe('Пользователь НЕ авторизован', () => {
