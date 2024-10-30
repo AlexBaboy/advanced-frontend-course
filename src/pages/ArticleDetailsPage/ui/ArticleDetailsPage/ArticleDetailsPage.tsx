@@ -49,7 +49,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                 [className],
             )}
             >
-                <VStack gap="16" max>
+                <VStack gap="16" max data-testid="ArticleDetailsPage.Info">
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
                     <ArticleRating articleId={id} />

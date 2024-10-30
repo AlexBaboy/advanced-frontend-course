@@ -1,22 +1,22 @@
-import {useTranslation} from 'react-i18next';
-import {HTMLAttributeAnchorTarget, memo} from 'react';
-import {classNames} from '@/shared/lib/classNames/classNames';
-import {Article, ArticleView} from '@/entities/Article';
-import {Text} from '@/shared/ui/Text/Text';
-import {Icon} from '@/shared/ui/Icon/Icon';
+import { useTranslation } from 'react-i18next';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Article, ArticleView } from '../..';
+import { Text } from '@/shared/ui/Text/Text';
+import { Icon } from '@/shared/ui/Icon/Icon';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
-import {Card} from '@/shared/ui/Card/Card';
-import {Avatar} from '@/shared/ui/Avatar/Avatar';
-import {Button, ButtonTheme} from '@/shared/ui/Button/Button';
-import {getRouteArticleDetails} from '@/shared/config/routeConfig/routeConfig';
-import {AppLink} from '@/shared/ui/AppLink/AppLink';
-import {ARTICLES_LIST_ITEM_INDEX} from '@/shared/const/localStorage';
-import {ArticleTextBlock} from '../../model/types/article';
-import {ArticleTextBlockComponent} from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { Card } from '@/shared/ui/Card/Card';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { getRouteArticleDetails } from '@/shared/config/routeConfig/routeConfig';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { ARTICLES_LIST_ITEM_INDEX } from '@/shared/const/localStorage';
+import { ArticleTextBlock } from '../../model/types/article';
+import { ArticleTextBlockComponent } from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticleListItem.module.scss';
-import {ArticleBlockType} from '@/entities/Article/model/constants/constants';
-import {AppImage} from "@/shared/ui/AppImage";
-import {Skeleton} from "@/shared/ui/Skeleton/Skeleton";
+import { ArticleBlockType } from '../../model/constants/constants';
+import { AppImage } from '@/shared/ui/AppImage';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 interface ArticleListItemProps {
     className?: string
@@ -53,11 +53,13 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         const texBlock = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
 
         return (
-            <div className={classNames(
-                cls.ArticleListItem,
-                {},
-                [className, cls[view]],
-            )}
+            <div
+                className={classNames(
+                    cls.ArticleListItem,
+                    {},
+                    [className, cls[view]],
+                )}
+                data-testid="ArticleListItem"
             >
                 <Card className={cls.card}>
                     <div className={cls.header}>
@@ -101,6 +103,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
     return (
         <AppLink
+            data-testid="ArticleListItem"
             target={target}
             to={getRouteArticleDetails(article?.id)}
             className={classNames(
