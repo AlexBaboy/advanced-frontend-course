@@ -1,7 +1,6 @@
 import { Article } from '../../../src/entities/Article';
 
 const defaultArticle = {
-    id: '7',
     title: 'Ruby news',
     subtitle: 'Что нового в JS за 2022 год?',
     // eslint-disable-next-line max-len
@@ -61,9 +60,10 @@ export const createArticle = (article?: Article) => {
 
 export const removeArticle = (articleId: string) => {
     return cy.request({
-        method: 'PUT',
+        method: 'DELETE',
         url: `http://localhost:8000/articles/${articleId}`,
         headers: { Authorization: 'qweqweqwe' },
+        failOnStatusCode: false,
     });
 };
 

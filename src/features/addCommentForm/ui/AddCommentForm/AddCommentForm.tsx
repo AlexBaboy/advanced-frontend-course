@@ -41,6 +41,7 @@ const AddCommentForm = memo(({ className, onSendComment }: AddCommentFormProps) 
             reducers={initialReducers}
         >
             <HStack
+                data-testid="AddCommentForm"
                 max
                 justify="between"
                 className={classNames(
@@ -50,12 +51,14 @@ const AddCommentForm = memo(({ className, onSendComment }: AddCommentFormProps) 
                 )}
             >
                 <Input
+                    data-testid="AddCommentForm.Input"
                     placeholder={t('Введите текст комментария')}
                     value={text}
                     onChange={onCommentTextChange}
                     className={cls.input}
                 />
                 <Button
+                    data-testid="AddCommentForm.Button"
                     theme={ButtonTheme.OUTLINE}
                     onClick={onSendHandler}
                 >

@@ -1,13 +1,12 @@
-import {useTranslation} from 'react-i18next';
-import {memo} from 'react';
-import {classNames, Mods} from '@/shared/lib/classNames/classNames';
-import {CommentItem} from '@/entities/Comment';
-import {Avatar} from '@/shared/ui/Avatar/Avatar';
-import {Text} from '@/shared/ui/Text/Text';
-import {Skeleton} from '@/shared/ui/Skeleton/Skeleton';
-import {AppLink} from '@/shared/ui/AppLink/AppLink';
-import {getRouteProfile} from '@/shared/config/routeConfig/routeConfig';
-import {VStack} from '@/shared/ui/Stack';
+import { memo } from 'react';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+import { CommentItem } from '../..';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Text } from '@/shared/ui/Text/Text';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { getRouteProfile } from '@/shared/config/routeConfig/routeConfig';
+import { VStack } from '@/shared/ui/Stack';
 import cls from './CommentCard.module.scss';
 
 interface CommentCardProps {
@@ -23,13 +22,12 @@ export const CommentCard = memo((props: CommentCardProps) => {
         isLoading,
     } = props;
 
-    const { t } = useTranslation();
-
     const mods: Mods = {};
 
     if (isLoading) {
         return (
             <VStack
+                data-testid="CommentCard.Loading"
                 max
                 gap="8"
                 className={classNames(
@@ -53,6 +51,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
 
     return (
         <VStack
+            data-testid="CommentCard.Content"
             gap="8"
             max
             className={classNames(
