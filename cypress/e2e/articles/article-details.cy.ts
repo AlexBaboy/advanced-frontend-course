@@ -28,7 +28,7 @@ describe('Тест детальной страницы статьи', () => {
         cy.getByTestId('AddCommentForm').scrollIntoView();
         cy.addComment('text');
         // не работает - надо починить !!!
-        // cy.getByTestId('CommentCard.Content').should('have.length', 1);
+        cy.getByTestId('CommentCard.Content').should('have.length', 1);
     });
 
     it('Оценка статьи добавляется', () => {

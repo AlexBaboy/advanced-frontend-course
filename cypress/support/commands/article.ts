@@ -63,7 +63,6 @@ export const removeArticle = (articleId: string) => {
         method: 'DELETE',
         url: `http://localhost:8000/articles/${articleId}`,
         headers: { Authorization: 'qweqweqwe' },
-        failOnStatusCode: false,
     });
 };
 
