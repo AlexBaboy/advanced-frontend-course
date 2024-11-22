@@ -6,7 +6,8 @@ import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
 import i18nForTests from '@/shared/config/i18n/i18nForTests';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { Theme } from '@/shared/const/theme';
-import {ThemeProvider} from "@/app/providers/ThemeProvider";
+import { ThemeProvider } from '@/app/providers/ThemeProvider';
+import '@/app/styles/index.scss';
 
 export type componentRenderOptions = {
     route?: string,
