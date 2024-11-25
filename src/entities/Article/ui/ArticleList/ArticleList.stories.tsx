@@ -14,7 +14,9 @@ export default {
 } as ComponentMeta<typeof ArticleList>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
+const Template: ComponentStory<typeof ArticleList> = (args) => (
+    <ArticleList {...args} />
+);
 
 export const isLoadingBig = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
@@ -36,13 +38,10 @@ export const ListSmall = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 ListSmall.args = {
     isLoading: false,
-    articles:
-        new Array(9)
-            .fill(0)
-            .map((item, index) => ({
-                ...article,
-                id: String(index),
-            })),
+    articles: new Array(9).fill(0).map((item, index) => ({
+        ...article,
+        id: String(index),
+    })),
     view: ArticleView.SMALL,
 };
 
@@ -50,11 +49,9 @@ export const ListBig = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 ListBig.args = {
     isLoading: false,
-    articles: new Array(9)
-        .fill(0)
-        .map((item, index) => ({
-            ...article,
-            id: String(index),
-        })),
+    articles: new Array(9).fill(0).map((item, index) => ({
+        ...article,
+        id: String(index),
+    })),
     view: ArticleView.BIG,
 };

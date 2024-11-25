@@ -8,15 +8,12 @@ import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { Text } from '@/shared/ui/Text/Text';
 
 interface NotificationItemProps {
-    className?: string
-    item: Notification
+    className?: string;
+    item: Notification;
 }
 
 export const NotificationItem = memo((props: NotificationItemProps) => {
-    const {
-        className,
-        item,
-    } = props;
+    const { className, item } = props;
 
     const { t } = useTranslation();
     const { data, isLoading } = useNotifications(null);

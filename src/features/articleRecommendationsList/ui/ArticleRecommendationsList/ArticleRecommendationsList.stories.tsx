@@ -5,7 +5,9 @@ import { ArticleRecommendationsList } from './ArticleRecommendationsList';
 // import withMock from 'storybook-addon-mock'
 import { articlesMocked } from '@/shared/mocks/articles';
 
-{ /* @ts-ignore */ }
+{
+    /* @ts-ignore */
+}
 
 export default {
     title: 'features/ArticleRecommendationsList',
@@ -16,7 +18,9 @@ export default {
     // decorators: [withMock]
 } as ComponentMeta<typeof ArticleRecommendationsList>;
 
-const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => <ArticleRecommendationsList {...args} />;
+const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => (
+    <ArticleRecommendationsList {...args} />
+);
 
 const article = articlesMocked;
 

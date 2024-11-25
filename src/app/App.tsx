@@ -18,7 +18,11 @@ const App = () => {
     }, []);
 
     return (
-        <div className={classNames('app', { hovered: true, selectable: false }, [theme])}>
+        <div
+            className={classNames('app', { hovered: true, selectable: false }, [
+                theme,
+            ])}
+        >
             <Suspense fallback="">
                 <Navbar />
                 <div className="content-page">

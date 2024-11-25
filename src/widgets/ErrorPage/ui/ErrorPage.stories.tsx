@@ -16,7 +16,9 @@ export default {
 } as ComponentMeta<typeof ErrorPage>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof ErrorPage> = (args) => <ErrorPage {...args} />;
+const Template: ComponentStory<typeof ErrorPage> = (args) => (
+    <ErrorPage {...args} />
+);
 
 export const Light = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

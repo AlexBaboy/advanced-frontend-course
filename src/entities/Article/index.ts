@@ -6,4 +6,8 @@ export { ArticleViewSelector } from '@/features/ArticleViewSelector/ArticleViewS
 export { ArticleSortSelector } from '@/features/ArticleSortSelector/ArticleSortSelector';
 export { ArticleTypeTabs } from '@/features/ArticleTypeTabs/ArticleTypeTabs';
 export { getArticleDetailsData } from './model/selectors/articleDetails';
-export { ArticleSortField, ArticleType, ArticleView } from '@/entities/Article/model/constants/constants';
+export {
+    ArticleSortField,
+    ArticleType,
+    ArticleView,
+} from '@/entities/Article/model/constants/constants';

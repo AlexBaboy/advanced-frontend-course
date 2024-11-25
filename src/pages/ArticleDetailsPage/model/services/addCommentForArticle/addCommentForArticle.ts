@@ -3,41 +3,36 @@ import { getUserAuthData } from '@/entities/User';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { CommentItem } from '@/entities/Comment';
 import { getArticleDetailsData } from '@/entities/Article';
-import {
-    fetchCommentsByArticleId,
-} from '../fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { fetchCommentsByArticleId } from '../fetchCommentsByArticleId/fetchCommentsByArticleId';
 
-export const addCommentForArticle = createAsyncThunk<CommentItem, string,
-    ThunkConfig<string>>(
-        'articleDetails/addCommentForArticle',
-        async (text, thunkAPI) => {
-            const {
-                extra, dispatch, rejectWithValue, getState,
-            } = thunkAPI;
-            const userData = getUserAuthData(getState());
-            const article = getArticleDetailsData(getState());
+export const addCommentForArticle = createAsyncThunk<
+    CommentItem,
+    string,
+    ThunkConfig<string>
+>('articleDetails/addCommentForArticle', async (text, thunkAPI) => {
+    const { extra, dispatch, rejectWithValue, getState } = thunkAPI;
+    const userData = getUserAuthData(getState());
+    const article = getArticleDetailsData(getState());
 
-            if (!userData || !text || !article) {
-                return rejectWithValue('no data');
-            }
+    if (!userData || !text || !article) {
+        return rejectWithValue('no data');
+    }
 
-            try {
+    try {
+        const response = await extra.api.post<CommentItem>('/comments', {
+            articleId: article.id,
+            userId: userData.id,
+            text,
+        });
 
-                const response = await extra.api.post<CommentItem>('/comments', {
-                    articleId: article.id,
-                    userId: userData.id,
-                    text,
-                });
+        if (!response.data) {
+            throw new Error('no data!');
+        }
 
-                if (!response.data) {
-                    throw new Error('no data!');
-                }
+        dispatch(fetchCommentsByArticleId(article.id));
 
-                dispatch(fetchCommentsByArticleId(article.id));
-
-                return response.data;
-            } catch (e) {
-                return rejectWithValue('error');
-            }
-        },
-    );
+        return response.data;
+    } catch (e) {
+        return rejectWithValue('error');
+    }
+});

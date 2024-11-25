@@ -14,11 +14,15 @@ export default {
 } as ComponentMeta<typeof ArticleDetailsPage>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof ArticleDetailsPage> = () => <ArticleDetailsPage />;
+const Template: ComponentStory<typeof ArticleDetailsPage> = () => (
+    <ArticleDetailsPage />
+);
 
 export const Light = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Light.args = {};
-Light.decorators = [StoreDecorator({
-    articleDetails: { data: article, isLoading: false },
-})];
+Light.decorators = [
+    StoreDecorator({
+        articleDetails: { data: article, isLoading: false },
+    }),
+];

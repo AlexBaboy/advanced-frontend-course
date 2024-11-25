@@ -14,7 +14,10 @@ describe('Страница профиля', () => {
     });
 
     it('загрузка профиля', () => {
-        cy.getByTestId('ProfileCard.firstname').should('have.value', 'testuser');
+        cy.getByTestId('ProfileCard.firstname').should(
+            'have.value',
+            'testuser',
+        );
     });
 
     it('редактирование профиля', () => {

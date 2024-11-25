@@ -13,52 +13,53 @@ import {
 import { addQueryParams } from '@/shared/lib/url/addQueryParams/addQueryParams';
 
 type FetchArticlesListProps = {
-    replace? : boolean
-}
+    replace?: boolean;
+};
 
-export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlesListProps,
-    ThunkConfig<string>>(
-        'articlesPage/fetchArticlesList',
-        async (props, thunkAPI) => {
-            const { extra, rejectWithValue, getState } = thunkAPI;
-            // const {page = 1} = props
-            const limit = getArticlesPageLimit(getState()) || 9;
+export const fetchArticlesList = createAsyncThunk<
+    Article[],
+    FetchArticlesListProps,
+    ThunkConfig<string>
+>('articlesPage/fetchArticlesList', async (props, thunkAPI) => {
+    const { extra, rejectWithValue, getState } = thunkAPI;
+    // const {page = 1} = props
+    const limit = getArticlesPageLimit(getState()) || 9;
 
-            const sort = getArticlesPageSort(getState());
-            const order = getArticlesPageOrder(getState());
-            const search = getArticlesPageSearch(getState());
-            const page = getArticlesPageNum(getState());
-            const type = getArticlesPageType(getState());
+    const sort = getArticlesPageSort(getState());
+    const order = getArticlesPageOrder(getState());
+    const search = getArticlesPageSearch(getState());
+    const page = getArticlesPageNum(getState());
+    const type = getArticlesPageType(getState());
 
-            const typeToRequest = type === ArticleType.ALL ? undefined : type;
+    const typeToRequest = type === ArticleType.ALL ? undefined : type;
 
-            try {
-                addQueryParams({
-                    sort, order, search, type,
-                });
+    try {
+        addQueryParams({
+            sort,
+            order,
+            search,
+            type,
+        });
 
-                const response = await extra.api.get<Article[]>('/articles', {
-                    params: {
-                        _expand: 'user',
-                        _limit: limit,
-                        _page: page,
-                        _sort: sort,
-                        _order: order,
-                        q: search,
-                        type: typeToRequest,
-                    },
-                });
+        const response = await extra.api.get<Article[]>('/articles', {
+            params: {
+                _expand: 'user',
+                _limit: limit,
+                _page: page,
+                _sort: sort,
+                _order: order,
+                q: search,
+                type: typeToRequest,
+            },
+        });
 
-                if (!response?.data) {
-                    throw new Error();
-                }
+        if (!response?.data) {
+            throw new Error();
+        }
 
-                return response.data;
-            } catch (e) {
-                console.error(e);
-                return rejectWithValue(
-                    i18n.t('Некорректный логин или пароль'),
-                );
-            }
-        },
-    );
+        return response.data;
+    } catch (e) {
+        console.error(e);
+        return rejectWithValue(i18n.t('Некорректный логин или пароль'));
+    }
+});

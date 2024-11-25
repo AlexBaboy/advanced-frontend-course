@@ -15,23 +15,31 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 // @ts-ignore
-const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;
+const Template: ComponentStory<typeof ArticleDetails> = (args) => (
+    <ArticleDetails {...args} />
+);
 
 export const Light = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Light.args = {};
-Light.decorators = [StoreDecorator({
-    articleDetails: { data: article, isLoading: false },
-})];
+Light.decorators = [
+    StoreDecorator({
+        articleDetails: { data: article, isLoading: false },
+    }),
+];
 
 export const Loading = Template.bind({});
 Loading.args = {};
-Loading.decorators = [StoreDecorator({
-    articleDetails: { isLoading: true },
-})];
+Loading.decorators = [
+    StoreDecorator({
+        articleDetails: { isLoading: true },
+    }),
+];
 
 export const Error = Template.bind({});
 Error.args = {};
-Error.decorators = [StoreDecorator({
-    articleDetails: { error: 'error message', isLoading: false },
-})];
+Error.decorators = [
+    StoreDecorator({
+        articleDetails: { error: 'error message', isLoading: false },
+    }),
+];

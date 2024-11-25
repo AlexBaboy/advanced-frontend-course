@@ -31,6 +31,8 @@ describe('articleDetails test', () => {
                 error: 'error message',
             },
         };
-        expect(getArticleDetailsError(state as StateSchema)).toEqual('error message');
+        expect(getArticleDetailsError(state as StateSchema)).toEqual(
+            'error message',
+        );
     });
 });

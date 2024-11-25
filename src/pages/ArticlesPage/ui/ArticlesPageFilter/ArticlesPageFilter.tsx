@@ -5,13 +5,20 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticlesPageFilers.module.scss';
 import {
     ArticleSortField,
-    ArticleSortSelector, ArticleType,
+    ArticleSortSelector,
+    ArticleType,
     ArticleTypeTabs,
     ArticleView,
     ArticleViewSelector,
 } from '@/entities/Article';
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { articlesPageActions, articlesPageReducer } from '../../model/slices/articlesPageSlice';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    articlesPageActions,
+    articlesPageReducer,
+} from '../../model/slices/articlesPageSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
     getArticlesPageOrder,
@@ -28,7 +35,7 @@ import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { SortOrder } from '@/shared/types/sort';
 
 interface ArticlesPageFilterProps {
-    className?: string
+    className?: string;
 }
 
 const reducers: ReducersList = {
@@ -45,8 +52,7 @@ const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
     const search = useSelector(getArticlesPageSearch);
     const type = useSelector(getArticlesPageType);
 
-    useEffect(() => {
-    }, [sort, order, search]);
+    useEffect(() => {}, [sort, order, search]);
 
     const fetchData = useCallback(() => {
         dispatch(fetchArticlesList({ replace: true }));
@@ -86,11 +92,8 @@ const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <div className={classNames(
-                cls.ArticlesPageFilers,
-                {},
-                [className],
-            )}
+            <div
+                className={classNames(cls.ArticlesPageFilers, {}, [className])}
             >
                 <div className={cls.sortWrapper}>
                     <ArticleSortSelector

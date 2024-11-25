@@ -6,25 +6,17 @@ import cls from './ArticleEdit.module.scss';
 import { Page } from '@/widgets/Page';
 
 interface ArticleEditProps {
-    className?: string
+    className?: string;
 }
 
 const ArticleEdit = (props: ArticleEditProps) => {
-    const {
-        className,
-    } = props;
+    const { className } = props;
 
     const { t } = useTranslation();
-    const { id } = useParams<{id: string}>();
+    const { id } = useParams<{ id: string }>();
 
     return (
-        <Page
-            className={classNames(
-                cls.ArticleEdit,
-                {},
-                [className],
-            )}
-        >
+        <Page className={classNames(cls.ArticleEdit, {}, [className])}>
             {id
                 ? t('Редактирование статьи ID = ') + id
                 : t('Создание новой статьи')}

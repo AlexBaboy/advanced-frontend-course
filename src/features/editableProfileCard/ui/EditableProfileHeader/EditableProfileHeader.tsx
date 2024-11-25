@@ -13,15 +13,13 @@ import { getProfileReadOnly } from '@/features/editableProfileCard/model/selecto
 import { getProfileData } from '@/features/editableProfileCard/model/selectors/getProfileData/getProfileData';
 
 interface EditableProfileHeaderProps {
-    className?: string
+    className?: string;
 }
 
 export const EditableProfileHeader = (props: EditableProfileHeaderProps) => {
     const { t } = useTranslation('profile');
 
-    const {
-        className,
-    } = props;
+    const { className } = props;
 
     const dispatch = useAppDispatch();
 

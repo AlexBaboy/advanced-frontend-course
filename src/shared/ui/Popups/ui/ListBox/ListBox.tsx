@@ -9,20 +9,20 @@ import { mapDirectionClass } from '../../styles/constants';
 import popupCls from '../../styles/popup.module.scss';
 
 export interface ListBoxItem {
-    value: string,
-    content: ReactNode,
-    disabled?: boolean,
+    value: string;
+    content: ReactNode;
+    disabled?: boolean;
 }
 
 interface ListBoxProps {
-    items: ListBoxItem[],
-    className?: string,
-    value?: string
-    defaultValue?: string,
-    onChange: (value: string) => void,
-    readonly?: boolean,
-    direction?: DropdownDirection,
-    label?: string
+    items: ListBoxItem[];
+    className?: string;
+    value?: string;
+    defaultValue?: string;
+    onChange: (value: string) => void;
+    readonly?: boolean;
+    direction?: DropdownDirection;
+    label?: string;
 }
 
 export const ListBox = (props: ListBoxProps) => {
@@ -37,25 +37,27 @@ export const ListBox = (props: ListBoxProps) => {
         label,
     } = props;
 
-    const optionsClasses = [cls.options, direction && mapDirectionClass[direction]];
+    const optionsClasses = [
+        cls.options,
+        direction && mapDirectionClass[direction],
+    ];
 
     return (
         <HStack gap="4">
             {label && <p>{`${label}>`}</p>}
             <HListBox
                 as="div"
-                className={classNames(cls.ListBox, {}, [className, popupCls.popup])}
+                className={classNames(cls.ListBox, {}, [
+                    className,
+                    popupCls.popup,
+                ])}
                 value={value}
                 defaultValue={defaultValue}
                 onChange={onChange}
                 disabled={readonly}
             >
-
                 <HListBox.Button className={cls.trigger}>
-                    <Button disabled={readonly}>
-                        {value ?? defaultValue}
-                    </Button>
-
+                    <Button disabled={readonly}>{value ?? defaultValue}</Button>
                 </HListBox.Button>
                 <HListBox.Options
                     className={classNames(cls.options, {}, optionsClasses)}
@@ -77,7 +79,6 @@ export const ListBox = (props: ListBoxProps) => {
                                     {item.content}
                                 </li>
                             )}
-
                         </HListBox.Option>
                     ))}
                 </HListBox.Options>

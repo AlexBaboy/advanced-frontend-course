@@ -31,7 +31,9 @@ describe('EditableProfileCard tests', () => {
         // @ts-ignore
         componentRender(<EditableProfileCard id="1" />, options);
         userEvent.click(screen.getByTestId('EditableProfileHeader.EditButton'));
-        expect(screen.getByTestId('EditableProfileHeader.CancelButton')).toBeInTheDocument();
+        expect(
+            screen.getByTestId('EditableProfileHeader.CancelButton'),
+        ).toBeInTheDocument();
     });
 
     test('при отмене сбрасываются введенные значения', async () => {
@@ -48,29 +50,41 @@ describe('EditableProfileCard tests', () => {
         expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('user');
         expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('user');
 
-        userEvent.click(screen.getByTestId('EditableProfileHeader.CancelButton'));
+        userEvent.click(
+            screen.getByTestId('EditableProfileHeader.CancelButton'),
+        );
 
-        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('admin');
+        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue(
+            'admin',
+        );
         expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('admin');
     });
 
     test('должна появиться ошибка', async () => {
         // @ts-ignore
         componentRender(<EditableProfileCard id="1" />, options);
-        userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton'));
+        userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.EditButton'),
+        );
         userEvent.clear(screen.getByTestId('ProfileCard.firstname'));
         userEvent.click(screen.getByTestId('EditableProfileHeader.SaveButton'));
-        expect(screen.getByTestId('EditableProfileCard.Error.Paragraph')).toBeInTheDocument();
+        expect(
+            screen.getByTestId('EditableProfileCard.Error.Paragraph'),
+        ).toBeInTheDocument();
     });
 
     test('при отсутствии ошибок валидации должен уйти PUT запрос', async () => {
         const mockPutReq = jest.spyOn($api, 'put');
         // @ts-ignore
         componentRender(<EditableProfileCard id="1" />, options);
-        userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton'));
+        userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.EditButton'),
+        );
         userEvent.type(screen.getByTestId('ProfileCard.firstname'), 'user');
         userEvent.click(screen.getByTestId('EditableProfileHeader.SaveButton'));
-        expect(screen.getByTestId('EditableProfileCard.Error.Paragraph')).toBeInTheDocument();
+        expect(
+            screen.getByTestId('EditableProfileCard.Error.Paragraph'),
+        ).toBeInTheDocument();
         expect(mockPutReq).toHaveBeenCalled();
     });
 });

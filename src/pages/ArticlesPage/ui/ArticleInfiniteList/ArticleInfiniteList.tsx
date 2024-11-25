@@ -15,13 +15,11 @@ import { initArticlesPage } from '@/pages/ArticlesPage/model/services/initArticl
 import { Text } from '@/shared/ui/Text/Text';
 
 interface ArticleInfiniteListProps {
-    className?: string,
+    className?: string;
 }
 
 export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
-    const {
-        className,
-    } = props;
+    const { className } = props;
 
     const { t } = useTranslation('article-details');
 

@@ -3,7 +3,10 @@ import { memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { RatingCard } from '@/entities/Rating';
-import { useGetArticleRating, useRateArticle } from '@/entities/ArticleRating/model/service/articleRatingApi';
+import {
+    useGetArticleRating,
+    useRateArticle,
+} from '@/entities/ArticleRating/model/service/articleRatingApi';
 import { getUserAuthData } from '@/entities/User';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
@@ -57,11 +60,7 @@ const ArticleRating = memo((props: ArticleRatingProps) => {
 
     return (
         <RatingCard
-            className={classNames(
-                '',
-                {},
-                [className],
-            )}
+            className={classNames('', {}, [className])}
             onAccept={onAccept}
             onCancel={onCancel}
             rate={rating?.rate}

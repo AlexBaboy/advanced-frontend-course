@@ -16,7 +16,9 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 // @ts-ignore
-const Template: ComponentStory<typeof ArticleTextBlockComponent> = (args) => <ArticleTextBlockComponent {...args} />;
+const Template: ComponentStory<typeof ArticleTextBlockComponent> = (args) => (
+    <ArticleTextBlockComponent {...args} />
+);
 
 export const Light = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

@@ -9,21 +9,15 @@ import { ArticleSortField } from '@/entities/Article';
 import { SortOrder } from '@/shared/types/sort';
 
 interface ArticlesSortSelectorProps {
-    className?: string
-    sort: ArticleSortField
-    order: SortOrder
-    onChangeOrder: (newOrder: SortOrder) => void
-    onChangeSort: (newSort: ArticleSortField) => void
+    className?: string;
+    sort: ArticleSortField;
+    order: SortOrder;
+    onChangeOrder: (newOrder: SortOrder) => void;
+    onChangeSort: (newSort: ArticleSortField) => void;
 }
 
 export const ArticleSortSelector = memo((props: ArticlesSortSelectorProps) => {
-    const {
-        className,
-        sort,
-        order,
-        onChangeOrder,
-        onChangeSort,
-    } = props;
+    const { className, sort, order, onChangeOrder, onChangeSort } = props;
 
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
@@ -69,12 +63,7 @@ export const ArticleSortSelector = memo((props: ArticlesSortSelectorProps) => {
     }, []);
 
     return (
-        <div className={classNames(
-            cls.ArticleSortSelector,
-            {},
-            [className],
-        )}
-        >
+        <div className={classNames(cls.ArticleSortSelector, {}, [className])}>
             <Select
                 options={sortFieldOptions}
                 label={t('Сортировать по')}

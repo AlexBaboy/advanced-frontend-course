@@ -1,4 +1,4 @@
 export type AddCommentFormSchema = {
-    text?: string,
-    error?: string
-}
+    text?: string;
+    error?: string;
+};

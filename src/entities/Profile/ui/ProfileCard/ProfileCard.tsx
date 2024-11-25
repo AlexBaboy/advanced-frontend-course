@@ -12,19 +12,19 @@ import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
-    className?: string
-    data?: Profile
-    isLoading?: boolean
-    error?: string
-    readonly?: boolean
-    onChangeFirstName?: (value?: string) => void
-    onChangeLastName?: (value?: string) => void
-    onChangeAge?: (value?: string) => void
-    onChangeCity?: (value?: string) => void,
-    onChangeAvatar?: (value?: string) => void,
-    onChangeUsername?: (value?: string) => void,
-    onChangeCurrency?: (currency: Currency) => void,
-    onChangeCountry?: (currency: Country) => void,
+    className?: string;
+    data?: Profile;
+    isLoading?: boolean;
+    error?: string;
+    readonly?: boolean;
+    onChangeFirstName?: (value?: string) => void;
+    onChangeLastName?: (value?: string) => void;
+    onChangeAge?: (value?: string) => void;
+    onChangeCity?: (value?: string) => void;
+    onChangeAvatar?: (value?: string) => void;
+    onChangeUsername?: (value?: string) => void;
+    onChangeCurrency?: (currency: Currency) => void;
+    onChangeCountry?: (currency: Country) => void;
 }
 
 export const ProfileCard = memo((props: ProfileCardProps) => {
@@ -51,11 +51,10 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
             <HStack
                 justify="center"
                 max
-                className={classNames(
-                    cls.ProfileCard,
-                    {},
-                    [className, cls.loading],
-                )}
+                className={classNames(cls.ProfileCard, {}, [
+                    className,
+                    cls.loading,
+                ])}
             >
                 <Loader />
             </HStack>
@@ -67,11 +66,10 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
             <HStack
                 justify="center"
                 max
-                className={classNames(
-                    cls.ProfileCard,
-                    {},
-                    [className, cls.error],
-                )}
+                className={classNames(cls.ProfileCard, {}, [
+                    className,
+                    cls.error,
+                ])}
             >
                 <Text
                     theme={TextTheme.ERROR}
@@ -91,18 +89,10 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
         <VStack
             gap="16"
             max
-            className={classNames(
-                cls.ProfileCard,
-                mods,
-                [className],
-            )}
+            className={classNames(cls.ProfileCard, mods, [className])}
         >
             {data?.avatar && (
-                <HStack
-                    justify="center"
-                    max
-                    className={cls.avatarWrapper}
-                >
+                <HStack justify="center" max className={cls.avatarWrapper}>
                     <Avatar src={data?.avatar} alt="avatar" />
                 </HStack>
             )}

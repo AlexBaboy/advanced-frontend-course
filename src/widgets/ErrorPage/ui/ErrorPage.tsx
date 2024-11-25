@@ -3,7 +3,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ErrorPage.module.scss';
 
 interface ErrorPageProps {
-    className?: string
+    className?: string;
 }
 
 export const ErrorPage = ({ className }: ErrorPageProps) => {
@@ -14,15 +14,8 @@ export const ErrorPage = ({ className }: ErrorPageProps) => {
     };
 
     return (
-        <div className={classNames(
-            cls.ErrorPage,
-            {},
-            [className],
-        )}
-        >
-            <p>
-                {t('Произошла непредвиденная ошибка')}
-            </p>
+        <div className={classNames(cls.ErrorPage, {}, [className])}>
+            <p>{t('Произошла непредвиденная ошибка')}</p>
             <button onClick={reloadPage} className="reload">
                 {t('Обновить страницу')}
             </button>

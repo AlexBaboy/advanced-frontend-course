@@ -13,14 +13,14 @@ export default {
 } as ComponentMeta<typeof ArticleTypeTabs>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof ArticleTypeTabs> = (args) => <ArticleTypeTabs {...args} />;
+const Template: ComponentStory<typeof ArticleTypeTabs> = (args) => (
+    <ArticleTypeTabs {...args} />
+);
 
 export const Big = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Big.args = {
-};
+Big.args = {};
 
 export const Small = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Small.args = {
-};
+Small.args = {};

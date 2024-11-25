@@ -8,9 +8,7 @@ const defaultArticle = {
     views: 100,
     createdAt: '21.02.2022',
     userId: '1',
-    type: [
-        'IT',
-    ],
+    type: ['IT'],
     blocks: [
         {
             id: '1',
@@ -50,12 +48,14 @@ const defaultArticle = {
 };
 
 export const createArticle = (article?: Article) => {
-    return cy.request({
-        method: 'POST',
-        url: 'http://localhost:8000/articles',
-        headers: { Authorization: 'qweqweqwe' },
-        body: article ?? defaultArticle,
-    }).then((resp) => resp.body);
+    return cy
+        .request({
+            method: 'POST',
+            url: 'http://localhost:8000/articles',
+            headers: { Authorization: 'qweqweqwe' },
+            body: article ?? defaultArticle,
+        })
+        .then((resp) => resp.body);
 };
 
 export const removeArticle = (articleId: string) => {

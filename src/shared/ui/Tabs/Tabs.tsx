@@ -4,24 +4,19 @@ import cls from './Tabs.module.scss';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 
 export interface TabItem {
-    value: string
-    content: ReactNode
+    value: string;
+    content: ReactNode;
 }
 
 interface TabsProps {
-    className?: string
-    tabs: TabItem[]
-    value: string
-    onTabClick: (tab: TabItem) => void
+    className?: string;
+    tabs: TabItem[];
+    value: string;
+    onTabClick: (tab: TabItem) => void;
 }
 
 export const Tabs = memo((props: TabsProps) => {
-    const {
-        className,
-        tabs,
-        onTabClick,
-        value,
-    } = props;
+    const { className, tabs, onTabClick, value } = props;
 
     const clickHandle = (tab: TabItem) => {
         console.log('tab clicked !!!');
@@ -34,7 +29,11 @@ export const Tabs = memo((props: TabsProps) => {
                 <Card
                     className={cls.tab}
                     key={tab.value}
-                    theme={tab.value === value ? CardTheme.NORMAL : CardTheme.OUTLINED}
+                    theme={
+                        tab.value === value
+                            ? CardTheme.NORMAL
+                            : CardTheme.OUTLINED
+                    }
                     onClick={() => clickHandle(tab)}
                 >
                     {tab.content}

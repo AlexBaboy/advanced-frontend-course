@@ -14,12 +14,15 @@ import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLogi
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface LoginFormProps {
-    className?: string
-    onSuccess: () => void
+    className?: string;
+    onSuccess: () => void;
 }
 
 const initialReducers: ReducersList = {
@@ -44,10 +47,12 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     };
 
     const onLoginClick = async () => {
-        const result = await dispatch(loginByUsername({
-            username,
-            password,
-        }) as unknown as AnyAction);
+        const result = await dispatch(
+            loginByUsername({
+                username,
+                password,
+            }) as unknown as AnyAction,
+        );
 
         if (result?.meta?.requestStatus === 'fulfilled') {
             onSuccess();
@@ -55,23 +60,10 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     };
 
     return (
-        <DynamicModuleLoader
-            removeAfterUnmount
-            reducers={initialReducers}
-        >
-            <div className={classNames(
-                cls.LoginForm,
-                {},
-                [className],
-            )}
-            >
+        <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
+            <div className={classNames(cls.LoginForm, {}, [className])}>
                 <Text title={t('Форма авторизации')} />
-                {error && (
-                    <Text
-                        text={error}
-                        theme={TextTheme.ERROR}
-                    />
-                )}
+                {error && <Text text={error} theme={TextTheme.ERROR} />}
                 <Input
                     placeholder={t('Введите логин')}
                     type="text"

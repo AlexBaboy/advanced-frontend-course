@@ -7,9 +7,11 @@ jest.mock('axios');
 describe('fetchProfileData test', () => {
     test('success', async () => {
         const thunk = new TestAsyncThunk(fetchProfileData);
-        thunk.api.get.mockReturnValue(Promise.resolve({
-            data: profileData,
-        }));
+        thunk.api.get.mockReturnValue(
+            Promise.resolve({
+                data: profileData,
+            }),
+        );
 
         const result = await thunk.callThunk('1');
 

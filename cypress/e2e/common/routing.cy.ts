@@ -1,4 +1,4 @@
-import {selectByTestId} from '../../helpers/selectByTestId';
+import { selectByTestId } from '../../helpers/selectByTestId';
 
 describe('Маршрутизация', () => {
     describe('Пользователь НЕ авторизован', () => {
@@ -17,7 +17,6 @@ describe('Маршрутизация', () => {
     });
 
     describe('Пользователь авторизован', () => {
-
         beforeEach(() => {
             cy.login();
         });

@@ -19,11 +19,11 @@ import { AppImage } from '@/shared/ui/AppImage';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 interface ArticleListItemProps {
-    className?: string
-    article: Article
-    view?: ArticleView
-    target?: HTMLAttributeAnchorTarget
-    index?: number
+    className?: string;
+    article: Article;
+    view?: ArticleView;
+    target?: HTMLAttributeAnchorTarget;
+    index?: number;
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
@@ -37,10 +37,15 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
     const { t } = useTranslation();
 
-    const types = <Text text={article?.type?.join(', ')} className={cls.types} />;
+    const types = (
+        <Text text={article?.type?.join(', ')} className={cls.types} />
+    );
     const views = (
         <>
-            <Text text={article?.views?.toString() || '0'} className={cls.views} />
+            <Text
+                text={article?.views?.toString() || '0'}
+                className={cls.views}
+            />
             <Icon Svg={EyeIcon} />
         </>
     );
@@ -50,21 +55,25 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     };
 
     if (view === ArticleView.BIG) {
-        const texBlock = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
+        const texBlock = article.blocks.find(
+            (block) => block.type === ArticleBlockType.TEXT,
+        ) as ArticleTextBlock;
 
         return (
             <div
-                className={classNames(
-                    cls.ArticleListItem,
-                    {},
-                    [className, cls[view]],
-                )}
+                className={classNames(cls.ArticleListItem, {}, [
+                    className,
+                    cls[view],
+                ])}
                 data-testid="ArticleListItem"
             >
                 <Card className={cls.card}>
                     <div className={cls.header}>
                         <Avatar size={30} src={article?.user?.avatar} />
-                        <Text text={article.user?.username} className={cls.username} />
+                        <Text
+                            text={article.user?.username}
+                            className={cls.username}
+                        />
                         <Text text={article.createdAt} className={cls.date} />
                     </div>
                     <Text text={article.title} className={cls.title} />
@@ -106,11 +115,10 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             data-testid="ArticleListItem"
             target={target}
             to={getRouteArticleDetails(article?.id)}
-            className={classNames(
-                cls.ArticleListItem,
-                {},
-                [className, cls[view]],
-            )}
+            className={classNames(cls.ArticleListItem, {}, [
+                className,
+                cls[view],
+            ])}
             onClick={handleButtonClick}
         >
             <Card className={cls.card}>

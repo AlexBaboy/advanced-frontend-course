@@ -9,15 +9,13 @@ import { NotificationItem } from '../NotificationItem/NotificationItem';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 interface NotificationListProps {
-    className?: string
-    comments?: CommentItem[]
-    isLoading?: boolean
+    className?: string;
+    comments?: CommentItem[];
+    isLoading?: boolean;
 }
 
 export const NotificationList = memo((props: NotificationListProps) => {
-    const {
-        className,
-    } = props;
+    const { className } = props;
 
     const { t } = useTranslation();
     const { data, isLoading } = useNotifications(null, {
@@ -44,14 +42,9 @@ export const NotificationList = memo((props: NotificationListProps) => {
             max
             className={classNames(cls.NotificationList, {}, [className])}
         >
-
             {data?.map((item) => (
-                <NotificationItem
-                    key={item.id}
-                    item={item}
-                />
+                <NotificationItem key={item.id} item={item} />
             ))}
-
         </VStack>
     );
 });

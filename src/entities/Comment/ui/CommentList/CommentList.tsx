@@ -7,56 +7,37 @@ import { CommentItem } from '../../../Comment';
 import { CommentCard } from '../CommentCard/CommentCard';
 
 interface CommentListProps {
-    className?: string
-    comments?: CommentItem[]
-    isLoading?: boolean
+    className?: string;
+    comments?: CommentItem[];
+    isLoading?: boolean;
 }
 
 export const CommentList = memo((props: CommentListProps) => {
-    const {
-        className,
-        comments,
-        isLoading,
-    } = props;
+    const { className, comments, isLoading } = props;
 
     const { t } = useTranslation();
 
     if (isLoading) {
         return (
-            <VStack
-                max
-                gap="16"
-                className={classNames(
-                    '',
-                    {},
-                    [className],
-                )}
-            >
+            <VStack max gap="16" className={classNames('', {}, [className])}>
                 <CommentCard isLoading />
             </VStack>
         );
     }
 
     return (
-        <VStack
-            max
-            gap="8"
-            className={classNames(
-                '',
-                {},
-                [className],
+        <VStack max gap="8" className={classNames('', {}, [className])}>
+            {comments?.length ? (
+                comments.map((comment) => (
+                    <CommentCard
+                        comment={comment}
+                        isLoading={isLoading}
+                        key={comment.id}
+                    />
+                ))
+            ) : (
+                <Text text={t('Комментарии отсутствуют')} />
             )}
-        >
-            {comments?.length
-                ? (
-                    comments.map((comment) => (
-                        <CommentCard
-                            comment={comment}
-                            isLoading={isLoading}
-                            key={comment.id}
-                        />
-                    )))
-                : <Text text={t('Комментарии отсутствуют')} />}
         </VStack>
     );
 });

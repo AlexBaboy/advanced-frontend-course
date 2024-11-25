@@ -9,9 +9,9 @@ import { Icon } from '@/shared/ui/Icon/Icon';
 import { ArticleView } from '@/entities/Article/model/constants/constants';
 
 interface ArticleViewSelectorProps {
-    className?: string
-    view: ArticleView
-    onViewClick?: (view: ArticleView) => void
+    className?: string;
+    view: ArticleView;
+    onViewClick?: (view: ArticleView) => void;
 }
 
 const viewTypes = [
@@ -35,12 +35,7 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
     };
 
     return (
-        <div className={classNames(
-            cls.ArticleViewSelector,
-            {},
-            [className],
-        )}
-        >
+        <div className={classNames(cls.ArticleViewSelector, {}, [className])}>
             {viewTypes.map((viewType, index) => (
                 <Button
                     theme={ButtonTheme.CLEAR}
@@ -50,7 +45,9 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
                 >
                     <Icon
                         Svg={viewType.icon}
-                        className={classNames('', { [cls.notSelected]: viewType.view !== view })}
+                        className={classNames('', {
+                            [cls.notSelected]: viewType.view !== view,
+                        })}
                     />
                 </Button>
             ))}

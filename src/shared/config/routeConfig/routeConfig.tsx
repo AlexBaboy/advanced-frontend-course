@@ -11,9 +11,9 @@ import { UserRole } from '@/entities/User';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 
 export type AppRoutesProps = RouteProps & {
-    authOnly?: boolean
-    roles?: UserRole[]
-}
+    authOnly?: boolean;
+    roles?: UserRole[];
+};
 
 export enum AppRoutes {
     MAIN = 'main',
@@ -27,7 +27,7 @@ export enum AppRoutes {
     FORBIDDEN = 'forbidden',
 
     // last
-    NOT_FOUND = 'not_found'
+    NOT_FOUND = 'not_found',
 }
 
 export const getRouteMain = () => '/';

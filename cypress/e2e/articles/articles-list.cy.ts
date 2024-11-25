@@ -12,7 +12,6 @@ describe('Тест страницы со списком статей', () => {
     });
 
     it('статьи успешно подгружаются на моках', () => {
-
         // не работает - надо пофиксить !!!
         cy.intercept('GET', '**/articles?*', { fixture: 'articles.json' });
         cy.getByTestId('ArticleList').should('exist');

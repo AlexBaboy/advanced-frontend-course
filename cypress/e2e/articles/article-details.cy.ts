@@ -32,7 +32,9 @@ describe('Тест детальной страницы статьи', () => {
     });
 
     it('Оценка статьи добавляется', () => {
-        cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
+        cy.intercept('GET', '**/articles/*', {
+            fixture: 'article-details.json',
+        });
 
         cy.getByTestId('ArticleDetailsPage.Info');
         cy.getByTestId('RatingCard').scrollIntoView();

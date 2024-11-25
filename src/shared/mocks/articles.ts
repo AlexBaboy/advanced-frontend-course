@@ -6,9 +6,7 @@ export const articlesMocked = [
         img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
         views: 1022,
         createdAt: '26.02.2022',
-        type: [
-            'IT',
-        ],
+        type: ['IT'],
         user: {
             id: '1',
             username: 'Alex Baboy',
