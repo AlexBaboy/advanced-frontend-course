@@ -11,3 +11,8 @@ export { getUserAuthData } from './model/selectors/getUserAuthData/getUserAuthDa
 
 export type { UserSchema, User } from './model/types/user';
 export { UserRole } from '@/entities/User/model/constants/constants';
+
+export {
+    getJsonSettings,
+    getJsonSettingsByKey,
+} from './model/selectors/getJsonSettings/getJsonSettings';
