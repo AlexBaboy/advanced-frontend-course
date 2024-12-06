@@ -16,3 +16,5 @@ export {
     getJsonSettings,
     getJsonSettingsByKey,
 } from './model/selectors/getJsonSettings/getJsonSettings';
+
+export { saveJsonSettings } from '@/entities/User/model/services/saveJsonSettings';

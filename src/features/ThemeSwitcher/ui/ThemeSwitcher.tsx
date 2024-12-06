@@ -6,6 +6,8 @@ import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 import cls from './ThemeSwitcher.module.scss';
 import { Theme } from '@/shared/const/theme';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { saveJsonSettings } from '@/entities/User';
 
 interface ThemeSwitcherProps {
     className?: string;
@@ -14,9 +16,15 @@ interface ThemeSwitcherProps {
 export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
     const { theme, toggleTheme } = useTheme();
 
+    const dispatch = useAppDispatch();
+
     const onToggleHandler = useCallback(() => {
         toggleTheme((newTheme) => {
-            console.log('19 newTheme', newTheme);
+            dispatch(
+                saveJsonSettings({
+                    theme: newTheme,
+                }),
+            );
         });
     }, [toggleTheme]);
 
