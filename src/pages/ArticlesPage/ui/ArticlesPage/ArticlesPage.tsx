@@ -10,6 +10,7 @@ import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPag
 import cls from './ArticlesPage.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page';
+import { ArticlesPageGreetings } from '@/features/ArticesPageGreetings';
 
 interface ArticlesPage {
     className?: string;
@@ -36,6 +37,7 @@ const ArticlesPage = (props: ArticlesPage) => {
                 className={classNames(cls.ArticlesPage, {}, [className])}
             >
                 <ArticleInfiniteList className={cls.list} />
+                <ArticlesPageGreetings />
             </Page>
         </DynamicModuleLoader>
     );
