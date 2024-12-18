@@ -1,6 +1,3 @@
 export { toggleFeatures } from './toggleFeatures';
-
-export {
-    getFeatureFlags,
-    setFeatureFlags,
-} from '@/shared/lib/features/setGetFeatures';
+export { getFeatureFlags, setFeatureFlags } from './setGetFeatures';
+export { ToggleFeatures } from './ToggleFeatures/ToggleFeatures';
