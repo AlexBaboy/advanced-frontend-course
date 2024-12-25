@@ -9,6 +9,8 @@ import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { initAuthData } from '@/entities/User/model/services/initAuthData';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { PageLoader } from '@/widgets/PageLoader';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { MainLayout } from '@/shared/layouts/MainLayout';
 
 const App = () => {
     const { theme } = useTheme();
@@ -23,19 +25,46 @@ const App = () => {
     if (!inited) return <PageLoader />;
 
     return (
-        <div
-            className={classNames('app', { hovered: true, selectable: false }, [
-                theme,
-            ])}
-        >
-            <Suspense fallback="">
-                <Navbar />
-                <div className="content-page">
-                    <Sidebar />
-                    {inited && <AppRouter />}
+        <ToggleFeatures
+            feature={'isAppRedesigned'}
+            off={
+                <div
+                    className={classNames(
+                        'app',
+                        { hovered: true, selectable: false },
+                        [theme],
+                    )}
+                >
+                    <Suspense fallback="">
+                        <Navbar />
+                        <div className="content-page">
+                            <Sidebar />
+                            <AppRouter />
+                        </div>
+                    </Suspense>
                 </div>
-            </Suspense>
-        </div>
+            }
+            on={
+                <div
+                    className={classNames(
+                        'app_redesigned',
+                        { hovered: true, selectable: false },
+                        [theme],
+                    )}
+                >
+                    <MainLayout
+                        header={<Navbar />}
+                        content={<AppRouter />}
+                        sidebar={<Sidebar />}
+                    />
+
+                    <Suspense fallback="">
+                        <Navbar />
+                        <div className="content-page"></div>
+                    </Suspense>
+                </div>
+            }
+        />
     );
 };
 
