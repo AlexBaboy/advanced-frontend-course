@@ -15,7 +15,7 @@ import { ArticleRecommendationsList } from '@/features/articleRecommendationsLis
 import { ArticleRating } from '@/entities/ArticleRating';
 import { Page } from '@/widgets/Page';
 import { ArticleDetailsComments } from '../../ui/ArticleDetailsComments/ArticleDetailsComments';
-import { getFeatureFlags } from '@/shared/lib/features';
+import { getFeatureFlags, toggleFeatures } from '@/shared/lib/features';
 
 interface ArticleDetailsPageProps {
     className?: string;

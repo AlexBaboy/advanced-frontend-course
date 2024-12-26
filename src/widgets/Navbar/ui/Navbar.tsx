@@ -12,6 +12,7 @@ import cls from './Navbar.module.scss';
 import { HStack } from '@/shared/ui/Stack';
 import { NotificationButton } from '@/features/notificationButton';
 import { AvatarDropdown } from '@/features/avatarDropdown';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface NavbarProps {
     className?: string;
@@ -28,6 +29,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     const onShowModal = () => {
         setIsAuthModal(true);
+    };
+
+    const renderComponent = () => {
+        return <ToggleFeatures on={} off={} feature={'isAppRedesigned'} />;
     };
 
     if (authData) {
