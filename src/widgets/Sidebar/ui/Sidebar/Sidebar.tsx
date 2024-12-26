@@ -9,6 +9,7 @@ import { VStack } from '@/shared/ui/Stack/VStack/VStack';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { ToggleFeatures } from '@/shared/lib/features';
+import { AppLogo } from '@/shared/ui/AppLogo';
 
 interface SidebarProps {
     className?: string;
@@ -46,7 +47,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                         [className],
                     )}
                 >
-                    sdfsdfdsf
+                    <AppLogo className={cls.appLogo} />
                 </aside>
             }
             off={

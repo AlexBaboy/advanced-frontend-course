@@ -32,33 +32,50 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     };
 
     const renderComponent = () => {
-        return <ToggleFeatures on={} off={} feature={'isAppRedesigned'} />;
+        return (
+            <ToggleFeatures
+                on={
+                    <header
+                        className={classNames(cls.NavbarRedesigned, {}, [
+                            className,
+                        ])}
+                    >
+                        <HStack gap="16" className={cls.actions}>
+                            <NotificationButton />
+                            <AvatarDropdown />
+                        </HStack>
+                    </header>
+                }
+                off={
+                    <header className={classNames(cls.Navbar, {}, [className])}>
+                        <div className={cls.headerLeftPart}>
+                            <Text
+                                title="Art App"
+                                theme={TextTheme.INVERTED}
+                                className={cls.appName}
+                            />
+                            <AppLink
+                                to={getRouteArticleCreate()}
+                                theme={AppLinkTheme.SECONDARY}
+                                className={cls.createBtn}
+                            >
+                                {t('Создать статью')}
+                            </AppLink>
+                        </div>
+
+                        <HStack gap="16" className={cls.actions}>
+                            <NotificationButton />
+                            <AvatarDropdown />
+                        </HStack>
+                    </header>
+                }
+                feature={'isAppRedesigned'}
+            />
+        );
     };
 
     if (authData) {
-        return (
-            <header className={classNames(cls.Navbar, {}, [className])}>
-                <div className={cls.headerLeftPart}>
-                    <Text
-                        title="Art App"
-                        theme={TextTheme.INVERTED}
-                        className={cls.appName}
-                    />
-                    <AppLink
-                        to={getRouteArticleCreate()}
-                        theme={AppLinkTheme.SECONDARY}
-                        className={cls.createBtn}
-                    >
-                        {t('Создать статью')}
-                    </AppLink>
-                </div>
-
-                <HStack gap="16" className={cls.actions}>
-                    <NotificationButton />
-                    <AvatarDropdown />
-                </HStack>
-            </header>
-        );
+        return renderComponent();
     }
 
     return (
