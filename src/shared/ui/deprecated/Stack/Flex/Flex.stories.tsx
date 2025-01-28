@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Flex } from '@/shared/ui/Stack/Flex/Flex';
+import { Flex } from '@/shared/ui/deprecated/Stack/Flex/Flex';
 
 const childrenLayout = (
     <>

@@ -12,7 +12,7 @@ import {
 } from '@/pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { initArticlesPage } from '@/pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/deprecated/Text/Text';
 
 interface ArticleInfiniteListProps {
     className?: string;

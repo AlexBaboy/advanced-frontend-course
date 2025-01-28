@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Button } from '@/shared/ui/Button/Button';
+import { Button } from '@/shared/ui/redesigned/Button/Button';
 
-// компонент для тестирование Error Boundary
+// компонент для тестирования Error Boundary
 export const BugButton = () => {
     const [error, setError] = useState(false);
 

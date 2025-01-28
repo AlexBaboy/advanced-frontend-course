@@ -6,10 +6,9 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface AppLogoProps {
     className?: string;
-    size?: number;
 }
 
-export const AppLogo = memo(({ className, size = 50 }: AppLogoProps) => {
+export const AppLogo = memo(({ className }: AppLogoProps) => {
     return (
         <HStack
             max
@@ -18,12 +17,7 @@ export const AppLogo = memo(({ className, size = 50 }: AppLogoProps) => {
         >
             <div className={cls.gradientBig} />
             <div className={cls.gradientSmall} />
-            <AppSvg
-                width={size}
-                height={size}
-                className={cls.appLogo}
-                color={'black'}
-            />
+            <AppSvg className={cls.appLogo} />
         </HStack>
     );
 });

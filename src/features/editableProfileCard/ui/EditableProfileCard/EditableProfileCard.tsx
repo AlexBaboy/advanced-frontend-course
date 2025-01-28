@@ -6,7 +6,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
-import { Text, TextTheme } from '@/shared/ui/Text/Text';
+import { Text, TextTheme } from '@/shared/ui/deprecated/Text/Text';
 import { getProfileForm } from '@/features/editableProfileCard/model/selectors/getProfileForm/getProfileForm';
 import { getProfileIsLoading } from '@/features/editableProfileCard/model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileError } from '@/features/editableProfileCard/model/selectors/getProfileError/getProfileError';
@@ -23,7 +23,7 @@ import {
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { EditableProfileHeader } from '@/features/editableProfileCard/ui/EditableProfileHeader/EditableProfileHeader';
-import { VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 import { ValidateProfileError } from '@/features/editableProfileCard/model/constants/constants';
 
 interface EditableProfileCardProps {

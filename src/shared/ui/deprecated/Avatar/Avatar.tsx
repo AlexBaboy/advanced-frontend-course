@@ -2,9 +2,9 @@ import { CSSProperties, FC, memo, useMemo } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Avatar.module.scss';
 import { AppImage } from '../AppImage';
-import UserIcon from '../../assets/icons/avatar.svg';
-import { Icon } from '@/shared/ui/Icon/Icon';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import UserIcon from '../../../assets/icons/avatar.svg';
+import { Icon } from '@/shared/ui/deprecated/Icon/Icon';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton/Skeleton';
 
 interface AvatarProps {
     className?: string;
