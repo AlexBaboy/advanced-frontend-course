@@ -1,12 +1,12 @@
 import { memo } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import { CommentItem } from '../..';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
-import { Text } from '@/shared/ui/Text/Text';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { Avatar } from '@/shared/ui/deprecated/Avatar/Avatar';
+import { Text } from '@/shared/ui/deprecated/Text/Text';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton/Skeleton';
+import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
 import { getRouteProfile } from '@/shared/config/routeConfig/routeConfig';
-import { VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 import cls from './CommentCard.module.scss';
 
 interface CommentCardProps {

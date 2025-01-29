@@ -9,8 +9,8 @@ import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
 
 export const initAuthData = createAsyncThunk<User, void, ThunkConfig<string>>(
     'user/initAuthData',
-    async (newJsonSettings, thunkAPI) => {
-        const { rejectWithValue, getState, dispatch } = thunkAPI;
+    async (newJsonSettings, thunkApi) => {
+        const { rejectWithValue, dispatch } = thunkApi;
 
         const userId = localStorage.getItem(USER_LOCALSTORAGE_KEY);
 
@@ -23,10 +23,10 @@ export const initAuthData = createAsyncThunk<User, void, ThunkConfig<string>>(
                 getUserDataByIdQuery(userId),
             ).unwrap();
 
-            return response.jsonSettings;
+            return response;
         } catch (e) {
-            console.error(e);
-            return rejectWithValue('no saved json settings');
+            console.log(e);
+            return rejectWithValue('');
         }
     },
 );

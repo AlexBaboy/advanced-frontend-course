@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 import { AnyAction } from '@reduxjs/toolkit';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './LoginForm.module.scss';
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
-import { Input } from '@/shared/ui/Input/Input';
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button/Button';
+import { Input } from '@/shared/ui/deprecated/Input/Input';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
-import { TextTheme, Text } from '@/shared/ui/Text/Text';
+import { TextTheme, Text } from '@/shared/ui/deprecated/Text/Text';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
