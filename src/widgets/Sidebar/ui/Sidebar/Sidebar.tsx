@@ -52,6 +52,10 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                     )}
                 >
                     <AppLogo className={cls.appLogo} />
+
+                    <VStack gap="8" className={cls.items} role="navigation">
+                        {itemsList}
+                    </VStack>
                 </aside>
             }
             off={
