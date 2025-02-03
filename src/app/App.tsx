@@ -45,22 +45,13 @@ const App = () => {
                 </div>
             }
             on={
-                <div
-                    className={classNames(
-                        'app_redesigned',
-                        { hovered: true, selectable: false },
-                        [theme],
-                    )}
-                >
-                    <MainLayout
-                        header={<Navbar />}
-                        content={<AppRouter />}
-                        sidebar={<Sidebar />}
-                    />
-
+                <div className={classNames('app_redesigned', {}, [theme])}>
                     <Suspense fallback="">
-                        <Navbar />
-                        <div className="content-page"></div>
+                        <MainLayout
+                            header={<Navbar />}
+                            content={<AppRouter />}
+                            sidebar={<Sidebar />}
+                        />
                     </Suspense>
                 </div>
             }

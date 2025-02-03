@@ -18,10 +18,7 @@ export const userSlice = createSlice({
             state.authData = action.payload;
             setFeatureFlags(action.payload.features);
 
-            localStorage.setItem(
-                USER_LOCALSTORAGE_KEY,
-                JSON.stringify(action.payload.id),
-            );
+            localStorage.setItem(USER_LOCALSTORAGE_KEY, action.payload.id);
         },
         logout: (state) => {
             state.authData = undefined;
@@ -49,7 +46,6 @@ export const userSlice = createSlice({
         );
 
         builder.addCase(initAuthData.rejected, (state) => {
-            if (!state.authData) return;
             state._inited = true;
         });
     },
