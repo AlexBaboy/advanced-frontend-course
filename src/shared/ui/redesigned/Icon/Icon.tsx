@@ -16,13 +16,20 @@ interface NonClickableIconProps extends IconBaseProps {
 
 interface ClickableBaseProps extends IconBaseProps {
     clickable: true;
-    onCLick: () => void;
+    onClick: () => void;
 }
 
 type IconProps = NonClickableIconProps | ClickableBaseProps;
 
 export const Icon = memo((props: IconProps) => {
-    const { className, Svg, width = 32, height = 32, ...otherProps } = props;
+    const {
+        className,
+        Svg,
+        width = 32,
+        height = 32,
+        clickable,
+        ...otherProps
+    } = props;
 
     const icon = (
         <Svg
@@ -33,8 +40,16 @@ export const Icon = memo((props: IconProps) => {
         />
     );
 
-    if (props.clickable) {
-        return <button>{icon}</button>;
+    if (clickable) {
+        return (
+            <button
+                type={'button'}
+                className={cls.button}
+                onClick={props.onClick}
+            >
+                {icon}
+            </button>
+        );
     }
 
     return icon;
