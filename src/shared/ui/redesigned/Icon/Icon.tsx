@@ -24,7 +24,7 @@ type IconProps = NonClickableIconProps | ClickableBaseProps;
 export const Icon = memo((props: IconProps) => {
     const { className, Svg, width = 32, height = 32, ...otherProps } = props;
 
-    return (
+    const icon = (
         <Svg
             className={classNames(cls.Icon, {}, [className])}
             width={width}
@@ -32,4 +32,10 @@ export const Icon = memo((props: IconProps) => {
             {...otherProps}
         />
     );
+
+    if (props.clickable) {
+        return <button>{icon}</button>;
+    }
+
+    return icon;
 });
