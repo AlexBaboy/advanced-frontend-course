@@ -6,13 +6,14 @@
   grid-template-columns: 284px 1fr 175px;
 }
 
-.sidebar, .content {
+.content {
   justify-self: center;
   padding: 32px;
 }
 
 .sidebar {
   grid-area: sidebar;
+  padding: 32px;
 }
 
 .content {
