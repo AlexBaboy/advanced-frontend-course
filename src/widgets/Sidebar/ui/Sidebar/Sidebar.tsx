@@ -5,7 +5,7 @@ import {
     Button,
     ButtonSize,
     ButtonTheme,
-} from '@/shared/ui/redesigned/Button/Button';
+} from '@/shared/ui/deprecated/Button/Button';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSideBarItems } from '../../model/selectors/getSideBarItems';
@@ -69,6 +69,12 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                         Svg={ArrowIcon}
                         clickable
                     />
+
+                    <div className={cls.switchers}>
+                        <ThemeSwitcher />
+                        <LangSwitcher short={collapsed} className={cls.lang} />
+                    </div>
+
                 </aside>
             }
             off={
