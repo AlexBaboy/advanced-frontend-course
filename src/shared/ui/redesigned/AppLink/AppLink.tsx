@@ -1,5 +1,5 @@
 import { FC, memo, ReactNode } from 'react';
-import { Link, LinkProps } from 'react-router-dom';
+import { LinkProps, NavLink } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AppLink.module.scss';
 
@@ -9,6 +9,7 @@ interface AppLinkProps extends LinkProps {
     className?: string;
     variant?: AppLinkVariant;
     children?: ReactNode;
+    activeClassName?: string;
 }
 
 export const AppLink: FC<AppLinkProps> = memo((props) => {
@@ -17,16 +18,22 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
         className,
         children,
         variant = 'primary',
+        activeClassName = '',
         ...otherProps
     } = props;
 
     return (
-        <Link
+        <NavLink
             to={to}
-            className={classNames(cls.AppLink, {}, [className, cls[variant]])}
+            className={({ isActive }) =>
+                classNames(cls.AppLink, { [activeClassName]: isActive }, [
+                    className,
+                    cls[variant],
+                ])
+            }
             {...otherProps}
         >
             {children}
-        </Link>
+        </NavLink>
     );
 });
