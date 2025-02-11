@@ -6,16 +6,15 @@
   grid-template-columns: 284px 1fr 175px;
 }
 
-.sidebar, .content {
-  justify-self: center;
+.sidebar {
+  grid-area: sidebar;
   padding: 32px;
 }
 
-.sidebar {
-  grid-area: sidebar;
-}
-
 .content {
+  justify-self: center;
+  padding: 32px;
+  width: 100%;
   grid-area: content;
   max-width: 1200px;
 }

@@ -37,6 +37,7 @@ export const Icon = memo((props: IconProps) => {
             width={width}
             height={height}
             {...otherProps}
+            onClick={undefined}
         />
     );
 
@@ -46,6 +47,7 @@ export const Icon = memo((props: IconProps) => {
                 type={'button'}
                 className={cls.button}
                 onClick={props.onClick}
+                style={{height, width}}
             >
                 {icon}
             </button>
