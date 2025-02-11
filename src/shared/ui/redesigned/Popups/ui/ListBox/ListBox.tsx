@@ -40,6 +40,7 @@ export const ListBox = (props: ListBoxProps) => {
     const optionsClasses = [
         cls.options,
         direction && mapDirectionClass[direction],
+        popupCls.menu
     ];
 
     return (

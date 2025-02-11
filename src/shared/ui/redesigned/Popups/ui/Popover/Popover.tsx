@@ -15,7 +15,7 @@ interface PopoverProps {
 
 export const Popover = (props: PopoverProps) => {
     const { className, trigger, direction = 'bottom right', children } = props;
-    const optionsClasses = [cls.options, mapDirectionClass[direction]];
+    const optionsClasses = [cls.options, mapDirectionClass[direction], popupCls.menu];
 
     return (
         <div className={classNames(cls.popup, {}, [className, popupCls.popup])}>

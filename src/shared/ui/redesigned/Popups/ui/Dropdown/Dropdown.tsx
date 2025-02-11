@@ -27,6 +27,7 @@ export const Dropdown = (props: DropdownProps) => {
     const menuClasses = [
         cls.options,
         direction && mapDirectionClass[direction],
+        popupCls.menu
     ];
 
     return (

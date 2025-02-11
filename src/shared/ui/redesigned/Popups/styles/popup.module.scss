@@ -3,7 +3,7 @@
 }
 
 .active {
-  background: var(--inverted-primary-color);
+  background: var(--light-bg-redesigned);
 }
 
 .disabled {
@@ -37,4 +37,10 @@
   padding: 0;
   border: none;
   cursor: pointer;
+}
+
+.menu {
+  border-radius: 18px;
+  border: 1px solid var(--accent-redesigned);
+  overflow: hidden;
 }
