@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { VStack } from '@/shared/ui/deprecated/Stack/VStack/VStack';
+import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { EditableProfileCard } from '@/features/editableProfileCard';
 import cls from './ProfilePage.module.scss';
 import { Page } from '@/widgets/Page';

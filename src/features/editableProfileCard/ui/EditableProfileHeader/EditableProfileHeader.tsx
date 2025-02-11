@@ -6,7 +6,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { Text } from '@/shared/ui/deprecated/Text/Text';
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button/Button';
 import { getUserAuthData } from '@/entities/User';
-import { HStack } from '@/shared/ui/deprecated/Stack/HStack/HStack';
+import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
 import { updateProfileData } from '@/features/editableProfileCard/model/services/updateProfileData/updateProfileData';
 import { profileActions } from '@/features/editableProfileCard/model/slice/profileSlice';
 import { getProfileReadOnly } from '@/features/editableProfileCard/model/selectors/getProfileReadOnly/getProfileReadOnly';

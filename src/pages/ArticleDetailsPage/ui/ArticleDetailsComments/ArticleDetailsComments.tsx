@@ -13,7 +13,7 @@ import { addCommentForArticle } from '@/pages/ArticleDetailsPage/model/services/
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { addCommentFormActions } from '@/features/addCommentForm/model/slice/addCommentFormSlice';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from 'src/shared/ui/redesigned/Stack';
 import { Loader } from '@/shared/ui/deprecated/Loader/Loader';
 
 interface ArticleDetailsCommentsProps {

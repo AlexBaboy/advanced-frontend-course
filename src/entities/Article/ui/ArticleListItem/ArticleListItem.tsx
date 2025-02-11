@@ -15,7 +15,7 @@ import { ArticleTextBlock } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticleListItem.module.scss';
 import { ArticleBlockType } from '../../model/constants/constants';
-import { AppImage } from '@/shared/ui/deprecated/AppImage';
+import { AppImage } from 'src/shared/ui/redesigned/AppImage';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton/Skeleton';
 
 interface ArticleListItemProps {
