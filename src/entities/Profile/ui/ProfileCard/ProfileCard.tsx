@@ -7,7 +7,7 @@ import { Loader } from '@/shared/ui/deprecated/Loader/Loader';
 import { Avatar } from '@/shared/ui/deprecated/Avatar/Avatar';
 import { Currency, CurrencySelect } from '@/entities/Currency';
 import { Country, CountrySelect } from '@/entities/Country';
-import { HStack, VStack } from 'src/shared/ui/redesigned/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 

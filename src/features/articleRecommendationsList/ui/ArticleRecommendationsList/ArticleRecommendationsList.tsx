@@ -3,7 +3,7 @@ import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text, TextSize } from '@/shared/ui/deprecated/Text/Text';
 import { ArticleList } from '@/entities/Article';
-import { VStack } from 'src/shared/ui/redesigned/Stack';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import { LIMIT_RECOMMENDATIONS_COUNT } from '@/pages/ArticleDetailsPage/model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 import { useArticlesRecommendationsList } from '@/features/articleRecommendationsList/ui/api/articleRecommendationsApi';
 
