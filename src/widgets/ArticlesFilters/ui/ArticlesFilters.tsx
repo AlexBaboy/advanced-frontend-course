@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './Overlay.module.scss';
+import cls from './ArticlesFilters.module.scss';
 import {Card} from "@/shared/ui/redesigned/Card";
 import {ArticleSortSelector} from "@/features/ArticleSortSelector/ArticleSortSelector";
 import {Input} from "@/shared/ui/deprecated/Input/Input";
