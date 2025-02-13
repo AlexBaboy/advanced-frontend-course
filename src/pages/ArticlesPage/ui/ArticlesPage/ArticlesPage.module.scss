@@ -1,5 +1,7 @@
-.ArticlesPage {}
+.ArticlesPage {
+  min-height: 100%;
 
-.list {
-  margin-top: 32px;
+  .list {
+    margin-top: 32px;
+  }
 }

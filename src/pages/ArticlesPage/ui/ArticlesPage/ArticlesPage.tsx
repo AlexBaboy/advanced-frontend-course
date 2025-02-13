@@ -12,6 +12,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page';
 import { ArticlesPageGreetings } from '@/features/ArticesPageGreetings';
 import { ToggleFeatures } from '@/shared/lib/features';
+import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
+import { ViewSelectorContainer } from '@/pages/ArticlesPage/ui/ViewSelectorContainer/ViewSelectorContainer';
 
 interface ArticlesPage {
     className?: string;
@@ -33,14 +35,20 @@ const ArticlesPage = (props: ArticlesPage) => {
     const content = (
         <ToggleFeatures
             on={
-                <Page
-                    data-testid="ArticlesPage"
-                    onScrollEnd={onLoadNextPart}
-                    className={classNames(cls.ArticlesPage, {}, [className])}
-                >
-                    <ArticleInfiniteList className={cls.list} />
-                    <ArticlesPageGreetings />
-                </Page>
+                <StickyContentLayout
+                    content={
+                        <Page
+                            data-testid="ArticlesPage"
+                            onScrollEnd={onLoadNextPart}
+                            className={classNames('', {}, [className])}
+                        >
+                            <ArticleInfiniteList className={cls.list} />
+                            <ArticlesPageGreetings />
+                        </Page>
+                    }
+                    left={<ViewSelectorContainer />}
+                    //right={}
+                />
             }
             off={
                 <Page
