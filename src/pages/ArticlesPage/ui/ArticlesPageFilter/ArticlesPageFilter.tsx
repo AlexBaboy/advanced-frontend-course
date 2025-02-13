@@ -1,38 +1,13 @@
-import { useTranslation } from 'react-i18next';
-import { memo, useCallback, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import {useTranslation} from 'react-i18next';
+import {memo} from 'react';
+import {classNames} from '@/shared/lib/classNames/classNames';
 import cls from './ArticlesPageFilers.module.scss';
-import {
-    ArticleSortField,
-    ArticleSortSelector,
-    ArticleType,
-    ArticleTypeTabs,
-    ArticleView,
-    ArticleViewSelector,
-} from '@/entities/Article';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import {
-    articlesPageActions,
-    articlesPageReducer,
-} from '../../model/slices/articlesPageSlice';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import {
-    getArticlesPageOrder,
-    getArticlesPageSearch,
-    getArticlesPageSort,
-    getArticlesPageType,
-    getArticlesPageView,
-} from '../../model/selectors/articlesPageSelectors';
-import { Card } from '@/shared/ui/deprecated/Card/Card';
-import { Input } from '@/shared/ui/deprecated/Input/Input';
-
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
-import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
-import { SortOrder } from '@/shared/types/sort';
+import {ArticleSortSelector, ArticleTypeTabs, ArticleViewSelector,} from '@/entities/Article';
+import {DynamicModuleLoader, ReducersList,} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {articlesPageReducer,} from '../../model/slices/articlesPageSlice';
+import {Card} from '@/shared/ui/deprecated/Card/Card';
+import {Input} from '@/shared/ui/deprecated/Input/Input';
+import {useArticlesFilters} from "@/pages/ArticlesPage/hooks/useArticlesFilters";
 
 interface ArticlesPageFilterProps {
     className?: string;
@@ -45,50 +20,8 @@ const reducers: ReducersList = {
 const ArticlesPageFilter = (props: ArticlesPageFilterProps) => {
     const { className } = props;
     const { t } = useTranslation();
-    const dispatch = useAppDispatch();
-    const view = useSelector(getArticlesPageView);
-    const sort = useSelector(getArticlesPageSort);
-    const order = useSelector(getArticlesPageOrder);
-    const search = useSelector(getArticlesPageSearch);
-    const type = useSelector(getArticlesPageType);
 
-    useEffect(() => {}, [sort, order, search]);
-
-    const fetchData = useCallback(() => {
-        dispatch(fetchArticlesList({ replace: true }));
-    }, []);
-
-    const debouncedFetchData = useDebounce(fetchData, 500);
-
-    const onChangeView = useCallback((view: ArticleView) => {
-        dispatch(articlesPageActions.setView(view));
-        dispatch(articlesPageActions.setPage(1));
-        fetchData();
-    }, []);
-
-    const onChangeOrder = useCallback((newOrder: SortOrder) => {
-        dispatch(articlesPageActions.setOrder(newOrder));
-        dispatch(articlesPageActions.setPage(1));
-        fetchData();
-    }, []);
-
-    const onChangeSort = useCallback((newSort: ArticleSortField) => {
-        dispatch(articlesPageActions.setSort(newSort));
-        dispatch(articlesPageActions.setPage(1));
-        fetchData();
-    }, []);
-
-    const onChangeSearch = useCallback((search: string) => {
-        dispatch(articlesPageActions.setSearch(search));
-        dispatch(articlesPageActions.setPage(1));
-        debouncedFetchData();
-    }, []);
-
-    const onChangeType = useCallback((value: ArticleType) => {
-        dispatch(articlesPageActions.setType(value));
-        dispatch(articlesPageActions.setPage(1));
-        fetchData();
-    }, []);
+    const {onChangeSort, onChangeType, sort, type, onChangeOrder, order, onChangeSearch, search, view, onChangeView} =  useArticlesFilters()
 
     return (
         <DynamicModuleLoader reducers={reducers}>

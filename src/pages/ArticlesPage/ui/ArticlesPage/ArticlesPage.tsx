@@ -14,6 +14,7 @@ import { ArticlesPageGreetings } from '@/features/ArticesPageGreetings';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
 import { ViewSelectorContainer } from '@/pages/ArticlesPage/ui/ViewSelectorContainer/ViewSelectorContainer';
+import {FiltersContainer} from "@/pages/ArticlesPage/ui/FiltersContainer/FiltersContainer";
 
 interface ArticlesPage {
     className?: string;
@@ -47,7 +48,7 @@ const ArticlesPage = (props: ArticlesPage) => {
                         </Page>
                     }
                     left={<ViewSelectorContainer />}
-                    //right={}
+                    right={<FiltersContainer />}
                 />
             }
             off={

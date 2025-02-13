@@ -34,6 +34,7 @@ export const ArticlesFilters = memo((props: ArticlesFiltersProps) => {
         <Card
             onClick={onClick}
             className={classNames(cls.Overlay, {}, [className])}
+            padding={'24'}
         >
             <VStack gap={'32'}>
                 <Input
