@@ -11,6 +11,7 @@ import cls from './ArticlesPage.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page';
 import { ArticlesPageGreetings } from '@/features/ArticesPageGreetings';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface ArticlesPage {
     className?: string;
@@ -29,17 +30,34 @@ const ArticlesPage = (props: ArticlesPage) => {
         dispatch(fetchNextArticlesPage());
     }, []);
 
+    const content = (
+        <ToggleFeatures
+            on={
+                <Page
+                    data-testid="ArticlesPage"
+                    onScrollEnd={onLoadNextPart}
+                    className={classNames(cls.ArticlesPage, {}, [className])}
+                >
+                    <ArticleInfiniteList className={cls.list} />
+                    <ArticlesPageGreetings />
+                </Page>
+            }
+            off={
+                <Page
+                    data-testid="ArticlesPage"
+                    onScrollEnd={onLoadNextPart}
+                    className={classNames(cls.ArticlesPage, {}, [className])}
+                >
+                    <ArticleInfiniteList className={cls.list} />
+                    <ArticlesPageGreetings />
+                </Page>
+            }
+            feature={'isAppRedesigned'}
+        />
+    );
+
     return (
-        <DynamicModuleLoader reducers={reducers}>
-            <Page
-                data-testid="ArticlesPage"
-                onScrollEnd={onLoadNextPart}
-                className={classNames(cls.ArticlesPage, {}, [className])}
-            >
-                <ArticleInfiniteList className={cls.list} />
-                <ArticlesPageGreetings />
-            </Page>
-        </DynamicModuleLoader>
+        <DynamicModuleLoader reducers={reducers}>{content}</DynamicModuleLoader>
     );
 };
 
