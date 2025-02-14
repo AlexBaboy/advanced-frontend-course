@@ -1,7 +1,9 @@
-import { useTranslation } from 'react-i18next';
-import { memo, useCallback } from 'react';
-import { ListBox } from '@/shared/ui/deprecated/Popups/ui/ListBox/ListBox';
-import { Currency } from '../../model/types/currency';
+import {useTranslation} from 'react-i18next';
+import {memo, useCallback} from 'react';
+import {ListBox as ListBoxDeprecated} from '@/shared/ui/deprecated/Popups/ui/ListBox/ListBox';
+import {Currency} from '../../model/types/currency';
+import {ToggleFeatures} from "@/shared/lib/features";
+import {ListBox} from "@/shared/ui/redesigned/Popups";
 
 interface CurrencySelectProps {
     className?: string;
@@ -11,15 +13,15 @@ interface CurrencySelectProps {
 }
 
 const options = [
-    { value: Currency.RUB, content: Currency.RUB },
-    { value: Currency.EUR, content: Currency.EUR },
-    { value: Currency.USD, content: Currency.USD },
+    {value: Currency.RUB, content: Currency.RUB},
+    {value: Currency.EUR, content: Currency.EUR},
+    {value: Currency.USD, content: Currency.USD},
 ];
 
 export const CurrencySelect = memo((props: CurrencySelectProps) => {
-    const { className, value, onChange, readOnly } = props;
+    const {className, value, onChange, readOnly} = props;
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const onChangeHandler = useCallback(
         (value: string) => {
@@ -28,16 +30,22 @@ export const CurrencySelect = memo((props: CurrencySelectProps) => {
         [onChange],
     );
 
+    const propsListBox = {
+        value: value,
+        items: options,
+        defaultValue: t('Укажите валюту'),
+        label: t('Укажите валюту'),
+        className: className,
+        readonly: readOnly,
+        direction: "bottom right" as const,
+        onChange: onChangeHandler
+    }
+
     return (
-        <ListBox
-            value={value}
-            items={options}
-            defaultValue={t('Укажите валюту')}
-            label={t('Укажите валюту')}
-            onChange={onChangeHandler}
-            className={className}
-            readonly={readOnly}
-            direction="top right"
+        <ToggleFeatures
+            on={<ListBox {...propsListBox} />}
+            off={<ListBoxDeprecated {...propsListBox} />}
+            feature={'isAppRedesigned'}
         />
     );
 });
