@@ -82,27 +82,27 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
                             value={data?.first}
                             label={t('Имя')}
                             onChange={onChangeFirstname}
-                            readonly={readonly}
+                            readOnly={readonly}
                             data-testid="ProfileCard.firstname"
                         />
                         <Input
                             value={data?.lastname}
                             label={t('Фамилия')}
                             onChange={onChangeLastname}
-                            readonly={readonly}
+                            readOnly={readonly}
                             data-testid="ProfileCard.lastname"
                         />
                         <Input
                             value={data?.age}
                             label={t('Возраст')}
                             onChange={onChangeAge}
-                            readonly={readonly}
+                            readOnly={readonly}
                         />
                         <Input
                             value={data?.city}
                             label={t('Город')}
                             onChange={onChangeCity}
-                            readonly={readonly}
+                            readOnly={readonly}
                         />
                     </VStack>
                     <VStack gap="16" max>
@@ -110,18 +110,18 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
                             value={data?.username}
                             label={t('Имя пользователя')}
                             onChange={onChangeUsername}
-                            readonly={readonly}
+                            readOnly={readonly}
                         />
                         <Input
                             value={data?.avatar}
                             label={t('Cсылка на аватар')}
                             onChange={onChangeAvatar}
-                            readonly={readonly}
+                            readOnly={readonly}
                         />
                         <CurrencySelect
                             value={data?.currency}
                             onChange={onChangeCurrency}
-                            readonly={readonly}
+                            readOnly={readonly}
                         />
                         <CountrySelect
                             value={data?.country}
