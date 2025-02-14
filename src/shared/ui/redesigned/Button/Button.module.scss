@@ -2,10 +2,24 @@
   cursor: pointer;
   color: var(--text-redesigned);
   padding: .5rem 1rem;
+  display: flex;
+  align-items: center;
 
   &:hover {
     color: var(--accent-redesigned);
+
+    .addonLeft svg, .addonRight svg {
+      color: var(--accent-redesigned);
+    }
   }
+}
+
+.addonLeft, .addonRight {
+  display: flex;
+}
+
+.addonLeft svg, .addonRight svg {
+  color: var(--hint-redesigned);
 }
 
 .clear, .clearInverted {
