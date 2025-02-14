@@ -1,14 +1,14 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticlesFilters.module.scss';
-import {Card} from "@/shared/ui/redesigned/Card";
-import {ArticleSortSelector} from "@/features/ArticleSortSelector/ArticleSortSelector";
-import {Input} from "@/shared/ui/deprecated/Input/Input";
-import {ArticleTypeTabs} from "@/features/ArticleTypeTabs/ArticleTypeTabs";
-import {VStack} from "@/shared/ui/redesigned/Stack";
-import {ArticleSortField, ArticleType} from "@/entities/Article";
-import {SortOrder} from "@/shared/types/sort";
-import {useTranslation} from "react-i18next";
+import { Card } from '@/shared/ui/redesigned/Card/Card';
+import { ArticleSortSelector } from '@/features/ArticleSortSelector/ArticleSortSelector';
+import { Input } from '@/shared/ui/redesigned/Input/Input';
+import { ArticleTypeTabs } from '@/features/ArticleTypeTabs/ArticleTypeTabs';
+import { VStack } from '@/shared/ui/redesigned/Stack';
+import { ArticleSortField, ArticleType } from '@/entities/Article';
+import { SortOrder } from '@/shared/types/sort';
+import { useTranslation } from 'react-i18next';
 
 interface ArticlesFiltersProps {
     className?: string;
@@ -26,9 +26,20 @@ interface ArticlesFiltersProps {
 }
 
 export const ArticlesFilters = memo((props: ArticlesFiltersProps) => {
-    const { className, onClick, onChangeSort, sort, onChangeSearch, search, onChangeType, type, onChangeOrder, order } = props;
+    const {
+        className,
+        onClick,
+        onChangeSort,
+        sort,
+        onChangeSearch,
+        search,
+        onChangeType,
+        type,
+        onChangeOrder,
+        order,
+    } = props;
 
-    const {t} = useTranslation()
+    const { t } = useTranslation();
 
     return (
         <Card
@@ -56,8 +67,6 @@ export const ArticlesFilters = memo((props: ArticlesFiltersProps) => {
                     className={cls.tabs}
                 />
             </VStack>
-
-
         </Card>
     );
 });
