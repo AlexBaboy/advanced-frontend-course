@@ -5,15 +5,15 @@ import cls from './ProfileCardDeprecated.module.scss';
 import { ProfileCardProps } from '../ProfileCard/ProfileCard';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
-import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
+import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input/Input';
 import { CurrencySelect } from '@/entities/Currency';
 import { CountrySelect } from '@/entities/Country';
-import { Loader } from '@/shared/ui/deprecated/Loader';
+import { Loader } from '@/shared/ui/deprecated/Loader/Loader';
 import {
     Text as TextDeprecated,
     TextAlign,
     TextTheme,
-} from '@/shared/ui/deprecated/Text';
+} from '@/shared/ui/deprecated/Text/Text';
 
 export const ProfileCardDeprecatedError = () => {
     const { t } = useTranslation();
@@ -125,7 +125,7 @@ export const ProfileCardDeprecated = memo((props: ProfileCardProps) => {
                 className={cls.input}
                 value={data?.currency}
                 onChange={onChangeCurrency}
-                readonly={readonly}
+                readOnly={readonly}
             />
             <CountrySelect
                 className={cls.input}
