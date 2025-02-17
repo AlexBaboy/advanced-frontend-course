@@ -53,6 +53,7 @@ export const ArticlesFilters = memo((props: ArticlesFiltersProps) => {
                 <Input
                     placeholder={t('Поиск')}
                     value={search}
+                    inputSize={'s'}
                     onChange={onChangeSearch}
                     addonLeft={<Icon Svg={SearchIcon} />}
                 />
