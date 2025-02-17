@@ -10,6 +10,7 @@
   .title {
     color: var(--red-light);
   }
+
   .text {
     color: var(--red-dark);
   }
@@ -19,6 +20,7 @@
   .title {
     color: var(--accent-redesigned);
   }
+
   .text {
     color: var(--accent-redesigned);
   }
@@ -40,6 +42,7 @@
   .title {
     font: var(--font-m-redesigned);
   }
+
   .text {
     font: var(--font-s-redesigned);
   }
@@ -49,6 +52,7 @@
   .title {
     font: var(--font-l-redesigned);
   }
+
   .text {
     font: var(--font-m-redesigned);
   }
@@ -58,7 +62,14 @@
   .title {
     font: var(--font-xl-redesigned);
   }
+
   .text {
     font: var(--font-l-redesigned);
+  }
+}
+
+.bold {
+  .title, .text {
+    font-weight: 700;
   }
 }

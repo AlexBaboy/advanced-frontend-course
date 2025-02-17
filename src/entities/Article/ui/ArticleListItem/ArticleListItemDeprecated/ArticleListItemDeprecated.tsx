@@ -13,7 +13,7 @@ import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
 import { ARTICLES_LIST_ITEM_INDEX } from '@/shared/const/localStorage';
 import { ArticleTextBlock } from '../../../model/types/article';
 import { ArticleTextBlockComponent } from '../../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
-import cls from './ArticleListItem.module.scss';
+import cls from '../ArticleListItem.module.scss';
 import { ArticleBlockType } from '../../../model/constants/constants';
 import { AppImage } from '@/shared/ui/redesigned/AppImage';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton/Skeleton';
