@@ -1,21 +1,21 @@
 import { HTMLAttributeAnchorTarget, memo } from 'react';
-import { Article, ArticleView } from '../..';
+import { ArticleView } from '../../model/consts/articleConsts';
+import { Article } from '../../model/types/article';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { ArticleListItemDeprecated } from '@/entities/Article/ui/ArticleListItem/ArticleListItemDeprecated/ArticleListItemDeprecated';
-import { ArticleListItemRedesigned } from '@/entities/Article/ui/ArticleListItem/ArticleListItemRedesigned/ArticleListItemRedesigned';
+import { ArticleListItemDeprecated } from './ArticleListItemDeprecated/ArticleListItemDeprecated';
+import { ArticleListItemRedesigned } from './ArticleListItemRedesigned/ArticleListItemRedesigned';
 
 export interface ArticleListItemProps {
     className?: string;
     article: Article;
-    view?: ArticleView;
+    view: ArticleView;
     target?: HTMLAttributeAnchorTarget;
-    index?: number;
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
     return (
         <ToggleFeatures
-            feature={'isAppRedesigned'}
+            feature="isAppRedesigned"
             on={<ArticleListItemRedesigned {...props} />}
             off={<ArticleListItemDeprecated {...props} />}
         />
