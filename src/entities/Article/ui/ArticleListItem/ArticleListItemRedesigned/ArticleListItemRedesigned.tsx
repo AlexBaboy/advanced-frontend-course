@@ -12,7 +12,6 @@ import { Avatar } from '@/shared/ui/redesigned/Avatar';
 import { AppImage } from '@/shared/ui/redesigned/AppImage';
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton/Skeleton';
 import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink';
-
 import { Button } from '@/shared/ui/redesigned/Button/Button';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { ArticleView } from '@/entities/Article';

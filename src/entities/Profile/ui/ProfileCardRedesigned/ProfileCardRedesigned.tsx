@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Card } from '@/shared/ui/redesigned/Card';
+import { Card } from '@/shared/ui/redesigned/Card/Card';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
 import { Input } from '@/shared/ui/redesigned/Input/Input';
