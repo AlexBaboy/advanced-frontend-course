@@ -9,6 +9,7 @@ import { ArticleEdit } from '@/pages/ArticleEdit';
 import { AdminPanel } from '@/pages/AdminPanel';
 import { UserRole } from '@/entities/User';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
+import {SettingsPage} from "@/pages/Settings";
 
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean;
@@ -25,6 +26,7 @@ export enum AppRoutes {
     ARTICLE_EDIT = 'article_edit',
     ADMIN_PANEL = 'admin_panel',
     FORBIDDEN = 'forbidden',
+    SETTINGS = 'settings',
 
     // last
     NOT_FOUND = 'not_found',
@@ -39,6 +41,7 @@ export const getRouteArticleCreate = () => '/articles/new';
 export const getRouteArticleEdit = (id: string) => `/articles/${id}/edit`;
 export const getRouteAdmin = () => '/admin';
 export const getRouteForbidden = () => '/forbidden';
+export const getRouteSettings = () => '/settings';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.MAIN]: {
@@ -83,6 +86,10 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.FORBIDDEN]: {
         path: getRouteForbidden(),
         element: <ForbiddenPage />,
+    },
+    [AppRoutes.SETTINGS]: {
+        path: getRouteSettings(),
+        element: <SettingsPage />,
     },
 
     // last
