@@ -5,6 +5,8 @@ import { Portal } from '@/shared/ui/redesigned/Portal/Portal';
 
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { Overlay } from '@/shared/ui/redesigned/Overlay/Overlay';
+import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
+import { toggleFeatures } from '@/shared/lib/features';
 
 interface ModalProps {
     className?: string;
@@ -29,6 +31,8 @@ export const Modal = (props: ModalProps) => {
         isOpen,
     });
 
+    const { theme } = useTheme();
+
     const mods: Mods = {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing,
@@ -39,8 +43,19 @@ export const Modal = (props: ModalProps) => {
     }
 
     return (
-        <Portal>
-            <div className={classNames(cls.Modal, mods, [className])}>
+        <Portal element={document.getElementById('app') ?? document.body}>
+            <div
+                className={classNames(cls.Modal, mods, [
+                    className,
+                    theme,
+                    'app_modal',
+                    toggleFeatures({
+                        name: 'isAppRedesigned',
+                        on: () => cls.modalNew,
+                        off: () => cls.modalOld,
+                    }),
+                ])}
+            >
                 <Overlay onClick={close} />
                 <div className={cls.content}>{children}</div>
             </div>

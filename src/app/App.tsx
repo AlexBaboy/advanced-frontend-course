@@ -29,6 +29,7 @@ const App = () => {
             feature={'isAppRedesigned'}
             off={
                 <div
+                    id={'app'}
                     className={classNames(
                         'app',
                         { hovered: true, selectable: false },
@@ -45,7 +46,10 @@ const App = () => {
                 </div>
             }
             on={
-                <div className={classNames('app_redesigned', {}, [theme])}>
+                <div
+                    id={'app'}
+                    className={classNames('app_redesigned', {}, [theme])}
+                >
                     <Suspense fallback="">
                         <MainLayout
                             header={<Navbar />}
