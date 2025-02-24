@@ -11,11 +11,12 @@ interface ArticleAdditionalInfoProps {
     author: User;
     createdAt: string;
     views: number;
+    onEdit?: () => void;
 }
 
 export const ArticleAdditionalInfo = memo(
     (props: ArticleAdditionalInfoProps) => {
-        const { className, author, createdAt, views } = props;
+        const { className, author, createdAt, views, onEdit } = props;
 
         const { t } = useTranslation();
 
@@ -26,7 +27,7 @@ export const ArticleAdditionalInfo = memo(
                     <Text text={author.username} bold />
                     <Text text={createdAt} />
                 </HStack>
-                <Button>{t('Редактировать')}</Button>
+                <Button onClick={onEdit}>{t('Редактировать')}</Button>
                 <Text text={t('просмотров')} />
             </VStack>
         );

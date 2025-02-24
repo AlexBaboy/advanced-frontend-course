@@ -1,26 +1,33 @@
-import { memo } from "react";
-import { ArticleDetails, getArticleDetailsData } from "@/entities/Article";
-import { useParams } from "react-router-dom";
-import { Card } from "@/shared/ui/redesigned/Card/Card";
-import { ArticleAdditionalInfo } from "@/widgets/ArticleAdditionalInfo";
-import { useSelector } from "react-redux";
+import { getArticleDetailsData } from '@/entities/Article';
+import { Card } from '@/shared/ui/redesigned/Card/Card';
+import { ArticleAdditionalInfo } from '@/widgets/ArticleAdditionalInfo';
+import { useSelector } from 'react-redux';
+import cls from './AdditionalInfoContainer.module.scss';
+import { useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
+import { getRouteArticleEdit } from '@/shared/config/routeConfig/routeConfig';
 
-interface AdditionalInfoContainerProps {
-  className?: string;
-}
+export const AdditionalInfoContainer = () => {
+    const article = useSelector(getArticleDetailsData);
 
-export const AdditionalInfoContainer = memo((props: AdditionalInfoContainerProps) => {
+    if (!article) return null;
 
-  const {
-    className
-  } = props;
+    const navigate = useNavigate();
 
-  const article = useSelector(getArticleDetailsData);
+    const onEdit = useCallback(() => {
+        if (article?.id) {
+            navigate(getRouteArticleEdit(article.id));
+        }
+    }, [article?.id]);
 
-  if (!article) return null;
-
-  return (
-    <Card className={className} padding={"24"} border={"round"}>
-      <ArticleAdditionalInfo author={article.user} createdAt={article.createdAt} views={article.views} />
-    </Card>);
+    return (
+        <Card padding={'24'} border={'round'} className={cls.card}>
+            <ArticleAdditionalInfo
+                author={article.user}
+                createdAt={article.createdAt}
+                views={article.views}
+                onEdit={onEdit}
+            />
+        </Card>
+    );
 };
