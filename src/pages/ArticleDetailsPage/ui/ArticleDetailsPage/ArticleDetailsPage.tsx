@@ -15,7 +15,10 @@ import { ArticleRecommendationsList } from '@/features/articleRecommendationsLis
 import { ArticleRating } from '@/entities/ArticleRating';
 import { Page } from '@/widgets/Page';
 import { ArticleDetailsComments } from '../../ui/ArticleDetailsComments/ArticleDetailsComments';
-import { getFeatureFlags } from '@/shared/lib/features';
+import { getFeatureFlags, ToggleFeatures } from '@/shared/lib/features';
+import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
+import { DetailsContainer } from '@/pages/ArticleDetailsPage/ui/DetailsContainer/DetailsContainer';
+import { AdditionalInfoContainer } from '@/pages/ArticleDetailsPage/ui/AdditionalInfoContainer/AdditionalInfoContainer';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -47,17 +50,56 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <Page
-                className={classNames(cls.ArticleDetailsPage, {}, [className])}
-            >
-                <VStack gap="16" max data-testid="ArticleDetailsPage.Info">
-                    <ArticleDetailsPageHeader />
-                    <ArticleDetails id={id} />
-                    {isArticleRatingEnabled && <ArticleRating articleId={id} />}
-                    <ArticleRecommendationsList />
-                    <ArticleDetailsComments id={id} />
-                </VStack>
-            </Page>
+            <ToggleFeatures
+                feature={'isAppRedesigned'}
+                on={
+                    <StickyContentLayout
+                        content={
+                            <Page
+                                className={classNames(
+                                    cls.ArticleDetailsPage,
+                                    {},
+                                    [className],
+                                )}
+                            >
+                                <VStack
+                                    gap="16"
+                                    max
+                                    data-testid="ArticleDetailsPage.Info"
+                                >
+                                    {/*<ArticleDetails id={id} />*/}
+                                    <DetailsContainer />
+                                    <ArticleRating articleId={id} />
+                                    <ArticleRecommendationsList />
+                                    <ArticleDetailsComments id={id} />
+                                </VStack>
+                            </Page>
+                        }
+                        right={<AdditionalInfoContainer />}
+                    />
+                }
+                off={
+                    <Page
+                        className={classNames(cls.ArticleDetailsPage, {}, [
+                            className,
+                        ])}
+                    >
+                        <VStack
+                            gap="16"
+                            max
+                            data-testid="ArticleDetailsPage.Info"
+                        >
+                            <ArticleDetailsPageHeader />
+                            <ArticleDetails id={id} />
+                            {isArticleRatingEnabled && (
+                                <ArticleRating articleId={id} />
+                            )}
+                            <ArticleRecommendationsList />
+                            <ArticleDetailsComments id={id} />
+                        </VStack>
+                    </Page>
+                }
+            />
         </DynamicModuleLoader>
     );
 };
