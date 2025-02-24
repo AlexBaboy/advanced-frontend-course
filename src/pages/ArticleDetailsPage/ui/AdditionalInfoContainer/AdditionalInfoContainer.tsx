@@ -10,8 +10,6 @@ import { getRouteArticleEdit } from '@/shared/config/routeConfig/routeConfig';
 export const AdditionalInfoContainer = () => {
     const article = useSelector(getArticleDetailsData);
 
-    if (!article) return null;
-
     const navigate = useNavigate();
 
     const onEdit = useCallback(() => {
@@ -19,6 +17,8 @@ export const AdditionalInfoContainer = () => {
             navigate(getRouteArticleEdit(article.id));
         }
     }, [article?.id]);
+
+    if (!article) return null;
 
     return (
         <Card padding={'24'} border={'round'} className={cls.card}>
