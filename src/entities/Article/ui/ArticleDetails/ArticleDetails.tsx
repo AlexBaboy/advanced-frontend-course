@@ -134,7 +134,7 @@ const ArticleDetailsSkeleton = () => {
     });
 
     return (
-        <VStack gap={'16'}>
+        <VStack gap={'16'} max>
             <Skeleton
                 className={cls.avatar}
                 width={200}
