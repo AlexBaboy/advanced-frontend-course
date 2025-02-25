@@ -1,7 +1,11 @@
 import { memo, Suspense, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { Text, TextSize } from '@/shared/ui/deprecated/Text/Text';
+import {
+    Text as TextDeprecated,
+    TextSize,
+} from '@/shared/ui/deprecated/Text/Text';
+import { Text } from '@/shared/ui/redesigned/Text/Text';
 import cls from '@/pages/ArticleDetailsPage/ui/ArticleDetailsPage/ArticleDetailsPage.module.scss';
 import { AddCommentForm } from '@/features/addCommentForm';
 import { CommentList } from '@/entities/Comment';
@@ -15,6 +19,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { addCommentFormActions } from '@/features/addCommentForm/model/slice/addCommentFormSlice';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { Loader } from '@/shared/ui/deprecated/Loader/Loader';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface ArticleDetailsCommentsProps {
     className?: string;
@@ -52,11 +57,24 @@ export const ArticleDetailsComments = memo(
                     className,
                 ])}
             >
-                <Text
-                    title={t('Комментарии')}
-                    className={cls.commentTitle}
-                    size={TextSize.L}
+                <ToggleFeatures
+                    feature={'isAppRedesigned'}
+                    on={
+                        <Text
+                            title={t('Комментарии')}
+                            className={cls.commentTitle}
+                            size={'l'}
+                        />
+                    }
+                    off={
+                        <TextDeprecated
+                            title={t('Комментарии')}
+                            className={cls.commentTitle}
+                            size={TextSize.L}
+                        />
+                    }
                 />
+
                 <Suspense fallback={<Loader />}>
                     <AddCommentForm onSendComment={onSendComment} />
                 </Suspense>
