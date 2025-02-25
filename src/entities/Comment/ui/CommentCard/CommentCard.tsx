@@ -10,7 +10,7 @@ import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton/
 import { AppLink as AppLinkDeprecated } from '@/shared/ui/deprecated/AppLink/AppLink';
 import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink';
 import { getRouteProfile } from '@/shared/config/routeConfig/routeConfig';
-import { VStack } from '@/shared/ui/redesigned/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import cls from './CommentCard.module.scss';
 import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
 import { Card } from '@/shared/ui/redesigned/Card/Card';
@@ -69,23 +69,22 @@ export const CommentCard = memo((props: CommentCardProps) => {
                         data-testid="CommentCard.Content"
                         gap="8"
                         max
-                        className={classNames(cls.CommentCard, mods, [
+                        className={classNames(cls.CommentCardRedesigned, mods, [
                             className,
                         ])}
                     >
-                        <AppLink
-                            to={getRouteProfile(comment?.user.id)}
-                            className={cls.header}
-                        >
-                            {comment?.user?.avatar ? (
-                                <Avatar size={30} src={comment?.user?.avatar} />
-                            ) : null}
-                            <Text
-                                title={comment?.user.username}
-                                className={cls.username}
-                            />
+                        <AppLink to={getRouteProfile(comment?.user.id)}>
+                            <HStack gap={'8'}>
+                                {comment?.user?.avatar ? (
+                                    <Avatar
+                                        size={30}
+                                        src={comment?.user?.avatar}
+                                    />
+                                ) : null}
+                                <Text text={comment?.user.username} bold />
+                            </HStack>
                         </AppLink>
-                        <Text text={comment?.text} className={cls.text} />
+                        <Text text={comment?.text} />
                     </VStack>
                 </Card>
             }
