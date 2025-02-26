@@ -1,36 +1,19 @@
-import { useTranslation } from 'react-i18next';
-import { memo, useCallback } from 'react';
-import { useSelector } from 'react-redux';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input/Input';
-import { Input } from '@/shared/ui/redesigned/Input/Input';
-import {
-    Button as ButtonDeprecated,
-    ButtonTheme,
-} from '@/shared/ui/deprecated/Button/Button';
-import { Button } from '@/shared/ui/redesigned/Button/Button';
-import { HStack } from '@/shared/ui/redesigned/Stack';
-import {
-    addCommentFormActions,
-    addCommentFormReducer,
-} from '../../model/slice/addCommentFormSlice';
+import {useTranslation} from 'react-i18next';
+import {memo, useCallback} from 'react';
+import {useSelector} from 'react-redux';
+import {classNames} from '@/shared/lib/classNames/classNames';
+import {DynamicModuleLoader, ReducersList,} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {useAppDispatch} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {Input as InputDeprecated} from '@/shared/ui/deprecated/Input/Input';
+import {Input} from '@/shared/ui/redesigned/Input/Input';
+import {Button as ButtonDeprecated, ButtonTheme,} from '@/shared/ui/deprecated/Button/Button';
+import {Button} from '@/shared/ui/redesigned/Button/Button';
+import {HStack} from '@/shared/ui/redesigned/Stack';
+import {addCommentFormActions, addCommentFormReducer,} from '../../model/slice/addCommentFormSlice';
 import cls from './AddCommentForm.module.scss';
-import {
-    getAddCommentFormError,
-    getAddCommentFormText,
-} from '../../model/selectors/addCommentFormSelectors';
-import { Text } from '@/shared/ui/redesigned/Text/Text';
-import {
-    Text as TextDeprecated,
-    TextSize,
-} from '@/shared/ui/deprecated/Text/Text';
-import { ToggleFeatures } from '@/shared/lib/features';
-import { Card } from '@/shared/ui/redesigned/Card/Card';
+import {getAddCommentFormError, getAddCommentFormText,} from '../../model/selectors/addCommentFormSelectors';
+import {ToggleFeatures} from '@/shared/lib/features';
+import {Card} from '@/shared/ui/redesigned/Card/Card';
 
 export interface AddCommentFormProps {
     className?: string;
@@ -63,7 +46,7 @@ const AddCommentForm = memo(
                 <ToggleFeatures
                     feature={'isAppRedesigned'}
                     on={
-                        <Card padding={'24'} border={'round'} max>
+                        <Card padding={'24'} border={'partial'} max>
                             <HStack
                                 gap={'16'}
                                 data-testid="AddCommentForm"
