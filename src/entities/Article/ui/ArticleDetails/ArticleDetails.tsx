@@ -17,7 +17,7 @@ import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton/
 import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton/Skeleton';
 import { Avatar } from '@/shared/ui/deprecated/Avatar/Avatar';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
-import CalendarIcon from '@/shared/assets/icons/calendar.svg';
+import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
 import { Icon } from '@/shared/ui/deprecated/Icon/Icon';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { ArticleBlock } from '../../../Article/model/types/article';
