@@ -26,7 +26,7 @@
   color: var(--hint-redesigned);
 }
 
-.clear, .clearInverted {
+.clear {
   padding: 0;
   margin: 0;
   background: none;
@@ -34,48 +34,32 @@
   outline: none;
 }
 
-.clearInverted {
-  color: var(--inverted-primary-color);
-}
-
 .outline {
-  border: 2px solid var(--icon-redesigned);
   background: none;
-  outline: none;
+  border-radius: 34px;
 
   &:hover {
     border: 2px solid var(--accent-redesigned);
   }
-}
 
-.outline_red {
-  border: 1px solid var(--red-light);
-  color: var(--red-light);
-  background: none;
+  &.normal {
+    border: 2px solid var(--icon-redesigned);
+  }
+
+  &.error {
+    border: 2px solid var(--cancel-redesigned);
+  }
+
+  &.success {
+    border: 2px solid var(--save-redesigned);
+  }
 }
 
 .filled {
   background: var(--light-bg-redesigned);
   border: none;
   outline: none;
-  padding: 8px 16px;
   border-radius: 34px;
-}
-
-.reload {
-  color: red;
-}
-
-.background {
-  background: var(--bg-color);
-  color: var(--primary-color);
-  border: none;
-}
-
-.backgroundInverted {
-  background: var(--inverted-bg-color);
-  color: var(--inverted-primary-color);
-  border: none;
 }
 
 .square {

@@ -9,7 +9,6 @@ import {Button} from '@/shared/ui/redesigned/Button/Button';
 import {Input as InputDeprecated} from '@/shared/ui/deprecated/Input/Input';
 import {Input} from '@/shared/ui/redesigned/Input/Input';
 import {loginActions, loginReducer} from '../../model/slice/loginSlice';
-
 import {loginByUsername} from '../../model/services/loginByUsername/loginByUsername';
 import {TextTheme, Text as TextDeprecated} from '@/shared/ui/deprecated/Text/Text';
 import {Text} from '@/shared/ui/redesigned/Text/Text';
