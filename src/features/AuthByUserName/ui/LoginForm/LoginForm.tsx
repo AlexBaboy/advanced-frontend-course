@@ -52,7 +52,7 @@ const LoginForm = memo(({className, onSuccess}: LoginFormProps) => {
     };
 
     const onLoginClick = async () => {
-        const result = await dispatch(
+        const result = dispatch(
             loginByUsername({
                 username,
                 password,
