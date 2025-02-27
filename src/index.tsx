@@ -6,6 +6,7 @@ import { ErrorBoundary } from '@/app/providers/ErrorBoundary';
 import './app/styles/index.scss';
 import { StoreProvider } from '@/app/providers/StoreProvider';
 import { createRoot } from 'react-dom/client';
+import { ForceUpdateProvider } from '@/shared/lib/render/forceUpdate';
 
 const container = document.getElementById('root');
 
@@ -19,9 +20,11 @@ root.render(
     <StoreProvider>
         <BrowserRouter>
             <ErrorBoundary>
-                <ThemeProvider>
-                    <App />
-                </ThemeProvider>
+                <ForceUpdateProvider>
+                    <ThemeProvider>
+                        <App />
+                    </ThemeProvider>
+                </ForceUpdateProvider>
             </ErrorBoundary>
         </BrowserRouter>
     </StoreProvider>,
