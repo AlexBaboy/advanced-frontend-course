@@ -745,6 +745,12 @@
       "userId": "2",
       "text": "213",
       "id": "bq8YXY2"
+    },
+    {
+      "articleId": "4",
+      "userId": "1",
+      "text": "тест123",
+      "id": "txhtqCp"
     }
   ],
   "users": [
@@ -900,6 +906,13 @@
       "rate": 2,
       "feedback": "asdasdasd",
       "id": "xbwnNBF"
+    },
+    {
+      "userId": "1",
+      "articleId": "4",
+      "rate": 3,
+      "feedback": "супер!",
+      "id": "05ftIAb"
     }
   ],
   "profile-ratings": [
