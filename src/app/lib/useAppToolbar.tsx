@@ -1,6 +1,7 @@
 import { AppRoutes } from '@/shared/config/routeConfig/routeConfig';
 import { ReactElement } from 'react';
 import { ScrollToolbar } from '@/widgets/ScrollToolbar';
+import {useRouteChange} from "@/shared/lib/router/useRouteChange";
 
 export const useAppToolbar = () => {
 

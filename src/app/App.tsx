@@ -13,12 +13,14 @@ import { ToggleFeatures } from '@/shared/lib/features';
 import { MainLayout } from '@/shared/layouts/MainLayout';
 import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 import { ScrollToolbar } from '@/widgets/ScrollToolbar';
+import {useAppToolbar} from "./lib/useAppToolbar";
 
 const App = () => {
     const { theme } = useTheme();
     const dispatch = useAppDispatch();
 
     const inited = useSelector(getUserInited);
+    const toolbar = useAppToolbar()
 
     useEffect(() => {
         !inited && dispatch(initAuthData());
@@ -65,7 +67,7 @@ const App = () => {
                             header={<Navbar />}
                             content={<AppRouter />}
                             sidebar={<Sidebar />}
-                            toolbar={<ScrollToolbar />}
+                            toolbar={toolbar}
                         />
                     </Suspense>
                 </div>
