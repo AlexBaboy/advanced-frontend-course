@@ -100,7 +100,7 @@ module.exports = {
             },
         ],
         'react/jsx-max-props-per-line': ['error', { maximum: 5 }],
-        'react/no-unstable-nested-components': 'warning',
+        'react/no-unstable-nested-components': 1,
     },
     globals: {
         __IS_DEV__: true,

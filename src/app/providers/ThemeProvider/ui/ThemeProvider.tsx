@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useMemo, useState } from 'react';
+import React, {Component, ComponentType, ReactNode, useEffect, useMemo, useState} from 'react';
 import { ThemeContext } from '@/shared/lib/context/ThemeContext';
 import { Theme } from '@/shared/const/theme';
 import { useJsonSettings } from '@/entities/User/model/selectors/getJsonSettings/getJsonSettings';
@@ -22,11 +22,11 @@ const ThemeProvider = (props: ThemeProviderProps) => {
     const [isThemeInited, setThemeInited] = useState(false);
 
     useEffect(() => {
-        if (!isThemeInited && defaultTheme) {
-            setTheme(defaultTheme);
+        if (!isThemeInited && initialTheme) {
+            setTheme(initialTheme);
             setThemeInited(true);
         }
-    }, [defaultTheme, isThemeInited]);
+    }, [initialTheme, isThemeInited]);
 
     useEffect(() => {
         document.body.className = theme;
@@ -47,5 +47,16 @@ const ThemeProvider = (props: ThemeProviderProps) => {
         </ThemeContext.Provider>
     );
 };
+
+const withTheme = (Component: ComponentType) => {
+    return () => {
+        const { theme: defaultTheme } = useJsonSettings()
+        return (
+            <ThemeProvider initialTheme={defaultTheme}>
+                <Component />
+            </ThemeProvider>
+        )
+    }
+}
 
 export default ThemeProvider;
