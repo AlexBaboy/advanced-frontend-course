@@ -1,14 +1,14 @@
 import { Listbox as HListBox } from '@headlessui/react';
 import { Fragment, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button } from '@/shared/ui/redesigned/Button/Button';
+import { Button } from '../../../../redesigned/Button/Button';
 import cls from './ListBox.module.scss';
-import { HStack } from '@/shared/ui/redesigned/Stack';
+import { HStack } from '../../../../redesigned/Stack';
 import { DropdownDirection } from '@/shared/types/ui';
 import { mapDirectionClass } from '../../styles/constants';
 import popupCls from '../../styles/popup.module.scss';
 import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
-import { Icon } from '@/shared/ui/redesigned/Icon/Icon';
+import { Icon } from '../../../../redesigned/Icon/Icon';
 
 export interface ListBoxItem {
     value: string;
@@ -62,13 +62,13 @@ export const ListBox = (props: ListBoxProps) => {
                 onChange={onChange}
                 disabled={readonly}
             >
-                <HListBox.Button className={cls.trigger}>
-                    <Button
-                        disabled={readonly}
-                        addonRight={<Icon Svg={ArrowIcon} />}
-                    >
-                        {value ?? defaultValue}
-                    </Button>
+                <HListBox.Button
+                    as={Button}
+                    className={cls.trigger}
+                    disabled={readonly}
+                    addonRight={<Icon Svg={ArrowIcon} />}
+                >
+                    {value ?? defaultValue}
                 </HListBox.Button>
                 <HListBox.Options
                     className={classNames(cls.options, {}, optionsClasses)}
