@@ -14,8 +14,8 @@ import { Skeleton } from '@/shared/ui/redesigned/Skeleton/Skeleton';
 import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
-import { ArticleView } from '@/entities/Article';
-import { ArticleBlockType } from '@/entities/Article/model/constants/constants';
+import { ArticleView } from '../../..';
+import { ArticleBlockType } from '../../../model/constants/constants';
 import { getRouteArticleDetails } from '@/shared/config/routeConfig/routeConfig';
 
 export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
@@ -24,7 +24,11 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
 
     const userInfo = (
         <>
-            <Avatar size={32} src={article.user?.avatar} className={cls.avatar} />
+            <Avatar
+                size={32}
+                src={article.user?.avatar}
+                className={cls.avatar}
+            />
             <Text bold text={article.user?.username} />
         </>
     );
@@ -95,9 +99,9 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
                 cls[view],
             ])}
         >
-            <Card className={cls.card} border="partial" padding={'0'}>
+            <Card className={cls.card} border="partial" padding="0">
                 <AppImage
-                    fallback={<Skeleton width={'100%'} height={200} />}
+                    fallback={<Skeleton width="100%" height={200} />}
                     alt={article.title}
                     src={article.img}
                     className={cls.img}

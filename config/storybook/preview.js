@@ -5,6 +5,7 @@ import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorat
 import { TranslationDecorator } from '../../src/shared/config/storybook/TranslationDecorator/TranslationDecorator';
 import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
 import { Theme } from '../../src/shared/const/theme';
+import { FeatureFlagsDecorator } from '@/shared/config/storybook/FeatureFlagsDecorator/FeatureFlagsDecorator';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -30,3 +31,4 @@ addDecorator(ThemeDecorator(Theme.LIGHT));
 addDecorator(RouterDecorator);
 addDecorator(TranslationDecorator);
 addDecorator(SuspenseDecorator);
+addDecorator(FeatureFlagsDecorator({}));

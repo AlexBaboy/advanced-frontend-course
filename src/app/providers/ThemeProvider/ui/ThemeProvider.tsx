@@ -1,4 +1,11 @@
-import React, {Component, ComponentType, ReactNode, useEffect, useMemo, useState} from 'react';
+import React, {
+    Component,
+    ComponentType,
+    ReactNode,
+    useEffect,
+    useMemo,
+    useState,
+} from 'react';
 import { ThemeContext } from '@/shared/lib/context/ThemeContext';
 import { Theme } from '@/shared/const/theme';
 import { useJsonSettings } from '@/entities/User/model/selectors/getJsonSettings/getJsonSettings';
@@ -47,16 +54,5 @@ const ThemeProvider = (props: ThemeProviderProps) => {
         </ThemeContext.Provider>
     );
 };
-
-const withTheme = (Component: ComponentType) => {
-    return () => {
-        const { theme: defaultTheme } = useJsonSettings()
-        return (
-            <ThemeProvider initialTheme={defaultTheme}>
-                <Component />
-            </ThemeProvider>
-        )
-    }
-}
 
 export default ThemeProvider;

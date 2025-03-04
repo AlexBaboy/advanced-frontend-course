@@ -1,9 +1,10 @@
 import { HTMLAttributeAnchorTarget, memo } from 'react';
-import { ArticleView } from '../../model/consts/articleConsts';
+
 import { Article } from '../../model/types/article';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { ArticleListItemDeprecated } from './ArticleListItemDeprecated/ArticleListItemDeprecated';
 import { ArticleListItemRedesigned } from './ArticleListItemRedesigned/ArticleListItemRedesigned';
+import { ArticleView } from '@/entities/Article';
 
 export interface ArticleListItemProps {
     className?: string;

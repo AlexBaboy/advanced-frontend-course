@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { commentList } from '@/shared/mocks/commentList';
 import { CommentCard } from '@/entities/Comment/ui/CommentCard/CommentCard';
+import { FeatureFlagsDecorator } from '@/shared/config/storybook/FeatureFlagsDecorator/FeatureFlagsDecorator';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -19,11 +20,22 @@ const Template: ComponentStory<typeof CommentCard> = (args) => (
     <CommentCard {...args} />
 );
 
+const args = commentList[0];
+
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-    comment: commentList[0],
+    comment: args,
 };
+
+export const PrimaryRedesigned = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+PrimaryRedesigned.args = {
+    comment: args,
+};
+PrimaryRedesigned.decorators = [
+    FeatureFlagsDecorator({ isAppRedesigned: true }),
+];
 
 export const Loading = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
