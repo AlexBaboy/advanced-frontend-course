@@ -6,6 +6,7 @@ import { Country } from '@/entities/Country';
 import avatar from '@/shared/assets/tests/avatar.jpg';
 import { commentList } from '@/shared/mocks/commentList';
 import { FeatureFlagsDecorator } from '@/shared/config/storybook/FeatureFlagsDecorator/FeatureFlagsDecorator';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'entities/ProfileCard',
@@ -37,9 +38,7 @@ Primary.args = args;
 
 export const PrimaryRedesigned = Template.bind({});
 PrimaryRedesigned.args = args;
-PrimaryRedesigned.decorators = [
-    FeatureFlagsDecorator({ isAppRedesigned: true }),
-];
+PrimaryRedesigned.decorators = [NewDesignDecorator];
 
 export const WithError = Template.bind({});
 WithError.args = {
